@@ -1,0 +1,100 @@
+--- ./original/common/technologies/MTG_naval.txt	2023-10-10 23:27:08.490877261 +0200
++++ ./mod/common/technologies/MTG_naval.txt	2024-02-19 18:03:57.962341651 +0100
+@@ -1439,43 +1439,7 @@
+ 		}
+ 	}
+ 
+-	advanced_ship_hull_submarine = {
+-
+-		enable_equipments = {
+-			ship_hull_submarine_4
+-		}
+-		enable_equipment_modules = {
+-			ship_torpedo_sub_4
+-			sub_ship_engine_4
+-		}
+-
+-		research_cost = 2.0
+-
+-		start_year = 1944
+-
+-		folder = {
+-			name = mtgnavalfolder
+-			position = {  x = -2 y = 20 }
+-		}
+-
+-		ai_will_do = {
+-			factor = 1
+-
+-			modifier = {
+-				factor = 7
+-				OR = {
+-					tag = GER
+-					tag = USA
+-				}
+-			}
+-		}
+-
+-		categories = {
+-			naval_equipment
+-			ss_tech
+-			mio_cat_tech_all_submarine_and_modules
+-		}
+-	}
++	
+ 
+ 	basic_submarine_snorkel = {
+ 
+@@ -1525,51 +1489,7 @@
+ 		}
+ 	}
+ 
+-	improved_submarine_snorkel = {
+-
+-		enable_equipment_modules = {
+-			ship_sub_snorkel_2
+-		}
+-
+-		on_research_complete = {
+-			custom_effect_tooltip = snorkel_advice_tt
+-		}
+-		path = {
+-			leads_to_tech = improved_submarine_snorkel
+-			research_cost_coeff = 1
+-		}
+-
+-		xp_research_type = navy
+-		xp_boost_cost = 50
+-		xp_research_bonus = 1.50
+-		research_cost = 2
+-
+-		start_year = 1944
+-
+-		folder = {
+-			name = mtgnavalfolder
+-			position = {  x = -1 y = 19 }
+-		}
+-
+-		ai_will_do = {
+-			factor = 1
+-
+-			modifier = {
+-				factor = 7
+-				OR = {
+-					tag = GER
+-					tag = HOL
+-				}
+-			}
+-		}
+-
+-		categories = {
+-			naval_equipment
+-			ss_tech
+-			ship_modules_tech
+-			mio_cat_tech_all_submarine_and_modules
+-		}
+-	}
++	
+ 	###Special snowflake hulls for special snowflake nations
+ 	panzerschiffe = {
+ 
