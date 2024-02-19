@@ -1,16 +1,21 @@
 --- ./original/common/technologies/MTG_naval.txt	2023-10-10 23:27:08.490877261 +0200
-+++ ./mod/common/technologies/MTG_naval.txt	2024-02-19 21:14:55.374816388 +0100
-@@ -1441,9 +1441,6 @@
++++ ./mod/common/technologies/MTG_naval.txt	2024-02-19 21:45:14.418687189 +0100
+@@ -1440,10 +1440,12 @@
+ 	}
  
  	advanced_ship_hull_submarine = {
- 
--		enable_equipments = {
+-
++	
++		
+ 		enable_equipments = {
 -			ship_hull_submarine_4
--		}
++			ship_hull_submarine_4fixed
+ 		}
++		
  		enable_equipment_modules = {
  			ship_torpedo_sub_4
  			sub_ship_engine_4
-@@ -1482,10 +1479,7 @@
+@@ -1482,10 +1484,7 @@
  		enable_equipment_modules = {
  			ship_sub_snorkel_1
  		}
@@ -22,7 +27,7 @@
  		on_research_complete = {
  			custom_effect_tooltip = snorkel_advice_tt
  		}
-@@ -1525,51 +1519,7 @@
+@@ -1525,51 +1524,7 @@
  		}
  	}
  

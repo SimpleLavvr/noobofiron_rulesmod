@@ -11,7 +11,7 @@ ROOT_FOLDER="." # Assuming the script is run from the directory above original, 
 
 create_patches_and_sources() {
     echo "Creating patches and updating sources..."
-    find "${ROOT_FOLDER}/mod" -type f -name "*.txt" | while read -r mod_file; do
+    find "${ROOT_FOLDER}/mod" -type f -not -name ".*" | while read -r mod_file; do
         # Derive corresponding original and sources file paths
         relative_path="${mod_file#${ROOT_FOLDER}/mod/}"
         original_file="${ROOT_FOLDER}/original/${relative_path}"
