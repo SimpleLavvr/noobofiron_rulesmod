@@ -3,3 +3,4 @@ mod/**/*.txt
 original/*.txt
 original/**/*.txt
 **/*.info
+**/*.lua
