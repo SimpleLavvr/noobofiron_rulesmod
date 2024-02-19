@@ -4,12 +4,12 @@
 
 ## Build mod
 
-- Put the events folder (or whatever too) in 'original' folder
+- Put the events, common  folder (or whatever too) in 'original' folder
 - run ./apply_patches apply
 - get the files out of mod, and put this in the destination mod folder.
 
 ## Create patches from modified files
  
-- Put the original file you edited in original the edited final in mod (same location)
-- run ./apply_patches create
+- Put the game files in original, then put your working mod (the edited files) in mod (same location)
+- run ./apply_patches create (this will create a patch for existing files and copy non-existing ones)
 - commit it

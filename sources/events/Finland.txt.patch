@@ -1,5 +1,5 @@
 --- ./original/events/Finland.txt	2023-11-02 21:08:21.119841769 +0100
-+++ ./mod/events/Finland.txt	2024-02-19 17:55:11.285604135 +0100
++++ ./mod/events/Finland.txt	2024-02-19 21:12:17.995917714 +0100
 @@ -513,18 +513,6 @@
  		SOV_paranoia_medium_decrease_effect = yes #Stalin likes this has been dealt with in a timely fashion
  	}
