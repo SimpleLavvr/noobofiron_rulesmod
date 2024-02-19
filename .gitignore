@@ -1,6 +1,5 @@
 mod/*.txt
-mod/*/*.txt
-mod/*/*/*.txt
+mod/**/*.txt
 original/*.txt
-original/*/*.txt
-original/*/*/*.txt
+original/**/*.txt
+**/*.info
