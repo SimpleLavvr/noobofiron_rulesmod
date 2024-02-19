@@ -4,3 +4,4 @@ original/*.txt
 original/**/*.txt
 **/*.info
 **/*.lua
+**/.json
