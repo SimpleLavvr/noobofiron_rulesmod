@@ -1,5 +1,12 @@
 #!/bin/bash
-
+# Default configurations
+OVERWRITE_MOD="yes"  # Change default to yes
+OVERWRITE_SOURCES="no"  # Keep default as no
+ORIGINAL_FOLDER="original"
+MOD_FOLDER="mod"
+SOURCES_FOLDER="sources"
+I_KNOW_WHAT_IM_DOING="no" #Not documented because if you are here you probably know what you're doing
+RUNNING_ON_LINUX="yes" # may be useful for later? idk do some unix2dos
 # List of commands to check
 commands=("dos2unix" "patch" "diff" "git")
 
@@ -22,6 +29,11 @@ if [ -n "$missing_commands" ]; then
     exit 1
 fi
 
+if [[ $(grep Microsoft /proc/version) ]]; then
+    echo "Running on WSL."
+    RUNNING_ON_LINUX="no"
+fi
+
 # Usage information
 if [ "$#" -lt 1 ]; then
     echo "Usage: $0 <create|apply|clear> [--no-overwrite-mod] [--overwrite-sources] [--original-folder <path>] [--mod-folder <path>] [--sources-folder <path>]"
@@ -33,13 +45,7 @@ fi
 MODE=$1
 shift # Move past the mode argument for further processing
 
-# Default configurations
-OVERWRITE_MOD="yes"  # Change default to yes
-OVERWRITE_SOURCES="no"  # Keep default as no
-ORIGINAL_FOLDER="original"
-MOD_FOLDER="mod"
-SOURCES_FOLDER="sources"
-I_KNOW_WHAT_IM_DOING="no" #Not documented because if you are here you probably know what you're doing
+
 
 # Parse additional arguments
 while (( "$#" )); do
