@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # List of commands to check
-commands=("dos2unix" "patch" "diff")
+commands=("dos2unix" "patch" "diff" "git")
 
 # Variable to store non-installed commands
 missing_commands=""
@@ -29,11 +29,6 @@ if [ "$#" -lt 1 ]; then
 fi
 
 
-if ! [ -x "$(command -v git)" ]; then
-  echo 'Error: git is not installed.' >&2
-  exit 1
-fi
-
 
 MODE=$1
 shift # Move past the mode argument for further processing
@@ -44,12 +39,19 @@ OVERWRITE_SOURCES="no"  # Keep default as no
 ORIGINAL_FOLDER="original"
 MOD_FOLDER="mod"
 SOURCES_FOLDER="sources"
+I_KNOW_WHAT_IM_DOING="no" #Not documented because if you are here you probably know what you're doing
 
 # Parse additional arguments
 while (( "$#" )); do
   case "$1" in
     --no-overwrite-mod)
       OVERWRITE_MOD="no"
+      shift
+      ;;
+     --yes-do-as-i-say)
+      echo "Aight mate i'm removing every protection, don't blame me if i delete something important.."
+      I_KNOW_WHAT_IM_DOING="yes"
+      OVERWRITE_SOURCES="yes"
       shift
       ;;
     --overwrite-sources)
@@ -69,6 +71,7 @@ while (( "$#" )); do
       shift 2
       ;;
     *)
+      echo "I don't know what is that $1 argument you supplied so i'm ignoring it."
       shift
       ;;
   esac
@@ -157,6 +160,13 @@ apply_patches_and_update_mod() {
 
 
 clear_mod_folder() {
+    if [ "$MOD_FOLDER" != "mod" ];then
+        if [ "$I_KNOW_WHAT_IM_DOING" != "yes" ];then
+        echo "Error : You should keep the clear command inside the repo, not in your own mod folder"
+        exit 1
+        fi
+    fi
+        
     echo "Clearing mod folder..."
     # Remove all files except for .ignoreme, then find all empty directories to add .ignoreme
     find "${MOD_FOLDER}" -type f ! -name '.ignoreme' -delete
