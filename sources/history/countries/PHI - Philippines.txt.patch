@@ -1,0 +1,11 @@
+--- "./original/history/countries/PHI - Philippines.txt"	2023-10-10 22:55:15.000000000 +0500
++++ "./mod/history/countries/PHI - Philippines.txt"	2024-02-20 11:50:48.680339706 +0500
+@@ -135,3 +135,8 @@
+ 	fascism = 9
+ 	communism = 9
+ }
++
++#Noobs of Iron stuff
++add_ideas = {
++    PHI_on_our_own
++}

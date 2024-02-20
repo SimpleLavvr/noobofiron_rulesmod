@@ -1,0 +1,19 @@
+ideas = {
+    country = {
+        # USA enforced neutrality
+        USA_enforced_neutrality = {
+            picture = neutrality_idea
+            rule = {
+                can_join_factions = no
+                can_not_declare_war = yes
+            }
+        }
+        # PHI on our own
+        PHI_on_our_own = {
+            picture = tur_disorganised_armed_forces
+            modifier = {
+                democratic_acceptance = -100
+            }
+        }
+    }
+}
