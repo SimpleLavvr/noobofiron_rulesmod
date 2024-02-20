@@ -1,0 +1,13 @@
+1190,1194c1190
+< 	option = {
+< 		name = soviet.30.b
+< 		ai_chance = { factor = 0 }
+< 		#
+< 	}
+---
+> 	
+2840c2836
+< }
+\ Pas de fin de ligne à la fin du fichier
+---
+> }
