@@ -101,3 +101,36 @@ country_event = {
         ENG = {add_to_faction = USA}
     }
 }
+
+country_event = {
+	id = noi_usa.5
+	title = noi_usa.5.t
+	desc = noi_usa.5.d
+	picture = GFX_report_event_generic_read_write
+    mean_time_to_happen = { days = 1 }
+
+	trigger = {
+		tag = USA
+		has_idea = USA_enforced_neutrality
+		any_country = {
+            gives_military_access_to = ROOT
+		}
+    }
+   
+	option = {
+		name = noi_usa.5.a
+		every_country = {
+            limit = {
+                gives_military_access_to = ROOT
+            }
+
+            diplomatic_relation = {
+                country = FROM #target country
+                relation = military_access #type of relation
+                active = no #yes to add relation, no to cancel existing one
+            }
+        }
+        
+	}
+    
+}
