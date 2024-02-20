@@ -1,9 +1,5 @@
 mod/*.txt
 mod/**/*.txt
-original/*.txt
-original/**/*.txt
-original/**/*.yml
-original/*.txt
-**/*.info
+original/**/*
 **/*.lua
 **/*.json

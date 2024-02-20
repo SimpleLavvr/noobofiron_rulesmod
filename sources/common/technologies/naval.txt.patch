@@ -1,47 +1,38 @@
---- ./original/common/technologies/naval.txt	2023-10-10 23:27:08.490877261 +0200
-+++ ./mod/common/technologies/naval.txt	2024-02-19 21:25:54.882428598 +0100
-@@ -1162,36 +1162,7 @@
- 		}
- 	}
- 	
--	advanced_submarine = {
--
--		enable_equipments = { 
--			submarine_4
--		}
--		
--		research_cost = 2
--
--		start_year = 1944
--		
--		folder = {
--			name = naval_folder
--			position = { x = 0 y = 19 }
--		}
--		
--		ai_will_do = {
--			factor = 1
--			
--			modifier = {
--				factor = 5
--				tag = GER
--			}
--		}
--		
--		categories = {
--			naval_equipment
--			ss_tech
--			mio_cat_tech_all_submarine_and_modules
--		}
--	}
-+	
- 
- 	
- 
-@@ -1211,4 +1182,4 @@
- 		}
- 	}
- 	
--}
+1165,1194c1165
+< 	advanced_submarine = {
+< 
+< 		enable_equipments = { 
+< 			submarine_4
+< 		}
+< 		
+< 		research_cost = 2
+< 
+< 		start_year = 1944
+< 		
+< 		folder = {
+< 			name = naval_folder
+< 			position = { x = 0 y = 19 }
+< 		}
+< 		
+< 		ai_will_do = {
+< 			factor = 1
+< 			
+< 			modifier = {
+< 				factor = 5
+< 				tag = GER
+< 			}
+< 		}
+< 		
+< 		categories = {
+< 			naval_equipment
+< 			ss_tech
+< 			mio_cat_tech_all_submarine_and_modules
+< 		}
+< 	}
+---
+> 	
+1214c1185
+< }
 \ Pas de fin de ligne à la fin du fichier
-+}
+---
+> }
