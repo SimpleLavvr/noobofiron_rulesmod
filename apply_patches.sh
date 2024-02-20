@@ -58,6 +58,7 @@ while (( "$#" )); do
       echo "Aight mate i'm removing every protection, don't blame me if i delete something important.."
       I_KNOW_WHAT_IM_DOING="yes"
       OVERWRITE_SOURCES="yes"
+      OVERWRITE_MOD="yes"
       shift
       ;;
     --overwrite-sources)
@@ -66,6 +67,10 @@ while (( "$#" )); do
       ;;
     --original-folder)
       ORIGINAL_FOLDER=$2
+      shift 2
+      ;;
+    --sources-folder)
+      SOURCES_FOLDER=$2
       shift 2
       ;;
     --mod-folder)
@@ -118,7 +123,6 @@ apply_patches_and_update_mod() {
     find "${SOURCES_FOLDER}" -type f -not -name ".*" | while read -r sources_file; do
         relative_path="${sources_file#${SOURCES_FOLDER}}"
         relative_path_no_patch="${relative_path%.patch}"
-        echo "$sources_file $SOURCES_FOLDER"
         mod_file="${MOD_FOLDER}/${relative_path_no_patch}"
 
         # Determine if the current file is a patch or a direct copy
