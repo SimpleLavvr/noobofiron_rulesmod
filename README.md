@@ -4,7 +4,11 @@
 
 # How files are stored
 
-- original is an empty folder you should place HOI4 original files if you don't want to use the  `--original-folder` argument
+- `original` is an empty folder you should place HOI4 original files if you don't want to use the  `--original-folder` argument
+- `mod` is the folder modded files are put. I keep an .ignoreme so that git create the empty directory we're using and if you want to add a patch or a new file there you don't have to create everything new each time (only if its a directory we don't use)
+- `sources` is where the mod is. We use `.patch` files (also known as diff files) made using diff for overriding the base game so we can just easily repatch the game on each new paradox release. It's used if we wish to remove vanilla events, such as the ability for SOV to deny FIN White peace
+
+The script structure should match the gamefiles. IE, for the Finland.txt , it's located in `events/` in the base game so the patch is located at `source/events/Finland.txt.patch` and will be put at `mod/events/Finland.txt`
 
 # Script usage information
 
