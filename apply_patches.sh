@@ -2,9 +2,9 @@
 # Default configurations
 OVERWRITE_MOD="yes"  # Change default to yes
 OVERWRITE_SOURCES="no"  # Keep default as no
-ORIGINAL_FOLDER="original"
-MOD_FOLDER="mod"
-SOURCES_FOLDER="sources"
+ORIGINAL_FOLDER="original/"
+MOD_FOLDER="mod/"
+SOURCES_FOLDER="sources/"
 I_KNOW_WHAT_IM_DOING="no" #Not documented because if you are here you probably know what you're doing
 RUNNING_ON_LINUX="yes" # may be useful for later? idk do some unix2dos
 # List of commands to check
@@ -72,10 +72,6 @@ while (( "$#" )); do
       MOD_FOLDER=$2
       shift 2
       ;;
-    --sources-folder)
-      SOURCES_FOLDER=$2
-      shift 2
-      ;;
     *)
       echo "I don't know what is that $1 argument you supplied so i'm ignoring it."
       shift
@@ -86,20 +82,22 @@ done
 create_patches_and_sources() {
     echo "Creating patches and updating sources..."
     find "${MOD_FOLDER}" -type f -not -name ".*" | while read -r mod_file; do
-        relative_path="${mod_file#${MOD_FOLDER}/}"
+        relative_path="${mod_file#${MOD_FOLDER}}"
         original_file="${ORIGINAL_FOLDER}/${relative_path}"
         sources_file="${SOURCES_FOLDER}/${relative_path}.patch"
-
         if [ -e "$original_file" ]; then
             mkdir -p "$(dirname "$sources_file")"
             temp_original_file=$(mktemp)
             cp "$original_file" "$temp_original_file"
+            temp_mod_file=$(mktemp)
+            cp "$mod_file" "$temp_mod_file"
             dos2unix "$temp_original_file" &>/dev/null
+            dos2unix "$temp_mod_file" &>/dev/null
             if [ "$OVERWRITE_SOURCES" = "yes" ] || [ ! -e "$sources_file" ]; then
-                diff --minimal "$temp_original_file" "$mod_file" > "$sources_file"
+                diff --minimal "$temp_original_file" "$temp_mod_file" > "$sources_file"
                 echo "Patch created for: $relative_path"
             else
-                echo "Skipping existing patch file due to no overwrite setting: $relative_path"
+                echo "Skipping existing patch file due to no overwrite setting: $sources_file"
             fi
         else
             # Handling non-patch files with no corresponding original
@@ -118,8 +116,9 @@ create_patches_and_sources() {
 apply_patches_and_update_mod() {
     echo "Applying patches and updating mod from sources..."
     find "${SOURCES_FOLDER}" -type f -not -name ".*" | while read -r sources_file; do
-        relative_path="${sources_file#${SOURCES_FOLDER}/}"
+        relative_path="${sources_file#${SOURCES_FOLDER}}"
         relative_path_no_patch="${relative_path%.patch}"
+        echo "$sources_file $SOURCES_FOLDER"
         mod_file="${MOD_FOLDER}/${relative_path_no_patch}"
 
         # Determine if the current file is a patch or a direct copy
@@ -166,7 +165,7 @@ apply_patches_and_update_mod() {
 
 
 clear_mod_folder() {
-    if [ "$MOD_FOLDER" != "mod" ];then
+    if [ "$MOD_FOLDER" != "mod/" ];then
         if [ "$I_KNOW_WHAT_IM_DOING" != "yes" ];then
         echo "Error : You should keep the clear command inside the repo, not in your own mod folder"
         exit 1
