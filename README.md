@@ -25,13 +25,13 @@ Also this script runs on bash and requires dos2unix,patch and diff to work.
  
 ## Build mod
 
-- Put the events, common  folder (or whatever too) in 'original' folder
+- Put the events, common  folder (or whatever too) in 'original' folder (or use `--original-folder` in the below command)
 - run ./apply_patches apply
 - get the files out of mod, and put this in the destination mod folder.
 
 ## Create patches from modified files
  
-- Put the game files in original, then put your working mod (the edited files) in mod (same location)
+- Put the game files in original (or use `--original-folder` in the below command), then put your working mod (the edited files) in mod (or use `--mod-folder` in the below command)
 - run ./apply_patches create (this will create a patch for existing files and copy non-existing ones)
-- run ./apply_patches clear (please dont commit modded files)
+- OPTIONNAL : run ./apply_patches clear (please dont commit modded files if you didnt use `--mod-folder`)
 - commit it
