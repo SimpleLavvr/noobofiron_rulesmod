@@ -1,28 +1,18 @@
---- ./original/events/Finland.txt	2023-11-02 21:08:21.119841769 +0100
-+++ ./mod/events/Finland.txt	2024-02-19 21:25:54.884428607 +0100
-@@ -513,18 +513,6 @@
- 		SOV_paranoia_medium_decrease_effect = yes #Stalin likes this has been dealt with in a timely fashion
- 	}
- 
--	#Take it all
--	option = {
--		name = finland.8.b
--		ai_chance = {
--			base = 1
--			modifier = {
--				factor = 0
--				is_historical_focus_on = yes
--			}			
--		}
--		FIN = { country_event = { id = finland.9 } }
--	}
- }
- 
- #Soviet says no! - Event for FIN
-@@ -557,4 +545,4 @@
- 
- 		custom_effect_tooltip = FIN_winter_war_push_back_tt
- 	}
--}
+516,527d515
+< 	#Take it all
+< 	option = {
+< 		name = finland.8.b
+< 		ai_chance = {
+< 			base = 1
+< 			modifier = {
+< 				factor = 0
+< 				is_historical_focus_on = yes
+< 			}			
+< 		}
+< 		FIN = { country_event = { id = finland.9 } }
+< 	}
+560c548
+< }
 \ Pas de fin de ligne à la fin du fichier
-+}
+---
+> }

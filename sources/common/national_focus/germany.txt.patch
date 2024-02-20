@@ -1,0 +1,99 @@
+2698a2699,2701
+> 		allow_branch = {
+> 			always = no
+> 		}
+3587a3591
+> 		prerequisite = { focus = GER_mol_rib_pact }
+4644a4649,4651
+> 		allow_branch = {
+> 			always = no
+> 		}
+5351c5358,5360
+< 
+---
+> 		allow_branch = {
+> 			always = no
+> 		}
+6240,6251c6249
+< 			has_dlc = "Waking the Tiger"
+< 			if = {
+< 				limit = {
+< 					has_game_rule = {
+< 						rule = obsolete_focus_branches_visibility
+< 						option = HIDE
+< 					}
+< 				}
+< 				NOT = {
+< 					has_completed_focus = GER_rhineland
+< 				}
+< 			}
+---
+> 			always = no
+6255,6256c6253,6257
+< 			is_subject = no
+< 			has_government = fascism
+---
+> 			
+> 			NOT = {
+> 					is_subject = yes
+> 				}
+> 			
+6298c6299
+< 			factor = 7
+---
+> 			factor = 0
+6382,6396c6383
+< 			has_dlc = "Waking the Tiger"
+< 			if = {
+< 				limit = {
+< 					has_game_rule = {
+< 						rule = obsolete_focus_branches_visibility
+< 						option = HIDE
+< 					}
+< 				}
+< 				NOT = {
+< 					OR = {
+< 						has_completed_focus = GER_rhineland
+< 						has_completed_focus = GER_reestablish_free_elections
+< 					}
+< 				}
+< 			}
+---
+> 			always = no
+6449,6460c6436
+< 			has_dlc = "Waking the Tiger"
+< 			if = {
+< 				limit = {
+< 					has_game_rule = {
+< 						rule = obsolete_focus_branches_visibility
+< 						option = HIDE
+< 					}
+< 				}
+< 				NOT = {
+< 					has_completed_focus = GER_rhineland
+< 				}
+< 			}
+---
+> 			always = no
+7797a7774,7776
+> 		allow_branch = {
+> 			always = no
+> 		}
+8222,8236c8201
+< 			has_dlc = "Waking the Tiger"
+< 			if = {
+< 				limit = {
+< 					has_game_rule = {
+< 						rule = obsolete_focus_branches_visibility
+< 						option = HIDE
+< 					}
+< 				}
+< 				NOT = {
+< 					OR = {
+< 						has_completed_focus = GER_rhineland
+< 						has_completed_focus = GER_revive_the_kaiserreich
+< 					}
+< 				}
+< 			}
+---
+> 			always = no

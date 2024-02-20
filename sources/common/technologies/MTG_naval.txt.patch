@@ -1,82 +1,66 @@
---- ./original/common/technologies/MTG_naval.txt	2023-10-10 23:27:08.490877261 +0200
-+++ ./mod/common/technologies/MTG_naval.txt	2024-02-19 21:45:14.418687189 +0100
-@@ -1440,10 +1440,12 @@
- 	}
- 
- 	advanced_ship_hull_submarine = {
--
-+	
-+		
- 		enable_equipments = {
--			ship_hull_submarine_4
-+			ship_hull_submarine_4fixed
- 		}
-+		
- 		enable_equipment_modules = {
- 			ship_torpedo_sub_4
- 			sub_ship_engine_4
-@@ -1482,10 +1484,7 @@
- 		enable_equipment_modules = {
- 			ship_sub_snorkel_1
- 		}
--		path = {
--			leads_to_tech = improved_submarine_snorkel
--			research_cost_coeff = 1
--		}
-+
- 		on_research_complete = {
- 			custom_effect_tooltip = snorkel_advice_tt
- 		}
-@@ -1525,51 +1524,7 @@
- 		}
- 	}
- 
--	improved_submarine_snorkel = {
--
--		enable_equipment_modules = {
--			ship_sub_snorkel_2
--		}
--
--		on_research_complete = {
--			custom_effect_tooltip = snorkel_advice_tt
--		}
--		path = {
--			leads_to_tech = improved_submarine_snorkel
--			research_cost_coeff = 1
--		}
--
--		xp_research_type = navy
--		xp_boost_cost = 50
--		xp_research_bonus = 1.50
--		research_cost = 2
--
--		start_year = 1944
--
--		folder = {
--			name = mtgnavalfolder
--			position = {  x = -1 y = 19 }
--		}
--
--		ai_will_do = {
--			factor = 1
--
--			modifier = {
--				factor = 7
--				OR = {
--					tag = GER
--					tag = HOL
--				}
--			}
--		}
--
--		categories = {
--			naval_equipment
--			ss_tech
--			ship_modules_tech
--			mio_cat_tech_all_submarine_and_modules
--		}
--	}
-+	
- 	###Special snowflake hulls for special snowflake nations
- 	panzerschiffe = {
- 
+1443c1443,1444
+< 
+---
+> 	
+> 		
+1445c1446
+< 			ship_hull_submarine_4
+---
+> 			ship_hull_submarine_4fixed
+1446a1448
+> 		
+1485,1488c1487
+< 		path = {
+< 			leads_to_tech = improved_submarine_snorkel
+< 			research_cost_coeff = 1
+< 		}
+---
+> 
+1528,1572c1527
+< 	improved_submarine_snorkel = {
+< 
+< 		enable_equipment_modules = {
+< 			ship_sub_snorkel_2
+< 		}
+< 
+< 		on_research_complete = {
+< 			custom_effect_tooltip = snorkel_advice_tt
+< 		}
+< 		path = {
+< 			leads_to_tech = improved_submarine_snorkel
+< 			research_cost_coeff = 1
+< 		}
+< 
+< 		xp_research_type = navy
+< 		xp_boost_cost = 50
+< 		xp_research_bonus = 1.50
+< 		research_cost = 2
+< 
+< 		start_year = 1944
+< 
+< 		folder = {
+< 			name = mtgnavalfolder
+< 			position = {  x = -1 y = 19 }
+< 		}
+< 
+< 		ai_will_do = {
+< 			factor = 1
+< 
+< 			modifier = {
+< 				factor = 7
+< 				OR = {
+< 					tag = GER
+< 					tag = HOL
+< 				}
+< 			}
+< 		}
+< 
+< 		categories = {
+< 			naval_equipment
+< 			ss_tech
+< 			ship_modules_tech
+< 			mio_cat_tech_all_submarine_and_modules
+< 		}
+< 	}
+---
+> 	
