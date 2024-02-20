@@ -1,0 +1,23 @@
+--- "./original/history/countries/USA - USA.txt"	2023-10-10 22:55:18.000000000 +0500
++++ "./mod/history/countries/USA - USA.txt"	2024-02-20 11:50:48.680339706 +0500
+@@ -331,10 +331,6 @@
+ 
+ 
+ # DIPLOMACY
+-set_autonomy = {
+-	target = PHI
+-	autonomous_state =  autonomy_puppet
+-}
+ 
+ 1939.1.1 = {
+ 	set_politics = {
+@@ -1294,3 +1290,9 @@
+ 		}
+ 	}
+ }
++
++#Noobs of Iron stuff
++add_ideas = {
++    USA_enforced_neutrality
++}
++give_guarantee = PHI

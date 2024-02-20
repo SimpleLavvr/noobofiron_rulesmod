@@ -1,0 +1,20 @@
+operations = {
+    noi_usa_japan_war_mission = {
+        icon = border_war
+        is_good = yes
+        war_with_on_timeout = JAP
+        days_mission_timeout = 365
+
+        available = {
+            has_war = yes
+        }
+
+        timeout_effect = {
+                declare_war_on = {
+                    target = JAP
+                    type = annex_everything
+                }
+        }
+
+    }
+}
