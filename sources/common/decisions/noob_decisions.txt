@@ -5,6 +5,10 @@ operations = {
         war_with_on_timeout = JAP
         days_mission_timeout = 365
 
+        allowed = {
+            always = no
+        }
+
         available = {
             has_war = yes
         }
