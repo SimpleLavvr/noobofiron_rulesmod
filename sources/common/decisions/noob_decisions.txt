@@ -14,10 +14,7 @@ operations = {
         }
 
         timeout_effect = {
-                declare_war_on = {
-                    target = JAP
-                    type = annex_everything
-                }
+            ENG = {add_to_faction = USA}
         }
 
     }
