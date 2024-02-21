@@ -100,7 +100,7 @@ create_patches_and_sources() {
             dos2unix "$temp_mod_file" &>/dev/null
             if [ "$OVERWRITE_SOURCES" = "yes" ] || [ ! -e "$sources_file" ]; then
                 diff --minimal "$temp_original_file" "$temp_mod_file" > "$sources_file"
-                echo "Patch created for: $relative_path"
+                echo "Patch created for: $mod_file"
             else
                 echo "Skipping existing patch file due to no overwrite setting: $sources_file"
             fi
@@ -110,7 +110,7 @@ create_patches_and_sources() {
             if [ "$OVERWRITE_SOURCES" = "yes" ] || [ ! -e "$new_sources_file_path" ]; then
                 mkdir -p "$(dirname "$new_sources_file_path")"
                 cp "$mod_file" "$new_sources_file_path"
-                echo "Mod file copied to sources (no original file): $relative_path"
+                echo "Mod file copied to sources (no original file): $mod_file"
             else
                 echo "Skipping copying mod file to sources due to no overwrite setting: $relative_path"
             fi
@@ -155,6 +155,10 @@ apply_patches_and_update_mod() {
             rm "$temp_original_file"  # Clean up the temporary file
         else
             # It's a direct copy file
+            if [ -e "${ORIGINAL_FOLDER}${relative_path}" ]; then
+                echo "Error: A file with the same name as the non-patch file $relative_path exists in the original folder. Use a patch file instead of a whole file."
+                exit 1
+            fi
             if [ -e "$mod_file" ] && [ "$OVERWRITE_MOD" != "yes" ]; then
                 echo "Warning: Mod file $mod_file exists and will not be overwritten. Skipping copy."
                 continue
@@ -197,7 +201,7 @@ case "$MODE" in
         clear_mod_folder
         ;;
     *)
-        echo "Invalid mode. Use 'create' to generate patches and update sources, 'apply' to apply patches and update mod, or 'clear' to prepare mod folder for commit."
+        echo "Invalid mode '$MODE'. Use 'create' to generate patches and update sources, 'apply' to apply patches and update mod, or 'clear' to prepare mod folder for commit."
         exit 1
         ;;
 esac
