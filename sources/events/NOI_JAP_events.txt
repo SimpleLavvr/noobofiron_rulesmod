@@ -1,0 +1,46 @@
+add_namespace = noi_jap
+
+# No war with Soviets for you
+country_event = {
+    id = noi_jap.1
+    title = noi_jap.1.t
+    desc = noi_jap.1.d
+    picture = GFX_report_event_usa_heavy_cruiser
+
+    trigger = {
+        tag = JAP
+    }
+
+    fire_only_once = yes
+
+    option = {
+        name = noi_jap.1.a
+        set_truce = {
+            target = SOV
+            days = 9999
+        }
+    }
+}
+
+# India has capped - Japan can go in
+country_event = {
+    id = noi_jap.2
+    title = noi_jap.2.t
+    desc = noi_jap.2.d
+    picture = GFX_report_event_japanese_transport_soldiers
+
+    trigger = {
+        tag = JAP
+        RAJ = {has_capitulated = yes}
+    }
+
+    fire_only_once = yes
+
+    option = {
+        name = noi_jap.2.a
+        set_truce = {
+            target = SOV
+            days = 1
+        }
+    }
+}
