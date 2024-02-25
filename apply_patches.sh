@@ -88,36 +88,63 @@ create_patches_and_sources() {
     echo "Creating patches and updating sources..."
     find "${MOD_FOLDER}" -type f -not -name ".*" | while read -r mod_file; do
         relative_path="${mod_file#${MOD_FOLDER}}"
-        original_file="${ORIGINAL_FOLDER}/${relative_path}"
-        sources_file="${SOURCES_FOLDER}/${relative_path}.patch"
-        if [ -e "$original_file" ]; then
-            mkdir -p "$(dirname "$sources_file")"
-            temp_original_file=$(mktemp)
-            cp "$original_file" "$temp_original_file"
-            temp_mod_file=$(mktemp)
-            cp "$mod_file" "$temp_mod_file"
-            dos2unix "$temp_original_file" &>/dev/null
-            dos2unix "$temp_mod_file" &>/dev/null
-            if [ "$OVERWRITE_SOURCES" = "yes" ] || [ ! -e "$sources_file" ]; then
-                diff --minimal "$temp_original_file" "$temp_mod_file" > "$sources_file"
-                echo "Patch created for: $mod_file"
+        original_file="${ORIGINAL_FOLDER}${relative_path}"
+        sources_file="${SOURCES_FOLDER}${relative_path}.patch"
+        
+        if file "$mod_file" | grep -iq 'text'; then
+            # Handle text files (potentially creating patch files)
+            if [ -e "$original_file" ]; then
+                mkdir -p "$(dirname "$sources_file")"
+                temp_original_file=$(mktemp)
+                cp "$original_file" "$temp_original_file"
+                temp_mod_file=$(mktemp)
+                cp "$mod_file" "$temp_mod_file"
+                dos2unix "$temp_original_file" &>/dev/null
+                dos2unix "$temp_mod_file" &>/dev/null
+                
+                patch_content=$(diff --minimal "$temp_original_file" "$temp_mod_file")
+                
+                if [ -n "$patch_content" ]; then
+                    if [ "$OVERWRITE_SOURCES" = "yes" ] || [ ! -e "$sources_file" ]; then
+                        echo "$patch_content" > "$sources_file"
+                        echo "Patch created for: $relative_path"
+                    else
+                        echo "Skipping existing patch file due to no overwrite setting: $sources_file"
+                    fi
+                else
+                    echo "No differences found, skipping patch creation for: $relative_path"
+                fi
+                
+                rm "$temp_original_file" "$temp_mod_file"
             else
-                echo "Skipping existing patch file due to no overwrite setting: $sources_file"
+                handle_non_existing_or_different_original "$mod_file" "$relative_path"
             fi
         else
-            # Handling non-patch files with no corresponding original
-            new_sources_file_path="${SOURCES_FOLDER}/${relative_path}"
-            if [ "$OVERWRITE_SOURCES" = "yes" ] || [ ! -e "$new_sources_file_path" ]; then
-                mkdir -p "$(dirname "$new_sources_file_path")"
-                cp "$mod_file" "$new_sources_file_path"
-                echo "Mod file copied to sources (no original file): $mod_file"
-            else
-                echo "Skipping copying mod file to sources due to no overwrite setting: $relative_path"
-            fi
+            # Handle binary files (copying if different)
+            handle_non_existing_or_different_original "$mod_file" "$relative_path"
         fi
     done
 }
 
+handle_non_existing_or_different_original() {
+    mod_file=$1
+    relative_path=$2
+    original_file="${ORIGINAL_FOLDER}${relative_path}"
+    new_sources_file_path="${SOURCES_FOLDER}${relative_path}"
+
+    # Proceed if no original file exists or if they are different (for binary files)
+    if [ ! -e "$original_file" ] || ! cmp -s "$mod_file" "$original_file"; then
+        if [ "$OVERWRITE_SOURCES" = "yes" ] || [ ! -e "$new_sources_file_path" ]; then
+            mkdir -p "$(dirname "$new_sources_file_path")"
+            cp "$mod_file" "$new_sources_file_path"
+            echo "File copied to sources (binary or no original file): $relative_path"
+        else
+            echo "Skipping copying file to sources due to no overwrite setting: $relative_path"
+        fi
+    else
+        echo "File unchanged, not copying to sources: $relative_path"
+    fi
+}
 apply_patches_and_update_mod() {
     echo "Applying patches and updating mod from sources..."
     find "${SOURCES_FOLDER}" -type f -not -name ".*" | while read -r sources_file; do
@@ -156,8 +183,13 @@ apply_patches_and_update_mod() {
         else
             # It's a direct copy file
             if [ -e "${ORIGINAL_FOLDER}${relative_path}" ]; then
-                echo "Error: A file with the same name as the non-patch file $relative_path exists in the original folder. Use a patch file instead of a whole file."
-                exit 1
+                # Check if the original file is a text file
+                if file "$original_file" | grep -q 'text'; then
+                    echo "Error: A file with the same name as the non-patch file $relative_path exists in the original folder. Use a patch file instead of a whole file."
+                    exit 1
+                else
+                    echo "Info : Overriding binary file $relative_path from sources"
+                fi
             fi
             if [ -e "$mod_file" ] && [ "$OVERWRITE_MOD" != "yes" ]; then
                 echo "Warning: Mod file $mod_file exists and will not be overwritten. Skipping copy."
