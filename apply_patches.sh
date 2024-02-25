@@ -8,7 +8,7 @@ SOURCES_FOLDER="sources/"
 I_KNOW_WHAT_IM_DOING="no" #Not documented because if you are here you probably know what you're doing
 RUNNING_ON_LINUX="yes" # may be useful for later? idk do some unix2dos
 # List of commands to check
-commands=("dos2unix" "patch" "diff" "git")
+commands=("dos2unix" "unix2dos" "patch" "diff" "git" "find")
 
 # Variable to store non-installed commands
 missing_commands=""
