@@ -176,8 +176,12 @@ apply_patches_and_update_mod() {
 
             mkdir -p "$(dirname "$mod_file")"
             # Apply the patch using the temporary converted original file
-            patch -o "$mod_file" "$temp_original_file" "$sources_file"
+            patch -o "$mod_file" "$temp_original_file" "$sources_file" > /dev/null
             echo "Applied patch to create: $mod_file"
+            if [[ "$mod_file" == *.csv ]]; then
+                unix2dos "$mod_file" > /dev/null
+                echo "Converted $mod_file to DOS format."
+            fi
 
             rm "$temp_original_file"  # Clean up the temporary file
         else
