@@ -1,20 +1,226 @@
-2698a2699,2701
-> 		allow_branch = {
-> 			always = no
+53c53
+< 		cost = 10
+---
+> 		cost = 5
+166c166
+< 		cost = 10
+---
+> 		cost = 15
+194c194
+< 							level = 2
+---
+> 							level = 3
+796c796
+< 		cost = 10
+---
+> 		cost = 5
+1357c1357
+< 				uses = 1
+---
+> 				uses = 2
+1365c1365
+< 					add_extra_state_shared_building_slots = 1
+---
+> 					add_extra_state_shared_building_slots = 2
+1368c1368
+< 						level = 1
+---
+> 						level = 2
+1386a1387,1391
+> 		
+> 		available = {
+> 			date > 1939.1.1
 > 		}
-3587a3591
+> 		
+1393c1398
+<         	   amount = 2
+---
+>         	   amount = 4
+1402,1403c1407,1408
+< 		prerequisite = { focus = GER_kdf_wagen focus = GER_synthetic_rubber }
+< 		x = -1
+---
+> 		prerequisite = { focus = GER_kdf_wagen focus =  }
+> 		x = 0
+2590,2591c2595
+< 		prerequisite = { focus = GER_air_innovation_2 }
+< 		x = 2
+---
+> 		x = 1
+2621,2622c2625,2626
+< 		prerequisite = { focus = GER_rocketry_focus }
+< 		x = 0
+---
+> 		prerequisite = { focus = GER_extra_tech_slot }
+> 		x = -1
+2624c2628
+< 		relative_position_id = GER_rocketry_focus
+---
+> 		relative_position_id = GER_extra_tech_slot
+2672c2676
+< 		cost = 10
+---
+> 		cost = 5
+2694,2746d2697
+< 	focus = {
+< 		id = GER_soviet_ally
+< 		icon = GFX_goal_generic_dangerous_deal
+< 		prerequisite = { focus = GER_mol_rib_pact }
+< 		mutually_exclusive = { focus = GER_ussr_war_goal }
+< 		available = {
+< 			is_subject = no
+< 			has_government = fascism
+< 			has_war = no
+< 			SOV = {
+< 				has_war = no
+< 				NOT = { has_war_with = GER }
+< 				is_subject = no
+< 			}
+< 		}
+< 		bypass = {
+< 			SOV = {
+< 				is_in_faction_with = GER
+< 			}
+< 		}
+< 		x = 1
+< 		y = 1
+< 		relative_position_id = GER_mol_rib_pact
+< 		cost = 10
+< 		ai_will_do = {
+< 			factor = 0.01
+< 			modifier = {
+< 				factor = 0
+< 				NOT = { is_in_faction_with = POL }
+< 				country_exists = POL
+< 			}			
+< 			modifier = {
+< 				factor = 0
+< 				OR = {
+< 					has_war_with = POL
+< 					has_war_with = FRA
+< 				}
+< 			}				
+< 		}	
+< 		completion_reward = {
+< 			if = {
+< 				limit = { is_faction_leader = yes }
+< 				custom_effect_tooltip = ger_sov_buddies_tooltip_2
+< 			}
+< 			custom_effect_tooltip = ger_sov_buddies_tooltip
+< 			add_ideas = soviet_german_friendship
+< 			SOV = {
+< 				add_opinion_modifier = { target = GER modifier = ger_sov_alliance_focus }
+< 				add_ideas = soviet_german_friendship
+< 				country_event = germany.89
+< 			}
+< 		}
+< 	}
+2748,2776d2698
+< 	focus = {
+< 		id = GER_turkey_puppet
+< 		icon = GFX_goal_generic_forceful_treaty
+< 		prerequisite = { focus = GER_soviet_ally }
+< 		available = {
+< 			is_subject = no
+< 			has_government = fascism
+< 			OR = {
+< 				GRE = {
+< 					is_in_faction_with = GER
+< 					all_owned_state = {
+< 						controller = { is_in_faction_with = GER }
+< 					}
+< 				}
+< 			}
+< 			NOT = { has_war_with = SOV }
+< 			country_exists = TUR
+< 		}
+< 		x = 0
+< 		y = 2
+< 		relative_position_id = GER_soviet_ally
+< 		cost = 10
+< 		ai_will_do = {
+< 			factor = 1
+< 		}	
+< 		completion_reward = {
+< 			TUR = { country_event = { id = germany.79 days = 1 } }
+< 		}
+< 	}
+3067,3116d2988
+< 		id = GER_anti_soviet_pact
+< 		icon = GFX_goal_anti_comintern_pact
+< 		prerequisite = { focus = GER_anti_comitern_pact }
+< 		mutually_exclusive = { focus = GER_mol_rib_pact }
+< 		available = {
+< 			is_subject = no
+< 			has_army_manpower = { size > 849999 } #ca 90 div
+< 			SOU = {
+< 				has_government = communism
+< 			}
+< 		}
+< 		x = 0
+< 		y = 3
+< 		relative_position_id = GER_anti_comitern_pact
+< 		cost = 10
+< 		ai_will_do = {
+< 			factor = 2.5
+< 			modifier ={
+< 				factor = 0.1
+< 				has_idea = SOV_soviet_german_trade_agreement
+< 			}
+< 		}
+< 		completion_reward = {
+< 			hidden_effect = {
+< 				SOV = { remove_opinion_modifier = { target = ROOT modifier = pact_against_us } }
+< 				add_ideas = anti_soviet_pact
+< 			}
+< 			SOU = { add_opinion_modifier = { target = ROOT modifier = worse_pact_against_us } }
+< 			custom_effect_tooltip = GER_anti_soviet_pact_tt_3
+< 			custom_effect_tooltip = GER_anti_soviet_pact_tt
+< 			custom_effect_tooltip = GER_anti_soviet_pact_tt_2
+< 			every_other_country = {
+< 				limit = {
+< 					has_opinion_modifier = anti_comintern_pact_opinion
+< 					OR = {
+< 						NOT = { is_in_faction = yes }
+< 						is_in_faction_with = GER
+< 					}
+< 					NOT = { tag = GER }
+< 					NOT = { has_war_with = GER }
+< 				}
+< 				country_event = germany.83
+< 			}
+< 			hidden_effect = {
+< 				news_event = { hours = 12 id = news.215 }
+< 			}
+< 		}
+< 	}
+< 
+< 	focus = {
+3130a3003
+> 			date > 1940.3.1
+3132c3005
+< 		x = 1
+---
+> 		x = 0
+3135c3008
+< 		cost = 10
+---
+> 		cost = 5
+3587a3461
 > 		prerequisite = { focus = GER_mol_rib_pact }
-4644a4649,4651
+4095a3970
+> 			date > 1937.10.20
+4644a4520,4522
 > 		allow_branch = {
 > 			always = no
 > 		}
-5351c5358,5360
+5351c5229,5231
 < 
 ---
 > 		allow_branch = {
 > 			always = no
 > 		}
-6240,6251c6249
+6240,6251c6120
 < 			has_dlc = "Waking the Tiger"
 < 			if = {
 < 				limit = {
@@ -29,7 +235,7 @@
 < 			}
 ---
 > 			always = no
-6255,6256c6253,6257
+6255,6256c6124,6128
 < 			is_subject = no
 < 			has_government = fascism
 ---
@@ -38,11 +244,11 @@
 > 					is_subject = yes
 > 				}
 > 			
-6298c6299
+6298c6170
 < 			factor = 7
 ---
 > 			factor = 0
-6382,6396c6383
+6382,6396c6254
 < 			has_dlc = "Waking the Tiger"
 < 			if = {
 < 				limit = {
@@ -60,7 +266,7 @@
 < 			}
 ---
 > 			always = no
-6449,6460c6436
+6449,6460c6307
 < 			has_dlc = "Waking the Tiger"
 < 			if = {
 < 				limit = {
@@ -75,11 +281,11 @@
 < 			}
 ---
 > 			always = no
-7797a7774,7776
+7797a7645,7647
 > 		allow_branch = {
 > 			always = no
 > 		}
-8222,8236c8201
+8222,8236c8072
 < 			has_dlc = "Waking the Tiger"
 < 			if = {
 < 				limit = {

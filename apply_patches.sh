@@ -184,7 +184,8 @@ apply_patches_and_update_mod() {
             # It's a direct copy file
             if [ -e "${ORIGINAL_FOLDER}${relative_path}" ]; then
                 # Check if the original file is a text file
-                if file "$original_file" | grep -q 'text'; then
+                isfile=$(file "$original_file" | grep -q 'text')
+                if [ $isfile ]; then
                     echo "Error: A file with the same name as the non-patch file $relative_path exists in the original folder. Use a patch file instead of a whole file."
                     exit 1
                 else
