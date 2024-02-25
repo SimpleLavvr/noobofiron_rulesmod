@@ -1,0 +1,72 @@
+35,51c35,36
+< 			has_dlc = "Waking the Tiger"
+< 			if = {
+< 				limit = {
+< 					has_game_rule = {
+< 						rule = obsolete_focus_branches_visibility
+< 						option = HIDE
+< 					}
+< 				}
+< 				NOT = {
+< 					OR = {
+< 						has_completed_focus = JAP_purge_the_kodoha_faction
+< 						has_completed_focus = JAP_support_the_kodoha_faction
+< 						has_completed_focus = JAP_strengthen_civilian_government
+< 					}
+< 				}
+< 			}
+< 		}
+---
+>             always = no
+>         }
+984c969
+< 		x = 8
+---
+> 		x = 0
+2692,2707c2677,2678
+< 			if = {
+< 				limit = {
+< 					has_game_rule = {
+< 						rule = obsolete_focus_branches_visibility
+< 						option = HIDE
+< 					}
+< 				}
+< 				NOT = {
+< 					OR = {
+< 						has_completed_focus = JAP_purge_the_kodoha_faction
+< 						has_completed_focus = JAP_the_unthinkable_option
+< 						has_completed_focus = JAP_strengthen_civilian_government
+< 					}
+< 				}
+< 			}
+< 		}
+---
+>             always = no
+>         }
+3576,3592c3547,3548
+< 			has_dlc = "Waking the Tiger"
+< 			if = {
+< 				limit = {
+< 					has_game_rule = {
+< 						rule = obsolete_focus_branches_visibility
+< 						option = HIDE
+< 					}
+< 				}
+< 				NOT = {
+< 					OR = {
+< 						has_completed_focus = JAP_purge_the_kodoha_faction
+< 						has_completed_focus = JAP_support_the_kodoha_faction
+< 						has_completed_focus = JAP_the_unthinkable_option
+< 					}
+< 				}
+< 			}
+< 		}
+---
+>             always = no
+>         }
+4361c4317
+< 		x = 6
+---
+> 		x = 11
+4363d4318
+< 		relative_position_id = JAP_strengthen_civilian_government

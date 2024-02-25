@@ -40,7 +40,7 @@
 < 		prerequisite = { focus = GER_kdf_wagen focus = GER_synthetic_rubber }
 < 		x = -1
 ---
-> 		prerequisite = { focus = GER_kdf_wagen focus =  }
+> 		prerequisite = { focus = GER_kdf_wagen }
 > 		x = 0
 2590,2591c2595
 < 		prerequisite = { focus = GER_air_innovation_2 }
@@ -57,6 +57,12 @@
 < 		relative_position_id = GER_rocketry_focus
 ---
 > 		relative_position_id = GER_extra_tech_slot
+2669,2670c2673,2674
+< 		x = 1
+< 		y = 3
+---
+> 		x = 2
+> 		y = 2
 2672c2676
 < 		cost = 10
 ---
@@ -145,6 +151,18 @@
 < 			TUR = { country_event = { id = germany.79 days = 1 } }
 < 		}
 < 	}
+3014,3015c2936,2937
+< 		prerequisite = { focus = GER_rhineland  }
+< 		x = -3
+---
+> 		prerequisite = { focus = GER_mol_rib_pact }
+> 		x = 0
+3017,3018c2939,2940
+< 		relative_position_id = GER_rhineland
+< 		cost = 10
+---
+> 		relative_position_id = GER_mol_rib_pact
+> 		cost = 5
 3067,3116d2988
 < 		id = GER_anti_soviet_pact
 < 		icon = GFX_goal_anti_comintern_pact
@@ -198,29 +216,55 @@
 < 	focus = {
 3130a3003
 > 			date > 1940.3.1
-3132c3005
+3132,3133c3005,3006
 < 		x = 1
+< 		y = 4
 ---
 > 		x = 0
+> 		y = 1
 3135c3008
 < 		cost = 10
 ---
 > 		cost = 5
-3587a3461
+3219d3091
+< 		prerequisite = { focus = GER_italy_ally }
+3245c3117
+< 		y = 2
+---
+> 		y = 1
+3546c3418
+< 		x = 1
+---
+> 		x = -4
+3587a3460
 > 		prerequisite = { focus = GER_mol_rib_pact }
-4095a3970
+3987a3861,3863
+> 		allow_branch = {
+>             always = no
+>         }
+4095a3972
 > 			date > 1937.10.20
-4644a4520,4522
+4119c3996
+< 		x = -1
+---
+> 		x = 1
+4415,4416c4292,4293
+< 		y = 3
+< 		relative_position_id = GER_czech_friend
+---
+> 		y = 1
+> 		relative_position_id = GER_end_of_czechoslovakia
+4644a4522,4524
 > 		allow_branch = {
 > 			always = no
 > 		}
-5351c5229,5231
+5351c5231,5233
 < 
 ---
 > 		allow_branch = {
 > 			always = no
 > 		}
-6240,6251c6120
+6240,6251c6122
 < 			has_dlc = "Waking the Tiger"
 < 			if = {
 < 				limit = {
@@ -235,7 +279,7 @@
 < 			}
 ---
 > 			always = no
-6255,6256c6124,6128
+6255,6256c6126,6130
 < 			is_subject = no
 < 			has_government = fascism
 ---
@@ -244,11 +288,11 @@
 > 					is_subject = yes
 > 				}
 > 			
-6298c6170
+6298c6172
 < 			factor = 7
 ---
 > 			factor = 0
-6382,6396c6254
+6382,6396c6256
 < 			has_dlc = "Waking the Tiger"
 < 			if = {
 < 				limit = {
@@ -266,7 +310,7 @@
 < 			}
 ---
 > 			always = no
-6449,6460c6307
+6449,6460c6309
 < 			has_dlc = "Waking the Tiger"
 < 			if = {
 < 				limit = {
@@ -281,11 +325,11 @@
 < 			}
 ---
 > 			always = no
-7797a7645,7647
+7797a7647,7649
 > 		allow_branch = {
 > 			always = no
 > 		}
-8222,8236c8072
+8222,8236c8074
 < 			has_dlc = "Waking the Tiger"
 < 			if = {
 < 				limit = {

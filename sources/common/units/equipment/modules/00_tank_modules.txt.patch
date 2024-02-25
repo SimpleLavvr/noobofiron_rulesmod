@@ -1,0 +1,155 @@
+30c30
+< 			fuel_consumption = 2
+---
+> 			fuel_consumption = 1.8
+44c44
+< 			reliability = -0.5
+---
+> 			reliability = -0.55
+46a47,48
+> 			maximum_speed = 1
+> 			
+82,83c84,85
+< 			defense = 2
+< 			breakthrough = 2
+---
+> 			defense = 1
+> 			breakthrough = 1
+100c102
+< 			hardness = 0.02	
+---
+> 			hardness = 0.03	
+105,106c107,111
+< 			build_cost_ic = 0.2
+< 			armor_value = 0.3
+---
+> 			build_cost_ic = 0.23
+> 			armor_value = 0.35
+> 		}
+> 		build_cost_resources = {
+> 			steel = 1
+123,127c128
+< 			armor_value = 0.3
+< 		}
+< 
+< 		build_cost_resources = {
+< 			chromium = 1
+---
+> 			armor_value = 0.2
+910,911c911,912
+< 			hard_attack = 1
+< 			ap_attack = 20
+---
+> 			hard_attack = 8
+> 			ap_attack = 10
+915d915
+< 			breakthrough = -2
+924,925c924
+< 			tungsten = 1
+< 			steel = 2
+---
+> 			steel = 3
+936,940c935,939
+< 			soft_attack = 45
+< 			hard_attack = 2
+< 			ap_attack = 30
+< 			build_cost_ic = 5.5
+< 			maximum_speed = -0.4
+---
+> 			soft_attack = 50
+> 			hard_attack = 10
+> 			ap_attack = 20
+> 			build_cost_ic = 6
+> 			maximum_speed = -0.6
+942c941
+< 			breakthrough = -2
+---
+> 			breakthrough = -1
+948c947
+< 			convert_cost_ic = 5.5
+---
+> 			convert_cost_ic = 6
+951,952c950
+< 			tungsten = 1
+< 			steel = 3
+---
+> 			steel = 4
+1047,1048c1045,1046
+< 			soft_attack = 20
+< 			hard_attack = 35
+---
+> 			soft_attack = 15
+> 			hard_attack = 32
+1050c1048
+< 			build_cost_ic = 5
+---
+> 			build_cost_ic = 7
+1058c1056
+< 			convert_cost_ic = 5
+---
+> 			convert_cost_ic = 7
+1061c1059
+< 			tungsten = 2
+---
+> 			tungsten = 3
+1073,1074c1071,1072
+< 			soft_attack = 25
+< 			hard_attack = 45
+---
+> 			soft_attack = 20
+> 			hard_attack = 43
+1076c1074
+< 			build_cost_ic = 7
+---
+> 			build_cost_ic = 9
+1084c1082
+< 			convert_cost_ic = 7
+---
+> 			convert_cost_ic = 9
+1087c1085
+< 			tungsten = 2
+---
+> 			tungsten = 3
+1181,1185c1179,1183
+< 			soft_attack = 55
+< 			hard_attack = 2
+< 			ap_attack = 60
+< 			build_cost_ic = 7
+< 			maximum_speed = -0.5
+---
+> 			soft_attack = 70
+> 			hard_attack = 15
+> 			ap_attack = 35
+> 			build_cost_ic = 8
+> 			maximum_speed = -1
+1187c1185
+< 			breakthrough = -4
+---
+> 			breakthrough = -2
+1193c1191
+< 			convert_cost_ic = 7
+---
+> 			convert_cost_ic = 8
+1199c1197
+< 			steel = 3
+---
+> 			steel = 4
+1340c1338
+< 			reliability = -0.1
+---
+> 			reliability = -0.15
+1344a1343
+> 			build_cost_ic = 0.15
+1489c1488
+< 			reliability = 0.1
+---
+> 			reliability = 0.2
+1492,1495c1491
+< 		xp_cost = 30
+< 		multiply_stats = {
+< 			build_cost_ic = -0.05
+< 		}
+---
+> 		xp_cost = 10
+1522d1517
+< 			maximum_speed = -0.25
