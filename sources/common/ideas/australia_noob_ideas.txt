@@ -1,0 +1,98 @@
+
+ideas = {
+	country = {
+	
+		AST_NOI_royal_australian_navy_i = {
+			picture = generic_navy_bonus
+			
+			# If CONDITIONS in "available" are not satisfied, this IDEA will be REMOVED
+			available = {
+				
+			}
+			
+			# This stays always the same
+			removal_cost = -1
+
+			modifier = {
+				industrial_capacity_dockyard = 0.15
+				industrial_capacity_factory = -0.15
+			}
+			equipment_bonus = {
+				ship_hull_light = {
+					build_cost_ic = -0.1 instant = yes
+				}
+				ship_hull_cruiser = {
+					build_cost_ic = -0.1 instant = yes
+				}
+			}	
+		}
+		
+		
+		
+
+		AST_NOI_defense_of_the_mainland_i = {
+			picture = generic_fortify_the_borders
+			
+			available = {
+				
+			}
+			
+			removal_cost = -1
+
+			modifier = {
+				conscription_factor = 0.1
+				stability_weekly_factor = -0.001
+				max_dig_in_factor = 0.15
+			}
+		}
+		
+		AST_NOI_royal_australian_marines_i = {
+			picture = generic_naval_manufacturer_1
+			
+			available = {
+				
+			}
+			
+			removal_cost = -1
+
+			modifier = {
+				special_forces_cap = 0.05
+			}
+		}
+		
+		AST_NOI_rats_of_tobruk_i = {
+			picture = eng_guided_by_britain
+			
+			available = {
+				
+			}
+			
+			removal_cost = -1
+			
+			
+			modifier = {
+				supply_consumption_factor = -0.08
+				out_of_supply_factor = -0.08
+				heat_attrition = -0.1
+				max_dig_in = 5
+				
+			}
+		}
+		
+		AFK_NOI_ANZAC_i = {
+			picture = GFX_goal_generic_special_forces
+			
+			available = {
+				
+			}
+			
+			removal_cost = -1
+
+			modifier = {
+				army_attack_factor = 0.05
+				breakthrough_factor = 0.05
+				army_org_factor = -0.1
+			}
+		}
+	}
+}

@@ -10,7 +10,7 @@ country_event = {
 
    trigger = {
         tag = USA
-        has_idea = USA_enforced_neutrality
+        has_idea = USA_NOI_enforced_neutrality
         OR = {
             has_war = yes
             date > 1941.6.1
@@ -21,7 +21,7 @@ country_event = {
 
    option = {
         name = noi_usa.1.a
-        remove_ideas = USA_enforced_neutrality
+        remove_ideas = USA_NOI_enforced_neutrality
    }
 }
 
@@ -94,9 +94,9 @@ country_event = {
 
         IF = {
             limit = {
-                has_idea = USA_enforced_neutrality
+                has_idea = USA_NOI_enforced_neutrality
             }
-            remove_ideas = USA_enforced_neutrality
+            remove_ideas = USA_NOI_enforced_neutrality
         }
         ENG = {add_to_faction = USA}
     }
@@ -112,7 +112,7 @@ country_event = {
 
 	trigger = {
 		tag = USA
-		has_idea = USA_enforced_neutrality
+		has_idea = USA_NOI_enforced_neutrality
 		any_country = {
             gives_military_access_to = ROOT
 		}
