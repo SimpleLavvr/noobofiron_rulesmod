@@ -1,0 +1,16 @@
+ideas = {
+    country = {
+        #SIA Japanese occupation
+        SIA_NOI_japanese_occupation = {
+            picture = warrior_traditions_idea
+
+            allowed = {
+                always = no
+            }
+
+            rule = {
+                can_decline_call_to_war = no
+            }
+        }
+    }
+}
