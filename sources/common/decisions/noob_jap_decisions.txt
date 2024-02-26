@@ -1,0 +1,82 @@
+operations = {
+    noi_usa_japan_war_mission = {
+        icon = border_war
+        is_good = yes
+        war_with_on_timeout = JAP
+        days_mission_timeout = 365
+
+        allowed = {
+            always = no
+        }
+
+        available = {
+            has_war = yes
+        }
+
+        timeout_effect = {
+            ENG = {add_to_faction = USA}
+        }
+
+    }
+
+    noi_japan_siam_occupation_decision = {
+        icon = oppression
+        cost = 25
+
+        allowed = {
+            original_tag = JAP
+        }
+
+        visible = {
+            is_ally_with = SIA
+            has_government = fascism
+
+            #French Indochina
+            controls_state = 671
+            controls_state = 286
+            controls_state = 670
+            controls_state = 741
+        }
+
+        available = {
+            army_manpower_in_state = {
+                amount > 90000
+                #Siam
+                state = 289
+            }
+        }
+
+        complete_effect = {
+            SIA = {
+                add_ideas = SIA_NOI_japanese_occupation
+            }
+        }
+    }
+
+    noi_japan_singapore_takeover_decision = {
+        icon = border_war
+
+        allowed = {
+            original_tag = JAP
+        }
+
+        visible = {
+            has_war_with = ENG
+            is_ally_with = SIA
+            has_government = fascism
+            SIA = {
+                has_war_with = ENG
+            }
+        }
+
+        available = {
+            SIA = {
+                has_full_control_of_state = 336
+            }
+        }
+
+        complete_effect = {
+            set_state_controller = 336
+        }
+    }
+}
