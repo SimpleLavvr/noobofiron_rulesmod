@@ -1,54 +1,50 @@
 # Noobs Of Iron Mod
 
-When the noobs get too much time on their hand.
+When the noobs get too much time on their hands, this is the result.
 This mod was brought to you by the Linux Gang.
 
-## Mod about
+## About the Mod
 
-It's a Hearts of Iron IV mod that was at first made to enforce game rules, now it also include balance change, additonnal events, focus tree changes and reworks, and also sometimes even game fixes (looking at you, supply in Spain)
+The Noobs Of Iron Mod for Hearts of Iron IV initially aimed to enforce game rules. However, it now includes balance changes, additional events, focus tree alterations, and occasional game fixes (we're looking at you, supply in Spain).
 
-### Versions of mod
+### Mod Versions
 
-This mod is available in two versions, akin to the two branches of this repo :
+This mod is available in two versions, mirroring the two branches of this repository:
 
- - NOIM (regular) - akin to the main branch - is the "Game ready" mod that is supposed to be balanced. This one is safe to use.
- - NOIM_staging - akin to the staging branches - this is the "Work in progress/testing ground" mod. It includes all the latest changes but may not be balanced nor crash-free. I don't recommend to use it in MP games beyond just testing.
+- **NOIM (Regular):** Similar to the main branch, this version is the "Game ready" mod that aims to be balanced and stable. It is safe for general use.
+- **NOIM_staging:** Similar to staging branches, this version serves as the "Work in Progress/Testing Ground" mod. It incorporates the latest changes but may lack balance and stability. It is not recommended for multiplayer games beyond testing purposes.
 
+## Repository Information
 
-## Repo about
+The script requires the `diff` and `patch` programs. On Windows, use WSL.
 
- Script requires the diff and patch program. Use WSL on windows.
+### File Structure
 
-### How files are stored
+- `original`: An empty folder where you should place original HOI4 files if you don't want to use the `--original-folder` argument.
+- `mod`: This folder contains modded files. An `.ignoreme` file ensures that Git creates the necessary empty directories. If you wish to add a patch or a new file, you don't have to recreate everything each time (only for directories not currently in use).
+- `sources`: This directory houses the mod. We utilize `.patch` files (also known as diff files) created using `diff` for overriding the base game. This setup facilitates easy re-patching of the game with each new Paradox release. It's used if we wish to remove vanilla events, such as the ability for the Soviet Union to deny Finnish White Peace.
 
-- `original` is an empty folder you should place HOI4 original files if you don't want to use the  `--original-folder` argument
-- `mod` is the folder modded files are put. I keep an .ignoreme so that git create the empty directory we're using and if you want to add a patch or a new file there you don't have to create everything new each time (only if its a directory we don't use)
-- `sources` is where the mod is. We use `.patch` files (also known as diff files) made using diff for overriding the base game so we can just easily repatch the game on each new paradox release. It's used if we wish to remove vanilla events, such as the ability for SOV to deny FIN White peace
+The script structure should match the game files. For example, for `Finland.txt`, located in `events/` in the base game, the patch is located at `source/events/Finland.txt.patch` and will be placed in `mod/events/Finland.txt`.
 
-The script structure should match the gamefiles. IE, for the Finland.txt , it's located in `events/` in the base game so the patch is located at `source/events/Finland.txt.patch` and will be put at `mod/events/Finland.txt`
+### Script Usage
 
-### Script usage information
+`script <create|apply|clear> [--no-overwrite-mod] [--overwrite-sources] [--original-folder <path>] [--mod-folder <path>] [--sources-folder <path>]`
 
-`script <create|apply|clear> [--no-overwrite-mod] [--overwrite-sources] [--original-folder <path>] [--mod-folder <path>] [--sources-folder <path>]"`
+- I recommand you to use `--original-folder` to specify your HOI4 location; in WSL, it's likely something like `"/mnt/c/Program Files/Steam/SteamApps/common/Hearts of Iron IV"`.
+- Use `--mod-folder` if possible; (`"~/.local/share/Paradox Interactive/Hearts of Iron IV/mod/noi/"` on Linux and `"/mnt/c/Users/yourusername/Documents/Paradox Interactive/Hearts of Iron IV/mod/noi/"` on WSL).
+- `--sources-folder` is useful for debugging. By default, source patches and files are not overwritten.
+- This script runs on Bash and requires `dos2unix`, `patch`, and `diff` to work.
 
-You should try to always use `--original-folder` to use your HOI4 location, in WSL its probably like `"/mnt/c/Program Files/Steam/SteamApps/common/Hearts of Iron IV"`
+### Building the Mod
 
-Try to use `--mod-folder` if possible, currently to play you need to put it in the local paradox mod folder ( `"~/.local/share/Paradox Interactive/Hearts of Iron IV/mod/"` on linux and `"/mnt/c/Users/yourusername/Documents/Paradox Interactive/Hearts of Iron IV/"` on WSL.
+1. Place the events, common folder (or any other necessary files) in the 'original' folder (or use `--original-folder` in the command below).
+2. Run `./apply_patches apply`.
+3. Retrieve the files from the 'mod' folder and place them in the destination mod folder.
 
-`--sources-folder` is useful if your're debugging. Btw by default sources patches and files are not overwiritten.
+### Creating Patches from Modified Files
 
-Also this script runs on bash and requires dos2unix,patch and diff to work.
+1. Place the game files in 'original' (or use `--original-folder`), then place your modified files in 'mod' (or use `--mod-folder`).
+2. Run `./apply_patches create`. This will create patches for existing files and copy non-existing ones.
+3. Optional: Run `./apply_patches clear` (please don't commit modded files if you didn't use `--mod-folder`).
+4. Commit the changes.
 
- 
-### Build mod
-
-- Put the events, common  folder (or whatever too) in 'original' folder (or use `--original-folder` in the below command)
-- run ./apply_patches apply
-- get the files out of mod, and put this in the destination mod folder.
-
-### Create patches from modified files
- 
-- Put the game files in original (or use `--original-folder` in the below command), then put your working mod (the edited files) in mod (or use `--mod-folder` in the below command)
-- run ./apply_patches create (this will create a patch for existing files and copy non-existing ones)
-- OPTIONNAL : run ./apply_patches clear (please dont commit modded files if you didnt use `--mod-folder`)
-- commit it
