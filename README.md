@@ -1,8 +1,25 @@
-# Mod repo for noobs of iron
+# Noobs Of Iron Mod
+
+When the noobs get too much time on their hand.
+This mod was brought to you by the Linux Gang.
+
+## Mod about
+
+It's a Hearts of Iron IV mod that was at first made to enforce game rules, now it also include balance change, additonnal events, focus tree changes and reworks, and also sometimes even game fixes (looking at you, supply in Spain)
+
+### Versions of mod
+
+This mod is available in two versions, akin to the two branches of this repo :
+
+ - NOIM (regular) - akin to the main branch - is the "Game ready" mod that is supposed to be balanced. This one is safe to use.
+ - NOIM_staging - akin to the staging branches - this is the "Work in progress/testing ground" mod. It includes all the latest changes but may not be balanced nor crash-free. I don't recommend to use it in MP games beyond just testing.
+
+
+## Repo about
 
  Script requires the diff and patch program. Use WSL on windows.
 
-# How files are stored
+### How files are stored
 
 - `original` is an empty folder you should place HOI4 original files if you don't want to use the  `--original-folder` argument
 - `mod` is the folder modded files are put. I keep an .ignoreme so that git create the empty directory we're using and if you want to add a patch or a new file there you don't have to create everything new each time (only if its a directory we don't use)
@@ -10,7 +27,7 @@
 
 The script structure should match the gamefiles. IE, for the Finland.txt , it's located in `events/` in the base game so the patch is located at `source/events/Finland.txt.patch` and will be put at `mod/events/Finland.txt`
 
-# Script usage information
+### Script usage information
 
 `script <create|apply|clear> [--no-overwrite-mod] [--overwrite-sources] [--original-folder <path>] [--mod-folder <path>] [--sources-folder <path>]"`
 
@@ -23,13 +40,13 @@ Try to use `--mod-folder` if possible, currently to play you need to put it in t
 Also this script runs on bash and requires dos2unix,patch and diff to work.
 
  
-## Build mod
+### Build mod
 
 - Put the events, common  folder (or whatever too) in 'original' folder (or use `--original-folder` in the below command)
 - run ./apply_patches apply
 - get the files out of mod, and put this in the destination mod folder.
 
-## Create patches from modified files
+### Create patches from modified files
  
 - Put the game files in original (or use `--original-folder` in the below command), then put your working mod (the edited files) in mod (or use `--mod-folder` in the below command)
 - run ./apply_patches create (this will create a patch for existing files and copy non-existing ones)
