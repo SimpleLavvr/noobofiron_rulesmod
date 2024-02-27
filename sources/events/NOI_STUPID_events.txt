@@ -52,3 +52,26 @@ country_event = {
         }
     }
 }
+
+#Ned just stfu already
+country_event = {
+    id = noi_stupid.3
+    title = noi_stupid.3.t
+    desc = noi_stupid.3.d
+    picture = GFX_report_event_hitler_china
+    fire_only_once = yes
+
+    trigger = {
+        tag = MAN
+        AND = {
+            owns_state = 126 #London
+            owns_state = 361 #DC
+            owns_state = 219 #Moscow
+        }
+    }
+
+    option = {
+        name = noi_stupid.3.a
+        set_cosmetic_tag = CHUNKY
+    }
+}
