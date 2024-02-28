@@ -206,32 +206,22 @@
 > 		cost = 5
 2605a2661
 > 
-2607,2612c2663,2668
-< 		id = AST_rats_of_tobruk
-< 		icon = GFX_focus_AST_rats_tobruk
-< 		prerequisite = { focus = AST_volunteer_defence_corps }
-< 		prerequisite = { focus = AST_strengthen_ties_with_uk }
-< 		x = 4
-< 		y = 2
----
+2606a2663,2713
 > 		id = AST_fight_work_or_perish
 > 		icon = GFX_goal_generic_propaganda
 > 		prerequisite = { focus = AST_civil_construction_corps }
 > 		prerequisite = { focus = AST_squash_the_squanderbugs }
 > 		x = -3
 > 		y = 4
-2618c2674
-< 			factor = 1
----
+> 		relative_position_id = AST_establish_advisory_war_council
+> 
+> 		cost = 10
+> 
+> 		ai_will_do = {
 > 			factor = 15
-2622,2627c2678,2695
-< 			OR = {
-< 				is_subject_of = ENG
-< 				AND = {
-< 					has_global_flag = ENG_decolonized
-< 					is_in_faction_with = ENG
-< 				}
----
+> 		}
+> 
+> 		available = {
 > 
 > 		}
 > 		
@@ -250,14 +240,7 @@
 > 				limit = { has_idea = AST_great_depression_1 }
 > 				remove_ideas = AST_great_depression_1
 > 				add_ideas = AST_all_in
-2629,2634c2697,2707
-< 			#Requires UK at war in Africa
-< 			any_country = {
-< 				has_war_with = ENG
-< 				any_state = {
-< 					is_controlled_by = PREV
-< 					is_on_continent = africa
----
+> 			}
 > 			if = {
 > 				limit = { has_idea = AST_great_depression_2 }
 > 				remove_ideas = AST_great_depression_2
@@ -269,12 +252,29 @@
 > 				swap_ideas = {
 > 					remove_idea = AST_great_depression_3
 > 					add_idea = AST_all_in
-2637a2711,2807
+> 				}
+> 			}
+> 		}
+> 	}
+> 
+> 		focus = {
+2610a2718,2720
+> 		allow_branch = {
+> 			always = no
+> 		}
+2614a2725,2819
+> 
+> 		cancel_if_invalid = yes
+> 		continue_if_invalid = no
+> 		available_if_capitulated = no
+> 		search_filters = {  }
+> 
+> 
 > 	}
 > 	#######################################################################################################################################################################################################################################################################################################################################################
 > 	### NOI FOCUSES ###
 > 	#######################################################################################################################################################################################################################################################################################################################################################
-> 	
+> 
 > 	focus = {
 > 		id = AST_NOI_in_service_of_the_commonwealth
 > 		icon = GFX_focus_generic_home_defense
@@ -358,74 +358,29 @@
 > 		y = 1
 > 		relative_position_id = AST_NOI_in_service_of_the_commonwealth
 > 
-> 		cost = 10
-> 
-> 		ai_will_do = {
-> 			factor = 1
-> 		}
-> 
-> 		available = {
-> 
-> 		}
-2646c2816,2819
-< 		search_filters = {  }
+2622,2626c2827,2924
+< 			OR = {
+< 				is_subject_of = ENG
+< 				AND = {
+< 					has_global_flag = ENG_decolonized
+< 					is_in_faction_with = ENG
 ---
+> 
+> 		}
+> 		
+> 		bypass = {
+> 
+> 		}
+> 
+> 		cancel_if_invalid = yes
+> 		continue_if_invalid = no
+> 		available_if_capitulated = no
 > 
 > 		complete_tooltip = {
 > 
 > 		}
-2649,2698c2822,2902
-< 			#Starts with recon and engineers
-< 			hidden_effect = {
-< 				if = {
-< 					limit = {
-< 						has_tech = tech_logistics_company
-< 					}
-< 					division_template = {
-< 						name = "Rats of Tobruk"
-< 						division_names_group = AST_INF_01
-< 						regiments = {
-< 							infantry = { x = 0 y = 0 }
-< 							infantry = { x = 0 y = 1 }
-< 							infantry = { x = 0 y = 2 }
-< 							infantry = { x = 1 y = 0 }
-< 							infantry = { x = 1 y = 1 }
-< 							infantry = { x = 1 y = 2 }
-< 							infantry = { x = 2 y = 0 }
-< 							infantry = { x = 2 y = 1 }
-< 							infantry = { x = 2 y = 2 }
-< 							infantry = { x = 3 y = 0 }
-< 							infantry = { x = 3 y = 1 }
-< 						}
-< 						support = {
-< 					        recon = { x = 0 y = 0 }
-< 					        engineer = { x = 0 y = 1 }
-< 					        logistics_company = { x = 0 y = 2 }
-< 						}
-< 					}
-< 					else = {
-< 						division_template = {
-< 							name = "Rats of Tobruk"
-< 							division_names_group = AST_INF_01
-< 							regiments = {
-< 								infantry = { x = 0 y = 0 }
-< 								infantry = { x = 0 y = 1 }
-< 								infantry = { x = 0 y = 2 }
-< 								infantry = { x = 1 y = 0 }
-< 								infantry = { x = 1 y = 1 }
-< 								infantry = { x = 1 y = 2 }
-< 								infantry = { x = 2 y = 0 }
-< 								infantry = { x = 2 y = 1 }
-< 								infantry = { x = 2 y = 2 }
-< 								infantry = { x = 3 y = 0 }
-< 								infantry = { x = 3 y = 1 }
-< 							}
-< 							support = {
-< 						        recon = { x = 0 y = 0 }
-< 						        engineer = { x = 0 y = 1 }
-< 							}
-< 						}
----
+> 
+> 		completion_reward = {
 > 			add_ideas = AFK_NOI_ANZAC_i
 > 
 > 		}
@@ -507,22 +462,112 @@
 > 						building = arms_factory
 > 						size > 1
 > 						include_locked = yes
-2700a2905,2918
+> 					}
+2628,2634c2926,2930
+< 			}
+< 			#Requires UK at war in Africa
+< 			any_country = {
+< 				has_war_with = ENG
+< 				any_state = {
+< 					is_controlled_by = PREV
+< 					is_on_continent = africa
+---
 > 				add_extra_state_shared_building_slots = 2
 > 				add_building_construction = {
 > 					type = arms_factory
 > 					level = 2
 > 					instant_build = yes
-> 				}
-> 			}
-> 		}
+2637a2934,2953
 > 	}
 > 	
 > 	focus = {
 > 		id = AST_NOI_dockyard_expansion
 > 		icon = GFX_goal_generic_construct_naval_dockyard 
 > 		prerequisite = { focus = AST_NOI_royal_australian_navy }
-2702,2721c2920,2953
+> 
+> 		x = 0
+> 		y = 1
+> 		relative_position_id = AST_NOI_royal_australian_navy
+> 
+> 		cost = 10
+> 
+> 		ai_will_do = {
+> 			factor = 10
+> 		}
+> 
+> 		available = {
+> 
+> 		}
+2646c2962,2965
+< 		search_filters = {  }
+---
+> 
+> 		complete_tooltip = {
+> 
+> 		}
+2649,2698c2968,2974
+< 			#Starts with recon and engineers
+< 			hidden_effect = {
+< 				if = {
+< 					limit = {
+< 						has_tech = tech_logistics_company
+< 					}
+< 					division_template = {
+< 						name = "Rats of Tobruk"
+< 						division_names_group = AST_INF_01
+< 						regiments = {
+< 							infantry = { x = 0 y = 0 }
+< 							infantry = { x = 0 y = 1 }
+< 							infantry = { x = 0 y = 2 }
+< 							infantry = { x = 1 y = 0 }
+< 							infantry = { x = 1 y = 1 }
+< 							infantry = { x = 1 y = 2 }
+< 							infantry = { x = 2 y = 0 }
+< 							infantry = { x = 2 y = 1 }
+< 							infantry = { x = 2 y = 2 }
+< 							infantry = { x = 3 y = 0 }
+< 							infantry = { x = 3 y = 1 }
+< 						}
+< 						support = {
+< 					        recon = { x = 0 y = 0 }
+< 					        engineer = { x = 0 y = 1 }
+< 					        logistics_company = { x = 0 y = 2 }
+< 						}
+< 					}
+< 					else = {
+< 						division_template = {
+< 							name = "Rats of Tobruk"
+< 							division_names_group = AST_INF_01
+< 							regiments = {
+< 								infantry = { x = 0 y = 0 }
+< 								infantry = { x = 0 y = 1 }
+< 								infantry = { x = 0 y = 2 }
+< 								infantry = { x = 1 y = 0 }
+< 								infantry = { x = 1 y = 1 }
+< 								infantry = { x = 1 y = 2 }
+< 								infantry = { x = 2 y = 0 }
+< 								infantry = { x = 2 y = 1 }
+< 								infantry = { x = 2 y = 2 }
+< 								infantry = { x = 3 y = 0 }
+< 								infantry = { x = 3 y = 1 }
+< 							}
+< 							support = {
+< 						        recon = { x = 0 y = 0 }
+< 						        engineer = { x = 0 y = 1 }
+< 							}
+< 						}
+---
+> 			random_owned_controlled_state = {
+> 				limit = {
+> 					is_coastal = yes
+> 					free_building_slots = {
+> 						building = dockyard
+> 						size > 0
+> 						include_locked = yes
+2699a2976
+> 					is_core_of = ROOT
+2701,2722c2978,2982
+< 
 < 				#Spawn unit in Africa
 < 				if = {
 < 					limit = {
@@ -543,54 +588,18 @@
 < 							}
 < 							load_oob = "AST_TFV_rats_australia"
 < 						}
+< 					}
 ---
-> 		x = 0
-> 		y = 1
-> 		relative_position_id = AST_NOI_royal_australian_navy
-> 
-> 		cost = 10
-> 
-> 		ai_will_do = {
-> 			factor = 10
-> 		}
-> 
-> 		available = {
-> 
-> 		}
-> 		
-> 		bypass = {
-> 
-> 		}
-> 
-> 		cancel_if_invalid = yes
-> 		continue_if_invalid = no
-> 		available_if_capitulated = no
-> 
-> 		complete_tooltip = {
-> 
-> 		}
-> 
-> 		completion_reward = {
-> 			random_owned_controlled_state = {
-> 				limit = {
-> 					is_coastal = yes
-> 					free_building_slots = {
-> 						building = dockyard
-> 						size > 0
-> 						include_locked = yes
-2722a2955,2961
-> 					is_core_of = ROOT
-> 				}
 > 				add_extra_state_shared_building_slots = 2
 > 				add_building_construction = {
 > 					type = dockyard
 > 					level = 3
 > 					instant_build = yes
-2725c2964
+2725c2985
 < 			if = {
 ---
 > 			random_owned_controlled_state = {
-2727,2733c2966,2970
+2727,2733c2987,2991
 < 					any_country = {
 < 						is_in_faction_with = AST
 < 						controls_state = 273
@@ -604,9 +613,9 @@
 > 						building = dockyard
 > 						size > 0
 > 						include_locked = yes
-2734a2972
+2734a2993
 > 					is_core_of = ROOT
-2736,2743c2974,2978
+2736,2743c2995,2999
 < 				custom_effect_tooltip = AST_rats_of_tobruk_effect_1
 < 				else = {
 < 					if = {
@@ -621,19 +630,19 @@
 > 					type = dockyard
 > 					level = 3
 > 					instant_build = yes
-2747a2983,2993
+2747a3004,3008
 > 	
 > 	focus = {
 > 		id = AST_NOI_royal_australian_marines
 > 		icon = GFX_goal_generic_amphibious_assault
 > 		prerequisite = { focus = AST_NOI_ANZAC }
-> 
+2748a3010,3062
 > 		x = 0
 > 		y = 1
 > 		relative_position_id = AST_NOI_ANZAC
 > 
 > 		cost = 10
-2748a2995,3041
+> 
 > 		ai_will_do = {
 > 			factor = 10
 > 		}
@@ -681,7 +690,7 @@
 > 		}
 > 	}
 > 	
-2750,2756c3043,3049
+2750,2756c3064,3070
 < 		id = AST_fight_work_or_perish
 < 		icon = GFX_goal_generic_propaganda
 < 		prerequisite = { focus = AST_civil_construction_corps }
@@ -697,11 +706,11 @@
 > 		x = 0
 > 		y = 1
 > 		relative_position_id = AST_NOI_dockyard_expansion
-2761c3054
+2761c3075
 < 			factor = 15
 ---
 > 			factor = 20
-2774,2775c3067,3071
+2774,2775c3088,3092
 < 		available_if_capitulated = yes
 < 		search_filters = { FOCUS_FILTER_INDUSTRY }
 ---
@@ -710,7 +719,7 @@
 > 		complete_tooltip = {
 > 
 > 		}
-2778,2782c3074,3079
+2778,2782c3095,3100
 < 			#if effect is there for the tooltips sake
 < 			if = {
 < 				limit = { has_idea = AST_great_depression_1 }
@@ -723,7 +732,7 @@
 > 				every_unit_leader = {
 > 					set_nationality = AST
 > 				}
-2784,2788c3081,3085
+2784,2788c3102,3106
 < 			if = {
 < 				limit = { has_idea = AST_great_depression_2 }
 < 				remove_ideas = AST_great_depression_2
@@ -735,7 +744,7 @@
 > 					limit = { is_owned_by = NZL }
 > 					add_core_of = AST
 > 				}
-2790,2794c3087,3090
+2790,2794c3108,3111
 < 			if = {
 < 				limit = { has_idea = AST_great_depression_3 }
 < 				swap_ideas = {
@@ -746,7 +755,7 @@
 > 				if = {
 > 					limit = { is_owned_by = NZL }
 > 					add_core_of = AST
-2798a3095,3108
+2798a3116,3146
 > 	
 > 	focus = {
 > 		id = AST_NOI_bob_semple
@@ -761,7 +770,7 @@
 > 		cost = 5
 > 		
 > 		
-2799a3110,3142
+> 
 > 
 > 		ai_will_do = {
 > 			factor = 20
@@ -778,7 +787,7 @@
 > 		cancel_if_invalid = yes
 > 		continue_if_invalid = no
 > 		available_if_capitulated = no
-> 
+2799a3148,3163
 > 		complete_tooltip = {
 > 
 > 		}
@@ -795,17 +804,17 @@
 > 	}
 > ##########################################################################################################################################################################################
 > ##########################################################################################################################################################################################
-2816d3158
+2816d3179
 < 			is_subject = no
-2916c3258
+2916c3279
 < 					amount = 12
 ---
 > 					amount = 24
-2940c3282
+2940c3303
 < 					amount = 12
 ---
 > 					amount = 24
-2943a3286,3295
+2943a3307,3316
 > 			random_owned_controlled_state = {
 > 				limit = {
 > 					is_in_home_area = yes
@@ -816,27 +825,27 @@
 > 					amount = 24
 > 				}
 > 			}
-2955c3307
+2955c3328
 < 		cost = 10
 ---
 > 		cost = 5
-3061c3413
+3061c3434
 < 		cost = 10
 ---
 > 		cost = 5
-3121c3473
+3121c3494
 < 		cost = 10
 ---
 > 		cost = 5
-3265c3617
+3265c3638
 < 				value = 0.1
 ---
 > 				value = 0.3
-3281c3633
+3281c3654
 < 		cost = 10
 ---
 > 		cost = 5
-3466,3468c3818,3820
+3466,3468c3839,3841
 < 		x = -1
 < 		y = 4
 < 		relative_position_id = AST_support_the_policy_of_appeasement
@@ -844,7 +853,7 @@
 > 		x = 0
 > 		y = 2
 > 		relative_position_id = AST_adopt_westminster
-3503,3506c3855,3858
+3503,3506c3876,3879
 < 		prerequisite = { focus = AST_CSIR focus = AST_swpa_protector }
 < 		x = 1
 < 		y = 4
@@ -854,9 +863,9 @@
 > 		x = 0
 > 		y = 1
 > 		relative_position_id = AST_empire_air_training_scheme
-3508c3860
+3508c3881
 < 		cost = 10
 ---
 > 		cost = 5
-3548a3901
+3548a3922
 > 	
