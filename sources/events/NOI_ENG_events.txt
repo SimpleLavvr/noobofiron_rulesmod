@@ -1,0 +1,45 @@
+add_namespace = noi_eng
+
+# It's George Bushin' time
+country_event = {
+    id = noi_eng.1
+    title = noi_eng.1.t
+    desc = noi_eng.1.d
+    picture = GFX_report_event_generic_military_parade
+    fire_only_once = yes
+
+    trigger = {
+        tag = ENG
+        has_war_with = ITA
+
+        IRQ = {
+            exists = yes
+            has_government = neutrality
+            is_in_faction = no
+            has_war = no
+        }
+
+        OR = {
+            date > 1941.04.01
+            GER = {
+                divisions_in_state = {
+                    state = 452 # Matrouh
+                    size > 0
+                }
+            }
+        }
+    }
+
+    immediate = {
+        IRQ = {
+            add_popularity = {
+                ideology = fascism
+                popularity = 0.25
+            }
+        }
+    }
+
+    option = {
+        name = noi_eng.1.a
+    }
+}

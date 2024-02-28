@@ -1,4 +1,4 @@
-﻿add_namespace = noi_stupid
+add_namespace = noi_stupid
 
 # Nice fellows
 country_event = {
@@ -53,6 +53,7 @@ country_event = {
     }
 }
 
+
 #Ned just stfu already
 country_event = {
     id = noi_stupid.3
@@ -70,8 +71,24 @@ country_event = {
         }
     }
 
+}
+
+# 25 AIRCRAFT CARRIERS
+country_event = {
+    id = noi_stupid.4
+    title = noi_stupid.4.t
+    desc = noi_stupid.4.d
+    picture = GFX_report_event_merchant_ship_01
+    fire_only_once = yes
+
+    trigger = {
+        has_navy_size = {
+            size > 24
+            type = carrier
+        }
+    }
+    
     option = {
-        name = noi_stupid.3.a
-        set_cosmetic_tag = CHUNKY
+        name = noi_stupid.4.a
     }
 }
