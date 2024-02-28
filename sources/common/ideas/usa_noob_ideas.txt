@@ -14,6 +14,9 @@ ideas = {
             modifier = {
                 democratic_acceptance = -100
             }
+            rule = {
+                can_join_factions = no
+            }
         }
     }
 }
