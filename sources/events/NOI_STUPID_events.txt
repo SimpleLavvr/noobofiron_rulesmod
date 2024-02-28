@@ -52,3 +52,23 @@ country_event = {
         }
     }
 }
+
+# 25 AIRCRAFT CARRIERS
+country_event = {
+    id = noi_stupid.3
+    title = noi_stupid.3.t
+    desc = noi_stupid.3.d
+    picture = GFX_report_event_merchant_ship_01
+    fire_only_once = yes
+
+    trigger = {
+        has_navy_size = {
+            size > 24
+            type = carrier
+        }
+    }
+
+    option = {
+        name = noi_stupid.3.a
+    }
+}
