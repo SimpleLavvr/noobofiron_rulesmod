@@ -1,4 +1,4 @@
-﻿add_namespace = noi_stupid
+add_namespace = noi_stupid
 
 # Nice fellows
 country_event = {
@@ -53,6 +53,26 @@ country_event = {
     }
 }
 
+
+#Ned just stfu already
+country_event = {
+    id = noi_stupid.3
+    title = noi_stupid.3.t
+    desc = noi_stupid.3.d
+    picture = GFX_report_event_hitler_china
+    fire_only_once = yes
+
+    trigger = {
+        tag = MAN
+        AND = {
+            owns_state = 126 #London
+            owns_state = 361 #DC
+            owns_state = 219 #Moscow
+        }
+    }
+
+}
+
 # 25 AIRCRAFT CARRIERS
 country_event = {
     id = noi_stupid.4
@@ -67,7 +87,7 @@ country_event = {
             type = carrier
         }
     }
-
+    
     option = {
         name = noi_stupid.4.a
     }

@@ -1,0 +1,36 @@
+27c27
+< 			light_tank_destroyer_chassis = 50
+---
+> 			light_tank_destroyer_chassis = 55
+37c37,38
+< 		breakthrough = -0.42
+---
+> 		soft_attack = -0.1
+> 		breakthrough = -0.6
+94c95
+< 			medium_tank_destroyer_chassis = 50
+---
+> 			medium_tank_destroyer_chassis = 55
+104c105,106
+< 		breakthrough = -0.25
+---
+> 		soft_attack = -0.1
+> 		breakthrough = -0.6
+174c176,177
+< 		breakthrough = -0.25
+---
+> 		soft_attack = -0.1
+> 		breakthrough = -0.5
+237c240
+< 			super_heavy_tank_destroyer_chassis = 40
+---
+> 			super_heavy_tank_destroyer_chassis = 45
+310c313
+< 			modern_tank_destroyer_chassis = 50
+---
+> 			modern_tank_destroyer_chassis = 55
+320c323,324
+< 		breakthrough = -0.25
+---
+> 		soft_attack = -0.1
+> 		breakthrough = -0.6

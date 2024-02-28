@@ -1,0 +1,40 @@
+26c26
+< 			light_tank_artillery_chassis = 50
+---
+> 			light_tank_artillery_chassis = 55
+36c36
+< 		breakthrough = -0.42
+---
+> 		breakthrough = -0.3
+90c90
+< 			medium_tank_artillery_chassis = 50
+---
+> 			medium_tank_artillery_chassis = 55
+100c100
+< 		breakthrough = -0.25
+---
+> 		breakthrough = -0.22
+159c159
+< 			heavy_tank_artillery_chassis = 40
+---
+> 			heavy_tank_artillery_chassis = 45
+168c168
+< 		breakthrough = -0.25
+---
+> 		breakthrough = -0.2
+228c228
+< 			super_heavy_tank_artillery_chassis = 20
+---
+> 			super_heavy_tank_artillery_chassis = 25
+238c238
+< 		breakthrough = -0.25
+---
+> 		breakthrough = -0.2
+296c296
+< 			modern_tank_artillery_chassis = 50
+---
+> 			modern_tank_artillery_chassis = 55
+306c306
+< 		breakthrough = -0.25
+---
+> 		breakthrough = -0.2

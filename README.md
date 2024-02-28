@@ -1,6 +1,6 @@
 # Noobs Of Iron Mod
-
 When the noobs get too much time on their hands, this is the result.  
+
 This mod was brought to you by the Linux Gang.
 
 ## About the Mod
@@ -16,7 +16,7 @@ This mod is available in two versions, mirroring the two branches of this reposi
 
 ## Repository Information
 
-The script requires the `diff` and `patch` programs. On Windows, use WSL.
+The script uses bash and requires the `diff`, `dos2unix` and `patch` programs. On Windows, use WSL.
 
 ### File Structure
 
@@ -33,7 +33,6 @@ The script structure should match the game files. For example, for `Finland.txt`
 - I recommand you to use `--original-folder` to specify your HOI4 location; in WSL, it's likely something like `"/mnt/c/Program Files/Steam/SteamApps/common/Hearts of Iron IV"`.
 - Use `--mod-folder` if possible; (`"~/.local/share/Paradox Interactive/Hearts of Iron IV/mod/noi/"` on Linux and `"/mnt/c/Users/yourusername/Documents/Paradox Interactive/Hearts of Iron IV/mod/noi/"` on WSL).
 - `--sources-folder` is useful for debugging. By default, source patches and files are not overwritten.
-- This script runs on Bash and requires `dos2unix`, `patch`, and `diff` to work.
 
 ### Building the Mod
 
