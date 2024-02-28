@@ -1,15 +1,16 @@
 ﻿l_english:
-  noi_stupid.1.t: "A weird group of people joins us"
-  noi_stupid.1.d: "A group of strangely looking people, including an older man and a dwarf approched one of our units stationned in northen New Zealand and asked to be allowed to join the fight against \"the great evil\". They were mumbling about finding the halflings, and a golden ring of some sort"
-  noi_stupid.1.a: "They seem like nice fellows."
+  noi_stupid.1.t: "Unexpected Fellowship"
+  noi_stupid.1.d: "A peculiar assembly, including an elderly man and a dwarf, approached one of our units stationed in northern New Zealand, expressing their intent to join the struggle against 'the great evil.' They spoke cryptically of halflings and a precious golden ring."
+  noi_stupid.1.a: "They seem like trustworthy companions."
   
   noi_stupid.2.t: "Zandvoort sacked"
-  noi_stupid.2.d: "A single solder (that happens to be of colour) seems to has ransacked the small village of Zandvoort in Northen Netherlands. He kept saying that he deserved his 8th title and this just rightful vengeance?"
-  noi_stupid.2.a: "He was just a knight, wasn't he?"
+  noi_stupid.2.d: "A lone soldier (notably of color) has allegedly raided the small village of Zandvoort in the Northern Netherlands. He passionately claimed his rightful '8th title' amidst the chaos, reminiscent of a contentious sporting rivalry."
+  noi_stupid.2.a: "Was this a misguided attempt at self-glory?"
 
-  noi_stupid.3.t: "World Domination has been achieved"
-  noi_stupid.3.d: "After having conquered most of our ennemies, we shall celebrate it and change our nation's name."
-  noi_stupid.3.a: "A divine success calls for a divine name !"
+  noi_stupid.3.t: "Manchurian Marvel"
+  noi_stupid.3.d: "With Moscow, Washington DC, and London under our dominion, the Manchurian sun rises over the world. Such an extraordinary conquest warrants a reflection on the glory of 'Manchuria'. Shall we embrace a new name as a symbol of our triumph?"
+  noi_stupid.3.a: "This monumental achievement indeed calls for a name worthy of our newfound empire!"
+
 
   CHUNKY:0 "Manchunky"
   CHUNKY_DEF:0 "Manchunky"
