@@ -1,0 +1,51 @@
+add_namespace = noi_ger
+
+#Winning endsieg 
+country_event = {
+   id = noi_ger.1
+   title = noi_ger.1.t
+   desc = noi_ger.1.d
+   picture = GFX_report_event_germany_victory
+
+   trigger = {
+        tag = GER
+        has_idea = GER_NOI_Endsieg_i
+        AND = {
+            has_war = yes
+            surrender_progress < 0.01
+        }
+   }
+
+   fire_only_once = yes
+
+   option = {
+        name = noi_ger.1.a
+        remove_ideas = GER_NOI_Endsieg_i
+        add_political_power = 50
+        add_war_support = 0.1
+   }
+}
+
+#Losing endsieg 
+country_event = {
+   id = noi_ger.2
+   title = noi_ger.2.t
+   desc = noi_ger.2.d
+   picture = GFX_report_event_tanks_mexico_city
+
+   trigger = {
+        tag = GER
+        has_idea = GER_NOI_Endsieg_i
+         OR = {
+            has_war = no
+            has_capitulated = yes
+        }
+   }
+
+   fire_only_once = yes
+
+   option = {
+        name = noi_ger.2.a
+        remove_ideas = GER_NOI_Endsieg_i
+   }
+}

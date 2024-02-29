@@ -1,0 +1,22 @@
+foreign_politics = {
+    noi_japan_ussr_embargo_decision = {
+        icon = GFX_decision_eng_trade_unions_support
+        cost = 25
+
+        allowed = {
+            original_tag = SOV
+        }
+
+        visible = {
+            has_war_with = GER
+            JAP = {
+                has_war_with = ENG
+            }
+        }
+
+        complete_effect = {
+            send_embargo = JAP
+        }
+
+    }
+}

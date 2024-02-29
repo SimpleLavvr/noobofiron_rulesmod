@@ -1,24 +1,4 @@
 operations = {
-    noi_usa_japan_war_mission = {
-        icon = border_war
-        is_good = yes
-        war_with_on_timeout = JAP
-        days_mission_timeout = 365
-
-        allowed = {
-            always = no
-        }
-
-        available = {
-            has_war = yes
-        }
-
-        timeout_effect = {
-            ENG = {add_to_faction = USA}
-        }
-
-    }
-
     noi_japan_siam_occupation_decision = {
         icon = oppression
         cost = 25
@@ -78,28 +58,5 @@ operations = {
         complete_effect = {
             set_state_controller = 336
         }
-    }
-}
-
-foreign_politics = {
-    noi_japan_ussr_embargo_decision = {
-        icon = GFX_decision_eng_trade_unions_support
-        cost = 25
-
-        allowed = {
-            original_tag = SOV
-        }
-
-        visible = {
-            has_war_with = GER
-            JAP = {
-                has_war_with = ENG
-            }
-        }
-
-        complete_effect = {
-            send_embargo = JAP
-        }
-
     }
 }
