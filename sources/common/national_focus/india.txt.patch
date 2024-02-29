@@ -1,0 +1,822 @@
+1,7c1
+< ### search_filters = {FOCUS_FILTER_POLITICAL}
+< ### search_filters = {FOCUS_FILTER_RESEARCH}
+< ### search_filters = {FOCUS_FILTER_INDUSTRY}
+< ### search_filters = {FOCUS_FILTER_STABILITY}
+< ### search_filters = {FOCUS_FILTER_WAR_SUPPORT}
+< ### search_filters = {FOCUS_FILTER_MANPOWER}
+< ### search_filters = {FOCUS_FILTER_ANNEXATION}
+---
+> 
+29,30c23,24
+< #		prerequisite = { focus = }
+< #		mutually_exclusive = { focus =  }
+---
+> #		
+> #		
+102c96
+< 				value = 0.1
+---
+> 				value = 0.25
+167c161
+< 		cost = 10
+---
+> 		cost = 5
+189c183
+< 				value = 0.1
+---
+> 				value = 0.15
+1126c1120
+< 		cost = 10
+---
+> 		cost = 5
+1163c1157
+< 				value =	0.05
+---
+> 				value =	0.1
+1289a1284,1286
+> 			add_autonomy_ratio = {
+> 				value =	-0.05
+> 			}
+1294,1297d1290
+< 			add_autonomy_ratio = {
+< 				value = -0.05
+< 				localization = RAJ_imperial_service_troops
+< 			}
+1309c1302
+< 		cost = 10
+---
+> 		cost = 5
+1508a1502,1507
+> 			add_doctrine_cost_reduction = {
+> 				name = land_doc_bonus
+> 				cost_reduction = 0.25
+> 				uses = 1
+> 				category = land_doctrine
+> 			}
+1526c1525
+< 		cost = 10
+---
+> 		cost = 5
+1547c1546
+< 		army_experience = 50
+---
+> 		army_experience = 25
+1627,1636c1626,1637
+< 		custom_effect_tooltip = RAJ_orde_wingate_tt
+< 		hidden_effect = {
+< 			IF = {
+< 				limit = {
+< 					ETH = { has_character = RAJ_orde_wingate }
+< 				}
+< 				ETH = {
+< 					country_event = {
+< 						id = BBA_ethiopia_exile_events.05
+< 						hours = 1
+---
+> 			add_ideas = RAJ_NOI_chindits_i
+> 			custom_effect_tooltip = RAJ_orde_wingate_tt
+> 			hidden_effect = {
+> 				IF = {
+> 					limit = {
+> 						ETH = { has_character = RAJ_orde_wingate }
+> 					}
+> 					ETH = {
+> 						country_event = {
+> 							id = BBA_ethiopia_exile_events.05
+> 							hours = 1
+> 						}
+1639,1648c1640,1649
+< 			}
+< 			ELSE = {
+< 				add_corps_commander_role = {
+< 					character = RAJ_orde_wingate
+< 					traits = { jungle_rat commando }
+< 					skill = 4
+< 					attack_skill = 3
+< 					defense_skill = 3
+< 					planning_skill = 2
+< 					logistics_skill = 5
+---
+> 				ELSE = {
+> 					add_corps_commander_role = {
+> 						character = RAJ_orde_wingate
+> 						traits = { jungle_rat commando }
+> 						skill = 4
+> 						attack_skill = 3
+> 						defense_skill = 3
+> 						planning_skill = 2
+> 						logistics_skill = 5
+> 						}
+1651,1658c1652,1658
+< 			}
+< 			add_tech_bonus = {
+< 				name = RAJ_chindits
+< 				bonus = 3.0
+< 				uses = 2
+< 				category = para_tech
+< 				category = mountaineers_tech
+< 			}
+---
+> 				add_tech_bonus = {
+> 					name = RAJ_chindits
+> 					bonus = 3.0
+> 					uses = 1
+> 					category = para_tech
+> 					category = mountaineers_tech
+> 				}
+1671c1671
+< 		cost = 10
+---
+> 		cost = 5
+1782c1782
+< 		cost = 10
+---
+> 		cost = 5
+1929c1929
+< 			army_experience = 30
+---
+> 			army_experience = 25
+1972c1972
+< 		cost = 10
+---
+> 		cost = 5
+2034a2035
+> 			add_ideas = RAJ_NOI_bangalore_torpedo_i
+2038c2039
+< 				uses = 2
+---
+> 				uses = 1
+2071a2073
+> 			army_experience = 10
+2127c2129
+< 		cost = 10
+---
+> 		cost = 5
+2186a2189,2194
+> 			add_tech_bonus = {
+> 				name = RAJ_royal_indian_artillery
+> 				bonus = 1.0
+> 				uses = 1
+> 				category = artillery
+> 			}
+2242c2250
+< 		cost = 10
+---
+> 		cost = 5
+2287d2294
+< 			is_subject = no
+2288a2296
+> 			is_subject = no
+2347c2355
+< 				uses = 1
+---
+> 				uses = 2
+2414c2422
+< 					level = 1
+---
+> 					level = 2
+2429c2437
+< 					level = 1
+---
+> 					level = 2
+2639a2648,2677
+> 			random_owned_controlled_state = {
+> 				limit = {
+> 					free_building_slots = {
+> 						building = industrial_complex
+> 						size > 0
+> 						include_locked = yes
+> 					}
+> 					OR = {
+> 						is_in_home_area = yes
+> 						NOT = {
+> 							owner = {
+> 								any_owned_state = {
+> 									free_building_slots = {
+> 										building = industrial_complex
+> 										size > 0
+> 										include_locked = yes
+> 									}
+> 									is_in_home_area = yes
+> 								}
+> 							}
+> 						}
+> 					}
+> 				}
+> 				add_extra_state_shared_building_slots = 1
+> 				add_building_construction = {
+> 					type = industrial_complex
+> 					level = 1
+> 					instant_build = yes
+> 				}
+> 			}
+2649a2688
+> 		
+2791c2830
+< 					amount = 3
+---
+> 					amount = 8
+2926c2965
+< 		cost = 10
+---
+> 		cost = 5
+2969c3008
+< 			navy_experience = 5
+---
+> 			navy_experience = 15
+2991c3030
+< 						level = 1
+---
+> 						level = 2
+3009c3048
+< 		cost = 10
+---
+> 		cost = 5
+3052c3091
+< 			navy_experience = 5
+---
+> 			navy_experience = 15
+3071c3110
+< 					limit = { state = 426 }
+---
+> 					limit = { state = 431 }
+3074c3113
+< 						level = 1
+---
+> 						level = 2
+3076c3115
+< 						province = 10255
+---
+> 						province = 4245
+3113c3152
+< 			navy_experience = 10
+---
+> 			navy_experience = 25
+3117c3156
+< 				uses = 1
+---
+> 				uses = 2
+3126c3165
+< 		prerequisite = { focus = RAJ_royal_indian_navy }
+---
+> 		prerequisite = { focus = RAJ_submarine_effort focus = RAJ_cruiser_effort }
+3128c3167
+< 		y = 2
+---
+> 		y = 3
+3191c3230
+< 				bonus = 1.5
+---
+> 				bonus = 2
+3202c3241
+< 		prerequisite = { focus = RAJ_screening_effort focus = RAJ_cruiser_effort }
+---
+> 		prerequisite = { focus = RAJ_royal_indian_navy }
+3204c3243
+< 		y = 3
+---
+> 		y = 2
+3239c3278
+< 		prerequisite = { focus = RAJ_screening_effort focus = RAJ_cruiser_effort }
+---
+> 		prerequisite = { focus = RAJ_submarine_effort focus = RAJ_cruiser_effort }
+3305c3344
+< 				uses = 1
+---
+> 				uses = 2
+3351a3391,3395
+> 			build_railway = {
+> 					path = { 
+> 						12238 10389 7565 7662 4644 7593 7537 4544 4516
+> 					}
+> 				}
+3405a3450,3530
+> 			random_owned_controlled_state = {
+> 				limit = {
+> 					free_building_slots = {
+> 						building = infrastructure
+> 						size > 0
+> 					}
+> 					OR = {
+> 						is_in_home_area = yes
+> 						NOT = {
+> 							owner = {
+> 								any_owned_state = {
+> 									free_building_slots = {
+> 										building = infrastructure
+> 										size > 0
+> 									}
+> 									is_in_home_area = yes
+> 								}
+> 							}
+> 						}
+> 					}
+> 				}
+> 				add_building_construction = {
+> 					type = infrastructure
+> 					level = 1
+> 					instant_build = yes
+> 				}
+> 			}
+> 			random_owned_controlled_state = {
+> 				limit = {
+> 					free_building_slots = {
+> 						building = infrastructure
+> 						size > 1
+> 					}
+> 					OR = {
+> 						is_in_home_area = yes
+> 						NOT = {
+> 							owner = {
+> 								any_owned_state = {
+> 									free_building_slots = {
+> 										building = infrastructure
+> 										size > 1
+> 									}
+> 									is_in_home_area = yes
+> 								}
+> 							}
+> 						}
+> 					}
+> 				}
+> 				add_building_construction = {
+> 					type = infrastructure
+> 					level = 1
+> 					instant_build = yes
+> 				}
+> 			}
+> 						random_owned_controlled_state = {
+> 				limit = {
+> 					free_building_slots = {
+> 						building = infrastructure
+> 						size > 0
+> 					}
+> 					OR = {
+> 						is_in_home_area = yes
+> 						NOT = {
+> 							owner = {
+> 								any_owned_state = {
+> 									free_building_slots = {
+> 										building = infrastructure
+> 										size > 0
+> 									}
+> 									is_in_home_area = yes
+> 								}
+> 							}
+> 						}
+> 					}
+> 				}
+> 				add_building_construction = {
+> 					type = infrastructure
+> 					level = 1
+> 					instant_build = yes
+> 				}
+> 			}
+3483c3608
+< 				add_extra_state_shared_building_slots = 1
+---
+> 				add_extra_state_shared_building_slots = 2
+3486c3611
+< 					level = 1
+---
+> 					level = 2
+3662d3786
+< 					compare_autonomy_progress_ratio > 0.4
+3691c3815
+< 				add_extra_state_shared_building_slots = 1
+---
+> 				add_extra_state_shared_building_slots = 2
+3694c3818
+< 					level = 1
+---
+> 					level = 2
+3742c3866
+< 				add_extra_state_shared_building_slots = 1
+---
+> 				add_extra_state_shared_building_slots = 2
+3745c3869
+< 					level = 1
+---
+> 					level = 2
+3768d3891
+< 			compare_autonomy_progress_ratio > 0.4
+3814c3937
+< 				value = -0.25
+---
+> 				value = -0.15
+3870d3992
+< 			compare_autonomy_progress_ratio > 0.4
+3944c4066
+< 				add_extra_state_shared_building_slots = 1
+---
+> 				add_extra_state_shared_building_slots = 2
+3947c4069
+< 					level = 1
+---
+> 					level = 2
+3953a4076,4479
+> ###############################################################################################################################################################################################################
+> ###NOI FOCUSES###
+> ##############################################################################################################################################################################################################################################################################################################################################################################################################################
+> 
+> focus = {
+> 		id = RAJ_NOI_mobilisise_the_nation
+> 		icon = GFX_goal_generic_propaganda
+> 		
+> 		
+> 		x = 0
+> 		y = 3
+> 		relative_position_id = RAJ_british_army_support
+> 
+> 		cost = 10
+> 
+> 		ai_will_do = {
+> 			factor = 1
+> 		}
+> 
+> 		available = {
+> 			has_war = yes
+> 		}
+> 		
+> 
+> 		cancel_if_invalid = yes
+> 		continue_if_invalid = no
+> 		available_if_capitulated = no
+> 
+> 		complete_tooltip = {
+> 
+> 		}
+> 
+> 		completion_reward = {
+> 			add_political_power = 100
+> 			add_war_support = 0.1
+> 		}
+> 	}
+> 
+> 	focus = {
+> 		id = RAJ_NOI_mobilise_economy
+> 		icon = GFX_goal_generic_consumer_goods
+> 		prerequisite = { focus = RAJ_NOI_mobilisise_the_nation }
+> 		
+> 		x = -1
+> 		y = 1
+> 		relative_position_id = RAJ_NOI_mobilisise_the_nation
+> 
+> 		cost = 10
+> 
+> 		ai_will_do = {
+> 			factor = 1
+> 		}
+> 
+> 		available = {
+> 
+> 		}
+> 		
+> 		bypass = {
+> 			has_idea = war_economy
+> 		}
+> 
+> 		cancel_if_invalid = yes
+> 		continue_if_invalid = no
+> 		available_if_capitulated = no
+> 
+> 		complete_tooltip = {
+> 
+> 		}
+> 
+> 		completion_reward = {
+> 			add_stability = -0.1
+> 			add_ideas = war_economy
+> 			add_timed_idea = { idea = RAJ_NOI_mobilise_economy_i days = 180 }
+> 		}
+> 	}
+> 	
+> 	focus = {
+> 		id = RAJ_NOI_recruitment_campaign
+> 		icon = GFX_focus_generic_commonwealth_build_infantry
+> 		prerequisite = { focus = RAJ_NOI_mobilisise_the_nation }
+> 		
+> 		x = 1
+> 		y = 1
+> 		relative_position_id = RAJ_NOI_mobilisise_the_nation
+> 
+> 		cost = 10
+> 
+> 		ai_will_do = {
+> 			factor = 1
+> 		}
+> 
+> 		available = {
+> 
+> 		}
+> 		
+> 		bypass = {
+> 
+> 		}
+> 
+> 		cancel_if_invalid = yes
+> 		continue_if_invalid = no
+> 		available_if_capitulated = no
+> 
+> 		complete_tooltip = {
+> 
+> 		}
+> 
+> 		completion_reward = {
+> 			add_war_support = 0.05
+> 			add_timed_idea = { idea = RAJ_NOI_recruitment_campaign_i days = 365}
+> 		}
+> 	}
+> 	
+> 
+> 	
+> 
+> 	
+> 
+> 
+> 
+> 	focus = {
+> 		id = RAJ_NOI_fortifications_of_burma
+> 		icon = GFX_goal_generic_fortify_city
+> 		prerequisite = { focus = RAJ_NOI_mobilise_economy focus = RAJ_NOI_recruitment_campaign }
+> 		mutually_exclusive = { focus = RAJ_NOI_fortifications_of_bengal }
+> 		x = 0
+> 		y = 1
+> 		relative_position_id = RAJ_NOI_recruitment_campaign
+> 
+> 		cost = 10
+> 
+> 		ai_will_do = {
+> 			factor = 30
+> 		}
+> 
+> 		available = {
+> 			has_war_with = JAP
+> 		}
+> 		
+> 		bypass = {
+> 
+> 		}
+> 
+> 		cancel_if_invalid = yes
+> 		continue_if_invalid = no
+> 		available_if_capitulated = no
+> 
+> 		completion_reward = {
+> 			288 = {
+> 				add_building_construction = {
+> 					type = bunker
+> 					level = 3
+> 					province = 12090
+> 					instant_build = yes
+> 				}
+> 				add_building_construction = {
+> 					type = bunker
+> 					level = 1
+> 					province = 4147
+> 					instant_build = yes
+> 				}
+> 				add_building_construction = {
+> 					type = bunker
+> 					level = 1
+> 					province = 10033
+> 					instant_build = yes
+> 				}
+> 				add_building_construction = {
+> 					type = bunker
+> 					level = 1
+> 					province = 11966
+> 					instant_build = yes
+> 				}
+> 				add_building_construction = {
+> 					type = bunker
+> 					level = 1
+> 					province = 3999
+> 					instant_build = yes
+> 				}
+> 				add_building_construction = {
+> 					type = bunker
+> 					level = 1
+> 					province = 4454
+> 					instant_build = yes
+> 				}
+> 			}
+> 			432 = {
+> 				add_building_construction = {
+> 					type = bunker
+> 					level = 3
+> 					province = 1581
+> 					instant_build = yes
+> 				}
+> 				add_building_construction = {
+> 					type = bunker
+> 					level = 1
+> 					province = 1553
+> 					instant_build = yes
+> 				}
+> 				add_building_construction = {
+> 					type = bunker
+> 					level = 1
+> 					province = 1525
+> 					instant_build = yes
+> 				}
+> 			}
+> 			434 = {
+> 				add_building_construction = {
+> 					type = bunker
+> 					level = 1
+> 					province = 12322
+> 					instant_build = yes
+> 				}
+> 				add_building_construction = {
+> 					type = bunker
+> 					level = 1
+> 					province = 1996
+> 					instant_build = yes
+> 				}
+> 			}
+> 		}
+> 	}
+> 	focus = {
+> 		id = RAJ_NOI_fortifications_of_bengal
+> 		icon = GFX_goal_generic_fortify_city
+> 		prerequisite = { focus = RAJ_NOI_mobilise_economy focus = RAJ_NOI_recruitment_campaign }
+> 		mutually_exclusive = { focus = RAJ_NOI_fortifications_of_burma }
+> 		x = -2
+> 		y = 0
+> 		relative_position_id = RAJ_NOI_fortifications_of_burma
+> 
+> 		cost = 10
+> 
+> 		ai_will_do = {
+> 			factor = 1
+> 		}
+> 
+> 		available = {
+> 			has_war_with = JAP
+> 		}
+> 		
+> 		bypass = {
+> 
+> 		}
+> 
+> 		cancel_if_invalid = yes
+> 		continue_if_invalid = no
+> 		available_if_capitulated = no
+> 
+> 		completion_reward = {
+> 			430 = {
+> 				add_building_construction = {
+> 					type = bunker
+> 					level = 3
+> 					province = 4162
+> 					instant_build = yes
+> 				}
+> 				add_building_construction = {
+> 					type = bunker
+> 					level = 3
+> 					province = 4616
+> 					instant_build = yes
+> 				}
+> 				add_building_construction = {
+> 					type = bunker
+> 					level = 3
+> 					province = 10443
+> 					instant_build = yes
+> 				}
+> 				add_building_construction = {
+> 					type = bunker
+> 					level = 3
+> 					province = 10389
+> 					instant_build = yes
+> 				}
+> 			}
+> 			431 = {
+> 				add_building_construction = {
+> 					type = bunker
+> 					level = 3
+> 					province = 12338
+> 					instant_build = yes
+> 				}
+> 			}
+> 		}
+> 	}
+> 	
+> 	focus = {
+> 		id = RAJ_NOI_coastal_defenses
+> 		icon = GFX_goal_generic_construct_military
+> 		prerequisite = { focus = RAJ_NOI_fortifications_of_burma focus = RAJ_NOI_fortifications_of_bengal}
+> 		
+> 		x = -1
+> 		y = 1
+> 		relative_position_id = RAJ_NOI_fortifications_of_burma
+> 
+> 		cost = 10
+> 
+> 		ai_will_do = {
+> 			factor = 1
+> 		}
+> 
+> 		available = {
+> 			has_war_with = JAP
+> 		}
+> 		
+> 		bypass = {
+> 
+> 		}
+> 
+> 		cancel_if_invalid = yes
+> 		continue_if_invalid = no
+> 		available_if_capitulated = no
+> 
+> 		completion_reward = {
+> 			431 = {
+> 				add_building_construction = {
+> 					type = coastal_bunker
+> 					level = 2
+> 					province = 4245
+> 					instant_build = yes
+> 				}
+> 				
+> 			}
+> 			423 = {
+> 				add_building_construction = {
+> 					type = coastal_bunker
+> 					level = 2
+> 					province = 10278
+> 					instant_build = yes
+> 				}
+> 				
+> 			}
+> 			429 = {
+> 				add_building_construction = {
+> 					type = coastal_bunker
+> 					level = 2
+> 					province = 1349
+> 					instant_build = yes
+> 				}
+> 				
+> 			}
+> 			428 = {
+> 				add_building_construction = {
+> 					type = coastal_bunker
+> 					level = 2
+> 					province = 9975
+> 					instant_build = yes
+> 				}
+> 			}
+> 			443 = {
+> 				add_building_construction = {
+> 					type = coastal_bunker
+> 					level = 2
+> 					province = 3456
+> 					instant_build = yes
+> 				}
+> 				
+> 			}
+> 		}
+> 	}
+> 
+> 	focus = {
+> 		id = RAJ_NOI_hindu_finest_hour
+> 		icon = GFX_focus_generic_support_the_left_right
+> 		prerequisite = { focus = RAJ_NOI_coastal_defenses }
+> 		
+> 		x = 0
+> 		y = 1
+> 		relative_position_id = RAJ_NOI_coastal_defenses
+> 
+> 		cost = 1
+> 
+> 		ai_will_do = {
+> 			factor = 1
+> 		}
+> 
+> 		available = {
+> 			surrender_progress > 0.7
+> 		}
+> 		
+> 		bypass = {
+> 
+> 		}
+> 
+> 		cancel_if_invalid = yes
+> 		continue_if_invalid = no
+> 		available_if_capitulated = no
+> 
+> 		complete_tooltip = {
+> 
+> 		}
+> 
+> 		completion_reward = {
+> 			add_timed_idea = { idea = RAJ_NOI_hindu_finest_hour_i days = 40 }
+> 		}
+> 	}
+> 
+> 
+> 
+> 
+> 
+> 
+> 
