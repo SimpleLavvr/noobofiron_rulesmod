@@ -1,0 +1,16 @@
+ideas = {
+    country = {
+        #Steiner will win the war for sure
+        GER_NOI_Endsieg_i = {
+            picture = GFX_NOI_goal_idea_ger_endsieg
+
+            allowed = {
+                always = no
+            }
+            modifier = {
+                army_core_attack_factor = 0.3
+                army_core_defence_factor = 0.3
+            }
+        }
+    }
+}

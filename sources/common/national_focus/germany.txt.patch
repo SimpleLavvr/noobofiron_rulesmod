@@ -67,69 +67,101 @@
 < 		cost = 10
 ---
 > 		cost = 5
-3014,3015c2936,2937
+2698a2703,2705
+> 		allow_branch = {
+> 			always = no
+> 		}
+3014,3015c3021,3022
 < 		prerequisite = { focus = GER_rhineland  }
 < 		x = -3
 ---
 > 		prerequisite = { focus = GER_mol_rib_pact }
 > 		x = 0
-3017,3018c2939,2940
+3017,3018c3024,3025
 < 		relative_position_id = GER_rhineland
 < 		cost = 10
 ---
 > 		relative_position_id = GER_mol_rib_pact
 > 		cost = 5
-3130a3003
+3077a3085,3087
+> 		allow_branch = {
+> 			always = no
+> 		}
+3130a3141
 > 			date > 1940.3.1
-3132,3133c3005,3006
+3132,3133c3143,3144
 < 		x = 1
 < 		y = 4
 ---
 > 		x = 0
 > 		y = 1
-3135c3008
+3135c3146
 < 		cost = 10
 ---
 > 		cost = 5
-3219d3091
+3219d3229
 < 		prerequisite = { focus = GER_italy_ally }
-3245c3117
+3245c3255
 < 		y = 2
 ---
 > 		y = 1
-3546c3418
+3546c3556
 < 		x = 1
 ---
 > 		x = -4
-3587a3460
+3582a3593,3615
+> 	
+> 	focus = {
+> 		id = GER_NOI_endsieg
+> 		icon = GFX_NOI_goal_focus_ger_endsieg
+> 		prerequisite = { focus = GER_ussr_war_goal }
+> 		relative_position_id = GER_ussr_war_goal
+> 		x = -2
+> 		y = 1
+> 		cost = 1
+> 		available = {
+> 			is_subject = no
+> 	    surrender_progress > 0.3
+> 		}
+> 		
+> 		completion_reward = { 
+> 		    add_timed_idea = {
+> 				idea = GER_NOI_Endsieg_i
+> 				days = 180
+> 			}
+> 		}
+> 
+> 		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_INDUSTRY }
+> 	}
+3587a3621
 > 		prerequisite = { focus = GER_mol_rib_pact }
-3987a3861,3863
+3987a4022,4024
 > 		allow_branch = {
 >             always = no
 >         }
-4095a3972
+4095a4133
 > 			date > 1937.10.20
-4119c3996
+4119c4157
 < 		x = -1
 ---
 > 		x = 1
-4415,4416c4292,4293
+4415,4416c4453,4454
 < 		y = 3
 < 		relative_position_id = GER_czech_friend
 ---
 > 		y = 1
 > 		relative_position_id = GER_end_of_czechoslovakia
-4644a4522,4524
+4644a4683,4685
 > 		allow_branch = {
 > 			always = no
 > 		}
-5351c5231,5233
+5351c5392,5394
 < 
 ---
 > 		allow_branch = {
 > 			always = no
 > 		}
-6240,6251c6122
+6240,6251c6283
 < 			has_dlc = "Waking the Tiger"
 < 			if = {
 < 				limit = {
@@ -144,7 +176,7 @@
 < 			}
 ---
 > 			always = no
-6255,6256c6126,6130
+6255,6256c6287,6291
 < 			is_subject = no
 < 			has_government = fascism
 ---
@@ -153,11 +185,11 @@
 > 					is_subject = yes
 > 				}
 > 			
-6298c6172
+6298c6333
 < 			factor = 7
 ---
 > 			factor = 0
-6382,6396c6256
+6382,6396c6417
 < 			has_dlc = "Waking the Tiger"
 < 			if = {
 < 				limit = {
@@ -175,7 +207,7 @@
 < 			}
 ---
 > 			always = no
-6449,6460c6309
+6449,6460c6470
 < 			has_dlc = "Waking the Tiger"
 < 			if = {
 < 				limit = {
@@ -190,11 +222,11 @@
 < 			}
 ---
 > 			always = no
-7797a7647,7649
+7797a7808,7810
 > 		allow_branch = {
 > 			always = no
 > 		}
-8222,8236c8074
+8222,8236c8235
 < 			has_dlc = "Waking the Tiger"
 < 			if = {
 < 				limit = {
