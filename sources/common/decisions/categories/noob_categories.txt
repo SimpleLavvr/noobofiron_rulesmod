@@ -1,0 +1,35 @@
+NOI_JAP_tora_tora_tora = {
+    icon = jap_southern_expansion
+
+    priority = {
+        base = 20
+    }
+
+    allowed = {
+        original_tag = JAP
+    }
+
+    visible = {
+        has_completed_focus = JAP_strike_south_doctrine
+    }
+
+    on_map_area = {
+        targets = {
+               327 # Manila
+               336 # Malaya
+               333 # North Borneo
+               422 # Ceylon
+               284 # North Island, NZ
+               335 # Java
+               672 # Sumatra
+               638 # Guam
+               632 # Wake
+               629 # Hawaii
+               288 # Burma
+               431 # West Bengal
+               285 # New South Wales
+        }
+        name = NOI_JAP_tora_tora_tora_expansion_targets
+        zoom = 300
+    }
+}
