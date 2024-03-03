@@ -1,40 +1,28 @@
-26c26
-< 			light_tank_artillery_chassis = 50
+23c23
+< 		combat_width = 3
 ---
-> 			light_tank_artillery_chassis = 55
-36c36
-< 		breakthrough = -0.42
+> 		combat_width = 2
+87c87
+< 		combat_width = 3
 ---
-> 		breakthrough = -0.3
-90c90
-< 			medium_tank_artillery_chassis = 50
+> 		combat_width = 2
+156c156
+< 		combat_width = 3
 ---
-> 			medium_tank_artillery_chassis = 55
-100c100
-< 		breakthrough = -0.25
+> 		combat_width = 2
+293c293
+< 		combat_width = 3
 ---
-> 		breakthrough = -0.22
-159c159
-< 			heavy_tank_artillery_chassis = 40
+> 		combat_width = 2
+362c362
+< #	#	combat_width = 3
 ---
-> 			heavy_tank_artillery_chassis = 45
-168c168
-< 		breakthrough = -0.25
+> #	#	combat_width = 2
+423c423
+< #		combat_width = 3
 ---
-> 		breakthrough = -0.2
-228c228
-< 			super_heavy_tank_artillery_chassis = 20
+> #		combat_width = 2
+489c489
+< #		combat_width = 3
 ---
-> 			super_heavy_tank_artillery_chassis = 25
-238c238
-< 		breakthrough = -0.25
----
-> 		breakthrough = -0.2
-296c296
-< 			modern_tank_artillery_chassis = 50
----
-> 			modern_tank_artillery_chassis = 55
-306c306
-< 		breakthrough = -0.25
----
-> 		breakthrough = -0.2
+> #		combat_width = 2
