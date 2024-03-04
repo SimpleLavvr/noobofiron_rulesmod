@@ -2,6 +2,7 @@ operations = {
     noi_japan_siam_occupation_decision = {
         icon = oppression
         cost = 25
+        fire_only_once = yes
 
         allowed = {
             original_tag = JAP
@@ -35,6 +36,7 @@ operations = {
 
     noi_japan_singapore_takeover_decision = {
         icon = border_war
+        fire_only_once = yes
 
         allowed = {
             original_tag = JAP
@@ -59,4 +61,8 @@ operations = {
             set_state_controller = 336
         }
     }
+}
+
+NOI_JAP_tora_tora_tora = {
+
 }
