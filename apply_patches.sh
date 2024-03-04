@@ -8,8 +8,8 @@ MOD_FOLDER="mod/"
 SOURCES_FOLDER="sources/"
 DEBUG_SCRIPT="no"
 I_KNOW_WHAT_IM_DOING="no" #Not documented because if you are here you probably know what you're doing
-RUNNING_ON_PURE_UNIX="yes" # may be useful for later? idk do some unix2dos
-RUNNING_ON_POSIX="yes" # may be useful too?! maybe git bash sheneinigans on windows?!
+RUNNING_ON_PURE_UNIX="no" # may be useful for later? idk do some unix2dos
+RUNNING_ON_POSIX="no" # may be useful too?! maybe git bash sheneinigans on windows?!
 # List of commands to check
 commands=("dos2unix" "unix2dos" "patch" "diff" "git" "find")
 
