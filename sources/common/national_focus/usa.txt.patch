@@ -2,7 +2,8 @@
 < 		x = 14
 ---
 > 		x = 6
-159,171c159,160
+158,171c158
+< 		allow_branch = {
 < 			has_dlc = "Man the Guns"
 < 			if = {
 < 				limit = {
@@ -17,13 +18,34 @@
 < 			}
 < 		}
 ---
+> 		
+202a190
+> 	
+206c194
+< 		x = -6
+---
+> 		x = 0
+232a221
+> 			add_stability = -0.05
+260a250
+> 		add_stability = -0.05
+457a448,451
+> 		
+> 				allow_branch = {
 >             always = no
 >         }
-2922c2911
+801a796,799
+> 		
+> 				allow_branch = {
+>             always = no
+>         }
+2922c2920
 < 		x = 18
 ---
 > 		x = 10
-3226,3238c3215,3216
+3099a3098
+> 		add_stability = 0.10
+3226,3238c3225,3226
 < 			has_dlc = "Man the Guns"
 < 			if = {
 < 				limit = {
@@ -40,7 +62,11 @@
 ---
 >             always = no
 >         }
-4655c4633
+4655c4643
 < 		x = 42
 ---
-> 		x = 19
+> 		x = 20
+4665c4653
+< 			x = -17
+---
+> 			x = -2

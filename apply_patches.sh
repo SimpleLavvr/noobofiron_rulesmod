@@ -46,7 +46,11 @@ fi
 MODE=$1
 shift # Move past the mode argument for further processing
 
-
+echo_debug() {
+    if [ "$DEBUG_SCRIPT" = "yes" ]; then
+        echo "DEBUG : $1"
+    fi
+}
 
 # Parse additional arguments
 while (( "$#" )); do
@@ -71,8 +75,8 @@ while (( "$#" )); do
       shift
       ;;
     --debug-script)
-      echo "Debug enabled."
       DEBUG_SCRIPT="yes"
+      echo_debug "Debug enabled !"
       shift
       ;;
     --original-folder)
@@ -94,11 +98,7 @@ while (( "$#" )); do
   esac
 done
 
-echo_debug() {
-    if [ "$DEBUG_SCRIPT" = "yes" ]; then
-        echo "DEBUG : $1"
-    fi
-}
+
 
 #Check what am i running on
 if [  -e /proc/version ]; then
