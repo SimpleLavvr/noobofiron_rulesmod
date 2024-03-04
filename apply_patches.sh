@@ -6,8 +6,10 @@ ORIGINAL_FOLDER="original/"
 REBUILD="no"
 MOD_FOLDER="mod/"
 SOURCES_FOLDER="sources/"
+DEBUG_SCRIPT="no"
 I_KNOW_WHAT_IM_DOING="no" #Not documented because if you are here you probably know what you're doing
-RUNNING_ON_LINUX="yes" # may be useful for later? idk do some unix2dos
+RUNNING_ON_PURE_UNIX="yes" # may be useful for later? idk do some unix2dos
+RUNNING_ON_POSIX="yes" # may be useful too?! maybe git bash sheneinigans on windows?!
 # List of commands to check
 commands=("dos2unix" "unix2dos" "patch" "diff" "git" "find")
 
@@ -30,14 +32,12 @@ if [ -n "$missing_commands" ]; then
     exit 1
 fi
 
-if [[ $(grep Microsoft /proc/version) ]]; then
-    echo "Running on WSL."
-    RUNNING_ON_LINUX="no"
-fi
+
+
 
 # Usage information
 if [ "$#" -lt 1 ]; then
-    echo "Usage: $0 <create|apply|clear> [--no-overwrite-mod] [--overwrite-sources] [--original-folder <path>] [--mod-folder <path>] [--sources-folder <path>]"
+    echo "Usage: $0 <create|apply|clear> [--no-overwrite-mod] [--overwrite-sources] [--original-folder <path>] [--mod-folder <path>] [--sources-folder <path>] [--rebuild]"
     exit 1
 fi
 
@@ -70,6 +70,11 @@ while (( "$#" )); do
       OVERWRITE_SOURCES="yes"
       shift
       ;;
+    --debug-script)
+      echo "Debug enabled."
+      DEBUG_SCRIPT="yes"
+      shift
+      ;;
     --original-folder)
       ORIGINAL_FOLDER=$2
       shift 2
@@ -88,6 +93,25 @@ while (( "$#" )); do
       ;;
   esac
 done
+
+echo_debug() {
+    if [ "$DEBUG_SCRIPT" = "yes" ]; then
+        echo "DEBUG : $1"
+    fi
+}
+
+#Check what am i running on
+if [  -e /proc/version ]; then
+    RUNNING_ON_POSIX="yes"
+    if [[ ! $(grep Microsoft /proc/version) ]]; then
+        RUNNING_ON_PURE_UNIX="yes"
+        echo_debug "Running on pure Unix"
+    else
+        echo_debug "Running on WSL"
+    fi
+else
+    echo_debug "Running on a non-posix system."
+fi
 
 create_patches_and_sources() {
     if [ "$REBUILD" = "yes" ]; then
@@ -121,12 +145,12 @@ create_patches_and_sources() {
                 if [ -n "$patch_content" ]; then
                     if [ "$OVERWRITE_SOURCES" = "yes" ] || [ ! -e "$sources_file" ]; then
                         echo "$patch_content" > "$sources_file"
-                        echo "Patch created for: $relative_path"
+                        echo_debug "Patch created for: $relative_path"
                     else
-                        echo "Skipping existing patch file due to no overwrite setting: $sources_file"
+                        echo_debug "Skipping existing patch file due to no overwrite setting: $sources_file"
                     fi
                 else
-                    echo "No differences found, skipping patch creation for: $relative_path"
+                    echo_debug "No differences found, skipping patch creation for: $relative_path"
                 fi
                 
                 rm "$temp_original_file" "$temp_mod_file"
@@ -151,12 +175,12 @@ handle_non_existing_or_different_original() {
         if [ "$OVERWRITE_SOURCES" = "yes" ] || [ ! -e "$new_sources_file_path" ]; then
             mkdir -p "$(dirname "$new_sources_file_path")"
             cp "$mod_file" "$new_sources_file_path"
-            echo "File copied to sources (binary or no original file): $relative_path"
+            echo_debug "File copied to sources (binary or no original file): $relative_path"
         else
-            echo "Skipping copying file to sources due to no overwrite setting: $relative_path"
+            echo_debug "Skipping copying file to sources due to no overwrite setting: $relative_path"
         fi
     else
-        echo "File unchanged, not copying to sources: $relative_path"
+        echo_debug "File unchanged, not copying to sources: $relative_path"
     fi
 }
 apply_patches_and_update_mod() {
@@ -165,7 +189,7 @@ apply_patches_and_update_mod() {
             echo "Rebuilding: clearing mod folder..."
             find "${MOD_FOLDER}" -type f -not -name '.ignoreme' -delete
         else
-            echo "Error: --rebuild option requires --no-overwrite-mod not to be set for apply mode."
+            echo "ERROR: --rebuild option requires --no-overwrite-mod not to be set for apply mode."
             exit 1
         fi
     fi
@@ -182,7 +206,7 @@ apply_patches_and_update_mod() {
 
             # Check if the original file exists
             if [ ! -e "$original_file" ]; then
-                echo "Original file missing for patch, cannot apply: ${relative_path_no_patch}"
+                echo "WARNING : Original file missing for patch, cannot apply: ${relative_path_no_patch}"
                 continue
             fi
 
@@ -192,7 +216,7 @@ apply_patches_and_update_mod() {
             dos2unix "$temp_original_file" &>/dev/null
 
             if [ -e "$mod_file" ] && [ "$OVERWRITE_MOD" != "yes" ]; then
-                echo "Warning: Mod file $mod_file exists and will not be overwritten. Skipping patch application."
+                echo_debug "Mod file $mod_file exists and will not be overwritten. Skipping patch application."
                 rm "$temp_original_file"  # Clean up the temporary file
                 continue
             fi
@@ -200,10 +224,10 @@ apply_patches_and_update_mod() {
             mkdir -p "$(dirname "$mod_file")"
             # Apply the patch using the temporary converted original file
             patch -o "$mod_file" "$temp_original_file" "$sources_file" > /dev/null
-            echo "Applied patch to create: $mod_file"
+            echo_debug "Applied patch to create: $mod_file"
             if [[ "$mod_file" == *.csv ]]; then
-                unix2dos "$mod_file" > /dev/null
-                echo "Converted $mod_file to DOS format."
+                unix2dos -q "$mod_file"
+                echo_debug "Converted $mod_file to DOS format."
             fi
 
             rm "$temp_original_file"  # Clean up the temporary file
@@ -213,20 +237,20 @@ apply_patches_and_update_mod() {
                 # Check if the original file is a text file
                 isfile=$(file "$original_file" | grep -q 'text')
                 if [ $isfile ]; then
-                    echo "Error: A file with the same name as the non-patch file $relative_path exists in the original folder. Use a patch file instead of a whole file."
+                    echo "ERROR: A file with the same name as the non-patch file $relative_path exists in the original folder. Use a patch file instead of a whole file."
                     exit 1
                 else
-                    echo "Info : Overriding binary file $relative_path from sources"
+                    echo_debug "Overriding binary file $relative_path from sources"
                 fi
             fi
             if [ -e "$mod_file" ] && [ "$OVERWRITE_MOD" != "yes" ]; then
-                echo "Warning: Mod file $mod_file exists and will not be overwritten. Skipping copy."
+                echo "WARNING : Mod file $mod_file exists and will not be overwritten. Skipping copy."
                 continue
             fi
 
             mkdir -p "$(dirname "$mod_file")"
             cp "$sources_file" "$mod_file"
-            echo "Copied file to mod: $mod_file"
+            echo_debug "Copied file to mod: $mod_file"
         fi
     done
 }
@@ -235,7 +259,7 @@ apply_patches_and_update_mod() {
 clear_mod_folder() {
     if [ "$MOD_FOLDER" != "mod/" ];then
         if [ "$I_KNOW_WHAT_IM_DOING" != "yes" ];then
-        echo "Error : You should keep the clear command inside the repo, not in your own mod folder"
+        echo "ERROR : You should keep the clear command inside the repo, not in your own mod folder"
         exit 1
         fi
     fi
@@ -246,8 +270,10 @@ clear_mod_folder() {
     # After cleanup, some directories might become empty, ensure .ignoreme is placed
     find "${MOD_FOLDER}" -type d -empty -exec touch {}/.ignoreme \;
     
-    echo "Mod folder cleared, and .ignoreme files added in empty directories."
+    echo "INFO : Mod folder cleared, and .ignoreme files added in empty directories."
 }
+
+
 
 # Main operation
 case "$MODE" in
