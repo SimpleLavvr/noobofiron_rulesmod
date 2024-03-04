@@ -3,6 +3,7 @@
 OVERWRITE_MOD="yes"  # Change default to yes
 OVERWRITE_SOURCES="no"  # Keep default as no
 ORIGINAL_FOLDER="original/"
+REBUILD="no"
 MOD_FOLDER="mod/"
 SOURCES_FOLDER="sources/"
 I_KNOW_WHAT_IM_DOING="no" #Not documented because if you are here you probably know what you're doing
@@ -61,6 +62,10 @@ while (( "$#" )); do
       OVERWRITE_MOD="yes"
       shift
       ;;
+    --rebuild)
+      REBUILD="yes"
+      shift
+      ;;
     --overwrite-sources)
       OVERWRITE_SOURCES="yes"
       shift
@@ -85,6 +90,15 @@ while (( "$#" )); do
 done
 
 create_patches_and_sources() {
+    if [ "$REBUILD" = "yes" ]; then
+        if [ "$I_KNOW_WHAT_IM_DOING" = "yes" ]; then
+            echo "WARNING WARNING WARNING : Rebuilding: clearing sources folder..."
+            find "${SOURCES_FOLDER}" -type f -not -name '.ignoreme' -delete
+        else
+            echo "Don't do rebuild on create sources unless you know what to do..."
+            exit 1
+        fi
+    fi
     echo "Creating patches and updating sources..."
     find "${MOD_FOLDER}" -type f -not -name ".*" | while read -r mod_file; do
         relative_path="${mod_file#${MOD_FOLDER}}"
@@ -146,6 +160,15 @@ handle_non_existing_or_different_original() {
     fi
 }
 apply_patches_and_update_mod() {
+    if [ "$REBUILD" = "yes" ]; then
+        if [ "$OVERWRITE_MOD" = "yes" ]; then
+            echo "Rebuilding: clearing mod folder..."
+            find "${MOD_FOLDER}" -type f -not -name '.ignoreme' -delete
+        else
+            echo "Error: --rebuild option requires --no-overwrite-mod not to be set for apply mode."
+            exit 1
+        fi
+    fi
     echo "Applying patches and updating mod from sources..."
     find "${SOURCES_FOLDER}" -type f -not -name ".*" | while read -r sources_file; do
         relative_path="${sources_file#${SOURCES_FOLDER}}"
