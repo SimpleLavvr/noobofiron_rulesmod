@@ -3,20 +3,20 @@
 ---
 > 	
 > 		
-1445c1446
+1454c1455
 < 			ship_hull_submarine_4
 ---
 > 			ship_hull_submarine_4fixed
-1446a1448
+1455a1457
 > 		
-1485,1488c1487
+1494,1497c1496
 < 		path = {
 < 			leads_to_tech = improved_submarine_snorkel
 < 			research_cost_coeff = 1
 < 		}
 ---
 > 
-1528,1572c1527
+1537,1581c1536
 < 	improved_submarine_snorkel = {
 < 
 < 		enable_equipment_modules = {

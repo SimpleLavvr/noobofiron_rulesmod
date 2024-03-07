@@ -2,12 +2,12 @@
 < 			aircraft_construction = 1
 ---
 > 			aircraft_construction = 1F
-334,337d333
+340,343d339
 < set_autonomy = {
 < 	target = PHI
 < 	autonomous_state =  autonomy_puppet
 < }
-1296a1293,1298
+1302a1299,1304
 > 
 > #Noobs of Iron stuff
 > add_ideas = {

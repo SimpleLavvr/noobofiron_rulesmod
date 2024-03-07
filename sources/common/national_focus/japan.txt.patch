@@ -23,7 +23,7 @@
 < 		x = 8
 ---
 > 		x = 0
-2692,2707c2677,2678
+2704,2719c2689,2690
 < 			if = {
 < 				limit = {
 < 					has_game_rule = {
@@ -43,7 +43,7 @@
 ---
 >             always = no
 >         }
-3576,3592c3547,3548
+3588,3604c3559,3560
 < 			has_dlc = "Waking the Tiger"
 < 			if = {
 < 				limit = {
@@ -64,9 +64,9 @@
 ---
 >             always = no
 >         }
-4361c4317
+4373c4329
 < 		x = 6
 ---
 > 		x = 11
-4363d4318
+4375d4330
 < 		relative_position_id = JAP_strengthen_civilian_government

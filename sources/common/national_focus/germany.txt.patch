@@ -42,74 +42,74 @@
 ---
 > 		prerequisite = { focus = GER_kdf_wagen }
 > 		x = 0
-2590,2591c2595
+2592,2593c2597
 < 		prerequisite = { focus = GER_air_innovation_2 }
 < 		x = 2
 ---
 > 		x = 1
-2621,2622c2625,2626
+2623,2624c2627,2628
 < 		prerequisite = { focus = GER_rocketry_focus }
 < 		x = 0
 ---
 > 		prerequisite = { focus = GER_extra_tech_slot }
 > 		x = -1
-2624c2628
+2626c2630
 < 		relative_position_id = GER_rocketry_focus
 ---
 > 		relative_position_id = GER_extra_tech_slot
-2669,2670c2673,2674
+2671,2672c2675,2676
 < 		x = 1
 < 		y = 3
 ---
 > 		x = 2
 > 		y = 2
-2672c2676
+2674c2678
 < 		cost = 10
 ---
 > 		cost = 5
-2698a2703,2705
+2700a2705,2707
 > 		allow_branch = {
 > 			always = no
 > 		}
-3014,3015c3021,3022
+3016,3017c3023,3024
 < 		prerequisite = { focus = GER_rhineland  }
 < 		x = -3
 ---
 > 		prerequisite = { focus = GER_mol_rib_pact }
 > 		x = 0
-3017,3018c3024,3025
+3019,3020c3026,3027
 < 		relative_position_id = GER_rhineland
 < 		cost = 10
 ---
 > 		relative_position_id = GER_mol_rib_pact
 > 		cost = 5
-3077a3085,3087
+3079a3087,3089
 > 		allow_branch = {
 > 			always = no
 > 		}
-3130a3141
+3132a3143
 > 			date > 1940.3.1
-3132,3133c3143,3144
+3134,3135c3145,3146
 < 		x = 1
 < 		y = 4
 ---
 > 		x = 0
 > 		y = 1
-3135c3146
+3137c3148
 < 		cost = 10
 ---
 > 		cost = 5
-3219d3229
+3221d3231
 < 		prerequisite = { focus = GER_italy_ally }
-3245c3255
+3247c3257
 < 		y = 2
 ---
 > 		y = 1
-3546c3556
+3548c3558
 < 		x = 1
 ---
 > 		x = -4
-3582a3593,3612
+3584a3595,3614
 > 	
 > 	focus = {
 > 		id = GER_NOI_endsieg
@@ -130,35 +130,35 @@
 > 
 > 		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_INDUSTRY }
 > 	}
-3587a3618
+3589a3620
 > 		prerequisite = { focus = GER_mol_rib_pact }
-3987a4019,4021
+3989a4021,4023
 > 		allow_branch = {
 >             always = no
 >         }
-4095a4130
+4097a4132
 > 			date > 1937.10.20
-4119c4154
+4121c4156
 < 		x = -1
 ---
 > 		x = 1
-4415,4416c4450,4451
+4417,4418c4452,4453
 < 		y = 3
 < 		relative_position_id = GER_czech_friend
 ---
 > 		y = 1
 > 		relative_position_id = GER_end_of_czechoslovakia
-4644a4680,4682
+4646a4682,4684
 > 		allow_branch = {
 > 			always = no
 > 		}
-5351c5389,5391
+5353c5391,5393
 < 
 ---
 > 		allow_branch = {
 > 			always = no
 > 		}
-6240,6251c6280
+6242,6253c6282
 < 			has_dlc = "Waking the Tiger"
 < 			if = {
 < 				limit = {
@@ -173,7 +173,7 @@
 < 			}
 ---
 > 			always = no
-6255,6256c6284,6288
+6257,6258c6286,6290
 < 			is_subject = no
 < 			has_government = fascism
 ---
@@ -182,11 +182,11 @@
 > 					is_subject = yes
 > 				}
 > 			
-6298c6330
+6300c6332
 < 			factor = 7
 ---
 > 			factor = 0
-6382,6396c6414
+6384,6398c6416
 < 			has_dlc = "Waking the Tiger"
 < 			if = {
 < 				limit = {
@@ -204,7 +204,7 @@
 < 			}
 ---
 > 			always = no
-6449,6460c6467
+6451,6462c6469
 < 			has_dlc = "Waking the Tiger"
 < 			if = {
 < 				limit = {
@@ -219,11 +219,11 @@
 < 			}
 ---
 > 			always = no
-7797a7805,7807
+7799a7807,7809
 > 		allow_branch = {
 > 			always = no
 > 		}
-8222,8236c8232
+8224,8238c8234
 < 			has_dlc = "Waking the Tiger"
 < 			if = {
 < 				limit = {
