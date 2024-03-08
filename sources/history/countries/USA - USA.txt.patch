@@ -1,7 +1,3 @@
-26c26
-< 			aircraft_construction = 1
----
-> 			aircraft_construction = 1F
 340,343d339
 < set_autonomy = {
 < 	target = PHI
