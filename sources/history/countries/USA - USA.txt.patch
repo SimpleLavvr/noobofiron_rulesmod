@@ -1,8 +1,4 @@
-26c26
-< 			aircraft_construction = 1
----
-> 			aircraft_construction = 1F
-334,337d333
+340,343d339
 < set_autonomy = {
 < 	target = PHI
 < 	autonomous_state =  autonomy_puppet
