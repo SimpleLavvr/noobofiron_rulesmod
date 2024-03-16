@@ -1,4 +1,4 @@
-version="0.2"
+version="0.3"
 tags={
 	"Events"
 	"Gameplay"
@@ -7,5 +7,5 @@ tags={
 }
 picture = "thumbnail.png"
 name="NOIM"
-supported_version="1.13.7"
+supported_version="1.14.*"
 remote_file_id="3167289368"
