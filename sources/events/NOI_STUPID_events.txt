@@ -96,3 +96,43 @@ country_event = {
         name = noi_stupid.4.a
     }
 }
+
+#Bomb baloons, Japan side
+country_event = {
+    id = noi_stupid.5
+    title = noi_stupid.5.t
+    desc = noi_stupid.5.d
+    minor_flavor = yes
+    picture = GFX_report_event_generic_factory
+    is_triggered_only = yes
+    
+    option = {
+        name = noi_stupid.5.a
+    }
+}
+
+#Bomb baloons, USA side
+country_event = {
+    id = noi_stupid.6
+    title = noi_stupid.6.t
+    desc = noi_stupid.6.d
+    minor_flavor = yes
+    picture = GFX_report_event_FIN_helsinki_bombed
+    is_triggered_only = yes
+    
+    option = {
+        name = noi_stupid.6.a
+        random_list = {
+            10 = {
+                add_manpower = -1
+            }
+            10 = {
+                add_manpower = -2
+            }
+            10 = {
+                add_manpower = -3
+            }
+           
+        }
+    }
+}

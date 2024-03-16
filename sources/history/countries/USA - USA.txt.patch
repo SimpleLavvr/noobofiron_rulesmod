@@ -3,10 +3,10 @@
 < 	target = PHI
 < 	autonomous_state =  autonomy_puppet
 < }
-1302a1299,1304
-> 
+1303a1300,1305
 > #Noobs of Iron stuff
 > add_ideas = {
 >     USA_NOI_enforced_neutrality
 > }
 > give_guarantee = PHI
+> 

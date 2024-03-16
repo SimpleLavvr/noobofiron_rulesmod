@@ -139,7 +139,7 @@ create_patches_and_sources() {
                 cp "$mod_file" "$temp_mod_file"
                 dos2unix "$temp_original_file" &>/dev/null
                 dos2unix "$temp_mod_file" &>/dev/null
-                
+                echo_debug "Treating file to build patch : $relative_path"
                 patch_content=$(diff --minimal "$temp_original_file" "$temp_mod_file")
                 
                 if [ -n "$patch_content" ]; then

@@ -29,23 +29,37 @@
 > 			add_stability = -0.05
 260a250
 > 		add_stability = -0.05
-457a448,451
+340a331,334
+> 		
+> 		allow_branch = {
+> 			always = no
+> 		}
+379c373,374
+< 		prerequisite = { focus = USA_liberty_for_the_philippines }
+---
+> 		prerequisite = { focus = USA_democratic_socialism }
+> 		prerequisite = { focus = USA_full_desegregation }
+388c383
+< 
+---
+> 			has_government = communism
+457a453,456
 > 		
 > 				allow_branch = {
 >             always = no
 >         }
-801a796,799
+801a801,804
 > 		
 > 				allow_branch = {
 >             always = no
 >         }
-2922c2920
+2922c2925
 < 		x = 18
 ---
 > 		x = 10
-3099a3098
+3099a3103
 > 		add_stability = 0.10
-3226,3238c3225,3226
+3226,3238c3230,3231
 < 			has_dlc = "Man the Guns"
 < 			if = {
 < 				limit = {
@@ -62,11 +76,11 @@
 ---
 >             always = no
 >         }
-4655c4643
+4655c4648
 < 		x = 42
 ---
 > 		x = 20
-4665c4653
+4665c4658
 < 			x = -17
 ---
 > 			x = -2

@@ -30,3 +30,11 @@
   CHUNKY_democratic_ADJ:0 "Chunky"
   CHUNKY_neutrality_ADJ:0 "Chunky"
   CHUNKY_communism_ADJ:0 "Chunky"
+
+  noi_stupid.5.t: "Bombing campaign successful !"
+  noi_stupid.5.d: "The bomb baloons have been manufactured and sent to the USA !"
+  noi_stupid.5.a: "Glory to the emperor ! Nihon shall rule the world!"
+  
+  noi_stupid.6.t: "Destroyed building in the west coast"
+  noi_stupid.6.d: "For a reason that has yet to be discovered, a random building has blown up in the West coast. It seems somehow a bomb has hit it?"
+  noi_stupid.6.a: "Must've been the wind..."

@@ -1,0 +1,32 @@
+NOI_JAP_tora_tora_tora = {
+    noi_stupid_bomb_baloons_decision = {
+
+		icon = oppression
+		priority = 10
+		visible = {
+            has_war_with = USA
+        }
+
+		fire_only_once = no
+
+		modifier = {
+			industrial_capacity_factory = -0.01
+		}
+
+		days_remove = 5
+		days_re_enable = 15
+
+		cost = 5
+
+		remove_effect = {
+            country_event = noi_stupid.5
+            
+            USA = {
+                country_event = noi_stupid.6
+            }
+
+		}
+
+	}
+
+}
