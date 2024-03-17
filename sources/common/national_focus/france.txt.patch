@@ -1,0 +1,97 @@
+1889a1890,1892
+> 		allow_branch = {
+> 			always = no
+> 		}		
+5084,5096c5087
+< 			has_dlc = "La Resistance"
+< 			if = {
+< 				limit = {
+< 					has_game_rule = {
+< 						rule = obsolete_focus_branches_visibility
+< 						option = HIDE
+< 					}
+< 				}
+< 				NOT = {
+< 					has_completed_focus = FRA_form_the_popular_front
+< 					has_completed_focus = FRA_review_foreign_policy
+< 				}
+< 			}
+---
+> 			always = no
+5152,5163c5143
+< 			has_dlc = "La Resistance"
+< 			if = {
+< 				limit = {
+< 					has_game_rule = {
+< 						rule = obsolete_focus_branches_visibility
+< 						option = HIDE
+< 					}
+< 				}
+< 				NOT = { has_completed_focus = FRA_form_the_popular_front }
+< 				NOT = { has_completed_focus = FRA_review_foreign_policy }
+< 				NOT = {	has_completed_focus = FRA_the_council_of_rambouillet }
+< 			}
+---
+> 			always = no
+6418,6430c6398,6399
+< 			NOT = { has_dlc = "La Resistance" }
+< 			if = {
+< 				limit = {
+< 					has_game_rule = {
+< 						rule = obsolete_focus_branches_visibility
+< 						option = HIDE
+< 					}
+< 				}
+< 				NOT = {
+< 					has_completed_focus = FRA_form_the_popular_front
+< 				}
+< 			}
+< 		} 
+---
+> 			always = no
+> 		}
+6874,6885c6843
+< 			has_dlc = "La Resistance"
+< 			if = {
+< 				limit = {
+< 					has_game_rule = {
+< 						rule = obsolete_focus_branches_visibility
+< 						option = HIDE
+< 					}
+< 				}
+< 				NOT = {	has_completed_focus = FRA_form_the_popular_front }
+< 				NOT = { has_completed_focus = FRA_review_foreign_policy }
+< 				NOT = {	has_completed_focus = FRA_national_regeneration }
+< 			}
+---
+> 			always = no
+8062c8020
+< 		x = 70
+---
+> 		x = 50
+8097c8055
+< 			x = -27
+---
+> 			x = -3
+8109c8067
+< 			x = -8
+---
+> 			x = -12
+8145c8103
+< 			x = -3
+---
+> 			x = -5
+8154,8166d8111
+< 				has_completed_focus = FRA_review_foreign_policy
+< 			}
+< 		}
+< 		offset = {
+< 			x = -20
+< 			y = 0
+< 			trigger = {
+< 				has_dlc = "La Resistance"
+< 				has_game_rule = {
+< 					rule = obsolete_focus_branches_visibility
+< 					option = HIDE
+< 				}
+< 				has_completed_focus = FRA_revive_the_national_bloc
