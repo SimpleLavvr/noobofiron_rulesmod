@@ -1,29 +1,6 @@
 ideas = {
 
     country = {
-    #Steiner will win the war for sure
-		idea_GER_NOI_endsieg_i = {
-            picture = GFX_idea_GER_NOI_endsieg_i
-            allowed = { 
-			tag = GER
-			}
-			
-			available = { }
-			
-			cancel = { }
-			
-			allowed_civil_war = {
-				always = yes
-			}
-			
-			modifier = {
-				army_defence_factor = 0.4
-				army_attack_factor = 0.3
-				army_org_regain = 0.1
-				max_dig_in = 10
-			}
-			
-        }
 	
 	#Operation "Summer party in Ukraine" Barbarossa
 		GER_NOI_summeroffensive_i = {
@@ -237,5 +214,17 @@ ideas = {
 				mobilization_speed = 0.75
 			}
 	    }
+
+		GER_NOI_submarine_wolfpack = {
+    picture = generic_navy_submarines
+    cost = 150
+
+    allowed = { tag = GER }
+    available = { always = yes }
+
+    modifier = {
+        navy_max_range_factor = 0.3
     }
+}
+}
 }

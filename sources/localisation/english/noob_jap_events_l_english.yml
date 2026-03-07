@@ -9,3 +9,16 @@
   noi_jap.3.t: "Japan Seizes Indochina"
   noi_jap.3.d: "Japanese forces are positioned along the borders of our colony in Indochina, and they have seized total access to our bases and facilities!"
   noi_jap.3.a: "Sacrebleu !"
+
+  noi_jap.4.t: "Setting our goals"
+  noi_jap.4.d: "We can either focus India or focus on securing the rubber colonies in Southeast Asia."
+  noi_jap.4.a: "Focus on India"
+  noi_jap.4.b: "Focus on rubber colonies"
+
+  noi_jap.6.t: "War Exhaustion"
+  noi_jap.6.d: "The war has taken its toll on our nation. Our resources are stretched thin and our military is overextended."
+  noi_jap.6.a: "We must regroup and reorganize our forces"
+
+  noi_jap.7.t: "Our preparation is complete"
+  noi_jap.7.d: "Our military is now fully prepared for the war ahead. We are ready to strike at our enemies with full force."
+  noi_jap.7.a: "Time to strike!"

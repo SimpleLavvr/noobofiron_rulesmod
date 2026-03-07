@@ -8,10 +8,12 @@
 ---
 > 			x = 4800
 > 			y = 1500
-127c127
+126,127c126,127
+< 			x = 4400
 < 			y = 700
 ---
-> 			y = 1100
+> 			x = 3400
+> 			y = 1300
 138,139c138,139
 < 			x = 6000
 < 			y = 700
@@ -101,37 +103,45 @@
 < 			}
 ---
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
+7101c7072
+< 		x = 70
+---
+> 		x = 60
 7406a7378,7382
 > 		allow_branch = {
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
 > 		}
 > 
 > 
-12133c12109
+11534a11511
+> 
+11537a11515
+> 		    declare_war_on = { target = CHI }
+12133c12111
 < 					amount = 8
 ---
 > 					amount = 96
-12139c12115
+12139c12117
 < 					amount = 12
 ---
 > 					amount = 144
-12143c12119
+12143c12121
 < 					amount = 8
 ---
 > 					amount = 96
-12149c12125
+12149c12127
 < 					amount = 8
 ---
 > 					amount = 96
-12155c12131
+12155c12133
 < 					amount = 12
 ---
 > 					amount = 144
-12161c12137
+12161c12139
 < 					amount = 10
 ---
 > 					amount = 120
-12357,12416d12332
+12357,12416d12334
 < 		id = JAP_ally_the_dragon_king
 < 		icon = GFX_focus_JAP_ally_the_dragon_king
 < 		mutually_exclusive = { focus = JAP_claim_the_raven_crown }
@@ -192,12 +202,12 @@
 < 	}
 < 
 < 	focus = {
-12419,12420c12335
+12419,12420c12337
 < 		mutually_exclusive = { focus = JAP_ally_the_dragon_king }
 < 		x = 1
 ---
 > 		x = 0
-12481,12539d12395
+12481,12539d12397
 < 	focus = {
 < 		id = JAP_ally_the_gorkhas
 < 		icon = GFX_focus_JAP_ally_the_gorkhas
@@ -257,13 +267,13 @@
 < 			
 < 		}
 < 	}
-12544d12399
+12544d12401
 < 		mutually_exclusive = { focus = JAP_ally_the_gorkhas }
-12549c12404
+12549c12406
 < 		prerequisite = { focus = JAP_claim_the_raven_crown focus = JAP_ally_the_dragon_king }
 ---
 > 		prerequisite = { focus = JAP_claim_the_raven_crown }
-12607,12666d12461
+12607,12666d12463
 < 		id = JAP_ally_afghanistan
 < 		icon = GFX_focus_JAP_ally_afghanistan
 < 		mutually_exclusive = { focus = JAP_best_the_graveyard }
@@ -324,25 +334,49 @@
 < 	}
 < 
 < 	focus = {
-12669d12463
+12669d12465
 < 		mutually_exclusive = { focus = JAP_ally_afghanistan }
-12674c12468
+12674c12470
 < 		prerequisite = { focus = JAP_claim_the_scripech focus = JAP_ally_the_gorkhas }
 ---
 > 		prerequisite = { focus = JAP_claim_the_scripech }
-13413c13207
+12738,12740c12534,12536
+< 		x = -21
+< 		y = 1
+< 		relative_position_id = JAP_sea_purge_the_kodoha_faction
+---
+> 		x = 18
+> 		y = 2
+> 		relative_position_id = JAP_the_imperial_defense_plan
+12756c12552
+< 		prerequisite = { focus = JAP_sea_purge_the_kodoha_faction focus = JAP_revere_the_emperor_destroy_the_traitors }
+---
+> 		prerequisite = { focus = JAP_NOI_late_war focus = JAP_NOI_early_war }
+13413c13209
 < 					amount = 12
 ---
 > 					amount = 144
-13486c13280
+13486c13282
 < 					amount = 6
 ---
 > 					amount = 72
-15754c15548
+14503,14505c14299,14301
+< 		x = -28
+< 		y = 1
+< 		relative_position_id = JAP_sea_purge_the_kodoha_faction
+---
+> 		x = 26
+> 		y = 2
+> 		relative_position_id = JAP_the_imperial_defense_plan
+14521c14317
+< 		prerequisite = { focus = JAP_sea_purge_the_kodoha_faction focus = JAP_revere_the_emperor_destroy_the_traitors }
+---
+> 		prerequisite = { focus = JAP_NOI_late_war focus = JAP_NOI_early_war }
+15754c15550
 < 					amount = 8
 ---
 > 					amount = 96
-16476,16489c16270
+16476,16489c16272
 < 			has_dlc = "No Compromise, No Surrender"
 < 			IF = {
 < 				limit = {
@@ -359,7 +393,7 @@
 < 			}
 ---
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
-16535,16548c16316
+16535,16548c16318
 < 			has_dlc = "No Compromise, No Surrender"
 < 			IF = {
 < 				limit = {
@@ -376,12 +410,12 @@
 < 			}
 ---
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
-17262a17031,17034
+17262a17033,17036
 > 		allow_branch = {
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
 > 		}
 > 
-17374,17387c17146
+17374,17387c17148
 < 			has_dlc = "No Compromise, No Surrender"
 < 			IF = {
 < 				limit = {
@@ -398,43 +432,43 @@
 < 			}
 ---
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
-21094c20853
+21094c20855
 < 					amount = 12
 ---
 > 					amount = 144
-21167c20926
+21167c20928
 < 					amount = 6
 ---
 > 					amount = 72
-21226c20985
+21226c20987
 < 					amount = 8
 ---
 > 					amount = 96
-21243c21002
+21243c21004
 < 					amount = 8
 ---
 > 					amount = 96
-21249c21008
+21249c21010
 < 					amount = 12
 ---
 > 					amount = 144
-21253c21012
+21253c21014
 < 					amount = 8
 ---
 > 					amount = 96
-21259c21018
+21259c21020
 < 					amount = 8
 ---
 > 					amount = 96
-21265c21024
+21265c21026
 < 					amount = 12
 ---
 > 					amount = 144
-21271c21030
+21271c21032
 < 					amount = 10
 ---
 > 					amount = 120
-22002,22015c21761
+22002,22015c21763
 < 			has_dlc = "No Compromise, No Surrender"
 < 			IF = {
 < 				limit = {
@@ -451,51 +485,167 @@
 < 			}
 ---
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
-24627c24373
+24627c24375
 < 					amount = 25
 ---
 > 					amount = 300
-26504c26250
+26504c26252
 < 				amount > 199
 ---
 > 				amount > 1999
-26512c26258
+26512c26260
 < 				amount > 199 
 ---
 > 				amount > 1999 
-26520c26266
+26520c26268
 < 				amount > 249
 ---
 > 				amount > 2499
-26528c26274
+26528c26276
 < 				amount > 199
 ---
 > 				amount > 1999
-26536c26282
+26536c26284
 < 				amount > 149 
 ---
 > 				amount > 1499 
-26544c26290
+26544c26292
 < 				amount > 299
 ---
 > 				amount > 2999
-26552c26298
+26552c26300
 < 				amount > 199
 ---
 > 				amount > 1999
-27057c26803
+27057c26805
 < 					amount = 4
 ---
 > 					amount = 48
-27061c26807
+27061c26809
 < 					amount = 6
 ---
 > 					amount = 72
-27065c26811
+27065c26813
 < 					amount = 6
 ---
 > 					amount = 72
-30035c29781
+28151a27900,27990
+> 
+> 		focus = {
+> 		id = JAP_NOI_early_war
+> 		icon = GFX_SOV_intervention_in_china_ccp_2d_sov_compatibility
+> 		
+> 		mutually_exclusive = {
+> 			focus = JAP_NOI_late_war
+> 		}
+> 
+> 		prerequisite = { focus = JAP_the_imperial_defense_plan }
+> 
+> 		relative_position_id = JAP_the_imperial_defense_plan
+> 		x = 3
+> 		y = 1
+> 
+> 		cost = 5
+> 
+> 		ai_will_do = {
+> 			factor = 3
+> 		}
+> 
+> 		available = {
+> 			is_subject = no
+> 			date < 1938.6.01
+> 		}
+> 
+> 		bypass = {
+> 			
+> 		}
+> 
+> 		completion_reward = {
+> 			add_ideas = JAP_IDEA_NOI_early_war
+> 			custom_effect_tooltip = NOI_earlywar_tt
+> 			USA = {
+> 				country_event = noi_usa.6
+> 			}
+> 		}
+> 
+> 
+> 
+> 
+> 		cancel_if_invalid = no
+> 		continue_if_invalid = yes
+> 		available_if_capitulated = no
+> 
+> 		search_filters = { FOCUS_FILTER_HISTORICAL FOCUS_FILTER_INDUSTRY }
+> 
+> 	}
+> 
+> 	focus = {
+> 		id = JAP_NOI_late_war
+> 		icon = GFX_focus_AST_war_japan
+> 		
+> 		mutually_exclusive = {
+> 			focus = JAP_NOI_early_war
+> 		}
+> 
+> 		available = {
+> 			is_subject = no
+> 			date > 1938.6.01
+> 		}
+> 
+> 		prerequisite = { focus = JAP_the_imperial_defense_plan }
+> 
+> 		relative_position_id = JAP_the_imperial_defense_plan
+> 		x = -3
+> 		y = 1
+> 
+> 		cost = 5
+> 
+> 		ai_will_do = {
+> 			factor = 3
+> 		}
+> 
+> 		bypass = {
+> 			
+> 		}
+> 
+> 		completion_reward = {
+> 			add_ideas = JAP_IDEA_NOI_late_war
+> 			custom_effect_tooltip = NOI_latewar_tt
+> 		}
+> 
+> 		cancel_if_invalid = no
+> 		continue_if_invalid = yes
+> 		available_if_capitulated = no
+> 
+> 		search_filters = { FOCUS_FILTER_HISTORICAL FOCUS_FILTER_INDUSTRY }
+> 
+> 	}
+> 
+28160c27999
+< 		prerequisite = { focus = JAP_the_imperial_defense_plan }
+---
+> 		prerequisite = { focus = JAP_NOI_late_war focus = JAP_NOI_early_war }
+28164c28003
+< 		y = 1
+---
+> 		y = 2
+29784c29623
+< 		prerequisite = { focus = JAP_the_imperial_defense_plan }
+---
+> 		prerequisite = { focus = JAP_NOI_late_war focus = JAP_NOI_early_war }
+29788c29627
+< 		y = 1
+---
+> 		y = 2
+30035c29874
 < 				    amount = 5
 ---
 > 				    amount = 60
+30967c30806
+< 		prerequisite = { focus = JAP_the_imperial_defense_plan }
+---
+> 		prerequisite = { focus = JAP_NOI_late_war focus = JAP_NOI_early_war }
+30971c30810
+< 		y = 1
+---
+> 		y = 2

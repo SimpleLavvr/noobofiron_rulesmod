@@ -4,3 +4,12 @@
   
   JAP_mainland_fortification: "Fortify Our Home"
   JAP_mainland_fortification_desc: "If our Island falls, the last line of defense will be our beaches. By fortifying our home, we'll be ready to repell any invasion of our soil"
+
+  JAP_NOI_late_war: "Long preparation"
+  JAP_NOI_late_war_desc: "We need to do extensive preparation for a potential war with the great powers of the world. We are not yet ready for such a conflict."
+
+  JAP_NOI_early_war: "Short preparation"
+  JAP_NOI_early_war_desc: "We are ready to go to war quickly and take advantage of the element of surprise."
+
+  NOI_earlywar_tt: "Our armies will be pushed to their limits, and we must act swiftly. This war needs to be a sprint not a marathon (Army will suffer exhaustion on the 01/01/1941)"
+  NOI_latewar_tt: "Our preparation will be extensive, and we must be ready for a prolonged conflict. This war will be a marathon, not a sprint (The preparation will be completed on the 01/01/1941)"

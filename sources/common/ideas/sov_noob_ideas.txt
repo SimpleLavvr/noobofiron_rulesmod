@@ -117,7 +117,7 @@ country = {
             }
             picture = MEX_politicised_army
             modifier = {
-                send_volunteer_factor  = -0.8
+                send_volunteer_factor  = -0.9
             }
         }
     }

@@ -26,7 +26,7 @@ ideas = {
 			removal_cost = -1
 
 			modifier = {
-				non_core_manpower = 0.1 #this gives barely anything, it jumps from having 0.2% of the manpower from non core state to 0.3% so it literally is 0.1 recruitable pop —\_(Z)_/—
+				non_core_manpower = 0.1 #this gives barely anything, it jumps from having 0.2% of the manpower from non core state to 0.3% so it literally is 0.1 recruitable pop ï¿½\_(Z)_/ï¿½
 				required_garrison_factor = -0.1	#overall it gives uk like a bit less than 100k manpower so 10 divs, not the end of the world, u also have to consider this manpower comes from reduced garrisons, when uk ussually just requests morbillion man from puppets for garrison
 				army_defence_factor = 0.05	
 			}

@@ -10,6 +10,10 @@
 < 		air_attack = 0
 ---
 > 		air_attack = 0.2
+35c35
+< 		lend_lease_cost = 1
+---
+> 		lend_lease_cost = 0.3
 38,39c38,39
 < 		resources = {
 < 			steel = 2

@@ -7,8 +7,8 @@ tags={
 }
 picture="thumbnail.png"
 name="NOIM"
-supported_version="1.17.4.*"
+replace_path="gfx/loadingscreens"
+replace_path="localisation/english/loading_tips_l_english.yml"
+replace_path="common/ai_faction_theaters"
+supported_version="1.17.4.1"
 remote_file_id="3167289368"
-replace_path = "gfx/loadingscreens"
-replace_path = "localisation/english/loading_tips_l_english.yml"
-replace_path = "common/ai_faction_theaters"

@@ -1,3 +1,11 @@
 ﻿l_english:
   SIA_NOI_japanese_occupation: "Japanese occupation"
   SIA_NOI_japanese_occupation_desc: "Japan has stationed a significant military force within our borders, which leaves Thai government with little choice when it comes to foreign policy"
+  JAP_IDEA_NOI_late_war: "Long preparation"
+  JAP_IDEA_NOI_late_war_desc: "We need to do extensive preparation for a potential war with the great powers of the world."
+  JAP_IDEA_NOI_early_war: "Fast preparation"
+  JAP_IDEA_NOI_early_war_desc: "A war started early might take our enemies by surprise and give us an advantage in the early stages of conflict."
+  JAP_IDEA_NOI_focus_raj: "Focus on India"
+  JAP_IDEA_NOI_focus_raj_desc: "India is our main target, we need to take them out of the equation in one swift strike"
+  JAP_IDEA_NOI_focus_rubber: "Focus the rubber colonies"
+  JAP_IDEA_NOI_focus_rubber_desc: "We should focus on securing the rubber to cripple our enemies' war effort."

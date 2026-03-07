@@ -6,6 +6,10 @@
 < 		sub_visibility = 25
 ---
 > 		sub_visibility = 24
+87c87
+< 		naval_range = 2000
+---
+> 		naval_range = 800
 89c89
 < 		max_strength = 10
 ---
@@ -24,6 +28,10 @@
 < 		sub_visibility = 22
 ---
 > 		sub_visibility = 21
+147c147
+< 		naval_range = 2500
+---
+> 		naval_range = 1200
 149c149
 < 		max_strength = 20
 ---
@@ -42,6 +50,10 @@
 < 		sub_visibility = 20
 ---
 > 		sub_visibility = 18
+198c198
+< 		naval_range = 3000
+---
+> 		naval_range = 1800
 200c200
 < 		max_strength = 30
 ---
@@ -54,6 +66,10 @@
 > 		build_cost_ic = 610
 > 		resources={
 > 			steel = 24
+247c247
+< 		naval_range = 3500
+---
+> 		naval_range = 2400
 249c249
 < 		max_strength = 35
 ---
