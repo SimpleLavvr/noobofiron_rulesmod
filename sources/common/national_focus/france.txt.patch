@@ -41,7 +41,7 @@
 < 			}
 ---
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
-6797,6809c6779,6780
+6875,6887c6857,6858
 < 			NOT = { has_dlc = "La Resistance" }
 < 			if = {
 < 				limit = {
@@ -58,7 +58,7 @@
 ---
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
 > 		}
-7254,7265c7225
+7332,7343c7303
 < 			has_dlc = "La Resistance"
 < 			if = {
 < 				limit = {
@@ -73,19 +73,19 @@
 < 			}
 ---
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
-8500c8460
+8578c8538
 < 		x = 70
 ---
 > 		x = 50
-8535c8495
+8613c8573
 < 			x = -27
 ---
 > 			x = -3
-8547c8507
+8625c8585
 < 			x = -8
 ---
 > 			x = -12
-8596c8556
+8674c8634
 < 			x = -20
 ---
 > 			x = 0

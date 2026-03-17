@@ -1,5 +1,6 @@
-914a915,919
+914a915
 > 
+946a948,951
 > 		path = {
 > 			leads_to_tech = basic_hybrid_ship_hull_heavy
 > 			research_cost_coeff = 1
@@ -8,30 +9,30 @@
 > 
 1194a1201
 > 
-1343c1350
+1396c1403
 < 			position = {  x = -1 y = 2 }
 ---
 > 			position = {  x = 2 y = 2 }
-1378a1386,1389
+1431a1439,1442
 > 		path = {
 > 			leads_to_tech = improved_ship_hull_escort_carrier
 > 			research_cost_coeff = 1
 > 		}
-1379a1391
+1432a1444
 > 
-1395c1407
+1448c1460
 < 			position = {  x = -1 y = 8 }
 ---
 > 			position = {  x = 2 y = 8 }
-1462c1474
+1515c1527
 < 			position = {  x = -1 y = 14 }
 ---
 > 			position = {  x = 2 y = 14 }
-1509c1521
+1571c1583
 < 			position = {  x = -1 y = 20 }
 ---
 > 			position = {  x = 2 y = 20 }
-1532a1545,1673
+1594a1607,1735
 > ######### ESCORT CARRIERS #################
 > ###################################################################################
 > #     #  #######   #####   #     #
@@ -161,65 +162,65 @@
 > #		special_project_specialization = { specialization_naval }
 > #	}
 > 
-1571c1712
+1633c1774
 < 			position = {  x = -2 y = 2 }
 ---
 > 			position = {  x = 3 y = 2 }
-1585c1726,1727
+1647c1788,1789
 < 
 ---
 > 	
 > 		
-1632c1774
+1694c1836
 < 			position = {  x = -2 y = 8 }
 ---
 > 			position = {  x = 3 y = 8 }
-1681c1823
+1743c1885
 < 			position = {  x = -2 y = 14 }
 ---
 > 			position = {  x = 3 y = 14 }
-1708a1851
+1770a1913
 > 		
-1719c1862
+1790c1933
 < 			position = {  x = -2 y = 20 }
 ---
 > 			position = {  x = 3 y = 20 }
-1748,1751c1891
+1819,1822c1962
 < 		path = {
 < 			leads_to_tech = improved_submarine_snorkel
 < 			research_cost_coeff = 1
 < 		}
 ---
 > 
-1757c1897
+1828c1968
 < 		start_year = 1939
 ---
 > 		start_year = 1940
-1761c1901
+1832c1972
 < 			position = {  x = -1 y = 13 }
 ---
 > 			position = {  x = 4 y = 13 }
-1806c1946
+1877c2017
 < 		start_year = 1943
 ---
 > 		start_year = 1944
-1946c2086
+2017c2157
 < 		start_year = 1939
 ---
 > 		start_year = 1940
-1975c2115
+2046c2186
 < 		start_year = 1943
 ---
 > 		start_year = 1944
-2015c2155
+2086c2226
 < 			position = { x = 0 y = 17 }
 ---
 > 			position = { x = 3 y = 17 }
-2042c2182
+2113c2253
 < 		start_year = 1944
 ---
 > 		start_year = 1945
-2045c2185
+2116c2256
 < 			position = { x = 0 y = 23 }
 ---
 > 			position = { x = 3 y = 23 }

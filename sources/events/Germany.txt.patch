@@ -1,4 +1,4 @@
-2305,2451d2304
+2306,2452d2305
 < 	option = { # Support the Czechs
 < 		name = germany.40.b
 < 		
@@ -146,7 +146,7 @@
 < 			}
 < 		}
 < 	}
-2587,2631d2439
+2588,2632d2440
 < 	option = { # Support the Czechs alone
 < 		name = germany.41.b
 < 
@@ -192,9 +192,9 @@
 < 			}
 < 			add_opinion_modifier = { target = ROOT modifier = offered_support }
 < 		}
-2633d2440
+2634d2441
 < 		add_opinion_modifier = { target = GER modifier = condemn_aggression }
-2635,2771d2441
+2636,2772d2442
 < 		GER = {
 < 			country_event = {
 < 				id = germany.48

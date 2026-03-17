@@ -61,11 +61,11 @@
 < 		resource_trade_cost_bonus_per_factory = 1
 ---
 > 		resource_trade_cost_bonus_per_factory = 12
-17379c17367
+17380c17368
 < 		resource_trade_cost_bonus_per_factory = -2
 ---
 > 		resource_trade_cost_bonus_per_factory = -24
-17389c17377
+17390c17378
 < 		resource_trade_cost_bonus_per_factory = -1
 ---
 > 		resource_trade_cost_bonus_per_factory = -12

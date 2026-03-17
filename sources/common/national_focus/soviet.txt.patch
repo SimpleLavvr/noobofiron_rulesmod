@@ -107,12 +107,12 @@
 > 				idea = SOV_NOI_red_volunteer_army_i
 > 				days = 1095
 > 			}
-15842c15873,15874
+15858c15889,15890
 < 		allow_branch = { 
 ---
 > 		allow_branch = {
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
-18006c18038
+18022c18054
 < 		cost = 10
 ---
 > 		cost = 1
