@@ -18,3 +18,8 @@
 < 							resources = { oil }
 ---
 > 							resources={ oil }
+5735,5738d5734
+< 
+< 			hidden_effect = {
+< 				set_country_flag = KHM_established_the_kashgar_clique_flag
+< 			}

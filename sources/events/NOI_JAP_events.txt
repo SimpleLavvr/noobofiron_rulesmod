@@ -187,12 +187,12 @@ country_event = {
     trigger = {
         tag = JAP
         date < 1941.1.1
-        has_idea = JAP_NOI_early_war
+        has_idea = JAP_IDEA_NOI_early_war
     }
 
     option = {
         name = noi_jap.6.a 
-        remove_ideas = JAP_NOI_early_war
+        remove_ideas = JAP_IDEA_NOI_early_war
     }
 }
 

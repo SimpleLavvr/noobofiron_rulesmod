@@ -11,3 +11,24 @@
 < 
 ---
 > 	SOV_NOI_enduring_spirit
+1635,1640d1637
+< 		optional_assets = {
+< 			{
+< 				icon = "GFX_SOV_submarine_shchuka"
+< 				model = "SOV_submarine_entity"
+< 			}
+< 		}
+1664,1669d1660
+< 		optional_assets = {
+< 			{
+< 				icon = "GFX_SOV_submarine_shchuka"
+< 				model = "SOV_submarine_entity"
+< 			}
+< 		}
+1945,1950d1935
+< 			}
+< 			optional_assets = {
+< 				{
+< 					icon = "GFX_PRC_destroyer_anshan"
+< 					model = "PRC_destroyer_entity"
+< 				}

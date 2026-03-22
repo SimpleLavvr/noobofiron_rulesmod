@@ -92,27 +92,53 @@
 < 		cost = 10
 ---
 > 		cost = 0.2
-15098a15118,15121
+14997,15016c15016,15019
+< 	
+< 			#TASHKENT
+< 			405 = {
+< 				is_controlled_by_ROOT_or_subject = yes 
+< 			}
+< 
+< 			#KYZYL ORDA
+< 			404 = {
+< 				is_controlled_by_ROOT_or_subject = yes 
+< 			}
+< 
+< 			#PAMIR
+< 			732 = {
+< 				is_controlled_by_ROOT_or_subject = yes 
+< 			}
+< 
+< 			#ALMA-ATA
+< 			586 = {
+< 				is_controlled_by_ROOT_or_subject = yes 
+< 			}
+---
+> 			controls_state = 405 #TASHKENT
+> 			controls_state = 404 #KYZYL ORDA
+> 			controls_state = 732 #PAMIR
+> 			controls_state = 586 #ALMA-ATA
+15114a15118,15121
 > 			add_timed_idea = {
 > 				idea = SOV_NOI_red_volunteer_army_i
 > 				days = 1095
 > 			}
-15164a15188,15191
+15180a15188,15191
 > 			add_timed_idea = {
 > 				idea = SOV_NOI_red_volunteer_army_i
 > 				days = 1095
 > 			}
-15233a15261,15264
+15249a15261,15264
 > 			add_timed_idea = {
 > 				idea = SOV_NOI_red_volunteer_army_i
 > 				days = 1095
 > 			}
-15858c15889,15890
+15858c15873,15874
 < 		allow_branch = { 
 ---
 > 		allow_branch = {
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
-18022c18054
+18022c18038
 < 		cost = 10
 ---
 > 		cost = 1

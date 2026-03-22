@@ -26,3 +26,11 @@
 < 				    amount = 50
 ---
 > 				    amount = 600
+6382c6382
+< 				is_subject = no
+---
+> 				is_puppet = no
+6390c6390
+< 				is_subject = no
+---
+> 				is_puppet = no

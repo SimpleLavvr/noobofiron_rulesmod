@@ -5,3 +5,10 @@
 > 			amount = 1500000
 > 			producer = CHI
 > 		}
+941,946d946
+< 		}
+< 		optional_assets = {
+< 			{
+< 				icon = "GFX_CHI_light_cruiser_ning_hai"
+< 				model = "CHI_light_cruiser_entity"
+< 			}

@@ -649,3 +649,7 @@
 < 		y = 1
 ---
 > 		y = 2
+32093c31932
+< 					name = "Zuikaku"
+---
+> 					name = "Zaikaku"

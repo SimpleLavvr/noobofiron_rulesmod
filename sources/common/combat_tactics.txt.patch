@@ -12,3 +12,7 @@
 >             is_fighting_in_terrain = forest
 >             is_fighting_in_terrain = marsh
 >         }
+789c796
+< 	active = no 
+---
+> 	active = yes

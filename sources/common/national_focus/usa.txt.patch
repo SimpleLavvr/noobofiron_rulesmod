@@ -106,3 +106,56 @@
 < 			x = -17
 ---
 > 			x = -2
+6645,6663d6639
+< 
+< 			create_equipment_variant = {
+< 				name = "Essex Class"				
+< 				name_group = USA_CV_HISTORICAL
+< 				type = ship_hull_carrier_2
+< 				allow_without_tech = no
+< 				modules = {
+< 					fixed_ship_deck_slot_1 = ship_deck_space
+< 					fixed_ship_deck_slot_2 = ship_deck_space
+< 					fixed_ship_anti_air_slot = ship_anti_air_2
+< 					fixed_ship_engine_slot = carrier_ship_engine_3
+< 					fixed_ship_secondaries_slot = empty
+< 					front_1_custom_slot = ship_deck_space
+< 					mid_1_custom_slot = ship_armor_carrier_deck
+< 				}
+< 				design_team = mio:USA_newport_news_shipbuilding_organization
+< 			}
+< 
+< 
+6755a6732
+> 			
+6786,6811d6762
+< 
+< 			custom_effect_tooltip = generic_skip_one_line_tt
+< 
+< 			if = {
+< 				limit = {
+< 					has_dlc = "No Compromise, No Surrender"
+< 				}
+< 				create_equipment_variant = {
+< 					name = "Casablanca Class"
+< 					allow_without_tech = no 
+< 					type = ship_hull_escort_carrier
+< 					modules = {
+< 						fixed_ship_engine_slot = carrier_ship_engine_1
+< 						fixed_ship_deck_slot_1 = ship_escort_deck_space
+< 						fixed_ship_deck_slot_2 = ship_escort_deck_space
+< 						front_1_custom_slot = empty
+< 						mid_1_custom_slot = empty
+< 						fixed_ship_radar_slot = empty
+< 						fixed_ship_secondaries_slot = empty
+< 						fixed_ship_armor_slot = empty
+< 						fixed_ship_anti_air_slot = ship_anti_air_1
+< 					}
+< 					design_team = mio:USA_newport_news_shipbuilding_organization
+< 					name_group = USA_CVL_HISTORICAL
+< 				}
+< 			}
+6897c6848
+< 		cost = 5
+---
+> 		cost = 10

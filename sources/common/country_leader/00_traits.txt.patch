@@ -1,3 +1,11 @@
+393c393
+< 				air_range = 0.05
+---
+> 				air_range = 0.01
+396c396
+< 				air_range = 0.05
+---
+> 				air_range = 0.01
 922c922
 < 		army_core_attack_factor = 0.05
 ---
@@ -61,11 +69,16 @@
 < 		resource_trade_cost_bonus_per_factory = 1
 ---
 > 		resource_trade_cost_bonus_per_factory = 12
-17380c17368
+12804,12805c12792
+< 		civilian_intel_to_others = 0.1
+< 		army_intel_to_others = 0.1
+---
+> 		local_intel_to_enemies = 0.1
+17380c17367
 < 		resource_trade_cost_bonus_per_factory = -2
 ---
 > 		resource_trade_cost_bonus_per_factory = -24
-17390c17378
+17390c17377
 < 		resource_trade_cost_bonus_per_factory = -1
 ---
 > 		resource_trade_cost_bonus_per_factory = -12

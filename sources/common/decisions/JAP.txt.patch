@@ -117,3 +117,54 @@
 < 					amount = 12
 ---
 > 					amount = 144
+10484,10486c10461,10463
+< 			
+< 			FROM = {
+< 				effect_tooltip = {
+---
+> 
+> 			effect_tooltip = {
+> 				FROM = {
+10493c10470
+< 				random_core_state = {
+---
+> 				random_state = {
+10495a10473
+> 						is_core_of = FROM
+10498c10476
+< 							size > 1
+---
+> 							size > 2
+10500,10508d10477
+< 						}
+< 					}
+< 					set_state_flag = JAP_state_development_target
+< 					effect_tooltip = {
+< 						add_extra_state_shared_building_slots = 2
+< 						add_building_construction = {
+< 							type = industrial_complex
+< 							level = 2
+< 							instant_build = yes
+10510,10519d10478
+< 						IF = {
+< 							limit = {
+< 								infrastructure < 5
+< 							}
+< 							add_building_construction = {
+< 								type = infrastructure
+< 								level = 1
+< 								instant_build = yes
+< 							}	
+< 						}
+10521c10480,10486
+< 				}
+---
+> 					add_extra_state_shared_building_slots = 2
+> 					add_building_construction = {
+> 						type = industrial_complex
+> 						level = 2
+> 						instant_build = yes
+> 					}	
+> 				}		 
+10523d10487
+< 			

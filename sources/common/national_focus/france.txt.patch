@@ -41,7 +41,157 @@
 < 			}
 ---
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
-6875,6887c6857,6858
+6384,6390c6366,6367
+< 			OR = {
+< 				BEL = {
+< 					is_subject_of = ROOT
+< 				}
+< 				COG = {
+< 					is_subject_of = ROOT
+< 				}
+---
+> 			BEL = {
+> 				is_subject_of = ROOT
+6396,6420c6373,6380
+< 			all_state = {
+< 				OR = {
+< 					state = 295
+< 					state = 538
+< 					state = 718
+< 					state = 769
+< 					state = 768
+< 					state = 890
+< 					state = 888
+< 					state = 889
+< 				}
+< 				CONTROLLER = { 
+< 					OR = { 
+< 						AND = {
+< 							original_tag = BEL 
+< 							is_subject_of = ROOT
+< 						}
+< 						is_subject_of = BEL 
+< 						AND = {
+< 							original_tag = COG 
+< 							is_subject_of = ROOT
+< 						}
+< 					} 
+< 				} 
+< 			}
+---
+> 			295 = { CONTROLLER = { OR = { tag = BEL is_subject_of = BEL } } }
+> 			538 = { CONTROLLER = { OR = { tag = BEL is_subject_of = BEL } } }
+> 			718 = { CONTROLLER = { OR = { tag = BEL is_subject_of = BEL } } }
+> 			769 = { CONTROLLER = { OR = { tag = BEL is_subject_of = BEL } } }
+> 			768 = { CONTROLLER = { OR = { tag = BEL is_subject_of = BEL } } }
+> 			890 = { CONTROLLER = { OR = { tag = BEL is_subject_of = BEL } } }
+> 			888 = { CONTROLLER = { OR = { tag = BEL is_subject_of = BEL } } }
+> 			889 = { CONTROLLER = { OR = { tag = BEL is_subject_of = BEL } } }
+6431,6434c6391
+< 							AND = {
+< 								original_tag = BEL 
+< 								is_subject_of = ROOT
+< 							}
+---
+> 							tag = BEL 
+6436,6439d6392
+< 							AND = {
+< 								original_tag = COG 
+< 								is_subject_of = ROOT
+< 							}
+6448,6451c6401
+< 							AND = {
+< 								original_tag = BEL 
+< 								is_subject_of = ROOT
+< 							}
+---
+> 							tag = BEL 
+6453,6456d6402
+< 							AND = {
+< 								original_tag = COG 
+< 								is_subject_of = ROOT
+< 							}
+6458c6404
+< 					}  
+---
+> 					} 
+6465,6468c6411
+< 							AND = {
+< 								original_tag = BEL 
+< 								is_subject_of = ROOT
+< 							}
+---
+> 							tag = BEL 
+6470,6473d6412
+< 							AND = {
+< 								original_tag = COG 
+< 								is_subject_of = ROOT
+< 							}
+6482,6485c6421
+< 							AND = {
+< 								original_tag = BEL 
+< 								is_subject_of = ROOT
+< 							}
+---
+> 							tag = BEL 
+6487,6490d6422
+< 							AND = {
+< 								original_tag = COG 
+< 								is_subject_of = ROOT
+< 							}
+6499,6502c6431
+< 							AND = {
+< 								original_tag = BEL 
+< 								is_subject_of = ROOT
+< 							}
+---
+> 							tag = BEL 
+6504,6507d6432
+< 							AND = {
+< 								original_tag = COG 
+< 								is_subject_of = ROOT
+< 							}
+6516,6519c6441
+< 							AND = {
+< 								original_tag = BEL 
+< 								is_subject_of = ROOT
+< 							}
+---
+> 							tag = BEL 
+6521,6524d6442
+< 							AND = {
+< 								original_tag = COG 
+< 								is_subject_of = ROOT
+< 							}
+6533,6536c6451
+< 							AND = {
+< 								original_tag = BEL 
+< 								is_subject_of = ROOT
+< 							}
+---
+> 							tag = BEL 
+6538,6541d6452
+< 							AND = {
+< 								original_tag = COG 
+< 								is_subject_of = ROOT
+< 							}
+6550,6553c6461
+< 							AND = {
+< 								original_tag = BEL 
+< 								is_subject_of = ROOT
+< 							}
+---
+> 							tag = BEL 
+6555,6558d6462
+< 							AND = {
+< 								original_tag = COG 
+< 								is_subject_of = ROOT
+< 							}
+6560c6464
+< 					}  
+---
+> 					} 
+6875,6887c6779,6780
 < 			NOT = { has_dlc = "La Resistance" }
 < 			if = {
 < 				limit = {
@@ -58,7 +208,7 @@
 ---
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
 > 		}
-7332,7343c7303
+7332,7343c7225
 < 			has_dlc = "La Resistance"
 < 			if = {
 < 				limit = {
@@ -73,19 +223,19 @@
 < 			}
 ---
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
-8578c8538
+8578c8460
 < 		x = 70
 ---
 > 		x = 50
-8613c8573
+8613c8495
 < 			x = -27
 ---
 > 			x = -3
-8625c8585
+8625c8507
 < 			x = -8
 ---
 > 			x = -12
-8674c8634
+8674c8556
 < 			x = -20
 ---
 > 			x = 0

@@ -3,3 +3,90 @@
 > 	target = SPR
 > 	can_send_volunteers = yes
 > }
+1485,1490d1488
+< 	optional_assets = {
+< 		{
+< 			icon = "GFX_JAP_carrier_hoso"
+< 			model = "JAP_carrier_entity"
+< 		}
+< 	}
+1531,1536d1528
+< 	optional_assets = {
+< 		{
+< 			icon = "GFX_JAP_battleship_nagato"
+< 			model = "JAP_battleship_3_entity"
+< 		}
+< 	}
+1557,1562d1548
+< 	optional_assets = {
+< 		{
+< 			icon = "GFX_JAP_battleship_kongo"
+< 			model = "JAP_battleship_0_entity"
+< 		}
+< 	}
+1565,1592c1551
+< 	name = "Fuso Class"
+< 	type = ship_hull_heavy_1
+< 	design_team = mio:JAP_sasebo_naval_arsenal_organization
+< 	name_group = JAP_BB_HISTORICAL
+< 	parent_version = 0
+< 	modules = {
+< 		fixed_ship_battery_slot = ship_heavy_battery_1
+< 		fixed_ship_anti_air_slot = ship_anti_air_1
+< 		fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+< 		fixed_ship_radar_slot = empty
+< 		fixed_ship_engine_slot = heavy_ship_engine_2
+< 		fixed_ship_secondaries_slot = ship_secondaries_1
+< 		fixed_ship_armor_slot = ship_armor_bb_1
+< 		front_1_custom_slot = ship_heavy_battery_1
+< 		mid_1_custom_slot = ship_secondaries_1
+< 		mid_2_custom_slot = ship_airplane_launcher_1
+< 		rear_1_custom_slot = ship_heavy_battery_1
+< 	}
+< 	optional_assets = {
+< 		{
+< 			icon = "GFX_JAP_battleship_fuso"
+< 			model = "JAP_battleship_1_entity"
+< 		}
+< 	}
+< 	obsolete = yes
+< }
+< create_equipment_variant = {
+< 	name = "Ise Class"
+---
+> 	name = "Fuso/Ise Class"
+1611,1616d1569
+< 	optional_assets = {
+< 		{
+< 			icon = "GFX_JAP_battleship_ise"
+< 			model = "JAP_battleship_2_entity"
+< 		}
+< 	}
+1743,1748d1695
+< 	optional_assets = {
+< 		{
+< 			icon = "GFX_JAP_heavy_cruiser_tone"
+< 			model = "JAP_heavy_cruiser_1_entity"
+< 		}
+< 	}
+1830,1835d1776
+< 	optional_assets = {
+< 		{
+< 			icon = "GFX_JAP_light_cruiser_sendai"
+< 			model = "JAP_light_cruiser_entity"
+< 		}
+< 	}
+2277,2282d2217
+< 			optional_assets = {
+< 				{
+< 					icon = "GFX_JAP_carrier_shokaku"
+< 					model = "JAP_carrier_0_entity"
+< 				}
+< 			}
+2354,2359d2288
+< 			}
+< 			optional_assets = {
+< 				{
+< 					icon = "GFX_JAP_destroyer_yukikaze"
+< 					model = "JAP_destroyer_1_entity"
+< 				}

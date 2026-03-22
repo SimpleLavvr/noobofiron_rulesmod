@@ -573,20 +573,23 @@
 > 			steel = 12
 432d964
 < 		module_slots = inherit
-441,442c973,1039
+439c971
+< 		reliability = 0.75
+---
+> 		reliability = 0.6
+441,442c973,974
 < 		resources = {
 < 			steel = 1
 ---
 > 		resources={
 > 			steel = 12
-> 		}
+443a976,1088
 > module_slots = {
 > 
 > 			turret_type_slot = {
 > 				required = yes
 > 				allowed_module_categories = {
 > 					tank_light_turret_type
-> 					tank_medium_turret_type
 > 				}
 > 			}
 > 			
@@ -644,7 +647,7 @@
 > 		module_count_limit = {
 > 			module = amphibious_drive
 > 			count < 2
-443a1041,1089
+> 		}
 > 		module_count_limit = {
 > 			module = wet_ammo_storage
 > 			count < 2
@@ -688,15 +691,15 @@
 > 		}
 > 		default_modules = {
 > 			main_armament_slot = empty
-> 			turret_type_slot = tank_medium_one_man_tank_turret
+> 			turret_type_slot = tank_small_one_man_tank_turret
 > 			suspension_type_slot = tank_bogie_suspension
 > 			armor_type_slot = tank_riveted_armor
 > 			engine_type_slot = tank_gasoline_engine
 > 		}
 > 
-454d1099
+454d1098
 < 		module_slots = inherit
-458a1104,1226
+458a1103,1225
 > 
 > 		module_slots = {
 > 
@@ -820,9 +823,9 @@
 > 			armor_type_slot = tank_riveted_armor
 > 			engine_type_slot = tank_gasoline_engine
 > 		}
-468d1235
+468d1234
 < 		module_slots = inherit
-473,474c1240,1373
+473,474c1239,1372
 < 		resources = {
 < 			steel = 1
 ---
@@ -960,9 +963,9 @@
 > 			suspension_type_slot = tank_bogie_suspension
 > 			armor_type_slot = tank_riveted_armor
 > 			engine_type_slot = tank_gasoline_engine
-485d1383
+485d1382
 < 		module_slots = inherit
-490,491c1388,1530
+490,491c1387,1529
 < 		resources = {
 < 			steel = 2
 ---
@@ -1109,7 +1112,7 @@
 > 			suspension_type_slot = tank_bogie_suspension
 > 			armor_type_slot = tank_riveted_armor
 > 			engine_type_slot = tank_gasoline_engine
-628a1668,1676
+628a1667,1675
 > 		module_count_limit = {
 > 			module = apcr_round
 > 			count < 2
@@ -1119,19 +1122,25 @@
 > 			module = aphe_round
 > 			count < 2
 > 		}
-652c1700
+652c1699
 < 		build_cost_ic = 10
 ---
 > 		build_cost_ic = 15
-656,657c1704,1705
+656,657c1703,1704
 < 		resources = {
 < 			steel = 1
 ---
 > 		resources={
 > 			steel = 12
-673d1720
+673d1719
 < 		module_slots = inherit
-681a1729,1841
+679,680c1725,1726
+< 		build_cost_ic = 9
+< 		reliability = 0.75
+---
+> 		build_cost_ic = 14
+> 		reliability = 0.6
+681a1728,1839
 > 
 > 		
 > 		module_slots = {
@@ -1141,7 +1150,6 @@
 > 				allowed_module_categories = {
 > 					tank_light_turret_type
 > 					tank_medium_turret_type
-> 					tank_heavy_turret_type
 > 				}
 > 			}
 > 			
@@ -1240,14 +1248,16 @@
 > 		}
 > 		default_modules = {
 > 			main_armament_slot = empty
-> 			turret_type_slot = tank_heavy_two_man_tank_turret
+> 			turret_type_slot = tank_medium_two_man_tank_turret
 > 			suspension_type_slot = tank_bogie_suspension
 > 			armor_type_slot = tank_riveted_armor
 > 			engine_type_slot = tank_gasoline_engine
 > 		}
-692d1851
+692c1850
 < 		module_slots = inherit
-695a1855,1975
+---
+> 		build_cost_ic = 13
+695a1854,1974
 > 
 > 		module_slots = {
 > 
@@ -1369,9 +1379,9 @@
 > 			armor_type_slot = tank_riveted_armor
 > 			engine_type_slot = tank_gasoline_engine
 > 		}
-706d1985
+706d1984
 < 		module_slots = inherit
-711,713c1990,2122
+711,713c1989,2121
 < 		resources = {
 < 			steel = 1
 < 			chromium = 1
@@ -1509,12 +1519,12 @@
 > 			suspension_type_slot = tank_bogie_suspension
 > 			armor_type_slot = tank_riveted_armor
 > 			engine_type_slot = tank_gasoline_engine
-725,726c2134
+725,726c2133
 < 		module_slots = inherit
 < 		build_cost_ic = 12
 ---
 > 		build_cost_ic = 19
-730,732c2138,2279
+730,732c2137,2278
 < 		resources = {
 < 			steel = 2
 < 			chromium = 1
@@ -1661,7 +1671,7 @@
 > 			suspension_type_slot = tank_bogie_suspension
 > 			armor_type_slot = tank_riveted_armor
 > 			engine_type_slot = tank_gasoline_engine
-837c2384,2393
+837c2383,2392
 < 		}	
 ---
 > 		}
@@ -1674,7 +1684,7 @@
 > 			module = aphe_round
 > 			count < 2
 > 		}
-895,897c2451,2453
+895,897c2450,2452
 < 		resources = {
 < 			steel = 2
 < 			chromium = 1
@@ -1682,7 +1692,7 @@
 > 		resources={
 > 			steel = 24
 > 			chromium = 12
-1059a2616,2624
+1059a2615,2623
 > 			module = apcr_round
 > 			count < 2
 > 		}
@@ -1692,7 +1702,7 @@
 > 			count < 2
 > 		}
 > 		module_count_limit = {
-1078,1080c2643,2645
+1078,1080c2642,2644
 < 		resources = {
 < 			steel = 3
 < 			chromium = 2
@@ -1700,7 +1710,7 @@
 > 		resources={
 > 			steel = 36
 > 			chromium = 24
-1229a2795,2803
+1229a2794,2802
 > 		module_count_limit = {
 > 			module = apcr_round
 > 			count < 2
@@ -1710,13 +1720,13 @@
 > 			module = aphe_round
 > 			count < 2
 > 		}
-1259,1260c2833,2834
+1259,1260c2832,2833
 < 		resources = {
 < 			steel = 1
 ---
 > 		resources={
 > 			steel = 12
-1464,1466c3038,3040
+1464,1466c3037,3039
 < 		resources = {
 < 			steel = 8
 < 			chromium = 4

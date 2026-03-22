@@ -1,38 +1,131 @@
-914a915
+156,165d155
+< 			
+< 			modifier = {
+< 				factor = 1.5
+< 				date > 1939.1.1
+< 			}
+< 
+< 			modifier = {
+< 				factor = 1.5
+< 				date > 1940.1.1
+< 			}
+242,251d231
+< 			
+< 			modifier = {
+< 				factor = 2
+< 				date > 1938.1.1
+< 			}
+< 
+< 			modifier = {
+< 				factor = 2
+< 				date > 1939.1.1
+< 			}
+568,571d547
+< 				factor = 5
+< 				anti_submarine_strategy_required_trigger = yes
+< 			}
+< 			modifier = {
+573,578c549
+< 				date > 1938.6.1
+< 			}
+< 
+< 			modifier = {
+< 				factor = 2
+< 				date > 1939.6.1
+---
+> 				anti_submarine_strategy_required_trigger = yes
+827,835d797
+< 			modifier = {
+< 				factor = 1.5
+< 				date > 1939.1.1
+< 			}
+< 
+< 			modifier = {
+< 				factor = 1.5
+< 				date > 1940.1.1
+< 			}
+952a915,919
 > 
-946a948,951
 > 		path = {
 > 			leads_to_tech = basic_hybrid_ship_hull_heavy
 > 			research_cost_coeff = 1
 > 		}
-958a964
+996a964
 > 
-1194a1201
+1020c988
+< 		research_cost = 1.75
+---
+> 		research_cost = 1
+1078c1046
+< 		research_cost = 1.5
+---
+> 		research_cost = 1
+1131c1099
+< 		research_cost = 1.5
+---
+> 		research_cost = 1
+1167c1135
+< 		research_cost = 1.5
+---
+> 		research_cost = 1
+1187,1195d1154
+< 			modifier = {
+< 				factor = 1.5
+< 				date > 1939.1.1
+< 			}
+< 
+< 			modifier = {
+< 				factor = 1.5
+< 				date > 1940.1.1
+< 			}
+1224c1183
+< 		research_cost = 1.5
+---
+> 		research_cost = 1
+1241a1201
 > 
-1396c1403
+1297d1256
+< 			
+1336,1340d1294
+< 			
+< 			modifier = {
+< 				factor = 0
+< 				date < 1938.1.1
+< 			}
+1396c1350
 < 			position = {  x = -1 y = 2 }
 ---
 > 			position = {  x = 2 y = 2 }
-1431a1439,1442
+1431a1386,1389
 > 		path = {
 > 			leads_to_tech = improved_ship_hull_escort_carrier
 > 			research_cost_coeff = 1
 > 		}
-1432a1444
+1432a1391
 > 
-1448c1460
+1448c1407
 < 			position = {  x = -1 y = 8 }
 ---
 > 			position = {  x = 2 y = 8 }
-1515c1527
+1515c1474
 < 			position = {  x = -1 y = 14 }
 ---
 > 			position = {  x = 2 y = 14 }
-1571c1583
+1529,1537d1487
+< 			modifier = {
+< 				factor = 1.5
+< 				date > 1939.1.1
+< 			}
+< 
+< 			modifier = {
+< 				factor = 1.5
+< 				date > 1940.1.1
+< 			}
+1571c1521
 < 			position = {  x = -1 y = 20 }
 ---
 > 			position = {  x = 2 y = 20 }
-1594a1607,1735
+1594a1545,1673
 > ######### ESCORT CARRIERS #################
 > ###################################################################################
 > #     #  #######   #####   #     #
@@ -162,65 +255,88 @@
 > #		special_project_specialization = { specialization_naval }
 > #	}
 > 
-1633c1774
+1633c1712
 < 			position = {  x = -2 y = 2 }
 ---
 > 			position = {  x = 3 y = 2 }
-1647c1788,1789
+1647c1726,1727
 < 
 ---
 > 	
 > 		
-1694c1836
+1694c1774
 < 			position = {  x = -2 y = 8 }
 ---
 > 			position = {  x = 3 y = 8 }
-1743c1885
+1743c1823
 < 			position = {  x = -2 y = 14 }
 ---
 > 			position = {  x = 3 y = 14 }
-1770a1913
+1756,1764d1835
+< 			modifier = {
+< 				factor = 1.5
+< 				date > 1939.1.1
+< 			}
+< 
+< 			modifier = {
+< 				factor = 1.5
+< 				date > 1940.1.1
+< 			}
+1779a1851
 > 		
-1790c1933
+1790c1862
 < 			position = {  x = -2 y = 20 }
 ---
 > 			position = {  x = 3 y = 20 }
-1819,1822c1962
-< 		path = {
-< 			leads_to_tech = improved_submarine_snorkel
-< 			research_cost_coeff = 1
+1818a1891,1895
+> 
+> 		on_research_complete = {
+> 			custom_effect_tooltip = snorkel_advice_tt
+> 		}
+> 
+1823,1825c1900
+< 		on_research_complete = {
+< 			custom_effect_tooltip = snorkel_advice_tt
 < 		}
 ---
 > 
-1828c1968
+1828c1903
 < 		start_year = 1939
 ---
 > 		start_year = 1940
-1832c1972
+1832c1907
 < 			position = {  x = -1 y = 13 }
 ---
 > 			position = {  x = 4 y = 13 }
-1877c2017
+1871a1947
+> 
+1877c1953
 < 		start_year = 1943
 ---
 > 		start_year = 1944
-2017c2157
+1881c1957
+< 			position = {  x = -1 y = 19 }
+---
+> 			position = {  x = 4 y = 19 }
+1901a1978
+> 
+2017c2094
 < 		start_year = 1939
 ---
 > 		start_year = 1940
-2046c2186
+2046c2123
 < 		start_year = 1943
 ---
 > 		start_year = 1944
-2086c2226
+2086c2163
 < 			position = { x = 0 y = 17 }
 ---
 > 			position = { x = 3 y = 17 }
-2113c2253
+2113c2190
 < 		start_year = 1944
 ---
 > 		start_year = 1945
-2116c2256
+2116c2193
 < 			position = { x = 0 y = 23 }
 ---
 > 			position = { x = 3 y = 23 }

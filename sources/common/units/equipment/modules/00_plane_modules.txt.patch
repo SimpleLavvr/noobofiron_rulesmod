@@ -1,280 +1,326 @@
-456c456
+1,45d0
+< #real world equivalencies - use these to guide historical templates to maintain parity between countries with similar equipment
+< #
+< #USE THESE ONLY AS A GUIDE, NOT A HARD RULE. REAL WORLD CAPABILITY IS NOT JUST FROM WEAPON CALIBER, BUT A COMBINATION OF THAT, RANGE, FIRE CONTROL, AMMUNITION QUALITY, ETC. DO NOT GIVE COUNTRIES MODULES THEY DON'T HAVE TECH FOR
+< #IN THE STARTING DATE!
+< #
+< #Engines
+< #
+< #assign all other necessary modules then try as closely as possible to match real world top speed (at 10-20000 feet, if altitude is specified). Try to respect IRL engine numbers if possible, but prioritize stats
+< #
+< #Weapons
+< #in general, even if they have fixed forward armament, unless a plane is agile and fast enough to be a dogfighter against enemy planes, leave fixed guns off. Use defense turrets instead.
+< #rifle caliber machine guns (~7.62mm/.30 cal) fixed forward, for dogfighting other planes = light_mg_x
+< #heavy machine guns (~12.7=15mm/.50 cal) fixed forward, for dogfighting other planes = heavy_mg_x
+< #~20mm cannon, fixed forward for dogfighting = aircraft_cannon_1
+< #~30mm cannon, fixed forward for dogfighting = aircraft_cannon_2
+< #~37mmmm cannon, fixed forward for dogfighting = large_aircraft_cannon
+< #external light bombs (~250kg) = bomb_locks
+< #external heavy bombs 250kg+) = heavy_bomb_locks (also assess if additional regular bomb_locks would be more suitable)
+< #light naval bombers and carrier CAS weapons = armor_piercing_bomb_locks (specifcally stronger against ships)
+< #wing-mounted air-to-ground rockets = rocket_rails
+< #internally carried small/fragmentation bombs ~50=100 kg, one moduleper ~ 1000 kg payload = small_bomb_bay
+< #internally carried general purpose ~250kg bombs, one module per ~ 1000 kg payload = medium_bomb_bay
+< #dedicated strat bombers only, one module per ~1000 kg payload = large_bomb_bay
+< #two ground target focused ~30mm cannons = tank_buster_1
+< #two ground target focused ~37mm cannons, or a single 50-75mm weapon = tank_buster_2
+< #early air-dropped torpedo = torpedo_mounting (use more modules for heeavier, multi-engine torpedo bombers)
+< #middle air-dropped torpedo = torpedo_mounting_2 
+< #late air-dropped torpedo = torpedo_mounting_3
+< #single rifle caliber machine gun defense turret = lmg_defense_turret (each turret can have multiple guns each IRL, treat that as one turret in most cases, for simplicity)
+< #two rifle caliber machine gun turrets = lmg_defense_turret_2x
+< #single ~.50 cal defense turret = hmg_defense_turret
+< #two ~.50 cal defense turrets = hmg_defense_turret_2x
+< #single ~20mm cannon defense turret = cannon_defense_turret
+< #two ~20mm cannon defense turrets = cannon_defense_turret_2x
+< #
+< #armour for cockpit and critical components, fighters and CAS = armor_plate_small
+< #internal, exceptionally large fuel capacity = fuel_tanks_small
+< #self sealing protection for fuel tanks, fighters and CAS = self_sealing_fuel_tanks_small
+< #extensive use of wood instead of metal for construction, fighters and CAS = non_strategic_materials_small
+< #jettisonable drop tanks for fuel, fighters and CAS = drop_tanks
+< #dedicated dive bombing equipment (stuka-like, not just a fighter with bombs strapped on and no sights, etc) = dive_brakes_small
+< #seaplanes = floats
+< #medium and large mirror the above, but for their respective aircraft size classes
+< #dedicated high altitude bomb aiming equipment for strat bombers = bomb_sights_x
+< 
+456c411
 < 			air_range = -0.35
 ---
 > 			air_range = -0.1
-458c458
+458c413
 < 			air_agility = 0.05
 ---
 > 			air_agility = 0.1
-461,462c461,462
+461,462c416,417
 < 		build_cost_resources = {
 < 			chromium = 1
 ---
 > 		build_cost_resources={
 > 			chromium = 12
-484c484
+484c439
 < 			air_range = -0.35
 ---
 > 			air_range = -0.1
-489,490c489,490
+489,490c444,445
 < 		build_cost_resources = {
 < 			chromium = 1
 ---
 > 		build_cost_resources={
 > 			chromium = 12
-512c512
+512c467
 < 			air_range = -0.35
 ---
 > 			air_range = -0.1
-514c514
+514c469
 < 			air_agility = 0.05
 ---
 > 			air_agility = 0.1
-517,518c517,518
+517,518c472,473
 < 		build_cost_resources = {
 < 			chromium = 2
 ---
 > 		build_cost_resources={
 > 			chromium = 24
-540c540
+540c495
 < 			air_range = -0.35
 ---
 > 			air_range = -0.1
-542c542
+542c497
 < 			air_agility = 0.05
 ---
 > 			air_agility = 0.1
-545,546c545,546
+545,546c500,501
 < 		build_cost_resources = {
 < 			chromium = 2
 ---
 > 		build_cost_resources={
 > 			chromium = 24
-567c567
+567c522
 < 			air_range = -0.35
 ---
 > 			air_range = -0.1
-572,573c572,573
+572,573c527,528
 < 		build_cost_resources = {
 < 			chromium = 3
 ---
 > 		build_cost_resources={
 > 			chromium = 36
-599,600c599,600
+599,600c554,555
 < 		build_cost_resources = {
 < 			chromium = 1
 ---
 > 		build_cost_resources={
 > 			chromium = 12
-627,628c627,628
+627,628c582,583
 < 		build_cost_resources = {
 < 			chromium = 2
 ---
 > 		build_cost_resources={
 > 			chromium = 24
-655,656c655,656
+655,656c610,611
 < 		build_cost_resources = {
 < 			chromium = 2
 ---
 > 		build_cost_resources={
 > 			chromium = 24
-683,684c683,684
+683,684c638,639
 < 		build_cost_resources = {
 < 			chromium = 3
 ---
 > 		build_cost_resources={
 > 			chromium = 36
-711,712c711,712
+711,712c666,667
 < 		build_cost_resources = {
 < 			chromium = 4
 ---
 > 		build_cost_resources={
 > 			chromium = 48
-744,745c744,745
+744,745c699,700
 < 		build_cost_resources = {
 < 			tungsten = 2
 ---
 > 		build_cost_resources={
 > 			tungsten = 24
-772,773c772,773
+772,773c727,728
 < 		build_cost_resources = {
 < 			tungsten = 2
 ---
 > 		build_cost_resources={
 > 			tungsten = 24
-801,802c801,802
+801,802c756,757
 < 		build_cost_resources = {
 < 			tungsten = 2
 ---
 > 		build_cost_resources={
 > 			tungsten = 24
-1076c1076
+1076c1031
 < 				air_ground_attack = 6
 ---
 > 				air_ground_attack = 4
-1118c1118
+1118c1073
 < 				air_ground_attack = 8
 ---
 > 				air_ground_attack = 6
-1170c1170
+1170c1125
 < 				naval_strike_attack = 6
 ---
 > 				naval_strike_attack = 8
-1229c1229
+1229c1184
 < 				air_ground_attack = 8
 ---
 > 				air_ground_attack = 6
-1293c1293
+1293c1248
 < 				air_bombing = 6
 ---
 > 				air_bombing = 12
-1322c1322
+1322c1277
 < 				air_bombing = 15
 ---
 > 				air_bombing = 30
-1331c1331
+1331c1286
 < 				naval_strike_attack = 2
 ---
 > 				naval_strike_attack = 4
-1365c1365
+1365c1320
 < 			air_ground_attack = 15
 ---
 > 			air_ground_attack = 12
-1367c1367
+1367c1322
 < 			weight = 12
 ---
 > 			weight = 11
-1401c1401
+1401c1356
 < 				naval_strike_attack = 12
 ---
 > 				naval_strike_attack = 10
-1536c1536
+1536c1491
 < 				naval_strike_attack = 25
 ---
 > 				naval_strike_attack = 30
-1594c1594
+1594c1549
 < 				naval_strike_attack = 9
 ---
 > 				naval_strike_attack = 11
-1599c1599
+1599c1554
 < 				naval_strike_targetting = 3
 ---
 > 				naval_strike_targetting = 4
-1607c1607
+1607c1562
 < 				air_bombing = 15
 ---
 > 				air_bombing = 20
-1636c1636
+1636c1591
 < 				air_bombing = 14
 ---
 > 				air_bombing = 20
-1673c1673
+1673c1628
 < 				air_bombing = 16
 ---
 > 				air_bombing = 24
-1745,1746c1745,1746
+1745,1746c1700,1701
 < 		build_cost_resources = {
 < 			rubber = 1
 ---
 > 		build_cost_resources={
 > 			rubber = 12
-1758c1758
+1758c1713
 < 			air_defence = -6
 ---
 > 			air_defence = -8
-1762c1762
+1762c1717
 < 			build_cost_ic = -0.075
 ---
 > 			build_cost_ic = -0.15
-1764,1765c1764,1765
+1764,1765c1719,1720
 < 		build_cost_resources = {
 < 			aluminium = -2
 ---
 > 		build_cost_resources={
 > 			aluminium = -20
-1768,1769c1768,1769
+1768,1769c1723,1724
 < 		dismantle_cost_resources = {
 < 			aluminium = 2
 ---
 > 		dismantle_cost_resources={
 > 			aluminium = 24
-1890,1891c1890,1891
+1890,1891c1845,1846
 < 		build_cost_resources = {
 < 			rubber = 2
 ---
 > 		build_cost_resources={
 > 			rubber = 24
-1903c1903
+1903c1858
 < 			air_defence = -8
 ---
 > 			air_defence = -10
-1908c1908
+1908c1863
 < 			build_cost_ic = -0.075
 ---
 > 			build_cost_ic = -0.15
-1910,1911c1910,1911
+1910,1911c1865,1866
 < 		build_cost_resources = {
 < 			aluminium = -2
 ---
 > 		build_cost_resources={
 > 			aluminium = -20
-1915,1916c1915,1916
+1915,1916c1870,1871
 < 		dismantle_cost_resources = {
 < 			aluminium = 2
 ---
 > 		dismantle_cost_resources={
 > 			aluminium = 24
-2007,2008c2007,2008
+2007,2008c1962,1963
 < 		build_cost_resources = {
 < 			rubber = 2
 ---
 > 		build_cost_resources={
 > 			rubber = 24
-2027,2028c2027,2028
+2027,2028c1982,1983
 < 		build_cost_resources = {
 < 			aluminium = -3
 ---
 > 		build_cost_resources={
 > 			aluminium = -30
-2031,2032c2031,2032
+2031,2032c1986,1987
 < 		dismantle_cost_resources = {
 < 			aluminium = 3
 ---
 > 		dismantle_cost_resources={
 > 			aluminium = 36
-2070c2070
+2070c2025
 < 			air_bombing = 4
 ---
 > 			air_bombing = 6
-2085c2085
+2085c2040
 < 			air_bombing = 6
 ---
 > 			air_bombing = 10
-2099c2099
+2099c2054
 < 			air_bombing = 4
 ---
 > 			air_bombing = 8
-2115c2115
+2115c2070
 < 			air_bombing = 6
 ---
 > 			air_bombing = 12
-2171c2171
+2171c2126
 < 				air_bombing = 6
 ---
 > 				air_bombing = 10
-2174c2174
+2174c2129
 < 				sub_detection = 10
 ---
 > 				sub_detection = 15
-2192a2193
+2192a2148
 > 				air_superiority
-2195c2196
+2195c2151
 < 				night_penalty = -0.2
 ---
 > 				night_penalty = -0.4
-2214a2216
+2214a2171
 > 				air_superiority
-2217c2219
+2217c2174
 < 				night_penalty = -0.4
 ---
 > 				night_penalty = -0.6

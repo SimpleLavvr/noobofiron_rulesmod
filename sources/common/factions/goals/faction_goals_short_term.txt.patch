@@ -1,216 +1,517 @@
-1658c1658
+248,250c248
+< 		scope:faction = {
+< 			set_temp_variable = { total_techs = 0 }
+< 		}
+---
+> 		set_temp_variable = { total_techs = 0 }
+257a256,257
+> 			add_to_temp_variable = { total_techs = num_researched_technologies }
+> 		}
+259,269c259,265
+< 			if = {
+< 				limit = {
+< 					check_variable = { num_researched_technologies < 50 }
+< 				}
+< 				set_temp_variable = { temp_tech = num_researched_technologies }
+< 				multiply_temp_variable = {
+< 					var = temp_tech
+< 					value = 1.25
+< 				}
+< 				add_to_temp_variable = { total_techs = temp_tech }
+< 				set_temp_variable = { temp_tech = 0 }
+---
+> 		#Divide the numbers of total numbers of techs researched with the numbers of faction members to get an average of reserached techs
+> 		divide_temp_variable = { total_techs = num_faction_members }
+> 
+> 		#Check the numbers of average researched tech between the faction members and adjust the numbers of tech needed to complete the goal
+> 		if = {
+> 			limit = {
+> 				check_variable = { total_techs < 25 }
+271,281c267,269
+< 			else_if = {
+< 				limit = {
+< 					check_variable = { num_researched_technologies < 75 }
+< 				}
+< 				set_temp_variable = { temp_tech = num_researched_technologies }
+< 				multiply_temp_variable = {
+< 					var = temp_tech
+< 					value = 1.2
+< 				}
+< 				add_to_temp_variable = { total_techs = temp_tech }
+< 				set_temp_variable = { temp_tech = 0 }
+---
+> 			multiply_temp_variable = {
+> 				var = total_techs
+> 				value = 2.25
+283,293c271,274
+< 			else_if = {
+< 				limit = {
+< 					check_variable = { num_researched_technologies < 100 }
+< 				}
+< 				set_temp_variable = { temp_tech = num_researched_technologies }
+< 				multiply_temp_variable = {
+< 					var = temp_tech
+< 					value = 1.15
+< 				}
+< 				add_to_temp_variable = { total_techs = temp_tech }
+< 				set_temp_variable = { temp_tech = 0 }
+---
+> 		}
+> 		else_if = {
+> 			limit = {
+> 				check_variable = { total_techs < 50 }
+295,305c276,278
+< 			else_if = {
+< 				limit = {
+< 					check_variable = { num_researched_technologies < 150 }
+< 				}
+< 				set_temp_variable = { temp_tech = num_researched_technologies }
+< 				multiply_temp_variable = {
+< 					var = temp_tech
+< 					value = 1.1
+< 				}
+< 				add_to_temp_variable = { total_techs = temp_tech }
+< 				set_temp_variable = { temp_tech = 0 }
+---
+> 			multiply_temp_variable = {
+> 				var = total_techs
+> 				value = 2
+307,317c280,323
+< 			else_if = {	
+< 				limit = {
+< 					check_variable = { num_researched_technologies < 200 }
+< 				}
+< 				set_temp_variable = { temp_tech = num_researched_technologies }
+< 				multiply_temp_variable = {
+< 					var = temp_tech
+< 					value = 1.05
+< 				}
+< 				add_to_temp_variable = { total_techs = temp_tech }
+< 				set_temp_variable = { temp_tech = 0 }
+---
+> 		}
+> 		else_if = {
+> 			limit = {
+> 				check_variable = { total_techs < 75 }
+> 			}
+> 			multiply_temp_variable = {
+> 				var = total_techs
+> 				value = 1.75
+> 			}
+> 		}
+> 		else_if = {
+> 			limit = {
+> 				check_variable = { total_techs < 125 }
+> 			}
+> 			multiply_temp_variable = {
+> 				var = total_techs
+> 				value = 1.5
+> 			}
+> 		}
+> 		else_if = {
+> 			limit = {
+> 				check_variable = { total_techs < 175 }
+> 			}
+> 			multiply_temp_variable = {
+> 				var = total_techs
+> 				value = 1.35
+> 			}
+> 		}
+> 		else_if = {
+> 			limit = {
+> 				check_variable = { total_techs < 225 }
+> 			}
+> 			multiply_temp_variable = {
+> 				var = total_techs
+> 				value = 1.20
+> 			}
+> 		}
+> 		else_if = {
+> 			limit = {
+> 				check_variable = { total_techs < 260 }
+> 			}
+> 			multiply_temp_variable = {
+> 				var = total_techs
+> 				value = 1.05
+322d327
+< 			round_temp_variable = total_techs
+331c336
+< 				set_temp_variable = { unlock_military_techs_researched_compare_temp_target = 0 }
+---
+> 				set_temp_variable = { total_faction_compare_members = 0 }	
+337c342,344
+< 					add_to_temp_variable = { unlock_military_techs_researched_compare_temp_target = num_researched_technologies }
+---
+> 					add_to_temp_variable = { unlock_military_techs_researched_compare = num_researched_technologies }
+> 					add_to_temp_variable = { total_faction_compare_members = 1 }
+> 				}
+339,349c346,354
+< 					if = {
+< 						limit = {
+< 							check_variable = { num_researched_technologies < 50 }
+< 						}
+< 						set_temp_variable = { temp_tech = num_researched_technologies }
+< 						multiply_temp_variable = {
+< 							var = temp_tech
+< 							value = 1.25
+< 						}
+< 						add_to_temp_variable = { unlock_military_techs_researched_compare = temp_tech }
+< 						set_temp_variable = { temp_tech = 0 }
+---
+> 				#Divide the numbers of total numbers of techs researched with the numbers of faction members to get an average of reserached techs
+> 				divide_temp_variable = { unlock_military_techs_researched_compare = total_faction_compare_members }
+> 
+> 				set_temp_variable = { unlock_military_techs_researched_compare_temp_target = unlock_military_techs_researched_compare }
+> 
+> 				#Check the numbers of average researched tech between the faction members and adjust the numbers of tech needed to complete the goal
+> 				if = {
+> 					limit = {
+> 						check_variable = { unlock_military_techs_researched_compare < 25 }
+351,361c356,358
+< 					else_if = {
+< 						limit = {
+< 							check_variable = { num_researched_technologies < 75 }
+< 						}
+< 						set_temp_variable = { temp_tech = num_researched_technologies }
+< 						multiply_temp_variable = {
+< 							var = temp_tech
+< 							value = 1.2
+< 						}
+< 						add_to_temp_variable = { unlock_military_techs_researched_compare = temp_tech }
+< 						set_temp_variable = { temp_tech = 0 }
+---
+> 					multiply_temp_variable = {
+> 						var = unlock_military_techs_researched_compare
+> 						value = 2.25
+363,373c360,363
+< 					else_if = {
+< 						limit = {
+< 							check_variable = { num_researched_technologies < 100 }
+< 						}
+< 						set_temp_variable = { temp_tech = num_researched_technologies }
+< 						multiply_temp_variable = {
+< 							var = temp_tech
+< 							value = 1.15
+< 						}
+< 						add_to_temp_variable = { unlock_military_techs_researched_compare = temp_tech }
+< 						set_temp_variable = { temp_tech = 0 }
+---
+> 				}
+> 				else_if = {
+> 					limit = {
+> 						check_variable = { unlock_military_techs_researched_compare < 50 }
+375,385c365,367
+< 					else_if = {
+< 						limit = {
+< 							check_variable = { num_researched_technologies < 150 }
+< 						}
+< 						set_temp_variable = { temp_tech = num_researched_technologies }
+< 						multiply_temp_variable = {
+< 							var = temp_tech
+< 							value = 1.1
+< 						}
+< 						add_to_temp_variable = { unlock_military_techs_researched_compare = temp_tech }
+< 						set_temp_variable = { temp_tech = 0 }
+---
+> 					multiply_temp_variable = {
+> 						var = unlock_military_techs_researched_compare
+> 						value = 2
+387,397c369,412
+< 					else_if = {	
+< 						limit = {
+< 							check_variable = { num_researched_technologies < 200 }
+< 						}
+< 						set_temp_variable = { temp_tech = num_researched_technologies }
+< 						multiply_temp_variable = {
+< 							var = temp_tech
+< 							value = 1.05
+< 						}
+< 						add_to_temp_variable = { unlock_military_techs_researched_compare = temp_tech }
+< 						set_temp_variable = { temp_tech = 0 }
+---
+> 				}
+> 				else_if = {
+> 					limit = {
+> 						check_variable = { unlock_military_techs_researched_compare < 75 }
+> 					}
+> 					multiply_temp_variable = {
+> 						var = unlock_military_techs_researched_compare
+> 						value = 1.75
+> 					}
+> 				}
+> 				else_if = {
+> 					limit = {
+> 						check_variable = { unlock_military_techs_researched_compare < 125 }
+> 					}
+> 					multiply_temp_variable = {
+> 						var = unlock_military_techs_researched_compare
+> 						value = 1.5
+> 					}
+> 				}
+> 				else_if = {
+> 					limit = {
+> 						check_variable = { unlock_military_techs_researched_compare < 175 }
+> 					}
+> 					multiply_temp_variable = {
+> 						var = unlock_military_techs_researched_compare
+> 						value = 1.35
+> 					}
+> 				}
+> 				else_if = {
+> 					limit = {
+> 						check_variable = { unlock_military_techs_researched_compare < 225 }
+> 					}
+> 					multiply_temp_variable = {
+> 						var = unlock_military_techs_researched_compare
+> 						value = 1.20
+> 					}
+> 				}
+> 				else_if = {
+> 					limit = {
+> 						check_variable = { unlock_military_techs_researched_compare < 260 }
+> 					}
+> 					multiply_temp_variable = {
+> 						var = unlock_military_techs_researched_compare
+> 						value = 1.05
+400d414
+< 				round_temp_variable = unlock_military_techs_researched_compare
+402a417
+> 
+410c425
+< 					compare = greater_than
+---
+> 					compare = greater_than_or_equals
+418c433
+< 					compare = greater_than
+---
+> 					compare = greater_than_or_equals
+430,433d444
+< 		modifier = {
+< 			add = 1000
+< 			original_tag = ENG
+< 		}
+510,513d520
+< 		modifier = {
+< 			add = 1000
+< 			original_tag = GER
+< 		}
+1405c1412
+< 			is_historical_focus_on = no
+---
+> 			is_historical_focus_on = yes
+1658c1665
 < 			    amount = 4
 ---
 > 			    amount = 48
-1720c1720
+1720c1727
 < 			    amount = 14
 ---
 > 			    amount = 168
-1793c1793
+1793c1800
 < 			    amount = 8
 ---
 > 			    amount = 96
-1854c1854
+1854c1861
 < 			    amount = 14
 ---
 > 			    amount = 168
-1923c1923
+1923c1930
 < 			    amount = 14
 ---
 > 			    amount = 168
-2000c2000
+2000c2007
 < 			    amount = 14
 ---
 > 			    amount = 168
-2004c2004
+2004c2011
 < 			    amount = 14
 ---
 > 			    amount = 168
-2008c2008
+2008c2015
 < 			    amount = 8
 ---
 > 			    amount = 96
-2014c2014
+2014c2021
 < 			    amount = 10
 ---
 > 			    amount = 120
-2018c2018
+2018c2025
 < 			    amount = 10
 ---
 > 			    amount = 120
-2022c2022
+2022c2029
 < 			    amount = 5
 ---
 > 			    amount = 60
-2137c2137
+2137c2144
 < 			    amount = 14
 ---
 > 			    amount = 168
-2216c2216
+2216c2223
 < 			    amount = 4
 ---
 > 			    amount = 48
-2222c2222
+2222c2229
 < 			    amount = 14
 ---
 > 			    amount = 168
-2294c2294
+2294c2301
 < 			    amount = 6
 ---
 > 			    amount = 72
-2300c2300
+2300c2307
 < 			    amount = 4
 ---
 > 			    amount = 48
-2306c2306
+2306c2313
 < 			    amount = 2
 ---
 > 			    amount = 24
-2378c2378
+2378c2385
 < 			    amount = 6
 ---
 > 			    amount = 72
-2384c2384
+2384c2391
 < 			    amount = 4
 ---
 > 			    amount = 48
-2390c2390
+2390c2397
 < 			    amount = 8
 ---
 > 			    amount = 96
-2468c2468
+2468c2475
 < 			    amount = 4
 ---
 > 			    amount = 48
-2472c2472
+2472c2479
 < 			    amount = 6
 ---
 > 			    amount = 72
-2476c2476
+2476c2483
 < 			    amount = 2
 ---
 > 			    amount = 24
-2482c2482
+2482c2489
 < 			    amount = 6
 ---
 > 			    amount = 72
-2486c2486
+2486c2493
 < 			    amount = 6
 ---
 > 			    amount = 72
-2490c2490
+2490c2497
 < 			    amount = 2
 ---
 > 			    amount = 24
-2496c2496
+2496c2503
 < 			    amount = 4
 ---
 > 			    amount = 48
-2500c2500
+2500c2507
 < 			    amount = 4
 ---
 > 			    amount = 48
-2504c2504
+2504c2511
 < 			    amount = 2
 ---
 > 			    amount = 24
-2510c2510
+2510c2517
 < 			    amount = 6
 ---
 > 			    amount = 72
-2514c2514
+2514c2521
 < 			    amount = 6
 ---
 > 			    amount = 72
-2518c2518
+2518c2525
 < 			    amount = 2
 ---
 > 			    amount = 24
-2656c2656
+2656c2663
 < 			    amount = 2
 ---
 > 			    amount = 24
-2660c2660
+2660c2667
 < 			    amount = 8
 ---
 > 			    amount = 96
-2664c2664
+2664c2671
 < 			    amount = 1
 ---
 > 			    amount = 12
-2670c2670
+2670c2677
 < 			    amount = 4
 ---
 > 			    amount = 48
-2674c2674
+2674c2681
 < 			    amount = 60
 ---
 > 			    amount = 720
-2678c2678
+2678c2685
 < 			    amount = 28
 ---
 > 			    amount = 336
-2682c2682
+2682c2689
 < 			    amount = 4
 ---
 > 			    amount = 48
-2688c2688
+2688c2695
 < 			    amount = 3
 ---
 > 			    amount = 36
-2692c2692
+2692c2699
 < 			    amount = 12
 ---
 > 			    amount = 144
-2696c2696
+2696c2703
 < 			    amount = 4
 ---
 > 			    amount = 48
-2702c2702
+2702c2709
 < 			    amount = 8
 ---
 > 			    amount = 96
-2886c2886
+2886c2893
 < 			    amount = 3
 ---
 > 			    amount = 36
-2890c2890
+2890c2897
 < 			    amount = 28
 ---
 > 			    amount = 336
-2894c2894
+2894c2901
 < 			    amount = 2
 ---
 > 			    amount = 24
-2900c2900
+2900c2907
 < 			    amount = 4
 ---
 > 			    amount = 48
-2904c2904
+2904c2911
 < 			    amount = 48
 ---
 > 			    amount = 576
-2910c2910
+2910c2917
 < 			    amount = 6
 ---
 > 			    amount = 72
-2916c2916
+2916c2923
 < 			    amount = 5
 ---
 > 			    amount = 60
-2920c2920
+2920c2927
 < 			    amount = 8
 ---
 > 			    amount = 96
-2924c2924
+2924c2931
 < 			    amount = 50
 ---
 > 			    amount = 600
-2928c2928
+2928c2935
 < 			    amount = 3
 ---
 > 			    amount = 36
-2934c2934
+2934c2941
 < 			    amount = 10
 ---
 > 			    amount = 120
