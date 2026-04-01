@@ -137,6 +137,14 @@
 7515a7516,7517
 >             add_ideas = GER_NOI_submarine_wolfpack
 > 
+8182c8184
+< 			x = -5
+---
+> 			x = -4
+8206c8208
+< 			x = -7
+---
+> 			x = -8
 8217c8219
 < 		x = 17
 ---
@@ -167,13 +175,26 @@
 < 		x = -14
 ---
 > 		x = -10
-9554,9555c9545,9546
+9159a9151,9162
+> 
+> 		offset = {
+> 			x = -4
+> 			y = 0
+> 			trigger = {
+> 				has_game_rule = {
+> 					rule = noi_allow_ahistorical
+> 					option = noi_rule_ahistorical_allowed
+> 				}
+> 			}
+> 		}
+> 
+9554,9555c9557,9558
 < 		x = 17
 < 		y = 1
 ---
 > 		x = 18
 > 		y = 5
-9748a9740,9749
+9748a9752,9761
 > 		
 > 		bypass = {
 > 			CZE = {
@@ -184,100 +205,100 @@
 > 				}
 > 			}
 > 		}
-9790c9791,9792
+9790c9803,9804
 < 			has_army_manpower = { size > 724999 } #80 div
 ---
 > 			has_army_manpower = { size > 724999 } #80 
 > 			date > 1937.9.22
-10550c10552,10554
+10550c10564,10566
 < 
 ---
 > 		allow_branch = {
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
 > 		}
-10608a10613,10614
+10608a10625,10626
 > 		
 > 
-10612c10618
+10612c10630
 < 
 ---
 > 		
-10838,10839c10844,10845
+10838,10839c10856,10857
 < 		x = 2
 < 		y = 4
 ---
 > 		x = 1
 > 		y = 10
-11407a11414,11417
+11407a11426,11429
 > 		allow_branch = {
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
 > 		}
 > 
-11474c11484
+11474c11496
 < 		prerequisite = { focus = GER_reassert_eastern_claims }
 ---
 > 		prerequisite = { focus = GER_reassert_eastern_claims focus = GER_molotov_ribbentrop_pact}
-14119c14129
+14119c14141
 < 		x = 20
 ---
 > 		x = 10
-14220c14230
+14220c14242
 < 		x = 2
 ---
 > 		x = 15
-14294a14305,14307
+14294a14317,14319
 > 		allow_branch = {
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
 > 		}
-14524c14537
+14524c14549
 < 		x = -1
 ---
 > 		x = 11
-18832c18845
+18832c18857
 < 						amount = 6
 ---
 > 						amount = 72
-18853c18866
+18853c18878
 < 								amount > 19
 ---
 > 								amount > 190
-18858c18871
+18858c18883
 < 								amount > 19
 ---
 > 								amount > 190
-18863c18876
+18863c18888
 < 								amount > 19
 ---
 > 								amount > 190
-18868c18881
+18868c18893
 < 								amount > 19
 ---
 > 								amount > 190
-18873c18886
+18873c18898
 < 								amount > 19
 ---
 > 								amount > 190
-18896c18909
+18896c18921
 < 								amount > 19
 ---
 > 								amount > 190
-18901c18914
+18901c18926
 < 								amount > 19
 ---
 > 								amount > 190
-18906c18919
+18906c18931
 < 								amount > 19
 ---
 > 								amount > 190
-18911c18924
+18911c18936
 < 								amount > 19
 ---
 > 								amount > 190
-18916c18929
+18916c18941
 < 								amount > 19
 ---
 > 								amount > 190
-21060,21071c21073
+21060,21071c21085
 < 			has_dlc = "Gotterdammerung" 
 < 			if = {
 < 				limit = {
@@ -292,7 +313,19 @@
 < 			}
 ---
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
-21392,21404c21394
+21075c21089
+< 			x = -43
+---
+> 			x = 24
+21086c21100
+< 			x = -5
+---
+> 			x = 24
+21097c21111
+< 			x = -10
+---
+> 			x = 13
+21392,21404c21406
 < 			has_dlc = "Gotterdammerung"
 < 			if = {
 < 				limit = {
@@ -308,36 +341,58 @@
 < 			}
 ---
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
-21776a21767,21770
+21408c21410
+< 			x = 11
+---
+> 			x = 52
+21417a21420,21436
+> 		offset = {
+> 			x = 16
+> 			y = 0
+> 			trigger = {
+> 				has_game_rule = {
+> 					rule = noi_allow_ahistorical
+> 					option = noi_rule_ahistorical_allowed
+> 				}
+> 				NOT = {
+> 					has_completed_focus = GER_oppose_hitler_ww
+> 					has_completed_focus = GER_start_the_proletarian_revolution
+> 					has_completed_focus = GER_monarchist_sentiment
+> 					has_completed_focus = GER_revive_the_kaiserreich
+> 					has_completed_focus = GER_reestablish_free_elections
+> 				}
+> 			}
+> 		}
+21776a21796,21799
 > 		allow_branch = {
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
 > 		}
 > 
-23758c23752
+23758c23781
 < 						amount = 6
 ---
 > 						amount = 72
-23762c23756
+23762c23785
 < 						amount = 3
 ---
 > 						amount = 36
-23766c23760
+23766c23789
 < 						amount = 3
 ---
 > 						amount = 36
-23783c23777
+23783c23806
 < 						amount = 6
 ---
 > 						amount = 72
-23787c23781
+23787c23810
 < 						amount = 3
 ---
 > 						amount = 36
-23791c23785
+23791c23814
 < 						amount = 3
 ---
 > 						amount = 36
-25182,25194c25176
+25182,25194c25205
 < 			has_dlc = "Gotterdammerung"
 < 			if = {
 < 				limit = {
@@ -353,7 +408,29 @@
 < 			}
 ---
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
-25319,25334c25301
+25198c25209
+< 			x = -11
+---
+> 			x = -1
+25207a25219,25235
+> 		offset = {
+> 			x = 32
+> 			y = 0
+> 			trigger = {
+> 				has_game_rule = {
+> 					rule = noi_allow_ahistorical
+> 					option = noi_rule_ahistorical_allowed
+> 				}
+> 				NOT = {
+> 					has_completed_focus = GER_oppose_hitler_ww
+> 					has_completed_focus = GER_start_the_proletarian_revolution
+> 					has_completed_focus = GER_monarchist_sentiment
+> 					has_completed_focus = GER_revive_the_kaiserreich
+> 					has_completed_focus = GER_reestablish_free_elections
+> 				}
+> 			}
+> 		}
+25319,25334c25347
 < 			has_dlc = "Gotterdammerung"
 < 			if = {
 < 				limit = {
@@ -372,7 +449,11 @@
 < 			}
 ---
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
-29104,29122c29071
+25338c25351
+< 			x = 12
+---
+> 			x = 0
+29104,29122c29117
 < 			has_dlc = "Gotterdammerung"
 < 			if = {
 < 				limit = {
@@ -394,7 +475,7 @@
 < 			}
 ---
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
-35078,35090c35027
+35078,35090c35073
 < 			NOT = { has_dlc = "Gotterdammerung" } 
 < 
 < 			if = {
@@ -410,7 +491,15 @@
 < 			}
 ---
 > 			always = no
-35241,35255c35178
+35116c35099
+< 			x = -8
+---
+> 			x = 50
+35128c35111
+< 			x = -1
+---
+> 			x = 49
+35241,35255c35224
 < 			NOT = { has_dlc = "Gotterdammerung" } 
 < 			if = {
 < 				limit = {
@@ -428,7 +517,29 @@
 < 			}
 ---
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
-35308,35319c35231
+35259c35228
+< 			x = 1
+---
+> 			x = 22
+35268a35238,35254
+> 		offset = {
+> 			x = 2
+> 			y = 0
+> 			trigger = {
+> 				has_game_rule = {
+> 					rule = noi_allow_ahistorical
+> 					option = noi_rule_ahistorical_allowed
+> 				}
+> 				NOT = {
+> 					has_completed_focus = GER_oppose_hitler_ww
+> 					has_completed_focus = GER_start_the_proletarian_revolution
+> 					has_completed_focus = GER_monarchist_sentiment
+> 					has_completed_focus = GER_revive_the_kaiserreich
+> 					has_completed_focus = GER_reestablish_free_elections
+> 				}
+> 			}
+> 		}
+35308,35319c35294
 < 			NOT = { has_dlc = "Gotterdammerung" }
 < 			if = {
 < 				limit = {
@@ -443,7 +554,7 @@
 < 			}
 ---
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
-36995,37009c36907
+36995,37009c36970
 < 			NOT = { has_dlc = "Gotterdammerung" } 
 < 			if = {
 < 				limit = {
@@ -461,7 +572,32 @@
 < 			}
 ---
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
-38394c38292
+37013c36974
+< 			x = -1
+---
+> 			x = 0
+37023c36984,37001
+< 	
+---
+> 		offset = {
+> 			x = 21
+> 			y = 0
+> 			trigger = {
+> 				has_game_rule = {
+> 					rule = noi_allow_ahistorical
+> 					option = noi_rule_ahistorical_allowed
+> 				}
+> 				NOT = {
+> 					has_completed_focus = GER_oppose_hitler_ww
+> 					has_completed_focus = GER_start_the_proletarian_revolution
+> 					has_completed_focus = GER_monarchist_sentiment
+> 					has_completed_focus = GER_revive_the_kaiserreich
+> 					has_completed_focus = GER_reestablish_free_elections
+> 				}
+> 			}
+> 		}
+> 
+38394c38372
 < }
 \ Pas de fin de ligne à la fin du fichier
 ---

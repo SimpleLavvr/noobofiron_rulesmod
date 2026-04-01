@@ -11,21 +11,21 @@
 < 
 ---
 > 	SOV_NOI_enduring_spirit
-1635,1640d1637
+1638,1643d1640
 < 		optional_assets = {
 < 			{
 < 				icon = "GFX_SOV_submarine_shchuka"
 < 				model = "SOV_submarine_entity"
 < 			}
 < 		}
-1664,1669d1660
+1667,1672d1663
 < 		optional_assets = {
 < 			{
 < 				icon = "GFX_SOV_submarine_shchuka"
 < 				model = "SOV_submarine_entity"
 < 			}
 < 		}
-1945,1950d1935
+1948,1953d1938
 < 			}
 < 			optional_assets = {
 < 				{
