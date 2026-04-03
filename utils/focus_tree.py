@@ -12,10 +12,12 @@ Subcommands:
   simulate   — simulate a scenario with offsets
   bboxes     — bounding box visualization
 """
+# pylint: disable=too-many-lines  # self-contained CLI toolkit
 
 import re
 import sys
 import json
+import argparse
 from pathlib import Path
 from dataclasses import dataclass, field
 from typing import Optional
@@ -34,7 +36,7 @@ class Offset:
 
 
 @dataclass
-class Focus:
+class Focus:  # pylint: disable=too-many-instance-attributes
     """A single focus node."""
     id: str = ""
     x: int = 0
@@ -64,6 +66,10 @@ class BranchCondition:
 
 
 COLLISION_DISTANCE = 2
+FOCUS_RADIUS = 2       # visual overlap threshold for print_overlap_report
+GAP_THRESHOLD = 5      # > 5 empty columns = suspicious gap
+PX_PER_Y = 46          # pixels per Y grid unit (continuous_focus_position)
+PX_PER_X = 93          # pixels per X grid unit
 
 
 # ---------------------------------------------------------------------------
@@ -196,6 +202,34 @@ def entries_to_raw_text(entries: list, indent: int = 0) -> str:
 # Focus extraction and parsing
 # ---------------------------------------------------------------------------
 
+def _parse_offset_block(entries):
+    """Parse an offset sub-block into an Offset object."""
+    off = Offset()
+    for okey, oval in entries:
+        if okey == 'x':
+            try:
+                off.x = int(oval)
+            except (ValueError, TypeError):
+                pass
+        elif okey == 'y':
+            try:
+                off.y = int(oval)
+            except (ValueError, TypeError):
+                pass
+        elif okey == 'trigger':
+            if isinstance(oval, list):
+                off.trigger_raw = entries_to_raw_text(oval)
+    return off
+
+
+def _safe_int(val, default=0):
+    """Parse an int value, returning default on failure."""
+    try:
+        return int(val)
+    except (ValueError, TypeError):
+        return default
+
+
 def parse_focus(entries: list, line_hint: int = 0) -> Focus:
     """Parse a focus block's entries into a Focus object."""
     f = Focus(line_number=line_hint)
@@ -203,49 +237,23 @@ def parse_focus(entries: list, line_hint: int = 0) -> Focus:
         if key == 'id':
             f.id = val
         elif key == 'x':
-            try:
-                f.x = int(val)
-            except (ValueError, TypeError):
-                pass
+            f.x = _safe_int(val)
         elif key == 'y':
-            try:
-                f.y = int(val)
-            except (ValueError, TypeError):
-                pass
+            f.y = _safe_int(val)
         elif key == 'relative_position_id':
             f.relative_position_id = val
         elif key == 'offset':
             if isinstance(val, list):
-                off = Offset()
-                for okey, oval in val:
-                    if okey == 'x':
-                        try:
-                            off.x = int(oval)
-                        except (ValueError, TypeError):
-                            pass
-                    elif okey == 'y':
-                        try:
-                            off.y = int(oval)
-                        except (ValueError, TypeError):
-                            pass
-                    elif okey == 'trigger':
-                        if isinstance(oval, list):
-                            off.trigger_raw = entries_to_raw_text(oval)
-                f.offsets.append(off)
+                f.offsets.append(_parse_offset_block(val))
         elif key == 'allow_branch':
             f.has_allow_branch = True
-            if isinstance(val, list):
-                f.allow_branch_raw = entries_to_raw_text(val)
-            else:
-                f.allow_branch_raw = str(val)
+            f.allow_branch_raw = entries_to_raw_text(val) if isinstance(val, list) else str(val)
         elif key == 'prerequisite':
             if isinstance(val, list):
-                ids = extract_focus_ids_from_block(val)
-                f.prerequisite_ids.extend(ids)
+                f.prerequisite_ids.extend(extract_focus_ids_from_block(val))
         elif key == 'mutually_exclusive':
             if isinstance(val, list):
-                ids = extract_focus_ids_from_block(val)
-                f.mutually_exclusive_ids.extend(ids)
+                f.mutually_exclusive_ids.extend(extract_focus_ids_from_block(val))
     return f
 
 
@@ -278,7 +286,7 @@ def extract_focuses_raw(text: str) -> list:
                 while i < len(text) and text[i] != '\n':
                     i += 1
                 continue
-            elif c == '"':
+            if c == '"':
                 i += 1
                 while i < len(text) and text[i] != '"':
                     i += 1
@@ -594,7 +602,6 @@ def parse_branch_condition(allow_branch_raw: str) -> BranchCondition:
         dlc_pos = text.find("has_dlc")
         if not_pos != -1 and not_pos < dlc_pos:
             # Check if the NOT is at the top level (not inside an IF/limit)
-            between = text[not_pos:dlc_pos]
             # Count braces to see if NOT is at the top level
             depth = 0
             for ch in text[:not_pos]:
@@ -627,19 +634,39 @@ def parse_branch_condition(allow_branch_raw: str) -> BranchCondition:
 # Scenario generation
 # ---------------------------------------------------------------------------
 
-def generate_scenarios(focuses: dict, branches: dict):
-    """
-    Generate all valid visibility scenarios including political path choices.
+def _is_branch_visible(branch_conditions, root_id, dlc_owned, noi_ahistorical,
+                       chosen_path=None):
+    """Check if a branch is visible given the parameter state."""
+    cond = branch_conditions.get(root_id, BranchCondition())
+    if cond.always_hidden:
+        return False
+    if cond.requires_noi_ahistorical and not noi_ahistorical:
+        return False
+    if cond.requires_dlc and cond.requires_dlc not in dlc_owned:
+        return False
+    if cond.requires_not_dlc and cond.requires_not_dlc in dlc_owned:
+        return False
+    if cond.requires_flag:
+        return False
+    if chosen_path and cond.hides_after_focus:
+        if chosen_path in cond.hides_after_focus:
+            return False
+    return True
 
-    Each scenario is a combination of:
-    - DLC state
-    - noi_allow_ahistorical setting
-    - Which political path was chosen (+ "none" = initial state before any choice)
-    - obsolete_focus_branches_visibility = HIDE (always on when a path is chosen)
 
-    Returns list of (scenario_name, visible_focus_ids, positions_map).
-    """
-    # Parse conditions for all branch roots
+def _build_visible_set(branches, branch_conditions, always_visible_ids,
+                       dlc_owned, noi_ahistorical, chosen_path=None):
+    """Build the set of visible focus IDs for a given config."""
+    visible = set(always_visible_ids)
+    for root_id, members in branches.items():
+        if _is_branch_visible(branch_conditions, root_id, dlc_owned,
+                              noi_ahistorical, chosen_path):
+            visible.update(members)
+    return visible
+
+
+def _prepare_scenario_params(focuses, branches):
+    """Prepare branch conditions, DLC info, and political roots for scenario generation."""
     branch_conditions = {}
     for root_id in branches:
         root = focuses.get(root_id)
@@ -648,7 +675,6 @@ def generate_scenarios(focuses: dict, branches: dict):
         else:
             branch_conditions[root_id] = BranchCondition()
 
-    # Identify relevant DLCs
     dlcs = set()
     for cond in branch_conditions.values():
         if cond.requires_dlc:
@@ -656,89 +682,59 @@ def generate_scenarios(focuses: dict, branches: dict):
         if cond.requires_not_dlc:
             dlcs.add(cond.requires_not_dlc)
 
-    # Find all focus IDs not in any branch (always visible)
     all_branch_members = set()
     for members in branches.values():
         all_branch_members.update(members)
     always_visible_ids = {f.id for f in focuses.values() if f.id not in all_branch_members}
 
-    # Find mutually exclusive political paths (roots that are mutually_exclusive with each other)
     political_roots = set()
     for fid, f in focuses.items():
         if f.has_allow_branch and f.mutually_exclusive_ids:
-            # Check if any mutually exclusive focus is also a branch root
             for me_id in f.mutually_exclusive_ids:
                 if me_id in branch_conditions:
                     political_roots.add(fid)
                     political_roots.add(me_id)
 
-    def is_branch_visible(root_id: str, dlc_owned: set, noi_ahistorical: bool,
-                          chosen_path: str = None) -> bool:
-        """Check if a branch is visible given the parameter state."""
-        cond = branch_conditions.get(root_id, BranchCondition())
-        if cond.always_hidden:
-            return False
-        if cond.requires_noi_ahistorical and not noi_ahistorical:
-            return False
-        if cond.requires_dlc and cond.requires_dlc not in dlc_owned:
-            return False
-        if cond.requires_not_dlc and cond.requires_not_dlc in dlc_owned:
-            return False
-        if cond.requires_flag:
-            return False
+    return branch_conditions, dlcs, always_visible_ids, political_roots
 
-        # If a political path was chosen and this root hides after that focus
-        if chosen_path and cond.hides_after_focus:
-            if chosen_path in cond.hides_after_focus:
-                return False
 
-        return True
+def generate_scenarios(focuses: dict, branches: dict):
+    """
+    Generate all valid visibility scenarios including political path choices.
+    Returns list of (scenario_name, visible_focus_ids, positions_map).
+    """
+    branch_conditions, dlcs, always_visible_ids, political_roots = \
+        _prepare_scenario_params(focuses, branches)
 
-    # Generate DLC combos
     dlc_list = sorted(dlcs)
-    dlc_combos = []
-    for i in range(1 << len(dlc_list)):
-        combo = frozenset(dlc_list[j] for j in range(len(dlc_list)) if i & (1 << j))
-        dlc_combos.append(combo)
+    dlc_combos = [frozenset(dlc_list[j] for j in range(len(dlc_list)) if i & (1 << j))
+                  for i in range(1 << len(dlc_list))]
 
     scenarios = []
-
     for dlc_owned in dlc_combos:
         for noi_ahistorical in [False, True]:
-            # Determine which political paths are available in this DLC/noi config
-            available_paths = set()
-            for root_id in political_roots:
-                if is_branch_visible(root_id, dlc_owned, noi_ahistorical, None):
-                    available_paths.add(root_id)
+            available_paths = {r for r in political_roots
+                              if _is_branch_visible(branch_conditions, r, dlc_owned,
+                                                    noi_ahistorical)}
 
-            # Scenario: initial state (no path chosen, no offsets, no obsolete hide)
-            visible = set(always_visible_ids)
-            for root_id, members in branches.items():
-                if is_branch_visible(root_id, dlc_owned, noi_ahistorical, None):
-                    visible.update(members)
+            visible = _build_visible_set(branches, branch_conditions, always_visible_ids,
+                                         dlc_owned, noi_ahistorical)
 
             dlc_str = ", ".join(sorted(dlc_owned)) if dlc_owned else "no DLC"
             noi_str = "ahist=ON" if noi_ahistorical else "ahist=OFF"
-            name = f"[{dlc_str}] [{noi_str}] [initial]"
-
             game_rules = {
                 "noi_allow_ahistorical": "noi_rule_ahistorical_allowed" if noi_ahistorical else "noi_rule_ahistorical_forbidden"
             }
             positions = compute_positions_map(focuses, set(), dlc_owned, obsolete_hide=False,
                                               game_rules=game_rules)
-            scenarios.append((name, visible, positions))
+            scenarios.append((f"[{dlc_str}] [{noi_str}] [initial]", visible, positions))
 
-            # Scenario: each political path chosen
             for chosen in available_paths:
-                visible = set(always_visible_ids)
-                for root_id, members in branches.items():
-                    if is_branch_visible(root_id, dlc_owned, noi_ahistorical, chosen):
-                        visible.update(members)
-
-                path_name = f"[{dlc_str}] [{noi_str}] [path: {chosen}]"
+                visible = _build_visible_set(branches, branch_conditions, always_visible_ids,
+                                             dlc_owned, noi_ahistorical, chosen)
                 positions = compute_positions_map(focuses, {chosen}, dlc_owned, obsolete_hide=True,
                                                   game_rules=game_rules)
-                scenarios.append((path_name, visible, positions))
+                scenarios.append((f"[{dlc_str}] [{noi_str}] [path: {chosen}]", visible, positions))
 
     return scenarios
 
@@ -784,55 +780,81 @@ def print_tree(focuses: dict, branches: dict, show_branches: bool = True):
         print(line)
 
 
-def print_overlap_report(focuses: dict, branches: dict):
-    """Find overlaps across all valid visibility scenarios."""
-    print("\n\n=== SCENARIO-BASED OVERLAP ANALYSIS ===")
-
-    scenarios = generate_scenarios(focuses, branches)
-
-    # Deduplicate by (visible_set, positions)
+def _deduplicate_scenarios(scenarios):
+    """Deduplicate scenarios by visible set + positions. Returns (unique_scenarios, seen_dict)."""
     seen = {}
     unique_scenarios = []
     for name, visible, positions in scenarios:
-        # Key: visible set + all their positions
         pos_key = frozenset((fid, positions.get(fid, (0, 0))) for fid in visible)
         if pos_key in seen:
             seen[pos_key].append(name)
         else:
             seen[pos_key] = [name]
             unique_scenarios.append((name, visible, positions))
+    return unique_scenarios, seen
 
+
+def _scenario_display_name(visible, positions, seen):
+    """Get display name for a scenario (including alias count)."""
+    aliases = seen[frozenset((fid, positions.get(fid, (0, 0))) for fid in visible)]
+    if len(aliases) == 1:
+        return aliases[0]
+    return f"{aliases[0]} (and {len(aliases)-1} identical)"
+
+
+def _find_radius_collisions(visible, positions, radius):
+    """Find collisions within given X radius at same Y. Returns list of (x1, x2, y, fid1, fid2)."""
+    by_y = {}
+    for fid in visible:
+        pos = positions.get(fid)
+        if pos:
+            by_y.setdefault(pos[1], []).append((pos[0], fid))
+
+    collisions = []
+    for y, entries in by_y.items():
+        entries.sort()
+        for i, (x1, fid1) in enumerate(entries):
+            for x2, fid2 in entries[i + 1:]:
+                if x2 - x1 < radius:
+                    collisions.append((x1, x2, y, fid1, fid2))
+                else:
+                    break
+    return collisions
+
+
+def _find_near_overlaps(visible, positions):
+    """Find near-overlaps (distance 1-2 on X, same Y)."""
+    by_y = {}
+    for fid in visible:
+        pos = positions.get(fid)
+        if pos:
+            by_y.setdefault(pos[1], []).append((pos[0], fid))
+
+    near = []
+    for y, entries in by_y.items():
+        entries.sort()
+        for i in range(len(entries) - 1):
+            x1, fid1 = entries[i]
+            x2, fid2 = entries[i + 1]
+            if 0 < x2 - x1 <= 2:
+                near.append((x1, x2, y, fid1, fid2))
+    return near
+
+
+def print_overlap_report(focuses: dict, branches: dict):
+    """Find overlaps across all valid visibility scenarios."""
+    print("\n\n=== SCENARIO-BASED OVERLAP ANALYSIS ===")
+
+    scenarios = generate_scenarios(focuses, branches)
+    unique_scenarios, seen = _deduplicate_scenarios(scenarios)
     print(f"\n{len(scenarios)} total combos -> {len(unique_scenarios)} unique states\n")
 
     any_overlap = False
     for name, visible, positions in unique_scenarios:
-        aliases = seen[frozenset((fid, positions.get(fid, (0, 0))) for fid in visible)]
-
-        # Group visible focuses by Y, then find X collisions within radius
-        # Focus icons occupy ~2 units wide; distance < 2 = real visual overlap
-        # (distance 2 = normal Paradox spacing, distance 0-1 = actual collision)
-        FOCUS_RADIUS = 2
-        by_y = {}
-        for fid in visible:
-            pos = positions.get(fid)
-            if pos:
-                by_y.setdefault(pos[1], []).append((pos[0], fid))
-
-        collisions = []
-        for y, entries in by_y.items():
-            entries.sort()
-            for i in range(len(entries)):
-                for j in range(i + 1, len(entries)):
-                    x1, fid1 = entries[i]
-                    x2, fid2 = entries[j]
-                    if x2 - x1 < FOCUS_RADIUS:
-                        collisions.append((x1, x2, y, fid1, fid2))
-                    else:
-                        break  # sorted, no point checking further
-
+        collisions = _find_radius_collisions(visible, positions, FOCUS_RADIUS)
         if collisions:
             any_overlap = True
-            all_names = aliases[0] if len(aliases) == 1 else f"{aliases[0]} (and {len(aliases)-1} identical)"
+            all_names = _scenario_display_name(visible, positions, seen)
             print(f"  SCENARIO: {all_names}")
             print(f"    Visible: {len(visible)} focuses, {len(collisions)} collision(s) (within {FOCUS_RADIUS} X units):")
             for x1, x2, y, fid1, fid2 in collisions[:25]:
@@ -845,33 +867,13 @@ def print_overlap_report(focuses: dict, branches: dict):
     if not any_overlap:
         print("  No overlaps in any scenario!")
 
-    # Also check near-overlaps (within distance 1-2 on X, same Y)
     print("\n=== NEAR-OVERLAP ANALYSIS (distance <= 2 on X, same Y) ===")
     any_near = False
     for name, visible, positions in unique_scenarios:
-        # Build position index
-        by_y = {}
-        for fid in visible:
-            pos = positions.get(fid)
-            if pos:
-                y = pos[1]
-                if y not in by_y:
-                    by_y[y] = []
-                by_y[y].append((pos[0], fid))
-
-        near_overlaps = []
-        for y, entries in by_y.items():
-            entries.sort()
-            for i in range(len(entries) - 1):
-                x1, fid1 = entries[i]
-                x2, fid2 = entries[i + 1]
-                if x2 - x1 <= 2 and x2 - x1 > 0:
-                    near_overlaps.append((x1, x2, y, fid1, fid2))
-
+        near_overlaps = _find_near_overlaps(visible, positions)
         if near_overlaps:
             any_near = True
-            aliases = seen[frozenset((fid, positions.get(fid, (0, 0))) for fid in visible)]
-            all_names = aliases[0] if len(aliases) == 1 else f"{aliases[0]} (and {len(aliases)-1} identical)"
+            all_names = _scenario_display_name(visible, positions, seen)
             print(f"\n  SCENARIO: {all_names}")
             for x1, x2, y, fid1, fid2 in near_overlaps[:20]:
                 print(f"    ({x1},{y}) {fid1}  <-{x2-x1}->  ({x2},{y}) {fid2}")
@@ -905,39 +907,22 @@ def find_active_offset_ancestor(focus_id: str, focuses: dict,
     return None
 
 
-def suggest_fixes(focuses: dict, branches: dict):
-    """
-    Analyze all overlaps across scenarios and suggest consolidated offset fixes.
-
-    For each overlap:
-    - Find which focus has an active offset ancestor (the "tunable" side)
-    - Compute the X delta needed to separate them
-    - Group by (ancestor_id, offset_index) to consolidate fixes
-    """
-    print("\n\n=== SUGGESTED FIXES ===")
-
+def _collect_fix_needs(focuses, branches):
+    """Collect fix needs across all scenarios. Returns (fix_needs dict, scenarios list)."""
     scenarios = generate_scenarios(focuses, branches)
-
-    # For each scenario, find overlaps and trace them to offset blocks
-    # fix_needs[(focus_id, offset_idx)] -> list of (delta_x, scenario_name, overlap_detail)
     fix_needs = {}
 
     for name, visible, positions in scenarios:
-        # Find overlaps
         pos_groups = {}
         for fid in visible:
             pos = positions.get(fid)
             if pos:
-                if pos not in pos_groups:
-                    pos_groups[pos] = []
-                pos_groups[pos].append(fid)
+                pos_groups.setdefault(pos, []).append(fid)
 
         overlaps = {pos: fids for pos, fids in pos_groups.items() if len(fids) > 1}
-
         if not overlaps:
             continue
 
-        # Parse scenario params from name
         completed = set()
         dlc_owned = set()
         if "[path: " in name:
@@ -945,68 +930,131 @@ def suggest_fixes(focuses: dict, branches: dict):
             completed = {path}
         obsolete_hide = bool(completed)
 
-        # Extract DLCs from name
         dlc_part = name.split("] [")[0].lstrip("[")
         if dlc_part != "no DLC":
             dlc_owned = set(dlc_part.split(", "))
 
         for pos, fids in overlaps.items():
-            # For each pair, try to find a tunable offset ancestor
-            for i, fid_a in enumerate(fids):
-                for fid_b in fids[i + 1:]:
-                    # Try to find offset ancestor for each side
-                    ancestor_a = find_active_offset_ancestor(
-                        fid_a, focuses, completed, dlc_owned, obsolete_hide)
-                    ancestor_b = find_active_offset_ancestor(
-                        fid_b, focuses, completed, dlc_owned, obsolete_hide)
+            _classify_overlap_pair(focuses, name, pos, fids, completed,
+                                   dlc_owned, obsolete_hide, fix_needs)
 
-                    # Prefer to move the side that HAS an active offset
-                    if ancestor_a and not ancestor_b:
-                        # Move A's tree: need to shift left or right to not collide with B
-                        key = (ancestor_a[0], ancestor_a[1])
-                        # A needs to move away from B; compute min delta
-                        # Convention: positive delta = move right, negative = move left
-                        detail = f"{fid_a} vs {fid_b} at {pos}"
-                        fix_needs.setdefault(key, []).append((name, detail, fid_a, fid_b))
-                    elif ancestor_b and not ancestor_a:
-                        key = (ancestor_b[0], ancestor_b[1])
-                        detail = f"{fid_b} vs {fid_a} at {pos}"
-                        fix_needs.setdefault(key, []).append((name, detail, fid_b, fid_a))
-                    elif ancestor_a and ancestor_b:
-                        # Both have active offsets; prefer the "bigger" tree (ministry > political)
-                        # Heuristic: pick the one with more descendants
-                        key_a = (ancestor_a[0], ancestor_a[1])
-                        key_b = (ancestor_b[0], ancestor_b[1])
-                        detail = f"{fid_a} vs {fid_b} at {pos}"
-                        fix_needs.setdefault(key_a, []).append((name, detail, fid_a, fid_b))
-                        fix_needs.setdefault(key_b, []).append((name, detail, fid_b, fid_a))
-                    else:
-                        # Neither has an active offset — this is a base position conflict
-                        # Need to change the base x/y of one of them
-                        key = (fid_a, -1)  # -1 = base position, not an offset
-                        detail = f"{fid_a} vs {fid_b} at {pos} (no active offset)"
-                        fix_needs.setdefault(key, []).append((name, detail, fid_a, fid_b))
+    return fix_needs, scenarios
 
+
+def _classify_overlap_pair(focuses, name, pos, fids, completed, dlc_owned,
+                           obsolete_hide, fix_needs):
+    """Classify each overlapping pair and add to fix_needs."""
+    for i, fid_a in enumerate(fids):
+        for fid_b in fids[i + 1:]:
+            ancestor_a = find_active_offset_ancestor(
+                fid_a, focuses, completed, dlc_owned, obsolete_hide)
+            ancestor_b = find_active_offset_ancestor(
+                fid_b, focuses, completed, dlc_owned, obsolete_hide)
+
+            if ancestor_a and not ancestor_b:
+                key = (ancestor_a[0], ancestor_a[1])
+                detail = f"{fid_a} vs {fid_b} at {pos}"
+                fix_needs.setdefault(key, []).append((name, detail, fid_a, fid_b))
+            elif ancestor_b and not ancestor_a:
+                key = (ancestor_b[0], ancestor_b[1])
+                detail = f"{fid_b} vs {fid_a} at {pos}"
+                fix_needs.setdefault(key, []).append((name, detail, fid_b, fid_a))
+            elif ancestor_a and ancestor_b:
+                key_a = (ancestor_a[0], ancestor_a[1])
+                key_b = (ancestor_b[0], ancestor_b[1])
+                detail = f"{fid_a} vs {fid_b} at {pos}"
+                fix_needs.setdefault(key_a, []).append((name, detail, fid_a, fid_b))
+                fix_needs.setdefault(key_b, []).append((name, detail, fid_b, fid_a))
+            else:
+                key = (fid_a, -1)
+                detail = f"{fid_a} vs {fid_b} at {pos} (no active offset)"
+                fix_needs.setdefault(key, []).append((name, detail, fid_a, fid_b))
+
+
+def _get_descendants(focuses, focus_id, cache):
+    """Get all descendant IDs (via relative_position_id) with caching."""
+    if focus_id in cache:
+        return cache[focus_id]
+    desc = {focus_id}
+    for other_id, other_f in focuses.items():
+        if other_f.relative_position_id == focus_id:
+            desc.update(_get_descendants(focuses, other_id, cache))
+    cache[focus_id] = desc
+    return desc
+
+
+def _find_min_clear_delta(our_x, y, visible, positions, desc):
+    """Find minimum delta to clear an overlap at position (our_x, y)."""
+    occupied_xs = set()
+    for fid in visible:
+        if fid not in desc:
+            fpos = positions.get(fid)
+            if fpos and fpos[1] == y:
+                occupied_xs.add(fpos[0])
+
+    for delta in range(1, 50):
+        if (our_x + delta) not in occupied_xs:
+            return delta
+        if (our_x - delta) not in occupied_xs:
+            return delta
+    return 0
+
+
+def _compute_max_delta(scenarios, scenario_names, desc):
+    """Compute the max delta needed to clear all overlaps for an offset group."""
+    max_delta = 0
+    for scenario_name in scenario_names:
+        for sname, visible, positions in scenarios:
+            if sname != scenario_name:
+                continue
+
+            pos_groups = {}
+            for fid in visible:
+                pos = positions.get(fid)
+                if pos:
+                    pos_groups.setdefault(pos, []).append(fid)
+
+            for pos, fids in pos_groups.items():
+                if len(fids) < 2:
+                    continue
+                our_fids = [fid for fid in fids if fid in desc]
+                their_fids = [fid for fid in fids if fid not in desc]
+                if our_fids and their_fids:
+                    delta = _find_min_clear_delta(pos[0], pos[1], visible, positions, desc)
+                    max_delta = max(max_delta, delta)
+            break
+    return max_delta
+
+
+def _print_fix_summary(fix_needs, focuses):
+    """Print the strategy summary for fix needs."""
+    print("\n=== STRATEGY SUMMARY ===")
+    print()
+    ranked = sorted(fix_needs.items(), key=lambda x: -len(x[1]))
+    print("  Offset blocks ranked by impact (fix these first):")
+    for (focus_id, offset_idx), entries in ranked[:10]:
+        n_scenarios = len(set(e[0] for e in entries))
+        n_collisions = len(set((a, b) for _, _, a, b in entries))
+        if offset_idx == -1:
+            print(f"    {focus_id} BASE POS: {n_collisions} collisions in {n_scenarios} scenarios")
+        else:
+            off = focuses[focus_id].offsets[offset_idx]
+            print(f"    {focus_id} offset#{offset_idx} (x={off.x}): "
+                  f"{n_collisions} collisions in {n_scenarios} scenarios")
+
+
+def suggest_fixes(focuses: dict, branches: dict):
+    """Analyze all overlaps across scenarios and suggest consolidated offset fixes."""
+    print("\n\n=== SUGGESTED FIXES ===")
+
+    fix_needs, scenarios = _collect_fix_needs(focuses, branches)
     if not fix_needs:
         print("  No fixes needed!")
         return
 
-    # Build descendant cache: for each focus, the set of all descendant IDs (via relative_position_id)
-    descendants_cache = {}
-
-    def get_descendants(fid):
-        if fid in descendants_cache:
-            return descendants_cache[fid]
-        desc = {fid}
-        for other_id, other_f in focuses.items():
-            if other_f.relative_position_id == fid:
-                desc.update(get_descendants(other_id))
-        descendants_cache[fid] = desc
-        return desc
-
+    desc_cache = {}
     print(f"\nFound {len(fix_needs)} offset block(s) involved in overlaps:\n")
 
-    # For each offset block, compute the concrete delta needed
     for (focus_id, offset_idx), entries in sorted(fix_needs.items(), key=lambda x: -len(x[1])):
         f = focuses[focus_id]
         scenarios_affected = set(e[0] for e in entries)
@@ -1026,54 +1074,8 @@ def suggest_fixes(focuses: dict, branches: dict):
             continue
 
         off = f.offsets[offset_idx]
-        desc = get_descendants(focus_id)
-
-        # For each affected scenario, compute what delta would fix ALL overlaps
-        max_delta_needed = 0  # worst case across all scenarios
-
-        for scenario_name in scenarios_affected:
-            for sname, visible, positions in scenarios:
-                if sname != scenario_name:
-                    continue
-
-                # Find overlaps between descendants of this focus and non-descendants
-                pos_groups = {}
-                for fid in visible:
-                    pos = positions.get(fid)
-                    if pos:
-                        pos_groups.setdefault(pos, []).append(fid)
-
-                for pos, fids in pos_groups.items():
-                    if len(fids) < 2:
-                        continue
-
-                    our_fids = [fid for fid in fids if fid in desc]
-                    their_fids = [fid for fid in fids if fid not in desc]
-
-                    if our_fids and their_fids:
-                        # Overlap! We need to shift our tree so these don't collide.
-                        # Minimum separation: 3 on X axis (focus icons need space)
-                        # Direction: check if our tree is generally left or right of theirs
-                        our_x = pos[0]
-                        # Find the nearest non-colliding X for our focus
-                        # Check occupied X positions at this Y by non-descendants
-                        y = pos[1]
-                        occupied_xs = set()
-                        for fid in visible:
-                            if fid not in desc:
-                                fpos = positions.get(fid)
-                                if fpos and fpos[1] == y:
-                                    occupied_xs.add(fpos[0])
-
-                        # Find minimum delta (positive = right, negative = left) to clear
-                        for delta in range(1, 50):
-                            if (our_x + delta) not in occupied_xs:
-                                max_delta_needed = max(max_delta_needed, delta)
-                                break
-                            if (our_x - delta) not in occupied_xs:
-                                max_delta_needed = max(max_delta_needed, delta)
-                                break
-            break
+        desc = _get_descendants(focuses, focus_id, desc_cache)
+        max_delta_needed = _compute_max_delta(scenarios, scenarios_affected, desc)
 
         suggested = off.x + max_delta_needed
         suggested_neg = off.x - max_delta_needed
@@ -1086,20 +1088,7 @@ def suggest_fixes(focuses: dict, branches: dict):
         print(f"    -> Suggested: x={suggested} (shift right) or x={suggested_neg} (shift left)")
         print()
 
-    # Summary
-    print("\n=== STRATEGY SUMMARY ===")
-    print()
-    ranked = sorted(fix_needs.items(), key=lambda x: -len(x[1]))
-    print("  Offset blocks ranked by impact (fix these first):")
-    for (focus_id, offset_idx), entries in ranked[:10]:
-        n_scenarios = len(set(e[0] for e in entries))
-        n_collisions = len(set((a, b) for _, _, a, b in entries))
-        if offset_idx == -1:
-            print(f"    {focus_id} BASE POS: {n_collisions} collisions in {n_scenarios} scenarios")
-        else:
-            off = focuses[focus_id].offsets[offset_idx]
-            print(f"    {focus_id} offset#{offset_idx} (x={off.x}): "
-                  f"{n_collisions} collisions in {n_scenarios} scenarios")
+    _print_fix_summary(fix_needs, focuses)
 
 
 def print_bounding_boxes(focuses: dict, branches: dict):
@@ -1150,8 +1139,8 @@ def print_bounding_boxes(focuses: dict, branches: dict):
     for label, (xmin, xmax) in sorted(groups.items(), key=lambda x: x[1][0]):
         left = scale(xmin)
         right = scale(xmax)
-        bar = " " * left + "[" + "=" * max(right - left - 1, 0) + "]"
-        print(f"  {label:<60} {bar}  ({xmin} to {xmax})")
+        bbox_bar = " " * left + "[" + "=" * max(right - left - 1, 0) + "]"
+        print(f"  {label:<60} {bbox_bar}  ({xmin} to {xmax})")
 
 
 # ---------------------------------------------------------------------------
@@ -1159,6 +1148,7 @@ def print_bounding_boxes(focuses: dict, branches: dict):
 # ---------------------------------------------------------------------------
 
 def build_descendant_map(focuses: dict) -> dict:
+    """Build a map from focus_id to the set of all its descendants (via relative_position_id)."""
     children = {}
     for fid, f in focuses.items():
         if f.relative_position_id and f.relative_position_id in focuses:
@@ -1180,6 +1170,7 @@ def build_descendant_map(focuses: dict) -> dict:
 
 
 def find_collisions(visible: set, positions: dict) -> list:
+    """Return list of (fid1, fid2, pos1, pos2, dist) for all collisions within COLLISION_DISTANCE."""
     by_y = {}
     for fid in visible:
         pos = positions.get(fid)
@@ -1189,10 +1180,8 @@ def find_collisions(visible: set, positions: dict) -> list:
     collisions = []
     for y, entries in by_y.items():
         entries.sort()
-        for i in range(len(entries)):
-            for j in range(i + 1, len(entries)):
-                x1, fid1 = entries[i]
-                x2, fid2 = entries[j]
+        for i, (x1, fid1) in enumerate(entries):
+            for x2, fid2 in entries[i + 1:]:
                 if x2 - x1 < COLLISION_DISTANCE:
                     collisions.append((fid1, fid2, (x1, y), (x2, y), x2 - x1))
                 else:
@@ -1201,6 +1190,7 @@ def find_collisions(visible: set, positions: dict) -> list:
 
 
 def parse_scenario_params(name: str) -> tuple:
+    """Parse scenario name string into (completed_focuses, dlc_owned, noi_ahistorical)."""
     completed = set()
     dlc = set()
     noi = False
@@ -1218,6 +1208,7 @@ def parse_scenario_params(name: str) -> tuple:
 
 
 def get_active_offsets(focuses, completed, dlc, obsolete_hide, game_rules=None):
+    """Return dict of fid -> [offset_indices] for offsets active in the given game state."""
     active = {}
     for fid, f in focuses.items():
         for i, off in enumerate(f.offsets):
@@ -1227,8 +1218,30 @@ def get_active_offsets(focuses, completed, dlc, obsolete_hide, game_rules=None):
     return active
 
 
+def _compute_forbidden_ranges(movable, fixed, positions):
+    """Compute forbidden delta ranges from movable/fixed focus positions."""
+    forbidden = []
+    by_y_m = {}
+    by_y_f = {}
+    for mid in movable:
+        if mid in positions:
+            by_y_m.setdefault(positions[mid][1], []).append(positions[mid][0])
+    for fxid in fixed:
+        if fxid in positions:
+            by_y_f.setdefault(positions[fxid][1], []).append(positions[fxid][0])
+    for y, mx_list in by_y_m.items():
+        if y not in by_y_f:
+            continue
+        for mx in mx_list:
+            for fx in by_y_f[y]:
+                lo = fx - mx - COLLISION_DISTANCE + 1
+                hi = fx - mx + COLLISION_DISTANCE - 1
+                forbidden.append((lo, hi))
+    return forbidden
+
+
 def solve_offsets_for_scenario(focuses, visible, positions, active_offsets,
-                               descendant_map, verbose=False):
+                               descendant_map, _verbose=False):
     """
     For each active offset group, compute the delta that resolves all collisions
     with fixed (non-group) focuses. Returns list of (fid, oidx, current_x, new_x).
@@ -1256,25 +1269,7 @@ def solve_offsets_for_scenario(focuses, visible, positions, active_offsets,
         fixed = visible - movable
         current_x = focuses[fid].offsets[oidx].x
 
-        # Collect forbidden delta ranges across all Y rows
-        forbidden = []
-        by_y_m = {}
-        by_y_f = {}
-        for mid in movable:
-            if mid in positions:
-                by_y_m.setdefault(positions[mid][1], []).append(positions[mid][0])
-        for fxid in fixed:
-            if fxid in positions:
-                by_y_f.setdefault(positions[fxid][1], []).append(positions[fxid][0])
-
-        for y in by_y_m:
-            if y not in by_y_f:
-                continue
-            for mx in by_y_m[y]:
-                for fx in by_y_f[y]:
-                    lo = fx - mx - COLLISION_DISTANCE + 1
-                    hi = fx - mx + COLLISION_DISTANCE - 1
-                    forbidden.append((lo, hi))
+        forbidden = _compute_forbidden_ranges(movable, fixed, positions)
 
         if not forbidden:
             continue
@@ -1328,6 +1323,7 @@ def _pick_delta(forbidden_ranges, target=0):
 
 
 def detect_centering_issues(focuses, positions, visible):
+    """Find parent focuses whose children midpoint deviates more than 1 unit from the parent X."""
     children_of = {}
     for fid, f in focuses.items():
         if f.relative_position_id and fid in visible:
@@ -1351,7 +1347,7 @@ def detect_centering_issues(focuses, positions, visible):
     return issues
 
 
-def apply_offset_fixes(text: str, fixes: list, focuses: dict) -> str:
+def apply_offset_fixes(text: str, fixes: list, _focuses: dict) -> str:
     """Apply offset x value changes to the file text."""
     focus_blocks = {fid: (s, e, bt) for fid, s, e, bt in find_focus_blocks(text)}
 
@@ -1373,8 +1369,10 @@ def apply_offset_fixes(text: str, fixes: list, focuses: dict) -> str:
         depth = 1
         oi += 1
         while oi < len(block) and depth > 0:
-            if block[oi] == '{': depth += 1
-            elif block[oi] == '}': depth -= 1
+            if block[oi] == '{':
+                depth += 1
+            elif block[oi] == '}':
+                depth -= 1
             oi += 1
 
         offset_text = block[off_start:oi]
@@ -1391,7 +1389,7 @@ def apply_offset_fixes(text: str, fixes: list, focuses: dict) -> str:
     return text
 
 
-def generate_offset_suggestion(focus_id, trigger_desc, delta_x):
+def generate_offset_suggestion(_focus_id, trigger_desc, delta_x):
     """Generate a ready-to-paste offset block."""
     return f"""		offset = {{
 			x = {delta_x}
@@ -1403,10 +1401,373 @@ def generate_offset_suggestion(focus_id, trigger_desc, delta_x):
 
 
 # ---------------------------------------------------------------------------
+# Autofixer: run — helper functions
+# ---------------------------------------------------------------------------
+
+
+def _compute_ahist_hidden_ids(focuses, branches):
+    """Compute focus IDs hidden when noi_allow_ahistorical=OFF."""
+    ahist_hidden_roots = set()
+    for fid, f in focuses.items():
+        if f.has_allow_branch:
+            ab = f.allow_branch_raw.lower()
+            if 'noi_allow_ahistorical' in ab and 'noi_rule_ahistorical_allowed' in ab:
+                ahist_hidden_roots.add(fid)
+            elif 'always = no' in ab:
+                ahist_hidden_roots.add(fid)
+    ahist_hidden_ids = set()
+    for root_id in ahist_hidden_roots:
+        if root_id in branches:
+            ahist_hidden_ids.update(branches[root_id])
+    return ahist_hidden_ids
+
+
+def _categorize_collisions(scenarios):
+    """Split collisions into ahist=OFF and ahist=ON buckets."""
+    ahist_off_collisions = {}
+    ahist_on_collisions = {}
+    ahist_off_clean = 0
+    ahist_on_clean = 0
+    for name, visible, positions in scenarios:
+        cols = find_collisions(visible, positions)
+        if "ahist=OFF" in name:
+            if cols:
+                ahist_off_collisions[name] = cols
+            else:
+                ahist_off_clean += 1
+        else:
+            if cols:
+                ahist_on_collisions[name] = cols
+            else:
+                ahist_on_clean += 1
+    return ahist_off_collisions, ahist_on_collisions, ahist_off_clean, ahist_on_clean
+
+
+def _find_anchor_issues(focuses, ahist_hidden_ids):
+    """Find visible focuses anchored through hidden branches. Returns list of issues."""
+    anchor_issues = []
+    for fid in focuses:
+        if fid in ahist_hidden_ids:
+            continue
+        chain = []
+        cur = fid
+        visited = set()
+        while cur and cur not in visited:
+            visited.add(cur)
+            chain.append(cur)
+            parent = focuses[cur].relative_position_id if cur in focuses else None
+            cur = parent
+        hidden_ancestors = [a for a in chain[1:] if a in ahist_hidden_ids]
+        if hidden_ancestors:
+            phantom_x = 0
+            for ancestor in chain:
+                if ancestor == fid:
+                    continue
+                if ancestor in ahist_hidden_ids:
+                    phantom_x += focuses[ancestor].x
+                else:
+                    break
+            anchor_issues.append((fid, hidden_ancestors, phantom_x, chain))
+    return anchor_issues
+
+
+def _print_anchor_group(focuses, desc_map, ahist_hidden_ids, root_hidden, members):
+    """Print analysis for one anchor group."""
+    first_visible = None
+    for _fid, _phantom_x, chain in members:
+        for i, c in enumerate(chain):
+            if c not in ahist_hidden_ids and i + 1 < len(chain) and chain[i + 1] in ahist_hidden_ids:
+                first_visible = c
+                break
+        if first_visible:
+            break
+
+    if not first_visible:
+        return
+
+    visible_desc = desc_map.get(first_visible, set()) - ahist_hidden_ids
+    total_phantom = sum(
+        focuses[a].x for a in members[0][2]
+        if a in ahist_hidden_ids and a != first_visible
+    )
+
+    print(f"  Hidden anchor: {root_hidden}")
+    print(f"    First visible descendant: {first_visible} ({len(visible_desc)} visible focuses affected)")
+    print(f"    Chain: {' -> '.join(members[0][2][:6])}{'...' if len(members[0][2]) > 6 else ''}")
+    print(f"    Phantom X from hidden ancestors: {total_phantom}")
+    print(f"    -> Needs offset x=-{total_phantom} on {first_visible} when ahist=OFF")
+    print(f"       (or adjust base position of {first_visible})")
+
+    has_noi_offset = False
+    for off in focuses[first_visible].offsets:
+        if 'noi_allow_ahistorical' in off.trigger_raw and 'forbidden' in off.trigger_raw:
+            has_noi_offset = True
+            print("    -> Already has NOI offset (good)")
+            break
+    if not has_noi_offset:
+        print("    -> NO NOI offset found — needs one!")
+    print()
+
+
+def _analyze_anchors(focuses, branches, desc_map, ahist_hidden_ids):
+    """Find and report visible focuses anchored through hidden branches."""
+    print("\n=== ANCHOR ANALYSIS ===\n")
+    anchor_issues = _find_anchor_issues(focuses, ahist_hidden_ids)
+
+    if not anchor_issues:
+        print("  No anchor issues found.")
+        return
+
+    by_root = {}
+    for fid, hidden_anc, phantom_x, chain in anchor_issues:
+        root_hidden = hidden_anc[-1]
+        by_root.setdefault(root_hidden, []).append((fid, phantom_x, chain))
+
+    print(f"  {len(anchor_issues)} visible focus(es) anchored through hidden branches:\n")
+    for root_hidden, members in sorted(by_root.items(), key=lambda x: -len(x[1])):
+        _print_anchor_group(focuses, desc_map, ahist_hidden_ids, root_hidden, members)
+
+
+def _autofix_ahist_off(text, file_path, focuses, scenarios, desc_map,
+                       ahist_off_collisions, dry_run, verbose):
+    """Solve and apply offset fixes for ahist=OFF collisions. Returns (all_fixes, text)."""
+    all_fixes = {}
+    print("\n=== AUTO-FIX ahist=OFF ===\n")
+
+    for name, visible, positions in scenarios:
+        if "ahist=OFF" not in name:
+            continue
+
+        completed, dlc, _ = parse_scenario_params(name)
+        game_rules = {"noi_allow_ahistorical": "noi_rule_ahistorical_forbidden"}
+        active = get_active_offsets(focuses, completed, dlc, bool(completed), game_rules)
+
+        pos_copy = dict(positions)
+        results = solve_offsets_for_scenario(
+            focuses, visible, pos_copy, active, desc_map, verbose)
+
+        for fid, oidx, old_x, new_x in results:
+            key = (fid, oidx)
+            if key not in all_fixes:
+                all_fixes[key] = (fid, oidx, old_x, new_x)
+            else:
+                existing = all_fixes[key]
+                if abs(new_x) < abs(existing[3]):
+                    all_fixes[key] = (fid, oidx, old_x, new_x)
+
+    if all_fixes:
+        print(f"  {len(all_fixes)} offset fix(es):\n")
+        for (fid, oidx), (_, _, old_x, new_x) in sorted(all_fixes.items()):
+            trigger = focuses[fid].offsets[oidx].trigger_raw.strip()[:80]
+            print(f"    {fid} offset#{oidx}: x={old_x} -> x={new_x}")
+            print(f"      trigger: {trigger}\n")
+
+        if not dry_run:
+            fix_list = list(all_fixes.values())
+            new_text = apply_offset_fixes(text, fix_list, focuses)
+            Path(file_path).write_text(new_text, encoding='utf-8-sig')
+            print(f"  Applied to {file_path}")
+            text = new_text
+
+            # Validate
+            raw2 = extract_focuses_raw(new_text)
+            focuses2 = {}
+            for entries, ln in raw2:
+                f2 = parse_focus(entries, ln)
+                if f2.id:
+                    focuses2[f2.id] = f2
+            branches2 = identify_branches(focuses2)
+            scenarios2 = generate_scenarios(focuses2, branches2)
+            remaining = 0
+            for name2, vis2, pos2 in scenarios2:
+                if "ahist=OFF" not in name2:
+                    continue
+                cols2 = find_collisions(vis2, pos2)
+                remaining += len(cols2)
+            if remaining:
+                print(f"  WARNING: {remaining} ahist=OFF collision(s) remain!")
+            else:
+                print("  CLEAN: 0 ahist=OFF collisions after fix.")
+        else:
+            print("  (dry run, not applied)")
+    else:
+        print("  No fixes needed for ahist=OFF.")
+
+    return all_fixes, text
+
+
+def _find_hidden_anchors(focus_ids, focuses, ahist_hidden_ids):
+    """Find hidden ancestors in relative_position_id chains."""
+    anchored = set()
+    for fid in focus_ids:
+        cur = fid
+        visited = set()
+        while cur and cur not in visited:
+            visited.add(cur)
+            if cur in ahist_hidden_ids and cur != fid:
+                anchored.add(cur)
+                break
+            cur = focuses[cur].relative_position_id if cur in focuses else None
+    return anchored
+
+
+def _detect_gaps(focuses, scenarios, ahist_hidden_ids):
+    """Detect suspicious X-axis gaps in ahist=OFF scenarios."""
+    print("\n=== GAP DETECTION (ahist=OFF) ===\n")
+
+    for name, visible, positions in scenarios:
+        if "ahist=OFF" not in name or "initial" not in name:
+            continue
+
+        visible_positions = [(positions[fid][0], positions[fid][1], fid)
+                            for fid in visible if fid in positions]
+        if not visible_positions:
+            continue
+
+        visible_xs = sorted(set(x for x, _y, _fid in visible_positions))
+        if len(visible_xs) < 2:
+            continue
+
+        gaps = []
+        for i in range(len(visible_xs) - 1):
+            gap = visible_xs[i + 1] - visible_xs[i]
+            if gap <= GAP_THRESHOLD:
+                continue
+
+            right_focuses = [fid for x, _y, fid in visible_positions if x >= visible_xs[i + 1]]
+
+            anchored = _find_hidden_anchors(right_focuses, focuses, ahist_hidden_ids)
+            gaps.append({
+                'left_x': visible_xs[i],
+                'right_x': visible_xs[i + 1],
+                'size': gap,
+                'right_count': len(right_focuses),
+                'anchored_hidden': anchored,
+            })
+
+        if gaps:
+            print(f"  {name}:")
+            for g in gaps:
+                print(f"    GAP of {g['size']} columns: X={g['left_x']}..{g['right_x']} "
+                      f"({g['right_count']} focuses to the right)")
+                if g['anchored_hidden']:
+                    print(f"      Caused by hidden anchor(s): {', '.join(g['anchored_hidden'])}")
+                    print(f"      -> Need NOI compaction offset (x≈-{g['size'] - 2}) on the right-side root")
+        else:
+            print(f"  {name}: no significant gaps.")
+        break  # only check one initial scenario
+
+
+def _find_active_ancestor(focus_id, focuses, active):
+    """Walk up relative_position_id chain to find first focus with an active offset."""
+    cur = focus_id
+    visited = set()
+    while cur and cur not in visited:
+        visited.add(cur)
+        if cur in active:
+            return cur
+        cur = focuses[cur].relative_position_id if cur in focuses else None
+    return None
+
+
+def _report_ahist_on(focuses, scenarios, ahist_on_collisions, desc_map):
+    """Report ahist=ON collisions with fix suggestions."""
+    if not ahist_on_collisions:
+        return
+
+    print(f"\n=== AHIST=ON REPORT ({len(ahist_on_collisions)} scenarios with collisions) ===\n")
+
+    for name in sorted(ahist_on_collisions):
+        cols = ahist_on_collisions[name]
+
+        for sname, visible, positions in scenarios:
+            if sname != name:
+                continue
+
+            completed, dlc, _ = parse_scenario_params(name)
+            game_rules = {"noi_allow_ahistorical": "noi_rule_ahistorical_allowed"}
+            active = get_active_offsets(focuses, completed, dlc, bool(completed), game_rules)
+
+            pos_copy = dict(positions)
+            results = solve_offsets_for_scenario(
+                focuses, visible, pos_copy, active, desc_map, verbose=False)
+
+            fixable = len(results)
+            paradox_count = 0
+            for a, b, _pa, _pb, _d in cols:
+                ga = _find_active_ancestor(a, focuses, active)
+                gb = _find_active_ancestor(b, focuses, active)
+                if not ga and not gb:
+                    paradox_count += 1
+
+            print(f"  {name}:")
+            print(f"    {len(cols)} collisions, {fixable} fixable via existing offsets, "
+                  f"{paradox_count} paradoxes (base position conflicts)")
+
+            if results:
+                for fid, oidx, old_x, new_x in results:
+                    print(f"    -> {fid} offset#{oidx}: x={old_x} -> x={new_x}")
+
+            if paradox_count:
+                path = completed.pop() if completed else "initial"
+                print("    -> Needs NEW offset block(s) with trigger:")
+                print("       has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed }")
+                if completed:
+                    print(f"       has_completed_focus = {path}")
+                if dlc:
+                    print(f"       has_dlc = \"{list(dlc)[0]}\"")
+            print()
+            break
+
+
+def _report_continuous_position(text, scenarios):
+    """Report suggested continuous_focus_position values."""
+    print("\n=== CONTINUOUS FOCUS POSITION ===\n")
+    max_visible_y = 0
+    min_visible_x = 999
+    for name, visible, positions in scenarios:
+        if "ahist=OFF" not in name or "initial" not in name:
+            continue
+        for fid in visible:
+            if fid in positions:
+                max_visible_y = max(max_visible_y, positions[fid][1])
+                min_visible_x = min(min_visible_x, positions[fid][0])
+
+    suggested_y = (max_visible_y + 3) * PX_PER_Y
+    suggested_x = max(0, min_visible_x) * PX_PER_X
+
+    current_match = re.search(
+        r'continuous_focus_position\s*=\s*\{\s*x\s*=\s*(-?\d+)\s*y\s*=\s*(-?\d+)\s*\}', text)
+    if current_match:
+        cur_x, cur_y = int(current_match.group(1)), int(current_match.group(2))
+        print(f"  Current: x = {cur_x}, y = {cur_y}")
+    print(f"  Tree visible range: X={min_visible_x}..max, Y=0..{max_visible_y}")
+    print(f"  Suggested: x = {suggested_x}, y = {suggested_y}")
+    print("  (place below tree, aligned left, prefer right over far down)")
+
+
+def _report_centering(focuses, scenarios):
+    """Report centering issues across initial scenarios."""
+    print("\n=== CENTERING ISSUES ===\n")
+    centering_seen = set()
+    for name, visible, positions in scenarios:
+        if "initial" not in name:
+            continue
+        issues = detect_centering_issues(focuses, positions, visible)
+        for parent, _children, desc in issues:
+            if parent not in centering_seen:
+                centering_seen.add(parent)
+                print(f"  {parent}: {desc}")
+    if not centering_seen:
+        print("  No centering issues.")
+
+
+# ---------------------------------------------------------------------------
 # Autofixer: run (diagnosis + fix + gap + ahist=ON report + centering)
 # ---------------------------------------------------------------------------
 
 def run_diagnose_and_fix(file_path, fix=False, dry_run=False, verbose=False):
+    """Full diagnosis + optional auto-fix pipeline for a focus tree file."""
     text = Path(file_path).read_text(encoding='utf-8-sig')
 
     print(f"Parsing {file_path}...")
@@ -1423,26 +1784,9 @@ def run_diagnose_and_fix(file_path, fix=False, dry_run=False, verbose=False):
     scenarios = generate_scenarios(focuses, branches)
     print(f"  {len(scenarios)} scenarios.\n")
 
-    # === PHASE 1: DIAGNOSE ===
-    ahist_off_collisions = {}  # scenario_name -> collision list
-    ahist_on_collisions = {}
-    ahist_off_clean = 0
-    ahist_on_clean = 0
-
-    for name, visible, positions in scenarios:
-        _, _, noi = parse_scenario_params(name)
-        cols = find_collisions(visible, positions)
-
-        if "ahist=OFF" in name:
-            if cols:
-                ahist_off_collisions[name] = cols
-            else:
-                ahist_off_clean += 1
-        else:
-            if cols:
-                ahist_on_collisions[name] = cols
-            else:
-                ahist_on_clean += 1
+    # Phase 1: Categorize collisions
+    ahist_off_collisions, ahist_on_collisions, ahist_off_clean, ahist_on_clean = \
+        _categorize_collisions(scenarios)
 
     total_off = len(ahist_off_collisions) + ahist_off_clean
     total_on = len(ahist_on_collisions) + ahist_on_clean
@@ -1453,188 +1797,26 @@ def run_diagnose_and_fix(file_path, fix=False, dry_run=False, verbose=False):
     print(f"  ahist=ON:  {ahist_on_clean}/{total_on} scenarios clean, "
           f"{len(ahist_on_collisions)} with collisions")
 
-    # === BROKEN ANCHORS: visible focuses pinned to hidden branches ===
-    print(f"\n=== ANCHOR ANALYSIS ===\n")
-
-    # Determine which focuses are hidden in ahist=OFF scenarios
-    # A branch root with allow_branch containing noi_allow_ahistorical or always=no is "ahist-hidden"
-    ahist_hidden_roots = set()
-    for fid, f in focuses.items():
-        if f.has_allow_branch:
-            ab = f.allow_branch_raw.lower()
-            if 'noi_allow_ahistorical' in ab and 'noi_rule_ahistorical_allowed' in ab:
-                ahist_hidden_roots.add(fid)
-            elif 'always = no' in ab:
-                ahist_hidden_roots.add(fid)
-
-    ahist_hidden_ids = set()
-    for root_id in ahist_hidden_roots:
-        if root_id in branches:
-            ahist_hidden_ids.update(branches[root_id])
-
-    # Find visible focuses whose relative_position_id chain goes through a hidden focus
-    anchor_issues = []
-    for fid, f in focuses.items():
-        if fid in ahist_hidden_ids:
-            continue  # focus itself is hidden, no issue
-        # Walk up the chain
-        chain = []
-        cur = fid
-        visited = set()
-        while cur and cur not in visited:
-            visited.add(cur)
-            chain.append(cur)
-            parent = focuses[cur].relative_position_id if cur in focuses else None
-            cur = parent
-
-        # Check if any ancestor in the chain is ahist-hidden
-        hidden_ancestors = [a for a in chain[1:] if a in ahist_hidden_ids]
-        if hidden_ancestors:
-            # This visible focus is anchored through hidden focuses
-            # Calculate total "phantom offset" — the sum of relative positions through hidden ancestors
-            phantom_x = 0
-            for ancestor in chain:
-                if ancestor == fid:
-                    continue
-                if ancestor in ahist_hidden_ids:
-                    phantom_x += focuses[ancestor].x
-                else:
-                    break  # stop at first visible ancestor
-
-            anchor_issues.append((fid, hidden_ancestors, phantom_x, chain))
-
-    if anchor_issues:
-        # Group by the root hidden ancestor
-        by_root = {}
-        for fid, hidden_anc, phantom_x, chain in anchor_issues:
-            # The deepest hidden ancestor is the one closest to the tree root
-            root_hidden = hidden_anc[-1]
-            by_root.setdefault(root_hidden, []).append((fid, phantom_x, chain))
-
-        print(f"  {len(anchor_issues)} visible focus(es) anchored through hidden branches:\n")
-        for root_hidden, members in sorted(by_root.items(), key=lambda x: -len(x[1])):
-            # Find the first visible focus in the chain (the one that needs an offset)
-            first_visible = None
-            for fid, phantom_x, chain in members:
-                # Walk chain to find the transition point: first visible focus with hidden parent
-                for i, c in enumerate(chain):
-                    if c not in ahist_hidden_ids and i + 1 < len(chain) and chain[i + 1] in ahist_hidden_ids:
-                        first_visible = c
-                        break
-                if first_visible:
-                    break
-
-            if first_visible:
-                fv = focuses[first_visible]
-                # All descendants of first_visible that are visible
-                visible_desc = desc_map.get(first_visible, set()) - ahist_hidden_ids
-                # The phantom offset = sum of x positions through hidden ancestors
-                # This is how much the visible tree is displaced by hidden anchors
-                total_phantom = sum(
-                    focuses[a].x for a in members[0][2]
-                    if a in ahist_hidden_ids and a != first_visible
-                )
-
-                print(f"  Hidden anchor: {root_hidden}")
-                print(f"    First visible descendant: {first_visible} ({len(visible_desc)} visible focuses affected)")
-                print(f"    Chain: {' -> '.join(members[0][2][:6])}{'...' if len(members[0][2]) > 6 else ''}")
-                print(f"    Phantom X from hidden ancestors: {total_phantom}")
-                print(f"    -> Needs offset x=-{total_phantom} on {first_visible} when ahist=OFF")
-                print(f"       (or adjust base position of {first_visible})")
-
-                # Check if such an offset already exists
-                has_noi_offset = False
-                for off in focuses[first_visible].offsets:
-                    if 'noi_allow_ahistorical' in off.trigger_raw and 'forbidden' in off.trigger_raw:
-                        has_noi_offset = True
-                        print(f"    -> Already has NOI offset (good)")
-                        break
-                if not has_noi_offset:
-                    print(f"    -> NO NOI offset found — needs one!")
-                print()
-    else:
-        print(f"  No anchor issues found.")
+    # Anchor analysis
+    ahist_hidden_ids = _compute_ahist_hidden_ids(focuses, branches)
+    _analyze_anchors(focuses, branches, desc_map, ahist_hidden_ids)
 
     if ahist_off_collisions and verbose:
-        print(f"\n  ahist=OFF collisions:")
+        print("\n  ahist=OFF collisions:")
         for name, cols in ahist_off_collisions.items():
             print(f"    {name}: {len(cols)} collision(s)")
-            for a, b, pa, pb, d in cols[:5]:
+            for a, b, pa, _pb, d in cols[:5]:
                 print(f"      {a} vs {b} at Y={pa[1]}, dist={d}")
 
-    # === PHASE 2: AUTO-FIX ahist=OFF ===
+    # Phase 2: Auto-fix ahist=OFF
     all_fixes = {}
     if fix and ahist_off_collisions:
-        print(f"\n=== AUTO-FIX ahist=OFF ===\n")
-
-        for name, visible, positions in scenarios:
-            if "ahist=OFF" not in name:
-                continue
-
-            completed, dlc, noi = parse_scenario_params(name)
-            game_rules = {"noi_allow_ahistorical": "noi_rule_ahistorical_forbidden"}
-            active = get_active_offsets(focuses, completed, dlc, bool(completed), game_rules)
-
-            # Make a mutable copy of positions
-            pos_copy = dict(positions)
-            results = solve_offsets_for_scenario(
-                focuses, visible, pos_copy, active, desc_map, verbose)
-
-            for fid, oidx, old_x, new_x in results:
-                key = (fid, oidx)
-                if key not in all_fixes:
-                    all_fixes[key] = (fid, oidx, old_x, new_x)
-                else:
-                    # Cross-scenario conflict: keep the one with smaller absolute new_x
-                    # (more compact)
-                    existing = all_fixes[key]
-                    if abs(new_x) < abs(existing[3]):
-                        all_fixes[key] = (fid, oidx, old_x, new_x)
-
-        if all_fixes:
-            print(f"  {len(all_fixes)} offset fix(es):\n")
-            for (fid, oidx), (_, _, old_x, new_x) in sorted(all_fixes.items()):
-                trigger = focuses[fid].offsets[oidx].trigger_raw.strip()[:80]
-                print(f"    {fid} offset#{oidx}: x={old_x} -> x={new_x}")
-                print(f"      trigger: {trigger}\n")
-
-            if not dry_run:
-                fix_list = list(all_fixes.values())
-                new_text = apply_offset_fixes(text, fix_list, focuses)
-                Path(file_path).write_text(new_text, encoding='utf-8-sig')
-                print(f"  Applied to {file_path}")
-
-                # Validate
-                raw2 = extract_focuses_raw(new_text)
-                focuses2 = {}
-                for entries, ln in raw2:
-                    f2 = parse_focus(entries, ln)
-                    if f2.id:
-                        focuses2[f2.id] = f2
-                branches2 = identify_branches(focuses2)
-                scenarios2 = generate_scenarios(focuses2, branches2)
-
-                remaining = 0
-                for name2, vis2, pos2 in scenarios2:
-                    if "ahist=OFF" not in name2:
-                        continue
-                    cols2 = find_collisions(vis2, pos2)
-                    remaining += len(cols2)
-
-                if remaining:
-                    print(f"  WARNING: {remaining} ahist=OFF collision(s) remain!")
-                else:
-                    print(f"  CLEAN: 0 ahist=OFF collisions after fix.")
-            else:
-                print(f"  (dry run, not applied)")
-        else:
-            print(f"  No fixes needed for ahist=OFF.")
-
+        all_fixes, text = _autofix_ahist_off(
+            text, file_path, focuses, scenarios, desc_map,
+            ahist_off_collisions, dry_run, verbose)
     elif not ahist_off_collisions:
-        print(f"\n  ahist=OFF already clean, no fixes needed.")
+        print("\n  ahist=OFF already clean, no fixes needed.")
 
-    # === GAP DETECTION ===
-    print(f"\n=== GAP DETECTION (ahist=OFF) ===\n")
     # Re-parse if fixes were applied
     if fix and all_fixes and not dry_run:
         text = Path(file_path).read_text(encoding='utf-8-sig')
@@ -1647,201 +1829,14 @@ def run_diagnose_and_fix(file_path, fix=False, dry_run=False, verbose=False):
         branches = identify_branches(focuses)
         desc_map = build_descendant_map(focuses)
         scenarios = generate_scenarios(focuses, branches)
+        ahist_hidden_ids = _compute_ahist_hidden_ids(focuses, branches)
 
-    # Recompute ahist-hidden IDs
-    ahist_hidden_roots = set()
-    for fid, f in focuses.items():
-        if f.has_allow_branch:
-            ab = f.allow_branch_raw.lower()
-            if 'noi_allow_ahistorical' in ab and 'noi_rule_ahistorical_allowed' in ab:
-                ahist_hidden_roots.add(fid)
-            elif 'always = no' in ab:
-                ahist_hidden_roots.add(fid)
-    ahist_hidden_ids = set()
-    for root_id in ahist_hidden_roots:
-        if root_id in branches:
-            ahist_hidden_ids.update(branches[root_id])
+    # Gap detection, ahist=ON report, continuous position, centering
+    _detect_gaps(focuses, scenarios, ahist_hidden_ids)
+    _report_ahist_on(focuses, scenarios, ahist_on_collisions, desc_map)
+    _report_continuous_position(text, scenarios)
+    _report_centering(focuses, scenarios)
 
-    for name, visible, positions in scenarios:
-        if "ahist=OFF" not in name or "initial" not in name:
-            continue
-
-        visible_positions = [(positions[fid][0], positions[fid][1], fid)
-                            for fid in visible if fid in positions]
-        if not visible_positions:
-            continue
-
-        # Project all visible focuses onto X axis (ignore Y)
-        visible_xs = sorted(set(x for x, y, fid in visible_positions))
-        if len(visible_xs) < 2:
-            continue
-
-        # Find gaps: consecutive X values with distance > threshold
-        GAP_THRESHOLD = 5  # > 5 empty columns = suspicious gap
-        gaps = []
-        for i in range(len(visible_xs) - 1):
-            gap = visible_xs[i + 1] - visible_xs[i]
-            if gap > GAP_THRESHOLD:
-                # What's on each side of the gap?
-                left_focuses = [fid for x, y, fid in visible_positions if x <= visible_xs[i]]
-                right_focuses = [fid for x, y, fid in visible_positions if x >= visible_xs[i + 1]]
-
-                # Find the root-most focus on the right side (the one to shift)
-                # = the focus with the shortest relative_position_id chain
-                right_roots = set()
-                for fid in right_focuses:
-                    chain_len = 0
-                    cur = fid
-                    while cur and cur in focuses:
-                        chain_len += 1
-                        cur = focuses[cur].relative_position_id
-                    if chain_len <= 3:
-                        right_roots.add(fid)
-
-                # Check if the right side is anchored through hidden focuses
-                anchored_through_hidden = set()
-                for fid in right_focuses:
-                    cur = fid
-                    visited = set()
-                    while cur and cur not in visited:
-                        visited.add(cur)
-                        if cur in ahist_hidden_ids and cur != fid:
-                            anchored_through_hidden.add(cur)
-                            break
-                        cur = focuses[cur].relative_position_id if cur in focuses else None
-
-                gaps.append({
-                    'left_x': visible_xs[i],
-                    'right_x': visible_xs[i + 1],
-                    'size': gap,
-                    'right_count': len(right_focuses),
-                    'anchored_hidden': anchored_through_hidden,
-                })
-
-        if gaps:
-            print(f"  {name}:")
-            for g in gaps:
-                print(f"    GAP of {g['size']} columns: X={g['left_x']}..{g['right_x']} "
-                      f"({g['right_count']} focuses to the right)")
-                if g['anchored_hidden']:
-                    print(f"      Caused by hidden anchor(s): {', '.join(g['anchored_hidden'])}")
-                    print(f"      -> Need NOI compaction offset (x≈-{g['size'] - 2}) on the right-side root")
-        else:
-            print(f"  {name}: no significant gaps.")
-        break  # only check one initial scenario per DLC combo is enough
-
-    # === PHASE 3: REPORT ahist=ON ===
-    if ahist_on_collisions:
-        print(f"\n=== AHIST=ON REPORT ({len(ahist_on_collisions)} scenarios with collisions) ===\n")
-
-        # For each scenario, identify what offsets WOULD fix it
-        for name in sorted(ahist_on_collisions):
-            cols = ahist_on_collisions[name]
-
-            # Find corresponding scenario data
-            for sname, visible, positions in scenarios:
-                if sname != name:
-                    continue
-
-                completed, dlc, noi = parse_scenario_params(name)
-                game_rules = {"noi_allow_ahistorical": "noi_rule_ahistorical_allowed"}
-                active = get_active_offsets(focuses, completed, dlc, bool(completed), game_rules)
-
-                pos_copy = dict(positions)
-                results = solve_offsets_for_scenario(
-                    focuses, visible, pos_copy, active, desc_map, verbose=False)
-
-                fixable = len(results)
-                paradox_count = 0
-
-                # Count paradoxes (collisions with no movable ancestor)
-                for a, b, pa, pb, d in cols:
-                    ga = None
-                    gb = None
-                    cur = a
-                    visited = set()
-                    while cur and cur not in visited:
-                        visited.add(cur)
-                        if cur in active:
-                            ga = cur
-                            break
-                        cur = focuses[cur].relative_position_id if cur in focuses else None
-                    cur = b
-                    visited = set()
-                    while cur and cur not in visited:
-                        visited.add(cur)
-                        if cur in active:
-                            gb = cur
-                            break
-                        cur = focuses[cur].relative_position_id if cur in focuses else None
-                    if not ga and not gb:
-                        paradox_count += 1
-
-                print(f"  {name}:")
-                print(f"    {len(cols)} collisions, {fixable} fixable via existing offsets, "
-                      f"{paradox_count} paradoxes (base position conflicts)")
-
-                if results:
-                    for fid, oidx, old_x, new_x in results:
-                        print(f"    -> {fid} offset#{oidx}: x={old_x} -> x={new_x}")
-
-                if paradox_count:
-                    # Suggest new offset blocks needed
-                    path = completed.pop() if completed else "initial"
-                    dlc_str = ", ".join(sorted(dlc)) if dlc else "no DLC"
-                    print(f"    -> Needs NEW offset block(s) with trigger:")
-                    print(f"       has_game_rule = {{ rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed }}")
-                    if completed:
-                        print(f"       has_completed_focus = {path}")
-                    if dlc:
-                        print(f"       has_dlc = \"{list(dlc)[0]}\"")
-                print()
-
-                break
-
-    # === CONTINUOUS FOCUS POSITION ===
-    print(f"\n=== CONTINUOUS FOCUS POSITION ===\n")
-    # Find max Y of visible focuses across ahist=OFF scenarios (priority view)
-    max_visible_y = 0
-    min_visible_x = 999
-    for name, visible, positions in scenarios:
-        if "ahist=OFF" not in name or "initial" not in name:
-            continue
-        for fid in visible:
-            if fid in positions:
-                max_visible_y = max(max_visible_y, positions[fid][1])
-                min_visible_x = min(min_visible_x, positions[fid][0])
-
-    # continuous_focus_position uses pixel coords
-    # From vanilla Japan: x=20 y=1200 with tree going to Y=26
-    # Ratio ≈ 46 pixels per Y grid unit, ≈ 93 pixels per X grid unit
-    PX_PER_Y = 46
-    PX_PER_X = 93
-    suggested_y = (max_visible_y + 3) * PX_PER_Y
-    suggested_x = max(0, min_visible_x) * PX_PER_X
-
-    # Read current value
-    current_match = re.search(r'continuous_focus_position\s*=\s*\{\s*x\s*=\s*(-?\d+)\s*y\s*=\s*(-?\d+)\s*\}', text)
-    if current_match:
-        cur_x, cur_y = int(current_match.group(1)), int(current_match.group(2))
-        print(f"  Current: x = {cur_x}, y = {cur_y}")
-    print(f"  Tree visible range: X={min_visible_x}..max, Y=0..{max_visible_y}")
-    print(f"  Suggested: x = {suggested_x}, y = {suggested_y}")
-    print(f"  (place below tree, aligned left, prefer right over far down)")
-
-    # === CENTERING ISSUES ===
-    print(f"\n=== CENTERING ISSUES ===\n")
-    centering_seen = set()
-    for name, visible, positions in scenarios:
-        if "initial" not in name:
-            continue
-        issues = detect_centering_issues(focuses, positions, visible)
-        for parent, children, desc in issues:
-            if parent not in centering_seen:
-                centering_seen.add(parent)
-                print(f"  {parent}: {desc}")
-    if not centering_seen:
-        print(f"  No centering issues.")
 
 
 # ---------------------------------------------------------------------------
@@ -1849,14 +1844,86 @@ def run_diagnose_and_fix(file_path, fix=False, dry_run=False, verbose=False):
 # ---------------------------------------------------------------------------
 
 def cmd_diagnose(args):
+    """CLI handler: run diagnosis only."""
     run_diagnose_and_fix(args.file, fix=False, dry_run=False, verbose=args.verbose)
 
 
 def cmd_fix(args):
+    """CLI handler: run diagnosis + auto-fix."""
     run_diagnose_and_fix(args.file, fix=True, dry_run=args.dry_run, verbose=args.verbose)
 
 
+def _print_focus_detail(focuses, focus_id):
+    """Print detailed info for a single focus."""
+    f = focuses.get(focus_id)
+    if not f:
+        print(f"Focus '{focus_id}' not found.")
+        return
+
+    print(f"\n=== Focus: {f.id} (line {f.line_number}) ===")
+    print(f"  Position: x={f.x}, y={f.y}")
+    print(f"  Relative to: {f.relative_position_id or '(absolute)'}")
+    print(f"  Absolute position: ({f.abs_x}, {f.abs_y})")
+    print(f"  Prerequisites: {f.prerequisite_ids or 'none'}")
+    print(f"  Mutually exclusive: {f.mutually_exclusive_ids or 'none'}")
+    if f.has_allow_branch:
+        print(f"  allow_branch: {f.allow_branch_raw}")
+    if f.offsets:
+        for i, off in enumerate(f.offsets):
+            print(f"  Offset #{i}: x={off.x}, y={off.y}")
+            if off.trigger_raw:
+                print(f"    trigger: {off.trigger_raw}")
+
+    print("\n  Position chain:")
+    chain = []
+    current = f
+    while current:
+        chain.append(current)
+        if current.relative_position_id and current.relative_position_id in focuses:
+            current = focuses[current.relative_position_id]
+        else:
+            break
+    for c in reversed(chain):
+        rel = c.relative_position_id or "(root)"
+        print(f"    {c.id} -> rel_to={rel}, offset=({c.x}, {c.y}), abs=({c.abs_x}, {c.abs_y})")
+
+
+def _print_branch_detail(focuses, branches, branch_id):
+    """Print detailed info for a branch."""
+    if branch_id not in branches:
+        print(f"Branch '{branch_id}' not found.")
+        print(f"Available branches: {', '.join(branches.keys())}")
+        return
+
+    members = branches[branch_id]
+    print(f"\n=== Branch: {branch_id} ({len(members)} focuses) ===")
+    root = focuses[branch_id]
+    print(f"  allow_branch: {root.allow_branch_raw}")
+    for mid in members:
+        f = focuses[mid]
+        print(f"  {f.id:<55} abs=({f.abs_x}, {f.abs_y})")
+
+
+def _build_json_output(focuses):
+    """Build JSON-serializable dict for all focuses."""
+    output = {}
+    for fid, f in focuses.items():
+        output[fid] = {
+            "x": f.x, "y": f.y,
+            "abs_x": f.abs_x, "abs_y": f.abs_y,
+            "relative_position_id": f.relative_position_id,
+            "prerequisites": f.prerequisite_ids,
+            "mutually_exclusive": f.mutually_exclusive_ids,
+            "has_allow_branch": f.has_allow_branch,
+            "allow_branch": f.allow_branch_raw if f.has_allow_branch else None,
+            "offsets": [{"x": o.x, "y": o.y, "trigger": o.trigger_raw} for o in f.offsets],
+            "line": f.line_number,
+        }
+    return output
+
+
 def cmd_parse(args):
+    """CLI handler: parse and display focus tree."""
     text = Path(args.file).read_text(encoding='utf-8-sig')
 
     log = sys.stderr if args.json else sys.stdout
@@ -1871,80 +1938,17 @@ def cmd_parse(args):
             focuses[f.id] = f
 
     print(f"Parsed {len(focuses)} named focuses.", file=log)
-
-    # Compute absolute positions (no simulation for parse)
     compute_absolute_positions(focuses)
-
-    # Identify branches
     branches = identify_branches(focuses)
 
     if args.focus:
-        f = focuses.get(args.focus)
-        if f:
-            print(f"\n=== Focus: {f.id} (line {f.line_number}) ===")
-            print(f"  Position: x={f.x}, y={f.y}")
-            print(f"  Relative to: {f.relative_position_id or '(absolute)'}")
-            print(f"  Absolute position: ({f.abs_x}, {f.abs_y})")
-            print(f"  Prerequisites: {f.prerequisite_ids or 'none'}")
-            print(f"  Mutually exclusive: {f.mutually_exclusive_ids or 'none'}")
-            if f.has_allow_branch:
-                print(f"  allow_branch: {f.allow_branch_raw}")
-            if f.offsets:
-                for i, off in enumerate(f.offsets):
-                    print(f"  Offset #{i}: x={off.x}, y={off.y}")
-                    if off.trigger_raw:
-                        print(f"    trigger: {off.trigger_raw}")
-
-            # Show position chain
-            print(f"\n  Position chain:")
-            chain = []
-            current = f
-            while current:
-                chain.append(current)
-                if current.relative_position_id and current.relative_position_id in focuses:
-                    current = focuses[current.relative_position_id]
-                else:
-                    break
-            for c in reversed(chain):
-                rel = c.relative_position_id or "(root)"
-                print(f"    {c.id} -> rel_to={rel}, offset=({c.x}, {c.y}), abs=({c.abs_x}, {c.abs_y})")
-        else:
-            print(f"Focus '{args.focus}' not found.")
-        return
-
-    if args.branch:
-        if args.branch in branches:
-            members = branches[args.branch]
-            print(f"\n=== Branch: {args.branch} ({len(members)} focuses) ===")
-            root = focuses[args.branch]
-            print(f"  allow_branch: {root.allow_branch_raw}")
-            for mid in members:
-                f = focuses[mid]
-                print(f"  {f.id:<55} abs=({f.abs_x}, {f.abs_y})")
-        else:
-            print(f"Branch '{args.branch}' not found.")
-            print(f"Available branches: {', '.join(branches.keys())}")
-        return
-
-    if args.json:
-        output = {}
-        for fid, f in focuses.items():
-            output[fid] = {
-                "x": f.x, "y": f.y,
-                "abs_x": f.abs_x, "abs_y": f.abs_y,
-                "relative_position_id": f.relative_position_id,
-                "prerequisites": f.prerequisite_ids,
-                "mutually_exclusive": f.mutually_exclusive_ids,
-                "has_allow_branch": f.has_allow_branch,
-                "allow_branch": f.allow_branch_raw if f.has_allow_branch else None,
-                "offsets": [{"x": o.x, "y": o.y, "trigger": o.trigger_raw} for o in f.offsets],
-                "line": f.line_number,
-            }
-        print(json.dumps(output, indent=2))
-        return
-
-    # Default: print tree
-    print_tree(focuses, branches)
+        _print_focus_detail(focuses, args.focus)
+    elif args.branch:
+        _print_branch_detail(focuses, branches, args.branch)
+    elif args.json:
+        print(json.dumps(_build_json_output(focuses), indent=2))
+    else:
+        print_tree(focuses, branches)
 
 
 def cmd_overlaps(args):
@@ -2016,8 +2020,7 @@ def cmd_bboxes(args):
 # ---------------------------------------------------------------------------
 
 def main():
-    import argparse
-
+    """Entry point: parse CLI arguments and dispatch subcommand."""
     parser = argparse.ArgumentParser(
         prog="focus_tree.py",
         description="HOI4 Focus Tree Toolkit — parse, diagnose, and fix focus tree layouts",
