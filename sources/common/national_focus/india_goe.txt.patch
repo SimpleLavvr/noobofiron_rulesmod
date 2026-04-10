@@ -198,7 +198,7 @@
 5513c5508
 <                         amount = 19
 ---
->                         amount = 22.8
+>                         amount = 228
 7194c7189
 <    focus = {
 ---
@@ -357,11 +357,11 @@
 11009c10963
 <                     amount = 9
 ---
->                     amount = 10.8
+>                     amount = 108
 11062c11016
 <                     amount = 18
 ---
->                     amount = 21.6
+>                     amount = 216
 11077c11031
 <         cost = 5
 ---
@@ -381,11 +381,11 @@
 13580c13534
 <                     amount = 12
 ---
->                     amount = 14.4
+>                     amount = 144
 13676c13630
 <                         amount = 6
 ---
->                         amount = 7.2
+>                         amount = 72
 13926,13930d13879
 <             BRM = { 
 <                 exists = yes 
@@ -403,7 +403,7 @@
 14086c14035
 <                         amount = 6
 ---
->                         amount = 7.2
+>                         amount = 72
 15291c15240
 <         cost = 10
 ---

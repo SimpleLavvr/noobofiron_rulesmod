@@ -54,7 +54,7 @@ prospect_for_resources = {
 			330 = {
 				add_resource = {
 					type = coal
-					amount = 80
+					amount = 96
 				}
 			}
 		}
@@ -87,7 +87,7 @@ prospect_for_resources = {
 			330 = {
 				add_resource = {
 					type = steel
-					amount = 80
+					amount = 96
 				}
 			}
 		}

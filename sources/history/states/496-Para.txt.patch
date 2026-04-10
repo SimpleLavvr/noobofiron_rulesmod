@@ -1,6 +1,8 @@
-9,10c9,10
+9,11c9,11
 < 	resources = {
 < 		steel = 3 # was: 4
+< 		aluminium = 4  
 ---
 > 	resources={
 > 		steel = 36 # was: 4
+> 		aluminium = 48  

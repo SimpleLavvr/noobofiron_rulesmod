@@ -10,6 +10,10 @@
 < 					amount = 20
 ---
 > 					amount = 240
+1643c1643
+< 					amount = 8
+---
+> 					amount = 96
 1816c1816
 < 					amount = 10
 ---

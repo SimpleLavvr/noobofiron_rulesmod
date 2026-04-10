@@ -118,11 +118,11 @@ scripted_gui = {
 						if={limit={check_variable={Root.selected_cheat=12}} navy_experience = 100 }
 						if={limit={check_variable={Root.selected_cheat=13}} add_stability = 0.1 }
 						if={limit={check_variable={Root.selected_cheat=14}} add_war_support = 0.1 }
-						if={limit={check_variable={Root.selected_cheat=15}} capital_scope = { add_resource = { type = aluminium amount = 5}} }
-						if={limit={check_variable={Root.selected_cheat=16}} capital_scope = { add_resource = { type = rubber amount = 5}} }
-						if={limit={check_variable={Root.selected_cheat=17}} capital_scope = { add_resource = { type = tungsten amount = 5}} }
-						if={limit={check_variable={Root.selected_cheat=18}} capital_scope = { add_resource = { type = steel amount = 5}} }
-						if={limit={check_variable={Root.selected_cheat=19}} capital_scope = { add_resource = { type = chromium amount = 5}} }
+						if={limit={check_variable={Root.selected_cheat=15}} capital_scope = { add_resource = { type = aluminium amount = 60}} }
+						if={limit={check_variable={Root.selected_cheat=16}} capital_scope = { add_resource = { type = rubber amount = 60}} }
+						if={limit={check_variable={Root.selected_cheat=17}} capital_scope = { add_resource = { type = tungsten amount = 60}} }
+						if={limit={check_variable={Root.selected_cheat=18}} capital_scope = { add_resource = { type = steel amount = 60}} }
+						if={limit={check_variable={Root.selected_cheat=19}} capital_scope = { add_resource = { type = chromium amount = 60}} }
 						if={limit={check_variable={Root.selected_cheat=20}} capital_scope = { add_resource = { type = oil amount = 60}} }
 						if={limit={check_variable={Root.selected_cheat=21}} add_timed_idea = { idea = hosttool_efficency days = 15 } }
 						}

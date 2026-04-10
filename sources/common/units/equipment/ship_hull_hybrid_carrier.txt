@@ -106,8 +106,8 @@ module_slots = {
 		
 		build_cost_ic = 3000
 		resources={
-			steel = 10
-			chromium = 10
+			steel = 120
+			chromium = 120
 		}
 		
 		manpower = 4000
@@ -125,8 +125,8 @@ module_slots = {
 		naval_range = 3350
 		manpower = 5500
 		resources={
-			steel = 20
-			chromium = 10
+			steel = 240
+			chromium = 120
 		}
 		module_slots = {
 			fixed_ship_battery_slot = {
@@ -214,8 +214,8 @@ module_slots = {
 		naval_range = 4000
 		max_strength = 125
 		resources={
-			steel = 20
-			chromium = 10
+			steel = 240
+			chromium = 120
 		}
 		module_slots = {
 			fixed_ship_battery_slot = {

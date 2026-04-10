@@ -88,6 +88,10 @@
 < 		resources = { 
 ---
 > 		resources={ 
+1716c1724
+< 			chromium = 6
+---
+> 			chromium = 72
 1728,1779d1735
 < 			if = {
 < 				limit = {
@@ -206,11 +210,15 @@
 > 			steel = 144
 > 			chromium = 48
 > 			tungsten = 144
-3635c3590
+3635,3636c3590,3591
 < 		resources = { 
+< 			steel = 6
 ---
 > 		resources={ 
-3834c3789
+> 			steel = 72
+3834,3835c3789,3790
 < 		resources = { 
+< 			steel = 9
 ---
 > 		resources={ 
+> 			steel = 108

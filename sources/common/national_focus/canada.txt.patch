@@ -26,6 +26,14 @@
 < 					amount = 3
 ---
 > 					amount = 36
+1113c1113
+< 					amount = 8
+---
+> 					amount = 96
+1136c1136
+< 					amount = 8
+---
+> 					amount = 96
 2406a2407
 > 
 2412a2414,2421

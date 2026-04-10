@@ -12,7 +12,7 @@
 > 		build_cost_ic = 2
 > 		resources={
 > 
-> 			rubber = 7.2
+> 			rubber = 12
 > 			steel = 12
 79,83c79,83
 < 		build_cost_ic = 1.5

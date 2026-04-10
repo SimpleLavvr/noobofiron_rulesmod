@@ -1,3 +1,27 @@
+186c186
+< 							amount = 6
+---
+> 							amount = 72
+199c199
+< 							amount = 4
+---
+> 							amount = 48
+235c235
+< 								amount = 4
+---
+> 								amount = 48
+248c248
+< 								amount = 2
+---
+> 								amount = 24
+289c289
+< 							amount = 4
+---
+> 							amount = 48
+302c302
+< 							amount = 2
+---
+> 							amount = 24
 5657a5658
 > 			date > 1944.6.01
 6326a6328

@@ -91,7 +91,7 @@ module_slots = {
 		
 		build_cost_ic = 1100
 		resources={
-			steel = 10
+			steel = 120
 		}
 		
 		manpower = 2000
@@ -109,8 +109,8 @@ module_slots = {
 		naval_range = 3000
 		manpower = 2200
 		resources={
-			steel = 20
-			chromium = 1
+			steel = 240
+			chromium = 12
 		}
 		module_slots = {
 			fixed_ship_deck_slot_1 = {
@@ -182,8 +182,8 @@ module_slots = {
 		naval_range = 3500
 		max_strength = 130
 		resources={
-			steel = 30
-			chromium = 10
+			steel = 360
+			chromium = 120
 		}
 		module_slots = {
 			#fixed_ship_battery_slot = inherit

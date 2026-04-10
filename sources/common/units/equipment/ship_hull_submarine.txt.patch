@@ -144,10 +144,12 @@
 > 		resources={
 > 			steel = 36
 > 			chromium = 24
-529c529
+529,530c529,530
 < 		resources = {
+< 			steel = 3
 ---
 > 		resources={
+> 			steel = 36
 557c557
 < 		surface_detection = 30
 ---
