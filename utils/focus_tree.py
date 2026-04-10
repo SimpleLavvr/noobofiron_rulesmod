@@ -11,6 +11,7 @@ Subcommands:
   overlaps   — full overlap analysis
   simulate   — simulate a scenario with offsets
   bboxes     — bounding box visualization
+  spacing    — inter-branch spacing analysis by position root
 """
 # pylint: disable=too-many-lines  # self-contained CLI toolkit
 
@@ -1544,7 +1545,7 @@ def _autofix_ahist_off(text, file_path, focuses, scenarios, desc_map,
 
         pos_copy = dict(positions)
         results = solve_offsets_for_scenario(
-            focuses, visible, pos_copy, active, desc_map, verbose)
+            focuses, visible, pos_copy, active, desc_map, _verbose=verbose)
 
         for fid, oidx, old_x, new_x in results:
             key = (fid, oidx)
@@ -1690,7 +1691,7 @@ def _report_ahist_on(focuses, scenarios, ahist_on_collisions, desc_map):
 
             pos_copy = dict(positions)
             results = solve_offsets_for_scenario(
-                focuses, visible, pos_copy, active, desc_map, verbose=False)
+                focuses, visible, pos_copy, active, desc_map, _verbose=False)
 
             fixable = len(results)
             paradox_count = 0
@@ -2016,6 +2017,127 @@ def cmd_bboxes(args):
 
 
 # ---------------------------------------------------------------------------
+# Branch spacing analysis (position-root groups)
+# ---------------------------------------------------------------------------
+
+def find_position_root(fid: str, focuses: dict, memo: dict) -> str:
+    """Walk up relative_position_id chain to the topmost ancestor."""
+    if fid in memo:
+        return memo[fid]
+    f = focuses.get(fid)
+    if f is None or f.relative_position_id is None or f.relative_position_id not in focuses:
+        memo[fid] = fid
+        return fid
+    root = find_position_root(f.relative_position_id, focuses, memo)
+    memo[fid] = root
+    return root
+
+
+def compute_branch_spacing(focuses: dict):
+    """
+    Group focuses by position root, compute per-Y-level bounding boxes,
+    and report inter-group spacing constraints.
+    """
+    memo = {}
+    groups = {}  # root_id -> list of (x, y, fid)
+    for fid, f in focuses.items():
+        if f.abs_x is None or f.abs_y is None:
+            continue
+        root = find_position_root(fid, focuses, memo)
+        groups.setdefault(root, []).append((f.abs_x, f.abs_y, fid))
+
+    if len(groups) < 2:
+        print("  Only one position group — no inter-group spacing to analyze.")
+        return
+
+    # Per-group per-Y ranges
+    group_by_y = {}  # root_id -> {y -> (min_x, max_x)}
+    for root_id, members in groups.items():
+        by_y = {}
+        for x, y, _ in members:
+            if y not in by_y:
+                by_y[y] = (x, x)
+            else:
+                by_y[y] = (min(by_y[y][0], x), max(by_y[y][1], x))
+        group_by_y[root_id] = by_y
+
+    # Sort groups by their global min X
+    sorted_groups = sorted(group_by_y.items(),
+                           key=lambda kv: min(r[0] for r in kv[1].values()))
+
+    # Print per-group summary
+    print("\n=== POSITION GROUPS ===\n")
+    for root_id, by_y in sorted_groups:
+        all_xs = [x for members in groups[root_id] for x in (members[0],)]
+        count = len(groups[root_id])
+        gmin, gmax = min(all_xs), max(all_xs)
+        print(f"  {root_id}: {count} focuses, X=[{gmin}, {gmax}]")
+
+    # Pairwise spacing between adjacent groups
+    print("\n=== INTER-GROUP SPACING (per Y-level) ===\n")
+    for i in range(len(sorted_groups) - 1):
+        left_id, left_by_y = sorted_groups[i]
+        right_id, right_by_y = sorted_groups[i + 1]
+
+        all_ys = sorted(set(list(left_by_y.keys()) + list(right_by_y.keys())))
+        binding_gap = None
+        binding_y = None
+
+        print(f"  {left_id}  <-->  {right_id}")
+        for y in all_ys:
+            l = left_by_y.get(y)
+            r = right_by_y.get(y)
+            if l and r:
+                gap = r[0] - l[1]
+                marker = ""
+                if gap < COLLISION_DISTANCE:
+                    marker = " ** OVERLAP **"
+                elif gap == COLLISION_DISTANCE:
+                    marker = " (tight)"
+                if binding_gap is None or gap < binding_gap:
+                    binding_gap = gap
+                    binding_y = y
+                print(f"    Y={y:2d}: left=[{l[0]:3d},{l[1]:3d}]  right=[{r[0]:3d},{r[1]:3d}]  gap={gap}{marker}")
+            elif l:
+                print(f"    Y={y:2d}: left=[{l[0]:3d},{l[1]:3d}]  right=---")
+            else:
+                print(f"    Y={y:2d}: left=---          right=[{r[0]:3d},{r[1]:3d}]")
+
+        if binding_gap is not None:
+            if binding_gap >= COLLISION_DISTANCE:
+                status = "CLEAR"
+            elif binding_gap >= 0:
+                status = "TIGHT"
+            else:
+                status = "INTERLEAVED"
+            print(f"    => Binding constraint: gap={binding_gap} at Y={binding_y} [{status}]")
+            if binding_gap < COLLISION_DISTANCE:
+                print(f"       (bbox overlap — run 'diagnose' to check for actual focus collisions)")
+        print()
+
+
+def cmd_spacing(args):
+    text = Path(args.file).read_text(encoding='utf-8-sig')
+
+    print(f"Parsing {args.file}...")
+    raw_focuses = extract_focuses_raw(text)
+
+    focuses = {}
+    for entries, line_num in raw_focuses:
+        f = parse_focus(entries, line_num)
+        if f.id:
+            focuses[f.id] = f
+
+    print(f"  {len(focuses)} focuses.")
+
+    completed = set(args.completed) if args.completed else None
+    dlc = set(args.dlc) if args.dlc else None
+
+    compute_absolute_positions(focuses, completed, dlc, obsolete_hide=True)
+    compute_branch_spacing(focuses)
+
+
+# ---------------------------------------------------------------------------
 # CLI entry point
 # ---------------------------------------------------------------------------
 
@@ -2066,6 +2188,15 @@ def main():
     p_bbox = subparsers.add_parser("bboxes", help="Bounding box visualization")
     p_bbox.add_argument("file", help="Path to focus tree .txt file")
     p_bbox.set_defaults(func=cmd_bboxes)
+
+    # --- spacing ---
+    p_space = subparsers.add_parser("spacing", help="Inter-branch spacing analysis by position root")
+    p_space.add_argument("file", help="Path to focus tree .txt file")
+    p_space.add_argument("--completed", nargs="+", metavar="FOCUS_ID",
+                         help="Focuses to mark as completed")
+    p_space.add_argument("--dlc", nargs="*", metavar="DLC_NAME", default=[],
+                         help="DLCs owned for simulation")
+    p_space.set_defaults(func=cmd_spacing)
 
     args = parser.parse_args()
     args.func(args)

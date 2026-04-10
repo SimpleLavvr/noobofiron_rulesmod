@@ -82,6 +82,10 @@
 > 	GIE_DIVISION_DEFENSE_BONUS_AGAINST_OCCUPIER = 0.05, -- Attack bonus factor against whoever occupies your core territory.
 > 	GIE_DIVISION_ATTACK_BONUS_ON_CORE = 0.05, -- Attack bonus factor when fighting on cores.
 > 	GIE_DIVISION_DEFENSE_BONUS_ON_CORE = 0.05, -- Defense bonus factor when fighting on cores.
+514c514
+< 	COMPLIANCE_FACTOR_ON_STATE_CONTROLLER_CHANGE = -0.5,	-- compliance factor that applies when the state controller changes (in between allies, compliance is zeroed if it is taken by original country)
+---
+> 	COMPLIANCE_FACTOR_ON_STATE_CONTROLLER_CHANGE = 0,	-- compliance factor that applies when the state controller changes (in between allies, compliance is zeroed if it is taken by original country)
 593c593
 < 	GARRISON_MANPOWER_LOST_BY_ATTACK = 0.016, 	-- Ratio of manpower lost by garrison at each attack on garrison (this number will be reduced by the hardness of garrison template)
 ---
@@ -453,7 +457,7 @@
 4502c4502
 < 	FACTION_INFLUENCE_SCIENTIST_CONTRIBUTION_VALUE = 0.5,				-- how much contribution one scientists gives to you if it is working for somebody else.
 ---
-> 	FACTION_INFLUENCE_SCIENTIST_CONTRIBUTION_VALUE = 3,				--how much contribution one scientists gives to you if it is working for somebody else.
+> 	FACTION_SCIENTIST_CONTRIBUTION_VALUE = 3,				--how much contribution one scientists gives to you if it is working for somebody else.
 4546c4546
 < 	PASSIVE_INITIATIVE_GENERATION = 0.015,				-- How much initiative we are generating per day, scaled by manifest progress and influence%
 ---

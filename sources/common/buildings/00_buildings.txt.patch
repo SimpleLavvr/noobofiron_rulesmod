@@ -44,15 +44,17 @@
 > 		allied_build = yes
 189a161
 > 		allied_build = yes
-263c235
+248a221
+> 		allied_build = yes
+263c236
 < 		local_resources_rubber = 1 # May use local_resources_ + any resource name
 ---
 > 		local_resources_rubber = 12 # May use local_resources_ + any resource name
-535c507
+535c508
 < 		base_cost = 12000
 ---
 > 		base_cost = 8000
-558c530
+558c531
 < 		base_cost = 12000
 ---
 > 		base_cost = 8000

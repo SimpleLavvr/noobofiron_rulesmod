@@ -8,7 +8,7 @@ mongol_party_purges = {
 		}
 		modifier ={
 			communism_drift = -0.15
-			stability_weekly = 0.0025
+			stability_weekly = 0.005
 		}
 		
 	}
@@ -21,7 +21,7 @@ mongol_party_purges = {
 		}
 		modifier ={
 			neutrality_drift = -0.15
-			stability_weekly = 0.0025
+			stability_weekly = 0.005
 		}
 	}
 }
@@ -50,7 +50,7 @@ prospect_for_resources = {
 			civilian_factory_use = 3
 		}
 		remove_effect = {
-			add_manpower = -5000
+			add_manpower = -1000
 			330 = {
 				add_resource = {
 					type = coal
@@ -83,7 +83,7 @@ prospect_for_resources = {
 			civilian_factory_use = 3
 		}
 		remove_effect = {
-			add_manpower = -5000
+			add_manpower = -2000
 			330 = {
 				add_resource = {
 					type = steel
