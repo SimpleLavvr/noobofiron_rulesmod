@@ -248,7 +248,11 @@ def parse_focus(entries: list, line_hint: int = 0) -> Focus:
                 f.offsets.append(_parse_offset_block(val))
         elif key == 'allow_branch':
             f.has_allow_branch = True
-            f.allow_branch_raw = entries_to_raw_text(val) if isinstance(val, list) else str(val)
+            new_raw = entries_to_raw_text(val) if isinstance(val, list) else str(val)
+            if f.allow_branch_raw:
+                f.allow_branch_raw += "\n" + new_raw
+            else:
+                f.allow_branch_raw = new_raw
         elif key == 'prerequisite':
             if isinstance(val, list):
                 f.prerequisite_ids.extend(extract_focus_ids_from_block(val))
@@ -270,8 +274,8 @@ def extract_focuses_raw(text: str) -> list:
     """
     results = []
     # Find all top-level focus blocks (inside the focus_tree)
-    # Pattern: \tfocus = { at single indent level
-    pattern = re.compile(r'^[ \t]+focus\s*=\s*\{', re.MULTILINE)
+    # Pattern: focus = { at any indent level (some focuses have no indentation)
+    pattern = re.compile(r'^[ \t]*focus\s*=\s*\{', re.MULTILINE)
 
     for match in pattern.finditer(text):
         start = match.start()
@@ -311,7 +315,7 @@ def find_focus_blocks(text: str) -> list:
     Returns list of (focus_id, start_pos, end_pos, block_text).
     """
     results = []
-    pattern = re.compile(r'^[ \t]+focus\s*=\s*\{', re.MULTILINE)
+    pattern = re.compile(r'^[ \t]*focus\s*=\s*\{', re.MULTILINE)
 
     for match in pattern.finditer(text):
         start = match.start()
