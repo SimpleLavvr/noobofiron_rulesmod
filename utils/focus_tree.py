@@ -107,6 +107,8 @@ def tokenize(text: str):
             j = i + 1
             while j < len(text) and text[j] != '"':
                 j += 1
+            if j >= len(text):
+                print(f"WARNING: unclosed string at position {i}", file=sys.stderr)
             tokens.append(text[i:j + 1])
             i = j + 1
             continue
@@ -234,7 +236,13 @@ def _safe_int(val, default=0):
 def parse_focus(entries: list, line_hint: int = 0) -> Focus:
     """Parse a focus block's entries into a Focus object."""
     f = Focus(line_number=line_hint)
+    _seen_simple = set()
     for key, val in entries:
+        if key in ('id', 'x', 'y', 'relative_position_id'):
+            if key in _seen_simple:
+                print(f"WARNING: duplicate '{key}' in focus at line {line_hint}",
+                      file=sys.stderr)
+            _seen_simple.add(key)
         if key == 'id':
             f.id = val
         elif key == 'x':
@@ -276,9 +284,12 @@ def extract_focuses_raw(text: str) -> list:
     # Find all top-level focus blocks (inside the focus_tree)
     # Pattern: focus = { at any indent level (some focuses have no indentation)
     pattern = re.compile(r'^[ \t]*focus\s*=\s*\{', re.MULTILINE)
+    skip_until = 0  # skip matches inside already-parsed blocks
 
     for match in pattern.finditer(text):
         start = match.start()
+        if start < skip_until:
+            continue  # nested match inside a previously parsed focus block
         line_num = find_line_number(text, start)
 
         # Find matching closing brace
@@ -301,6 +312,7 @@ def extract_focuses_raw(text: str) -> list:
                 depth -= 1
             i += 1
 
+        skip_until = i  # any match before this position is nested
         block_text = text[brace_start + 1:i - 1]
         tokens = tokenize(block_text)
         entries, _ = parse_block(tokens, 0)
@@ -316,9 +328,12 @@ def find_focus_blocks(text: str) -> list:
     """
     results = []
     pattern = re.compile(r'^[ \t]*focus\s*=\s*\{', re.MULTILINE)
+    skip_until = 0  # skip matches inside already-parsed blocks
 
     for match in pattern.finditer(text):
         start = match.start()
+        if start < skip_until:
+            continue  # nested match inside a previously parsed focus block
         brace_start = match.end() - 1
         depth = 1
         i = brace_start + 1
@@ -343,6 +358,7 @@ def find_focus_blocks(text: str) -> list:
                 depth -= 1
             i += 1
 
+        skip_until = i  # any match before this position is nested
         block_text = text[start:i]
 
         # Extract focus ID
@@ -374,8 +390,8 @@ def parse_offset_trigger(trigger_raw: str) -> dict:
     result = {
         "requires_completed": [],
         "requires_not_completed": [],
-        "requires_dlc": None,
-        "requires_not_dlc": None,
+        "requires_dlc": [],
+        "requires_not_dlc": [],
         "requires_flag": None,
         "requires_game_rule": [],
         "obsolete_hide": False,
@@ -419,9 +435,11 @@ def parse_offset_trigger(trigger_raw: str) -> dict:
                 in_not = True
                 break
         if in_not:
-            result["requires_not_dlc"] = dlc_name
+            if dlc_name not in result["requires_not_dlc"]:
+                result["requires_not_dlc"].append(dlc_name)
         else:
-            result["requires_dlc"] = dlc_name
+            if dlc_name not in result["requires_dlc"]:
+                result["requires_dlc"].append(dlc_name)
 
     # Game rules (for noi_allow_ahistorical etc.)
     for m in re.finditer(r'has_game_rule\s*=\s*\{[^}]*rule\s*=\s*(\S+)[^}]*option\s*=\s*(\S+)[^}]*\}',
@@ -448,11 +466,13 @@ def eval_offset_trigger(parsed_trigger: dict, completed_focuses: set,
     if t["obsolete_hide"] and not obsolete_hide:
         return False
 
-    if t["requires_dlc"] and t["requires_dlc"] not in dlc_owned:
-        return False
+    for dlc in t["requires_dlc"]:
+        if dlc not in dlc_owned:
+            return False
 
-    if t["requires_not_dlc"] and t["requires_not_dlc"] in dlc_owned:
-        return False
+    for dlc in t["requires_not_dlc"]:
+        if dlc in dlc_owned:
+            return False
 
     # Positive: all listed focuses must be completed
     for cf in t["requires_completed"]:
@@ -626,11 +646,16 @@ def parse_branch_condition(allow_branch_raw: str) -> BranchCondition:
     if flag_match:
         cond.requires_flag = flag_match.group(1)
 
-    # "hidden after completing" focuses (inside obsolete_focus_branches_visibility IF blocks)
-    # These are the mutually exclusive paths that hide each other
-    hide_pattern = re.compile(r'has_completed_focus\s*=\s*(\S+)')
-    for m in hide_pattern.finditer(text):
-        cond.hides_after_focus.append(m.group(1))
+    # "hidden after completing" focuses — only collect from obsolete_focus_branches_visibility
+    # IF blocks, not from the entire allow_branch text (other has_completed_focus may serve
+    # a different purpose like showing the branch conditionally)
+    obsolete_block = re.search(
+        r'obsolete_focus_branches_visibility.*?NOT\s*=?\s*\{([^}]*)\}',
+        text, re.DOTALL)
+    if obsolete_block:
+        hide_pattern = re.compile(r'has_completed_focus\s*=\s*(\S+)')
+        for m in hide_pattern.finditer(obsolete_block.group(1)):
+            cond.hides_after_focus.append(m.group(1))
 
     return cond
 
@@ -989,7 +1014,8 @@ def _get_descendants(focuses, focus_id, cache):
 
 
 def _find_min_clear_delta(our_x, y, visible, positions, desc):
-    """Find minimum delta to clear an overlap at position (our_x, y)."""
+    """Find minimum signed delta to clear an overlap at position (our_x, y).
+    Returns positive (shift right) or negative (shift left) delta."""
     occupied_xs = set()
     for fid in visible:
         if fid not in desc:
@@ -1001,7 +1027,7 @@ def _find_min_clear_delta(our_x, y, visible, positions, desc):
         if (our_x + delta) not in occupied_xs:
             return delta
         if (our_x - delta) not in occupied_xs:
-            return delta
+            return -delta
     return 0
 
 
@@ -1026,7 +1052,8 @@ def _compute_max_delta(scenarios, scenario_names, desc):
                 their_fids = [fid for fid in fids if fid not in desc]
                 if our_fids and their_fids:
                     delta = _find_min_clear_delta(pos[0], pos[1], visible, positions, desc)
-                    max_delta = max(max_delta, delta)
+                    if abs(delta) > abs(max_delta):
+                        max_delta = delta
             break
     return max_delta
 
@@ -1363,7 +1390,7 @@ def apply_offset_fixes(text: str, fixes: list, _focuses: dict) -> str:
         start, end, block = focus_blocks[fid]
 
         # Find the Nth offset block
-        matches = list(re.finditer(r'\n\t\toffset\s*=\s*\{', block))
+        matches = list(re.finditer(r'\n[ \t]*offset\s*=\s*\{', block))
         if oidx >= len(matches):
             continue
 
@@ -1714,10 +1741,10 @@ def _report_ahist_on(focuses, scenarios, ahist_on_collisions, desc_map):
                     print(f"    -> {fid} offset#{oidx}: x={old_x} -> x={new_x}")
 
             if paradox_count:
-                path = completed.pop() if completed else "initial"
+                path = next(iter(completed)) if completed else None
                 print("    -> Needs NEW offset block(s) with trigger:")
                 print("       has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed }")
-                if completed:
+                if path:
                     print(f"       has_completed_focus = {path}")
                 if dlc:
                     print(f"       has_dlc = \"{list(dlc)[0]}\"")

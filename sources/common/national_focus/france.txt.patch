@@ -10,7 +10,57 @@
 > 		allow_branch = {
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
 > 		}
-5267,5279c5272
+3594c3599
+< 		
+---
+> 
+3617a3623,3645
+> 		# ahist=ON: No-DLC national_bloc path — move review_foreign_policy with the shifted national_bloc tree (+7)
+> 		offset = {
+> 			x = 7
+> 			y = 0
+> 			trigger = {
+> 				has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed }
+> 				NOT = { has_dlc = "La Resistance" }
+> 				has_game_rule = { rule = obsolete_focus_branches_visibility option = HIDE }
+> 				has_completed_focus = FRA_revive_the_national_bloc
+> 			}
+> 		}
+> 		# ahist=ON: La Resistance national_bloc path — different delta (-31 from current -9 → -40)
+> 		offset = {
+> 			x = -31
+> 			y = 0
+> 			trigger = {
+> 				has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed }
+> 				has_dlc = "La Resistance"
+> 				has_game_rule = { rule = obsolete_focus_branches_visibility option = HIDE }
+> 				has_completed_focus = FRA_revive_the_national_bloc
+> 			}
+> 		}
+> 
+4840c4868
+< 		
+---
+> 
+4864a4893,4904
+> 		# ahist=ON: No-DLC national_bloc path — push whole subtree right past naval tree (42-9+28=61)
+> 		offset = {
+> 			x = 28
+> 			y = 0
+> 			trigger = {
+> 				has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed }
+> 				NOT = { has_dlc = "La Resistance" }
+> 				has_game_rule = { rule = obsolete_focus_branches_visibility option = HIDE }
+> 				has_completed_focus = FRA_revive_the_national_bloc
+> 			}
+> 		}
+> 
+5240c5280
+< 		
+---
+> 
+5266,5278c5306,5314
+< 		allow_branch = {
 < 			has_dlc = "La Resistance"
 < 			if = {
 < 				limit = {
@@ -23,10 +73,22 @@
 < 					has_completed_focus = FRA_form_the_popular_front
 < 					has_completed_focus = FRA_review_foreign_policy
 < 				}
-< 			}
 ---
+> 		# ahist=ON: La Resistance council path — push leagues right (+21, from 50-3=47 to 68)
+> 		offset = {
+> 			x = 21
+> 			y = 0
+> 			trigger = {
+> 				has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed }
+> 				has_dlc = "La Resistance"
+> 				has_game_rule = { rule = obsolete_focus_branches_visibility option = HIDE }
+> 				has_completed_focus = FRA_the_council_of_rambouillet
+5281a5318,5321
+> 		allow_branch = {
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
-5342,5353c5335
+> 		}
+> 
+5342,5353c5382
 < 			has_dlc = "La Resistance"
 < 			if = {
 < 				limit = {
@@ -41,7 +103,7 @@
 < 			}
 ---
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
-6384,6390c6366,6367
+6384,6390c6413,6414
 < 			OR = {
 < 				BEL = {
 < 					is_subject_of = ROOT
@@ -52,7 +114,7 @@
 ---
 > 			BEL = {
 > 				is_subject_of = ROOT
-6396,6420c6373,6380
+6396,6420c6420,6427
 < 			all_state = {
 < 				OR = {
 < 					state = 295
@@ -87,111 +149,113 @@
 > 			890 = { CONTROLLER = { OR = { tag = BEL is_subject_of = BEL } } }
 > 			888 = { CONTROLLER = { OR = { tag = BEL is_subject_of = BEL } } }
 > 			889 = { CONTROLLER = { OR = { tag = BEL is_subject_of = BEL } } }
-6431,6434c6391
+6431,6434c6438
 < 							AND = {
 < 								original_tag = BEL 
 < 								is_subject_of = ROOT
 < 							}
 ---
 > 							tag = BEL 
-6436,6439d6392
+6436,6439d6439
 < 							AND = {
 < 								original_tag = COG 
 < 								is_subject_of = ROOT
 < 							}
-6448,6451c6401
+6448,6451c6448
 < 							AND = {
 < 								original_tag = BEL 
 < 								is_subject_of = ROOT
 < 							}
 ---
 > 							tag = BEL 
-6453,6456d6402
+6453,6456d6449
 < 							AND = {
 < 								original_tag = COG 
 < 								is_subject_of = ROOT
 < 							}
-6458c6404
+6458c6451
 < 					}  
 ---
 > 					} 
-6465,6468c6411
+6465,6468c6458
 < 							AND = {
 < 								original_tag = BEL 
 < 								is_subject_of = ROOT
 < 							}
 ---
 > 							tag = BEL 
-6470,6473d6412
+6470,6473d6459
 < 							AND = {
 < 								original_tag = COG 
 < 								is_subject_of = ROOT
 < 							}
-6482,6485c6421
+6482,6485c6468
 < 							AND = {
 < 								original_tag = BEL 
 < 								is_subject_of = ROOT
 < 							}
 ---
 > 							tag = BEL 
-6487,6490d6422
+6487,6490d6469
 < 							AND = {
 < 								original_tag = COG 
 < 								is_subject_of = ROOT
 < 							}
-6499,6502c6431
+6499,6502c6478
 < 							AND = {
 < 								original_tag = BEL 
 < 								is_subject_of = ROOT
 < 							}
 ---
 > 							tag = BEL 
-6504,6507d6432
+6504,6507d6479
 < 							AND = {
 < 								original_tag = COG 
 < 								is_subject_of = ROOT
 < 							}
-6516,6519c6441
+6516,6519c6488
 < 							AND = {
 < 								original_tag = BEL 
 < 								is_subject_of = ROOT
 < 							}
 ---
 > 							tag = BEL 
-6521,6524d6442
+6521,6524d6489
 < 							AND = {
 < 								original_tag = COG 
 < 								is_subject_of = ROOT
 < 							}
-6533,6536c6451
+6533,6536c6498
 < 							AND = {
 < 								original_tag = BEL 
 < 								is_subject_of = ROOT
 < 							}
 ---
 > 							tag = BEL 
-6538,6541d6452
+6538,6541d6499
 < 							AND = {
 < 								original_tag = COG 
 < 								is_subject_of = ROOT
 < 							}
-6550,6553c6461
+6550,6553c6508
 < 							AND = {
 < 								original_tag = BEL 
 < 								is_subject_of = ROOT
 < 							}
 ---
 > 							tag = BEL 
-6555,6558d6462
+6555,6558d6509
 < 							AND = {
 < 								original_tag = COG 
 < 								is_subject_of = ROOT
 < 							}
-6560c6464
+6560c6511
 < 					}  
 ---
 > 					} 
-6875,6887c6779,6780
+6873,6881c6824,6831
+< 		available_if_capitulated = yes
+< 		allow_branch = {
 < 			NOT = { has_dlc = "La Resistance" }
 < 			if = {
 < 				limit = {
@@ -199,16 +263,80 @@
 < 						rule = obsolete_focus_branches_visibility
 < 						option = HIDE
 < 					}
-< 				}
+---
+> 		# Shift fascist branch right to avoid overlap with naval tree when ahist=ON (default: push right past naval/NOI tree)
+> 		offset = {
+> 			x = 11
+> 			y = 0
+> 			trigger = {
+> 				has_game_rule = {
+> 					rule = noi_allow_ahistorical
+> 					option = noi_rule_ahistorical_allowed
+6883,6884c6833,6842
 < 				NOT = {
 < 					has_completed_focus = FRA_form_the_popular_front
-< 				}
-< 			}
+---
+> 			}
+> 		}
+> 		# Corrective: La Resistance + national_bloc path needs less rightward shift (national_bloc tree moved further right)
+> 		offset = {
+> 			x = -23
+> 			y = 0
+> 			trigger = {
+> 				has_game_rule = {
+> 					rule = noi_allow_ahistorical
+> 					option = noi_rule_ahistorical_allowed
+6885a6844,6849
+> 				has_dlc = "La Resistance"
+> 				has_game_rule = {
+> 					rule = obsolete_focus_branches_visibility
+> 					option = HIDE
+> 				}
+> 				has_completed_focus = FRA_revive_the_national_bloc
+6887c6851,6873
 < 		} 
 ---
+> 		}
+> 		# Corrective: La Resistance + council path (moderate shift)
+> 		offset = {
+> 			x = -11
+> 			y = 0
+> 			trigger = {
+> 				has_game_rule = {
+> 					rule = noi_allow_ahistorical
+> 					option = noi_rule_ahistorical_allowed
+> 				}
+> 				has_dlc = "La Resistance"
+> 				has_game_rule = {
+> 					rule = obsolete_focus_branches_visibility
+> 					option = HIDE
+> 				}
+> 				has_completed_focus = FRA_the_council_of_rambouillet
+> 			}
+> 		}
+> 
+> 		available_if_capitulated = yes
+> 		allow_branch = {
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
 > 		}
-7332,7343c7225
+7315c7301
+< 		
+---
+> 
+7328a7315,7326
+> 		# ahist=ON: La Resistance council path — adjust council position relative to shifted leagues (+13)
+> 		offset = {
+> 			x = 13
+> 			y = 0
+> 			trigger = {
+> 				has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed }
+> 				has_dlc = "La Resistance"
+> 				has_game_rule = { rule = obsolete_focus_branches_visibility option = HIDE }
+> 				has_completed_focus = FRA_the_council_of_rambouillet
+> 			}
+> 		}
+> 
+7332,7343c7330
 < 			has_dlc = "La Resistance"
 < 			if = {
 < 				limit = {
@@ -223,19 +351,65 @@
 < 			}
 ---
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
-8578c8460
-< 		x = 70
----
-> 		x = 50
-8613c8495
-< 			x = -27
----
-> 			x = -3
-8625c8507
-< 			x = -8
----
-> 			x = -12
-8674c8556
-< 			x = -20
----
-> 			x = 0
+8707a8695,8755
+> 			}
+> 		}
+> 
+> 		# ahist=ON offsets: push naval tree right to avoid overlap with NOI ahistorical branches
+> 
+> 		# No-DLC, no vanilla path chosen (initial / national_regen / council scenarios): +15
+> 		offset = {
+> 			x = 15
+> 			y = 0
+> 			trigger = {
+> 				has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed }
+> 				NOT = { has_dlc = "La Resistance" }
+> 				NOT = {
+> 					has_completed_focus = FRA_form_the_popular_front
+> 					has_completed_focus = FRA_revive_the_national_bloc
+> 				}
+> 			}
+> 		}
+> 		# No-DLC, popular_front path (stacks with offset#0 -16 and offset#1 -12, target 70-16-12+27=69): +27
+> 		offset = {
+> 			x = 27
+> 			y = 0
+> 			trigger = {
+> 				has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed }
+> 				NOT = { has_dlc = "La Resistance" }
+> 				has_game_rule = { rule = obsolete_focus_branches_visibility option = HIDE }
+> 				has_completed_focus = FRA_form_the_popular_front
+> 			}
+> 		}
+> 		# No-DLC, national_bloc path (stacks with offset#0 -16 and offset#2 -9, target 70-16-9+46=91): +46
+> 		# National_bloc+NOI tree extends to ~X=89, naval needs to start at 91+
+> 		offset = {
+> 			x = 46
+> 			y = 0
+> 			trigger = {
+> 				has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed }
+> 				NOT = { has_dlc = "La Resistance" }
+> 				has_game_rule = { rule = obsolete_focus_branches_visibility option = HIDE }
+> 				has_completed_focus = FRA_revive_the_national_bloc
+> 			}
+> 		}
+> 		# La Resistance, popular_front path (stacks with offset#3 -27, target 70-27+26=69): +26
+> 		offset = {
+> 			x = 26
+> 			y = 0
+> 			trigger = {
+> 				has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed }
+> 				has_dlc = "La Resistance"
+> 				has_game_rule = { rule = obsolete_focus_branches_visibility option = HIDE }
+> 				has_completed_focus = FRA_form_the_popular_front
+> 			}
+> 		}
+> 		# La Resistance, national_regen path (stacks with offset#9 -11, target 70-11+10=69): +10
+> 		offset = {
+> 			x = 10
+> 			y = 0
+> 			trigger = {
+> 				has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed }
+> 				has_dlc = "La Resistance"
+> 				has_game_rule = { rule = obsolete_focus_branches_visibility option = HIDE }
+> 				has_completed_focus = FRA_national_regeneration
