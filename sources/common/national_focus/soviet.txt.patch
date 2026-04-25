@@ -63,36 +63,36 @@
 < 			NOT = { has_global_flag = SOV_soviet_civil_war_over }
 ---
 > 
-11195d11211
+11198d11214
 < 			SOV_soviet_civil_war_not_started = yes 
-11284d11299
+11287d11302
 < 			SOV_soviet_civil_war_not_started = yes 
-11339c11354
-< 			SOV_soviet_civil_war_not_started = yes 
----
-> 
-11415c11430
+11342c11357
 < 			SOV_soviet_civil_war_not_started = yes 
 ---
 > 
-11468c11483
+11418c11433
+< 			SOV_soviet_civil_war_not_started = yes 
+---
+> 
+11471c11486
 < 			has_global_flag = SOV_soviet_civil_war_over
 ---
 > 
-13634a13650,13653
+13637a13653,13656
 > 				has_completed_focus = SOV_the_centre
 > 				has_completed_focus = SOV_back_to_the_nep
 > 			}
 > 			OR = {
-13850c13869
+13853c13872
 < 		cost = 10
 ---
 > 		cost = 0.2
-14328c14347
+14331c14350
 < 		cost = 10
 ---
 > 		cost = 0.2
-14997,15016c15016,15019
+15000,15019c15019,15022
 < 	
 < 			#TASHKENT
 < 			405 = {
@@ -118,27 +118,27 @@
 > 			controls_state = 404 #KYZYL ORDA
 > 			controls_state = 732 #PAMIR
 > 			controls_state = 586 #ALMA-ATA
-15114a15118,15121
+15117a15121,15124
 > 			add_timed_idea = {
 > 				idea = SOV_NOI_red_volunteer_army_i
 > 				days = 1095
 > 			}
-15180a15188,15191
+15183a15191,15194
 > 			add_timed_idea = {
 > 				idea = SOV_NOI_red_volunteer_army_i
 > 				days = 1095
 > 			}
-15249a15261,15264
+15252a15264,15267
 > 			add_timed_idea = {
 > 				idea = SOV_NOI_red_volunteer_army_i
 > 				days = 1095
 > 			}
-15858c15873,15874
+15861c15876,15877
 < 		allow_branch = { 
 ---
 > 		allow_branch = {
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
-18022c18038
+18025c18041
 < 		cost = 10
 ---
 > 		cost = 1

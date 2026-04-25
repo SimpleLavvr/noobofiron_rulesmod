@@ -246,25 +246,25 @@
 < 	NAVAL_MINES_SWEEPING_SPEED_MULT = 0.025,						-- Value used to overall balance of the speed of sweeping naval mines
 ---
 > 	NAVAL_MINES_SWEEPING_SPEED_MULT = 0.015,						-- Value used to overall balance of the speed of sweeping naval mines
-1548c1548
+1550c1550
 < 	COMBAT_EVASION_TO_HIT_CHANCE_TORPEDO_MULT = 10.0,				-- the above evasion hit chance is multiplied by 400% if shooting with torpedoes. Torpedoes are slow, so evasion matters more.
 ---
 > 	COMBAT_EVASION_TO_HIT_CHANCE_TORPEDO_MULT = 6.0,				-- the above evasion hit chance is multiplied by 400% if shooting with torpedoes. Torpedoes are slow, so evasion matters more.
-1553c1553
+1555c1555
 < 	COMBAT_TORPEDO_CRITICAL_CHANCE = 0.1,							-- chance for critical hit from torpedo.
 ---
 > 	COMBAT_TORPEDO_CRITICAL_CHANCE = 0.3,							-- chance for critical hit from torpedo.
-1585c1585
+1587c1587
 < 	MISSION_MAX_REGIONS = 0,										-- Limit of the regions that can be assigned to naval mission. Set to 0 for unlimited.
 ---
 > 	MISSION_MAX_REGIONS = 3,										-- Limit of the regions that can be assigned to naval mission. Set to 0 for unlimited.
-1591,1592c1591,1592
+1593,1594c1593,1594
 < 	ANTI_AIR_TARGETTING_TO_CHANCE = 0.2,							-- Balancing value to convert averaged equipment stats (anti_air_targetting and naval_strike_agility) to probability chances of airplane being hit by navies AA.
 < 	ANTI_AIR_ATTACK_TO_AMOUNT = 0.01,								-- Balancing value to convert equipment stat anti_air_attack to the random % value of airplanes being hit.
 ---
 > 	ANTI_AIR_TARGETTING_TO_CHANCE = 0.1,							-- Balancing value to convert averaged equipment stats (anti_air_targetting and naval_strike_agility) to probability chances of airplane being hit by navies AA.
 > 	ANTI_AIR_ATTACK_TO_AMOUNT = 0.02,								-- Balancing value to convert equipment stat anti_air_attack to the random % value of airplanes being hit.
-1606,1609c1606,1609
+1608,1611c1608,1611
 < 	AMPHIBIOUS_INVADE_SPEED_BASE = 0.5, 							-- every hour movement progress on amphibious invasion
 < 	AMPHIBIOUS_INVADE_MOVEMENT_COST = 24.0, 						-- total progress cost of movement while amphibious invading
 < 	AMPHIBIOUS_INVADE_ATTACK_LOW = 0.2, 							-- low and high cap of attack modifier scale. Scale interpolated by invasion progress.
@@ -274,15 +274,15 @@
 > 	AMPHIBIOUS_INVADE_MOVEMENT_COST = 72.0, 						-- total progress cost of movement while amphibious invading
 > 	AMPHIBIOUS_INVADE_ATTACK_LOW = 0.1, 							-- low and high cap of attack modifier scale. Scale interpolated by invasion progress.
 > 	AMPHIBIOUS_INVADE_ATTACK_HIGH = 1.5,
-1611c1611
+1613c1613
 < 	AMPHIBIOUS_INVADE_DEFEND_HIGH = 1.0,
 ---
 > 	AMPHIBIOUS_INVADE_DEFEND_HIGH = 0.8,
-1622c1622
+1624c1624
 < 	NAVAL_TRANSFER_BASE_SPEED = 6,                                  -- base speed of units on water being transported
 ---
 > 	NAVAL_TRANSFER_BASE_SPEED = 5,                                  -- base speed of units on water being transported
-1638,1640c1638,1640
+1640,1642c1640,1642
 < 	SHORE_BOMBARDMENT_CAP = 0.33,
 < 	ANTI_AIR_TARGETING = 0.9,                                       -- how good ships are at hitting aircraft
 < 	MIN_TRACTED_ASSIST_DAMAGE_RATIO = 0.05,							-- How much damage counts as assist damage
@@ -290,85 +290,85 @@
 > 	SHORE_BOMBARDMENT_CAP = 0.35,
 > 	ANTI_AIR_TARGETING = 1.2,                                       -- how good ships are at hitting aircraft
 > 	MIN_TRACTED_ASSIST_DAMAGE_RATIO = 0.10,							-- How much damage counts as assist damage
-1654,1655c1654,1655
+1656,1657c1656,1657
 < 	CAPITAL_ONLY_COMBAT_ACTIVATE_TIME = 6,                          -- hours from start of combat when only carriers, capitals and subs get to attack
 < 	ALL_SHIPS_ACTIVATE_TIME = 8,                                    -- hours where all get to attack
 ---
 > 	CAPITAL_ONLY_COMBAT_ACTIVATE_TIME = 7,                          -- hours from start of combat when only carriers, capitals and subs get to attack
 > 	ALL_SHIPS_ACTIVATE_TIME = 12,                                    -- hours where all get to attack
-1661c1661
+1663c1663
 < 	NAVY_REPAIR_BASE_SEARCH_SCORE_PER_SLOT = 2.5,					-- while searching for a naval base for repairs, the bases gets a bonus to their scores per empty slot they have
 ---
 > 	NAVY_REPAIR_BASE_SEARCH_SCORE_PER_SLOT = 1.0,					-- while searching for a naval base for repairs, the bases gets a bonus to their scores per empty slot they have
-1677c1677
+1679c1679
 < 		1.0, -- PATROL
 ---
 > 		1.2, -- PATROL
-1704c1704
+1706c1706
 < 	IN_COMBAT_FUEL_COST = 2.0,										-- ships in combat will get this ratio for fuel cost
 ---
 > 	IN_COMBAT_FUEL_COST = 4.0,										-- ships in combat will get this ratio for fuel cost
-1716c1716
+1718c1718
 < 	UNDERWAY_REPLENISHMENT_CONVOY_COST_PER_FUEL = 0.28,	-- Cost in convoys for underway replenishment multiplied by max daily fuel consumption (rounded up)
 ---
 > 	UNDERWAY_REPLENISHMENT_CONVOY_COST_PER_FUEL = 0.08,	-- Cost in convoys for underway replenishment multiplied by max daily fuel consumption (rounded up)
-1722c1722
+1724c1724
 < 		0.0, -- CONVOY RAIDING
 ---
 > 		0.1, -- CONVOY RAIDING
-1728c1728
+1730c1730
 < 		0.0, -- NAVAL_INVASION_SUPPORT
 ---
 > 		0.2, -- NAVAL_INVASION_SUPPORT
-1762c1762
+1764c1764
 < 		1, -- PATROL
 ---
 > 		2, -- PATROL
-1795,1796c1795,1796
+1797,1798c1797,1798
 < 		0.5,   -- high
 < 		0.1,   -- I am death incarnate!
 ---
 > 		3.0,   -- high
 > 		3.0,   -- I am death incarnate!
-1807c1807
+1809c1809
 < 		0.3, -- HOLD
 ---
 > 		0.4, -- HOLD
-1860c1860
+1862c1862
 < 		1.0, -- STRIKE FORCE
 ---
 > 		0.25, -- STRIKE FORCE
-1874,1875c1874,1875
+1876,1877c1876,1877
 < 	NAVAL_MINES_IN_REGION_MAX = 1000.0,								-- Max number of mines that can be layed by the ships. The value should be hidden from the user, as we present % so it's an abstract value that should be used for balancing.
 < 	NAVAL_MINES_PLANTING_SPEED_MULT = 0.01,							-- Value used to overall balance of the speed of planting naval mines
 ---
 > 	NAVAL_MINES_IN_REGION_MAX = 5000.0,								-- Max number of mines that can be layed by the ships. The value should be hidden from the user, as we present % so it's an abstract value that should be used for balancing.
 > 	NAVAL_MINES_PLANTING_SPEED_MULT = 0.09,							-- Value used to overall balance of the speed of planting naval mines
-1889,1890c1889,1890
+1891,1892c1891,1892
 < 	NAVAL_MINES_ACCIDENT_CRITICAL_HIT_CHANCES = 0.14,				-- If an accident happens, how likely it is to be a critical hit (caused by naval mines)
 < 	NAVAL_MINES_ACCIDENT_CRITICAL_HIT_DAMAGE_SCALE = 5.0,			-- Scale the value below in case of critical hit (caused by naval mines)
 ---
 > 	NAVAL_MINES_ACCIDENT_CRITICAL_HIT_CHANCES = 0.60,				-- If an accident happens, how likely it is to be a critical hit (caused by naval mines)
 > 	NAVAL_MINES_ACCIDENT_CRITICAL_HIT_DAMAGE_SCALE = 8.0,			-- Scale the value below in case of critical hit (caused by naval mines)
-1962c1962
+1964c1964
 < 	BASE_ESCAPE_SPEED = 0.045,										-- daily base escape speed (gained as percentagE)
 ---
 > 	BASE_ESCAPE_SPEED = 0.1,										-- daily base escape speed (gained as percentagE)
-1964,1965c1964,1965
+1966,1967c1966,1967
 < 	ESCAPE_SPEED_PER_COMBAT_DAY = 0.01,								-- daily increase in escape speed during combat duration
 < 	MAX_ESCAPE_SPEED_FROM_COMBAT_DURATION = 0.15,					-- max escape speed that will be gained from combat duration
 ---
 > 	ESCAPE_SPEED_PER_COMBAT_DAY = 0.25,								-- daily increase in escape speed during combat duration
 > 	MAX_ESCAPE_SPEED_FROM_COMBAT_DURATION = 1.50,					-- max escape speed that will be gained from combat duration
-1967c1967
+1969c1969
 < 	ESCAPE_SPEED_HIDDEN_SUB = 0.18,									-- hidden subs get faster escape speed
 ---
 > 	ESCAPE_SPEED_HIDDEN_SUB = 0.14,									-- hidden subs get faster escape speed
-1997c1997
+1999c1999
 < 		4.0,	-- torpedoes
 ---
 > 		3.0,	-- torpedoes
-2014,2016c2014,2016
+2016,2018c2016,2018
 < 	HIGHER_SHIP_RATIO_POSITIONING_PENALTY_FACTOR					= 0.25, -- if one side has more ships than the other, that side will get this penalty for each +100% ship ratio it has
 < 	MAX_POSITIONING_PENALTY_FROM_HIGHER_SHIP_RATIO					= 0.75,  -- maximum penalty to get from larger fleets
 < 	MIN_SHIPS_FOR_HIGHER_SHIP_RATIO_PENALTY                         = 4,    -- the minimum fleet size in ships that a fleet must be before having the large fleet penalty applied to them
@@ -376,55 +376,55 @@
 > 	HIGHER_SHIP_RATIO_POSITIONING_PENALTY_FACTOR					= 0.50, -- if one side has more ships than the other, that side will get this penalty for each +100% ship ratio it has
 > 	MAX_POSITIONING_PENALTY_FROM_HIGHER_SHIP_RATIO					= 1.00,  -- maximum penalty to get from larger fleets
 > 	MIN_SHIPS_FOR_HIGHER_SHIP_RATIO_PENALTY                         = 36,    -- the minimum fleet size in ships that a fleet must be before having the large fleet penalty applied to them
-2018,2019c2018,2019
+2020,2021c2020,2021
 < 	HIGHER_CARRIER_RATIO_POSITIONING_PENALTY_FACTOR					= 0.2;  -- penalty if other side has stronger carrier air force
 < 	MAX_CARRIER_RATIO_POSITIONING_PENALTY_FACTOR 					= 0.2;  -- max penalty from stronger carrier air force
 ---
 > 	HIGHER_CARRIER_RATIO_POSITIONING_PENALTY_FACTOR					= 0.3;  -- penalty if other side has stronger carrier air force
 > 	MAX_CARRIER_RATIO_POSITIONING_PENALTY_FACTOR 					= 0.3;  -- max penalty from stronger carrier air force
-2025c2025
+2027c2027
 < 	DAMAGE_PENALTY_ON_MINIMUM_POSITIONING 							= 0.5,	-- damage penalty at 0% positioning
 ---
 > 	DAMAGE_PENALTY_ON_MINIMUM_POSITIONING 							= 0.70,	-- damage penalty at 0% positioning
-2027,2028c2027,2028
+2029,2030c2029,2030
 < 	AA_EFFICIENCY_PENALTY_ON_MINIMUM_POSITIONING					= 0.7,  -- AA penalty at 0% positioning
 < 	SUBMARINE_REVEAL_ON_MINIMUM_POSITIONING                         = 2.0,  -- submarine reveal change on 0% positioning
 ---
 > 	AA_EFFICIENCY_PENALTY_ON_MINIMUM_POSITIONING					= 0.6,  -- AA penalty at 0% positioning
 > 	SUBMARINE_REVEAL_ON_MINIMUM_POSITIONING                         = 3.0,  -- submarine reveal change on 0% positioning
-2030c2030
+2032c2032
 < 	SHIP_TO_FLEET_ANTI_AIR_RATIO									= 0.25,	-- total sum of fleet's anti air will be multiplied with this ratio and added to calculations anti-air of individual ships while air damage reduction
 ---
 > 	SHIP_TO_FLEET_ANTI_AIR_RATIO									= 0.35,	-- total sum of fleet's anti air will be multiplied with this ratio and added to calculations anti-air of individual ships while air damage reduction
-2065c2065
+2067c2067
 < 	HEAVY_GUN_ATTACK_TO_SHORE_BOMBARDMENT							= 0.05,  -- heavy gun attack value is divided by this value * 100 and added to shore bombardment modifier
 ---
 > 	HEAVY_GUN_ATTACK_TO_SHORE_BOMBARDMENT							= 0.20,  -- heavy gun attack value is divided by this value * 100 and added to shore bombardment modifier
-2071c2071
+2073c2073
 < 		100.0,	-- torpedoes
 ---
 > 		90.0,	-- torpedoes
-2112,2113c2112,2113
+2114,2115c2114,2115
 < 	SUBMARINE_REVEALED_TIMEOUT 										= 16,		-- Amount of in-game-hours that makes the submarine visible if it is on the defender side.
-< 	SUBMARINE_REVEAL_BASE_CHANCE 									= 11,		-- Base factor for submarine detection. It's modified by the difference of a spotter's submarines detection vs submarine visibility. Use this variable for game balancing. setting this too low will cause bad spotting issues.
+< 	SUBMARINE_REVEAL_BASE_CHANCE 									= 11,		-- /deprecated, will be removed in the future update/ Base factor for submarine detection. It's modified by the difference of a spotter's submarines detection vs submarine visibility. Use this variable for game balancing. setting this too low will cause bad spotting issues.
 ---
 > 	SUBMARINE_REVEALED_TIMEOUT 										= 14,		-- Amount of in-game-hours that makes the submarine visible if it is on the defender side.
-> 	SUBMARINE_REVEAL_BASE_CHANCE 									= 13,		-- Base factor for submarine detection. It's modified by the difference of a spotter's submarines detection vs submarine visibility. Use this variable for game balancing. setting this too low will cause bad spotting issues.
-2230c2230
+> 	SUBMARINE_REVEAL_BASE_CHANCE 									= 13,		-- /deprecated, will be removed in the future update/ Base factor for submarine detection. It's modified by the difference of a spotter's submarines detection vs submarine visibility. Use this variable for game balancing. setting this too low will cause bad spotting issues.
+2237c2237
 < 	ENCIRCLED_DISBAND_MANPOWER_FACTOR = 0.2,		-- The percentage of manpower returned when an encircled unit is disbanded
 ---
 > 	ENCIRCLED_DISBAND_MANPOWER_FACTOR = 0.0,		-- The percentage of manpower returned when an encircled unit is disbanded
-2256,2257c2256,2257
+2263,2264c2263,2264
 < 	BASE_TRADE_FACTOR = 150,					-- This is the base trade factor
 < 	PUPPET_MASTER_TRADE_FACTOR = 400,			-- This is priority for puppet master
 ---
 > 	BASE_TRADE_FACTOR = 1500,					-- This is the base trade factor
 > 	PUPPET_MASTER_TRADE_FACTOR = 4000,			-- This is priority for puppet master
-2267c2267
+2274c2274
 < 	PEACE_TIME_NAVY_FUEL_FACTOR = 0.25,			-- Percentage of fuel available to navy that is allowed to use for missiosn during peace time
 ---
 > 	PEACE_TIME_NAVY_FUEL_FACTOR = 0.2,			-- Percentage of fuel available to navy that is allowed to use for missiosn during peace time
-3095,3097c3095,3097
+3103,3105c3103,3105
 < 		4, -- STRIKE FORCE
 < 		1.5, -- CONVOY RAIDING
 < 		4, -- CONVOY ESCORT
@@ -432,51 +432,49 @@
 > 		3, -- STRIKE FORCE
 > 		2, -- CONVOY RAIDING
 > 		3, -- CONVOY ESCORT
-3102c3102
+3110c3110
 < 		10, -- NAVAL INVASION SUPPORT
 ---
 > 		4, -- NAVAL INVASION SUPPORT
-3883c3883
+3891c3891
 < 	RECON_PLANE_INTEL_BASE = 0.02, 				-- intel base amount for a strategic area per plane
 ---
 > 	RECON_PLANE_INTEL_BASE = 0.05, 				-- intel base amount for a strategic area per plane
-4237c4237
+4245c4245
 < 	SUPPLY_HUB_FULL_MOTORIZATION_TRUCK_COST = 60.0,
 ---
 > 	SUPPLY_HUB_FULL_MOTORIZATION_TRUCK_COST = 100.0,
-4266c4266
+4274c4274
 < 	DEFAULT_STARTING_TRUCK_RATIO = 1.5, -- countries get this ratio of starting truck in their buffers compared to their need
 ---
 > 	DEFAULT_STARTING_TRUCK_RATIO = 2.0, -- countries get this ratio of starting truck in their buffers compared to their need
-4490,4491c4490,4491
+4498c4498
 < 	FACTION_INFLUENCE_LEND_LEASE_FACTOR=0.025,				-- how much the country's contribution in the faction affects its influence
-< 	FACTION_INFLUENCE_WAR_SCORE_FACTOR=0.125,					-- how much the country's war score affects its influence
 ---
 > 	FACTION_INFLUENCE_LEND_LEASE_FACTOR=0.01,				-- how much the country's contribution in the faction affects its influence
-> 	FACTION_INFLUENCE_WAR_SCORE_FACTOR=0.1,					-- how much the country's war score affects its influence
-4502c4502
+4510c4510
 < 	FACTION_INFLUENCE_SCIENTIST_CONTRIBUTION_VALUE = 0.5,				-- how much contribution one scientists gives to you if it is working for somebody else.
 ---
 > 	FACTION_INFLUENCE_SCIENTIST_CONTRIBUTION_VALUE = 3,				--how much contribution one scientists gives to you if it is working for somebody else.
-4546c4546
+4554c4554
 < 	PASSIVE_INITIATIVE_GENERATION = 0.015,				-- How much initiative we are generating per day, scaled by manifest progress and influence%
 ---
 > 	PASSIVE_INITIATIVE_GENERATION = 0.01,				-- How much initiative we are generating per day, scaled by manifest progress and influence%
-4601c4601
+4609c4609
 <         TRAINING_MASTERY_GAIN_FACTOR = 0.1,                     -- How much training contributes to doctrine mastery relative to combat/missions
 ---
 >         TRAINING_MASTERY_GAIN_FACTOR = 0.00,                     -- How much training contributes to doctrine mastery relative to combat/missions
-4603,4604c4603,4604
+4611,4612c4611,4612
 <         MIN_MASTERY_GAIN_PER_DAY = 0.0,                         -- If we have any mastery gain, it will be boosted to be at least this much per day (lower cap)
 <         MASTERY_BAR_ANIMATION_SPEED_PER_DAILY_MASTERY = 4.0, -- Multiplier of how fast the mastery bar animates based on daily mastery gain
 ---
 >         MIN_MASTERY_GAIN_PER_DAY = 0.5,                         -- If we have any mastery gain, it will be boosted to be at least this much per day (lower cap)
 >         MASTERY_BAR_ANIMATION_SPEED_PER_DAILY_MASTERY = 2.0, -- Multiplier of how fast the mastery bar animates based on daily mastery gain
-4607c4607
+4615c4615
 <         MASTERY_BANK_MAX = 200.0,                               -- The maximum amount of mastery that can be banked
 ---
 >         MASTERY_BANK_MAX = 500.0,                               -- The maximum amount of mastery that can be banked
-4618c4618
+4626c4626
 < 		0.0, -- TRAIN # NOT USED - handled by TRAINING_MASTERY_GAIN_FACTOR
 ---
 > 		0.1, -- TRAIN # NOT USED - handled by TRAINING_MASTERY_GAIN_FACTOR

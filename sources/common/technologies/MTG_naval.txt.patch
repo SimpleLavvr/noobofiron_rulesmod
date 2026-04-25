@@ -20,12 +20,12 @@
 < 				factor = 2
 < 				date > 1939.1.1
 < 			}
-568,571d547
+572,575d551
 < 				factor = 5
 < 				anti_submarine_strategy_required_trigger = yes
 < 			}
 < 			modifier = {
-573,578c549
+577,582c553
 < 				date > 1938.6.1
 < 			}
 < 
@@ -34,7 +34,7 @@
 < 				date > 1939.6.1
 ---
 > 				anti_submarine_strategy_required_trigger = yes
-827,835d797
+831,839d801
 < 			modifier = {
 < 				factor = 1.5
 < 				date > 1939.1.1
@@ -44,31 +44,31 @@
 < 				factor = 1.5
 < 				date > 1940.1.1
 < 			}
-952a915,919
+956a919,923
 > 
 > 		path = {
 > 			leads_to_tech = basic_hybrid_ship_hull_heavy
 > 			research_cost_coeff = 1
 > 		}
-996a964
+1000a968
 > 
-1020c988
+1024c992
 < 		research_cost = 1.75
 ---
 > 		research_cost = 1
-1078c1046
+1082c1050
 < 		research_cost = 1.5
 ---
 > 		research_cost = 1
-1131c1099
+1135c1103
 < 		research_cost = 1.5
 ---
 > 		research_cost = 1
-1167c1135
+1171c1139
 < 		research_cost = 1.5
 ---
 > 		research_cost = 1
-1187,1195d1154
+1191,1199d1158
 < 			modifier = {
 < 				factor = 1.5
 < 				date > 1939.1.1
@@ -78,40 +78,40 @@
 < 				factor = 1.5
 < 				date > 1940.1.1
 < 			}
-1224c1183
+1228c1187
 < 		research_cost = 1.5
 ---
 > 		research_cost = 1
-1241a1201
+1245a1205
 > 
-1297d1256
+1301d1260
 < 			
-1336,1340d1294
+1340,1344d1298
 < 			
 < 			modifier = {
 < 				factor = 0
 < 				date < 1938.1.1
 < 			}
-1396c1350
+1400c1354
 < 			position = {  x = -1 y = 2 }
 ---
 > 			position = {  x = 2 y = 2 }
-1431a1386,1389
+1435a1390,1393
 > 		path = {
 > 			leads_to_tech = improved_ship_hull_escort_carrier
 > 			research_cost_coeff = 1
 > 		}
-1432a1391
+1436a1395
 > 
-1448c1407
+1452c1411
 < 			position = {  x = -1 y = 8 }
 ---
 > 			position = {  x = 2 y = 8 }
-1515c1474
+1519c1478
 < 			position = {  x = -1 y = 14 }
 ---
 > 			position = {  x = 2 y = 14 }
-1529,1537d1487
+1533,1541d1491
 < 			modifier = {
 < 				factor = 1.5
 < 				date > 1939.1.1
@@ -121,11 +121,11 @@
 < 				factor = 1.5
 < 				date > 1940.1.1
 < 			}
-1571c1521
+1575c1525
 < 			position = {  x = -1 y = 20 }
 ---
 > 			position = {  x = 2 y = 20 }
-1594a1545,1673
+1598a1549,1677
 > ######### ESCORT CARRIERS #################
 > ###################################################################################
 > #     #  #######   #####   #     #
@@ -255,24 +255,24 @@
 > #		special_project_specialization = { specialization_naval }
 > #	}
 > 
-1633c1712
+1637c1716
 < 			position = {  x = -2 y = 2 }
 ---
 > 			position = {  x = 3 y = 2 }
-1647c1726,1727
+1651c1730,1731
 < 
 ---
 > 	
 > 		
-1694c1774
+1698c1778
 < 			position = {  x = -2 y = 8 }
 ---
 > 			position = {  x = 3 y = 8 }
-1743c1823
+1747c1827
 < 			position = {  x = -2 y = 14 }
 ---
 > 			position = {  x = 3 y = 14 }
-1756,1764d1835
+1760,1768d1839
 < 			modifier = {
 < 				factor = 1.5
 < 				date > 1939.1.1
@@ -282,61 +282,61 @@
 < 				factor = 1.5
 < 				date > 1940.1.1
 < 			}
-1779a1851
+1783a1855
 > 		
-1790c1862
+1794c1866
 < 			position = {  x = -2 y = 20 }
 ---
 > 			position = {  x = 3 y = 20 }
-1818a1891,1895
+1822a1895,1899
 > 
 > 		on_research_complete = {
 > 			custom_effect_tooltip = snorkel_advice_tt
 > 		}
 > 
-1823,1825c1900
+1827,1829c1904
 < 		on_research_complete = {
 < 			custom_effect_tooltip = snorkel_advice_tt
 < 		}
 ---
 > 
-1828c1903
+1832c1907
 < 		start_year = 1939
 ---
 > 		start_year = 1940
-1832c1907
+1836c1911
 < 			position = {  x = -1 y = 13 }
 ---
 > 			position = {  x = 4 y = 13 }
-1871a1947
+1875a1951
 > 
-1877c1953
+1881c1957
 < 		start_year = 1943
 ---
 > 		start_year = 1944
-1881c1957
+1885c1961
 < 			position = {  x = -1 y = 19 }
 ---
 > 			position = {  x = 4 y = 19 }
-1901a1978
+1905a1982
 > 
-2017c2094
+2021c2098
 < 		start_year = 1939
 ---
 > 		start_year = 1940
-2046c2123
+2050c2127
 < 		start_year = 1943
 ---
 > 		start_year = 1944
-2086c2163
+2090c2167
 < 			position = { x = 0 y = 17 }
 ---
 > 			position = { x = 3 y = 17 }
-2113c2190
+2117c2194
 < 		start_year = 1944
 ---
 > 		start_year = 1945
-2116c2193
+2120c2197
 < 			position = { x = 0 y = 23 }
 ---
 > 			position = { x = 3 y = 23 }
