@@ -18,11 +18,11 @@
 > 			steel = 36
 366,368c366,368
 < 		resources = {
-< 			steel = 4
+< 			steel = 3
 < 			chromium = 1
 ---
 > 		resources={
-> 			steel = 48
+> 			steel = 36
 > 			chromium = 12
 413,415c413,415
 < 		resources = {

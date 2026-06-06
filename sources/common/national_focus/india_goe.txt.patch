@@ -462,258 +462,84 @@
 <                 bonus = 0.5
 ---
 >                 bonus = 0.25
-16808,17058c16765,16814
-<         complete_tooltip = {
-< 
-<         }
-< 
+16812,16888c16769,16818
 <         completion_reward = {
 <             custom_effect_tooltip = RAJ_mixed_economy_tt
-<             every_owned_state = {
-<                 limit = {
-<                     has_resources_amount = { resource = steel amount > 6 }
-<                     is_controlled_by = ROOT
-< 
-<                     ROOT = { #To fix tooltip
-<                         OR = {
-<                             has_tech = excavation1
-<                             has_tech = excavation2
-<                             has_tech = excavation3
-<                             has_tech = excavation4
-<                             has_tech = excavation5
+<             for_each_scope_loop = {
+<                 array = owned_states_at_game_start
+<                 if = {
+<                     limit = {
+<                         is_controlled_by = ROOT
+<                         ROOT = {
+<                             OR = {
+<                                 has_tech = excavation1
+<                                 has_tech = excavation2
+<                                 has_tech = excavation3
+<                                 has_tech = excavation4
+<                                 has_tech = excavation5
+<                             }
 <                         }
 <                     }
-<                 }
 < 
-<                 if = {
-<                     limit = { ROOT = { has_tech = excavation1 } } 
-< 
-<                     add_resource = { type = steel amount = 3 }
-<                 }
-< 
-<                 if = {
-<                     limit = { ROOT = { has_tech = excavation2 } } 
-<                     add_resource = { type = steel amount = 3 }
-< 
-<                 }
-<                 if = {
-<                     limit = { ROOT = { has_tech = excavation3 } } 
-< 
-<                     add_resource = { type = steel amount = 3 }
-<                 }
-<                 if = {
-<                     limit = { ROOT = { has_tech = excavation4 } } 
-< 
-<                       add_resource = { type = steel amount = 3 }
-<                 }
-<                 if = {
-<                     limit = { ROOT = { has_tech = excavation5 } } 
-<                       add_resource = { type = steel amount = 3 }
+<                     if = {
+<                         limit = { has_resources_amount = { resource = steel amount > 6 } }
+<                         if = { limit = { ROOT = { has_tech = excavation1 } } add_resource = { type = steel amount = 3 } }
+<                         if = { limit = { ROOT = { has_tech = excavation2 } } add_resource = { type = steel amount = 3 } }
+<                         if = { limit = { ROOT = { has_tech = excavation3 } } add_resource = { type = steel amount = 3 } }
+<                         if = { limit = { ROOT = { has_tech = excavation4 } } add_resource = { type = steel amount = 3 } }
+<                         if = { limit = { ROOT = { has_tech = excavation5 } } add_resource = { type = steel amount = 3 } }
+<                     }
+<                     if = {
+<                         limit = { has_resources_amount = { resource = oil amount > 6 } }
+<                         if = { limit = { ROOT = { has_tech = excavation1 } } add_resource = { type = oil amount = 3 } }
+<                         if = { limit = { ROOT = { has_tech = excavation2 } } add_resource = { type = oil amount = 3 } }
+<                         if = { limit = { ROOT = { has_tech = excavation3 } } add_resource = { type = oil amount = 3 } }
+<                         if = { limit = { ROOT = { has_tech = excavation4 } } add_resource = { type = oil amount = 3 } }
+<                         if = { limit = { ROOT = { has_tech = excavation5 } } add_resource = { type = oil amount = 3 } }
+<                     }
+<                     if = {
+<                         limit = { has_resources_amount = { resource = chromium amount > 6 } }
+<                         if = { limit = { ROOT = { has_tech = excavation1 } } add_resource = { type = chromium amount = 3 } }
+<                         if = { limit = { ROOT = { has_tech = excavation2 } } add_resource = { type = chromium amount = 3 } }
+<                         if = { limit = { ROOT = { has_tech = excavation3 } } add_resource = { type = chromium amount = 3 } }
+<                         if = { limit = { ROOT = { has_tech = excavation4 } } add_resource = { type = chromium amount = 3 } }
+<                         if = { limit = { ROOT = { has_tech = excavation5 } } add_resource = { type = chromium amount = 3 } }
+<                     }
+<                     if = {
+<                         limit = { has_resources_amount = { resource = rubber amount > 6 } }
+<                         if = { limit = { ROOT = { has_tech = excavation1 } } add_resource = { type = rubber amount = 3 } }
+<                         if = { limit = { ROOT = { has_tech = excavation2 } } add_resource = { type = rubber amount = 3 } }
+<                         if = { limit = { ROOT = { has_tech = excavation3 } } add_resource = { type = rubber amount = 3 } }
+<                         if = { limit = { ROOT = { has_tech = excavation4 } } add_resource = { type = rubber amount = 3 } }
+<                         if = { limit = { ROOT = { has_tech = excavation5 } } add_resource = { type = rubber amount = 3 } }
+<                     }
+<                     if = {
+<                         limit = { has_resources_amount = { resource = tungsten amount > 6 } }
+<                         if = { limit = { ROOT = { has_tech = excavation1 } } add_resource = { type = tungsten amount = 3 } }
+<                         if = { limit = { ROOT = { has_tech = excavation2 } } add_resource = { type = tungsten amount = 3 } }
+<                         if = { limit = { ROOT = { has_tech = excavation3 } } add_resource = { type = tungsten amount = 3 } }
+<                         if = { limit = { ROOT = { has_tech = excavation4 } } add_resource = { type = tungsten amount = 3 } }
+<                         if = { limit = { ROOT = { has_tech = excavation5 } } add_resource = { type = tungsten amount = 3 } }
+<                     }
+<                     if = {
+<                         limit = { has_resources_amount = { resource = aluminium amount > 6 } }
+<                         if = { limit = { ROOT = { has_tech = excavation1 } } add_resource = { type = aluminium amount = 3 } }
+<                         if = { limit = { ROOT = { has_tech = excavation2 } } add_resource = { type = aluminium amount = 3 } }
+<                         if = { limit = { ROOT = { has_tech = excavation3 } } add_resource = { type = aluminium amount = 3 } }
+<                         if = { limit = { ROOT = { has_tech = excavation4 } } add_resource = { type = aluminium amount = 3 } }
+<                         if = { limit = { ROOT = { has_tech = excavation5 } } add_resource = { type = aluminium amount = 3 } }
+<                     }
+<                     if = {
+<                         limit = { has_resources_amount = { resource = coal amount > 6 } }
+<                         if = { limit = { ROOT = { has_tech = excavation1 } } add_resource = { type = coal amount = 3 } }
+<                         if = { limit = { ROOT = { has_tech = excavation2 } } add_resource = { type = coal amount = 3 } }
+<                         if = { limit = { ROOT = { has_tech = excavation3 } } add_resource = { type = coal amount = 3 } }
+<                         if = { limit = { ROOT = { has_tech = excavation4 } } add_resource = { type = coal amount = 3 } }
+<                         if = { limit = { ROOT = { has_tech = excavation5 } } add_resource = { type = coal amount = 3 } }
+<                     }
 <                 }
 <             }
-< 
-<             every_owned_state = {
-<                 limit = {
-<                     has_resources_amount = { resource = oil amount > 6 }
-<                     is_controlled_by = ROOT
-<                     ROOT = { #To fix tooltip
-<                         OR = {
-<                             has_tech = excavation1
-<                             has_tech = excavation2
-<                             has_tech = excavation3
-<                             has_tech = excavation4
-<                             has_tech = excavation5
-<                         }
-<                     }
-<                 }
-< 
-<                 if = {
-<                     limit = { ROOT = { has_tech = excavation1 } } 
-< 
-<                     add_resource = { type = oil amount = 3 }
-<                 }
-< 
-<                 if = {
-<                     limit = { ROOT = { has_tech = excavation2 } } 
-<                     add_resource = { type = oil amount = 3 }
-< 
-<                 }
-<                 if = {
-<                     limit = { ROOT = { has_tech = excavation3 } } 
-< 
-<                     add_resource = { type = oil amount = 3 }
-<                 }
-<                 if = {
-<                     limit = { ROOT = { has_tech = excavation4 } } 
-< 
-<                       add_resource = { type = oil amount = 3 }
-<                 }
-<                 if = {
-<                     limit = { ROOT = { has_tech = excavation5 } } 
-<                       add_resource = { type = oil amount = 3 }
-<                 }
-<             }
-< 
-<             every_owned_state = {
-<                 limit = {
-<                     has_resources_amount = { resource = chromium amount > 6 }
-<                     is_controlled_by = ROOT
-<                     ROOT = { #To fix tooltip
-<                         OR = {
-<                             has_tech = excavation1
-<                             has_tech = excavation2
-<                             has_tech = excavation3
-<                             has_tech = excavation4
-<                             has_tech = excavation5
-<                         }
-<                     }
-<                 }
-< 
-<                 if = {
-<                     limit = { ROOT = { has_tech = excavation1 } } 
-< 
-<                     add_resource = { type = chromium amount = 3 }
-<                 }
-< 
-<                 if = {
-<                     limit = { ROOT = { has_tech = excavation2 } } 
-<                     add_resource = { type = chromium amount = 3 }
-< 
-<                 }
-<                 if = {
-<                     limit = { ROOT = { has_tech = excavation3 } } 
-< 
-<                     add_resource = { type = chromium amount = 3 }
-<                 }
-<                 if = {
-<                     limit = { ROOT = { has_tech = excavation4 } } 
-< 
-<                       add_resource = { type = chromium amount = 3 }
-<                 }
-<                 if = {
-<                     limit = { ROOT = { has_tech = excavation5 } } 
-<                       add_resource = { type = chromium amount = 3 }
-<                 }
-<             }
-< 
-<             every_owned_state = {
-<                 limit = {
-<                     has_resources_amount = { resource = rubber amount > 6 }
-<                     is_controlled_by = ROOT
-<                     ROOT = { #To fix tooltip
-<                         OR = {
-<                             has_tech = excavation1
-<                             has_tech = excavation2
-<                             has_tech = excavation3
-<                             has_tech = excavation4
-<                             has_tech = excavation5
-<                         }
-<                     }
-<                 }
-< 
-<                 if = {
-<                     limit = { ROOT = { has_tech = excavation1 } } 
-< 
-<                     add_resource = { type = rubber amount = 3 }
-<                 }
-< 
-<                 if = {
-<                     limit = { ROOT = { has_tech = excavation2 } } 
-<                     add_resource = { type = rubber amount = 3 }
-< 
-<                 }
-<                 if = {
-<                     limit = { ROOT = { has_tech = excavation3 } } 
-< 
-<                     add_resource = { type = rubber amount = 3 }
-<                 }
-<                 if = {
-<                     limit = { ROOT = { has_tech = excavation4 } } 
-< 
-<                       add_resource = { type = rubber amount = 3 }
-<                 }
-<                 if = {
-<                     limit = { ROOT = { has_tech = excavation5 } } 
-<                       add_resource = { type = rubber amount = 3 }
-<                 }
-<             }
-< 
-<             every_owned_state = {
-<                 limit = {
-<                     has_resources_amount = { resource = tungsten amount > 6 }
-<                     is_controlled_by = ROOT
-<                     ROOT = { #To fix tooltip
-<                         OR = {
-<                             has_tech = excavation1
-<                             has_tech = excavation2
-<                             has_tech = excavation3
-<                             has_tech = excavation4
-<                             has_tech = excavation5
-<                         }
-<                     }
-<                 }
-< 
-<                 if = {
-<                     limit = { ROOT = { has_tech = excavation1 } } 
-< 
-<                     add_resource = { type = tungsten amount = 3 }
-<                 }
-< 
-<                 if = {
-<                     limit = { ROOT = { has_tech = excavation2 } } 
-<                     add_resource = { type = tungsten amount = 3 }
-< 
-<                 }
-<                 if = {
-<                     limit = { ROOT = { has_tech = excavation3 } } 
-< 
-<                     add_resource = { type = tungsten amount = 3 }
-<                 }
-<                 if = {
-<                     limit = { ROOT = { has_tech = excavation4 } } 
-< 
-<                       add_resource = { type = tungsten amount = 3 }
-<                 }
-<                 if = {
-<                     limit = { ROOT = { has_tech = excavation5 } } 
-<                       add_resource = { type = tungsten amount = 3 }
-<                 }
-<             }
-< 
-<             #
-<             every_owned_state = {
-<                 limit = {
-<                     has_resources_amount = { resource = aluminium amount > 6 }
-<                     is_controlled_by = ROOT
-<                     ROOT = { #To fix tooltip
-<                         OR = {
-<                             has_tech = excavation1
-<                             has_tech = excavation2
-<                             has_tech = excavation3
-<                             has_tech = excavation4
-<                             has_tech = excavation5
-<                         }
-<                     }
-<                 }
-< 
-<                 if = {
-<                     limit = { ROOT = { has_tech = excavation1 } } 
-< 
-<                     add_resource = { type = aluminium amount = 3 }
-<                 }
-< 
-<                 if = {
-<                     limit = { ROOT = { has_tech = excavation2 } } 
-<                     add_resource = { type = aluminium amount = 3 }
-< 
-<                 }
-<                 if = {
-<                     limit = { ROOT = { has_tech = excavation3 } } 
-< 
-<                     add_resource = { type = aluminium amount = 3 }
-<                 }
-<                 if = {
-<                     limit = { ROOT = { has_tech = excavation4 } } 
+<         }
 ---
 >        completion_reward = {
 > 		428 = {
@@ -765,29 +591,18 @@
 > 			}
 > 		}
 > 	}
-17060,17067c16816
-<                       add_resource = { type = aluminium amount = 3 }
-<                 }
-<                 if = {
-<                     limit = { ROOT = { has_tech = excavation5 } } 
-<                       add_resource = { type = aluminium amount = 3 }
-<                 }
-<             }
-<         }
----
->         
-17204,17205d16952
+17025,17026d16954
 <            try_build_civ_in_core_otherwise_build_in_controlled_2_civs = yes
 <            try_build_mil_in_core_otherwise_build_in_controlled_2_mil = yes
-17230c16977
+17051c16979
 < 	x = 44
 ---
 > 	x = 23
-17232c16979
+17053c16981
 < 	relative_position_id = RAJ_great_depression_price_controls 
 ---
 > 	relative_position_id = RAJ_provincial_autonomy 
-17263a17011,17038
+17084a17013,17040
 > 	offset = { # Shift HM branch right in ahist=ON when no political path chosen yet, to avoid overlap with fwd_bloc/league/red subtrees
 > 		x = 51
 > 		y = 0
@@ -816,88 +631,88 @@
 > 		}
 > 	}
 > 
-17278c17053
+17099c17055
 < 		add_political_power = 70
 ---
 > 		add_political_power = 50
-17397c17172
+17218c17174
 < 		add_political_power = 70
 ---
 > 		add_political_power = 50
-17479d17253
+17300d17255
 < 		add_political_power = 100
-17535,17536c17309,17310
+17356,17357c17311,17312
 < 		add_to_variable = { RAJ_a_loyal_government_political_power_factor = 0.1	tooltip = political_power_factor_tt }
 < 		add_to_variable = { RAJ_a_loyal_government_political_advisor_cost_factor = -0.5 tooltip = political_advisor_cost_factor_tt }
 ---
 > 		add_to_variable = { RAJ_a_loyal_government_political_power_factor = 0.05	tooltip = political_power_factor_tt }
 > 		add_to_variable = { RAJ_a_loyal_government_political_advisor_cost_factor = -0.2 tooltip = political_advisor_cost_factor_tt }
-17737c17511
+17558c17513
 < 	cost = 5
 ---
 > 	cost = 10
-17775,17776c17549,17550
+17596,17597c17551,17552
 < 		add_to_variable = { RAJ_a_loyal_government_industrial_capacity_factory = 0.15 tooltip = industrial_capacity_factory_tt }
 < 		add_to_variable = { RAJ_a_loyal_government_industrial_capacity_dockyard = 0.35 tooltip = industrial_capacity_dockyard_tt }
 ---
 > 		add_to_variable = { RAJ_a_loyal_government_industrial_capacity_factory = 0.10 tooltip = industrial_capacity_factory_tt }
 > 		add_to_variable = { RAJ_a_loyal_government_industrial_capacity_dockyard = 0.15 tooltip = industrial_capacity_dockyard_tt }
-17913c17687
+17734c17689
 < 	cost = 5
 ---
 > 	cost = 10
-17920d17693
+17741d17695
 < 		add_political_power = 100
-17961c17734
+17782c17736
 < 	cost = 5
 ---
 > 	cost = 10
-18009,18010c17782,17783
+17830,17831c17784,17785
 < 			random_select_amount = 3
 < 			add_extra_state_shared_building_slots = 2
 ---
 > 			random_select_amount = 1
 > 			add_extra_state_shared_building_slots = 1
-18084,18085c17857,17858
+17905,17906c17859,17860
 < 			random_select_amount = 2
 < 			add_extra_state_shared_building_slots = 2
 ---
 > 			random_select_amount = 1
 > 			add_extra_state_shared_building_slots = 1
-18088c17861
+17909c17863
 < 				level = 2
 ---
 > 				level = 1
-18102,18103c17875,17876
+17923,17924c17877,17878
 < 			random_select_amount = 2
 < 			add_extra_state_shared_building_slots = 2
 ---
 > 			random_select_amount = 1
 > 			add_extra_state_shared_building_slots = 1
-18106c17879
+17927c17881
 < 				level = 2
 ---
 > 				level = 1
-18121c17894
+17942c17896
 < 			add_extra_state_shared_building_slots = 2
 ---
 > 			add_extra_state_shared_building_slots = 1
-18124c17897
+17945c17899
 < 				level = 2
 ---
 > 				level = 1
-18161c17934
+17982c17936
 < 	cost = 5
 ---
 > 	cost = 10
-18185,18188c17958
+18006,18009c17960
 < 		add_autonomy_score = {
 < 			value = 75
 < 			localization = RAJ_crown_commodities
 < 		}
 ---
 > 		
-18204,18219d17973
+18025,18040d17975
 < 		random_core_state = {
 < 			limit = {
 < 				is_fully_controlled_by = ROOT
@@ -914,7 +729,7 @@
 < 				instant_build = yes
 < 			}
 < 		}
-18284,18289c18038
+18105,18110c18040
 < 		add_tech_bonus = {
 < 			name = RAJ_rural_mechanization_program
 < 			bonus = 0.75
@@ -923,12 +738,13 @@
 < 		}
 ---
 > 
-18312,18324c18061,18064
+18133,18146c18063,18066
 < 		custom_effect_tooltip = RAJ_the_riches_of_the_raj_targets_oil_tt
 < 		custom_effect_tooltip = generic_states_affected_no_prev_line_tt
 < 		every_owned_state = {
 < 			limit = {
 < 				is_fully_controlled_by = ROOT
+< 				synthetic_refinery < 1
 < 				has_resources_amount = {
 < 					resource = oil
 < 					amount > 0
@@ -942,7 +758,7 @@
 > 			add_resource = {
 > 				type = oil
 > 				amount = 48
-18326,18340c18066,18069
+18148,18162c18068,18071
 < 			hidden_effect = {
 < 				if = {
 < 					limit = {
@@ -963,31 +779,50 @@
 > 				type = infrastructure
 > 				level = 1
 > 				instant_build = yes
-18353c18082
+18165,18201c18074,18077
+< 		custom_effect_tooltip = generic_skip_one_line_tt
+< 
+< 		custom_effect_tooltip = RAJ_the_riches_of_the_raj_targets_tt
+< 		custom_effect_tooltip = generic_states_affected_no_prev_line_tt
+< 		every_owned_state = {
+< 			limit = {
+< 				is_fully_controlled_by = ROOT
+< 				OR = {
+< 					has_resources_amount = {
+< 						resource = steel
 < 						amount > 19
----
-> 						amount > 199
-18357c18086
+< 					}
+< 					has_resources_amount = {
+< 						resource = tungsten
 < 						amount > 19
----
-> 						amount > 199
-18361c18090
+< 					}
+< 					has_resources_amount = {
+< 						resource = chromium
 < 						amount > 19
----
-> 						amount > 199
-18365c18094
+< 					}
+< 					has_resources_amount = {
+< 						resource = aluminium
 < 						amount > 19
----
-> 						amount > 199
-18369c18098
+< 					}
+< 					has_resources_amount = {
+< 						resource = rubber
 < 						amount > 19
----
-> 						amount > 199
-18373c18102
+< 					}
+<                     has_resources_amount = {
+<                         resource = coal
 <                         amount > 19
+<                     }
+< 				}
+< 				is_in_array = {
+< 					array = ROOT.owned_states_at_game_start
+< 					value = THIS
+< 				}
 ---
->                         amount > 199
-18381,18464c18110,18139
+> 		426 = {
+> 			add_resource = {
+> 				type = steel
+> 				amount = 24
+18203,18287c18079,18097
 < 			hidden_effect = {
 < 				if = {
 < 					limit = {
@@ -1054,6 +889,7 @@
 < 							resource = rubber
 < 							amount > 19
 < 						}
+< 						synthetic_refinery < 1
 < 					}
 < 					add_resource = {
 < 						type = rubber
@@ -1078,17 +914,6 @@
 > 				level = 1
 > 				instant_build = yes
 > 			}
-> 		}
-> 		426 = {
-> 			add_resource = {
-> 				type = steel
-> 				amount = 24
-> 			}
-> 			add_building_construction = {
-> 				type = infrastructure
-> 				level = 1
-> 				instant_build = yes
-> 			}
 > 			add_resource = {
 > 				type = chromium
 > 				amount = 24
@@ -1103,34 +928,34 @@
 > 				type = infrastructure
 > 				level = 1
 > 				instant_build = yes
-18532c18207
+18355c18165
 < 			random_select_amount = 2
 ---
 > 			random_select_amount = 1
-18708c18383
+18531c18341
 < 	cost = 5
 ---
 > 	cost = 10
-18735,18736c18410,18411
+18558,18559c18368,18369
 < 			random_select_amount = 2
 < 			add_extra_state_shared_building_slots = 2
 ---
 > 			random_select_amount = 1
 > 			add_extra_state_shared_building_slots = 1
-18739c18414
+18562c18372
 < 				level = 2
 ---
 > 				level = 1
-18784,18787d18458
+18607,18610d18416
 < 		add_autonomy_score = {
 < 			value = 150
 < 			localization = RAJ_the_empires_workshop
 < 		}
-18793c18464
+18616c18422
 < 			uses = 2
 ---
 > 			uses = 1
-18798,18813d18468
+18621,18636d18426
 < 		random_core_state = {
 < 			limit = {
 < 				is_fully_controlled_by = ROOT
@@ -1147,61 +972,61 @@
 < 				instant_build = yes
 < 			}
 < 		}
-18947c18602
+18770c18560
 < 		arms_factory > 39
 ---
 > 		arms_factory > 49
-18970c18625
+18793c18583
 < 			add_extra_state_shared_building_slots = 2
 ---
 > 			add_extra_state_shared_building_slots = 1
-18973c18628
+18796c18586
 < 				level = 2
 ---
 > 				level = 1
-19029c18684
+18852c18642
 < 		army_experience = 35
 ---
 > 		army_experience = 10
-19066c18721
+18889c18679
 < 				add_extra_state_shared_building_slots = 3
 ---
 > 				add_extra_state_shared_building_slots = 2
-19077,19081d18731
+18900,18904d18689
 < 				add_building_construction = {
 < 					type = dockyard
 < 					level = 1
 < 					instant_build = yes
 < 				}
-19126c18776
+18949c18734
 < 					level = 2
 ---
 > 					level = 1
-19144c18794
+18967c18752
 < 				level = 4
 ---
 > 				level = 2
-19152c18802
+18975c18760
 < 				level = 4
 ---
 > 				level = 2
-19160c18810
+18983c18768
 < 				level = 4
 ---
 > 				level = 2
-19481c19131
+19304c19089
 < 			days = 365
 ---
 > 			days = 180
-19525c19175
+19348c19133
 < 			days = 365
 ---
 > 			days = 90
-19532c19182
+19355c19140
 < 			uses = 2
 ---
 > 			uses = 1
-19538,19553d19187
+19361,19376d19145
 < 		random_owned_state = {
 < 			limit = {
 < 				is_coastal = yes
@@ -1218,7 +1043,7 @@
 < 				}
 < 			}
 < 			prioritize = { 431 } #Calcutta
-19555,19571d19188
+19378,19394d19146
 < 			add_extra_state_shared_building_slots = 1
 < 			add_building_construction = {
 < 				type = dockyard
@@ -1236,19 +1061,19 @@
 < 				}
 < 			}
 < 		}
-19683c19300
+19506c19258
 < 			uses = 2
 ---
 > 			uses = 1
-19692c19309
+19515c19267
 < 			uses = 2
 ---
 > 			uses = 1
-19711c19328
+19534c19286
 < 			random_select_amount = 3
 ---
 > 			random_select_amount = 2
-19953,19955c19570,19572
+19776,19778c19528,19530
 < 		add_to_variable = { RAJ_south_east_asia_command_dm_max_command_power = 50 tooltip = max_command_power_tt }
 < 		add_to_variable = { RAJ_south_east_asia_command_dm_command_power_gain = 0.2 tooltip = command_power_gain_tt }
 < 		add_to_variable = { RAJ_south_east_asia_command_dm_special_forces_cap = 0.25 tooltip = special_forces_cap_tt }
@@ -1256,80 +1081,80 @@
 > 		add_to_variable = { RAJ_south_east_asia_command_dm_max_command_power = 20 tooltip = max_command_power_tt }
 > 		add_to_variable = { RAJ_south_east_asia_command_dm_command_power_gain = 0.1 tooltip = command_power_gain_tt }
 > 		add_to_variable = { RAJ_south_east_asia_command_dm_special_forces_cap = 0.05 tooltip = special_forces_cap_tt }
-19997,20000d19613
+19820,19823d19571
 < 			add_skill_level = 1
 < 			add_logistics = 1
 < 			add_defense = 1
 < 			add_planning = 1
-20094c19707
+19917c19665
 < 				days = 365
 ---
 > 				days = 90
-20135,20138d19747
+19958,19961d19705
 < 			add_skill_level = 1
 < 			add_logistics = 1
 < 			add_defense = 1
 < 			add_planning = 1
-20241c19850
+20064c19808
 < 				days = 365
 ---
 > 				days = 90
-20329,20332d19937
+20152,20155d19895
 < 			add_skill_level = 1
 < 			add_logistics = 1
 < 			add_defense = 1
 < 			add_planning = 1
-20418,20422d20022
+20241,20245d19980
 < 		add_autonomy_score = {
 < 			value = 150
 < 			localization = RAJ_defense_of_burma
 < 		}
 < 		custom_effect_tooltip = generic_skip_one_line_tt
-20721c20321
+20544c20279
 < 				days = 365
 ---
 > 				days = 90
-20816c20416
+20639c20374
 < 				level = 4
 ---
 > 				level = 2
-20825c20425
+20648c20383
 < 				days = 365
 ---
 > 				days = 90
-20845c20445
+20668c20403
 < 					level = 4
 ---
 > 					level = 2
-20852c20452
+20675c20410
 < 					days = 365
 ---
 > 					days = 90
-20883c20483
+20706c20441
 < 						level = 4
 ---
 > 						level = 2
-20897c20497
+20720c20455
 < 						level = 4
 ---
 > 						level = 2
-20911c20511
+20734c20469
 < 						level = 4
 ---
 > 						level = 2
-20919c20519
+20742c20477
 < 					days = 365
 ---
 > 					days = 90
-20940c20540
+20763c20498
 < 					level = 4
 ---
 > 					level = 2
-20947c20547
+20770c20505
 < 					days = 365
 ---
 > 					days = 90
-20995,20998c20595,20598
+20818,20821c20553,20556
 < 		add_to_variable = { RAJ_south_east_asia_command_dm_extra_marine_supply_grace = 48 tooltip = extra_marine_supply_grace_tt }
 < 		add_to_variable = { RAJ_south_east_asia_command_dm_shore_bombardment_bonus = 0.2 tooltip = shore_bombardment_bonus_tt }
 < 		add_to_variable = { RAJ_south_east_asia_command_dm_modifier_army_sub_unit_marine_attack_factor = 0.1 tooltip = modifier_army_sub_unit_marine_attack_factor_tt }
@@ -1339,7 +1164,7 @@
 > 		add_to_variable = { RAJ_south_east_asia_command_dm_shore_bombardment_bonus = 0.1 tooltip = shore_bombardment_bonus_tt }
 > 		add_to_variable = { RAJ_south_east_asia_command_dm_modifier_army_sub_unit_marine_attack_factor = 0.05 tooltip = modifier_army_sub_unit_marine_attack_factor_tt }
 > 		add_to_variable = { RAJ_south_east_asia_command_dm_special_forces_cap = 0.05 tooltip = special_forces_cap_tt }
-21001,21011d20600
+20824,20834d20558
 < 		if = {
 < 			limit = {
 < 				has_dlc = "Arms Against Tyranny"
@@ -1351,20 +1176,20 @@
 < 				category = cat_marines_doctrine
 < 			}
 < 		}
-21017c20606
+20840c20564
 < 			amount = 50 
 ---
 > 			amount = 25
-21096,21099d20684
+20919,20922d20642
 < 			add_skill_level = 1
 < 			add_logistics = 1
 < 			add_defense = 1
 < 			add_planning = 1
-21193c20778
+21016c20736
 < 				days = 365
 ---
 > 				days = 90
-21371,21372c20956,20966
+21194,21195c20914,20924
 <             ETH_add_random_mil_factory_effect = yes
 <             ETH_add_random_mil_factory_effect = yes
 ---
@@ -1379,15 +1204,15 @@
 >                         instant_build = yes
 >                     }
 >             }
-21565c21159
+21388c21117
 <             army_experience = 50
 ---
 >             army_experience = 25
-21757c21351
+21580c21309
 <                 uses = 2
 ---
 >                 uses = 1
-21773a21368,21390
+21596a21326,21352
 > 	
 > 	focus = {
 >         id = RAJ_royal_indian_navy_dlc
@@ -1411,11 +1236,11 @@
 >         bypass = {
 > 
 >         }
-21774a21392,21408
+> 
 >         cancel_if_invalid = yes
 >         continue_if_invalid = no
 >         available_if_capitulated = no
-> 
+21597a21354,21366
 >         search_filters = { FOCUS_FILTER_RESEARCH }
 >         completion_reward = {
 >             add_dynamic_modifier = {
@@ -1429,48 +1254,48 @@
 >         }
 >     }
 > 	
-21782c21416
+21605c21374
 <         x = 7
 ---
 >         x = 9
-21784c21418
+21607c21376
 <         relative_position_id = RAJ_indianize_the_army
 ---
 >         relative_position_id = RAJ_royal_indian_navy_dlc
-21857c21491
+21680c21449
 <         cost = 10
 ---
 >         cost = 20
-22136c21770
+21959c21728
 <         cost = 5
 ---
 >         cost = 10
-22212c21846
+22035c21804
 <         cost = 5
 ---
 >         cost = 10
-22237,22238d21870
+22060,22061d21828
 <             custom_effect_tooltip = RAJ_supply_center_fortifications_tt
 <             hidden_effect = {
-22242c21874
+22065c21832
 <                         level = 3
 ---
 >                         level = 1
-22250d21881
+22073d21839
 <             }
-22302c21933
+22125c21891
 <         cost = 5
 ---
 >         cost = 10
-22338c21969
+22161c21927
 <                             air_attack = 0.15
 ---
 >                             air_attack = 0.1
-22366c21997
+22189c21955
 <         cost = 5
 ---
 >         cost = 10
-22408,22410c22039,22041
+22231,22233c21997,21999
 <         x = 6
 <         y = 0
 <         relative_position_id = RAJ_bombay_baroda_and_central_india_railway
@@ -1478,117 +1303,117 @@
 >         x = -1
 >         y = 5
 >         relative_position_id = RAJ_indianize_the_army
-22412c22043
+22235c22001
 <         cost = 5
 ---
 >         cost = 10
-22505c22136
+22328c22094
 <         y = 0
 ---
 >         y = 1
-22508c22139
+22331c22097
 <         cost = 5
 ---
 >         cost = 10
-22529c22160
+22352c22118
 <             add_timed_idea = { idea = idea_RAJ_military_pensions days = 400 }
 ---
 >             add_timed_idea = { idea = idea_RAJ_military_pensions days = 365 }
-22642c22273
+22465c22231
 <         cost = 5
 ---
 >         cost = 10
-22883c22514
+22706c22472
 <                 bonus = 1
 ---
 >                 bonus = 0.5
-22939c22570
+22762c22528
 <         cost = 5
 ---
 >         cost = 10
-22967c22598
+22790c22556
 <             army_experience = 20
 ---
 >             army_experience = 25
-23155d22785
+22978d22743
 <                 ahead_reduction = 2
-23190c22820
+23013c22778
 <             has_war_support > 0.4
 ---
 >             has_war_support > 0.6
-23243c22873
+23066c22831
 <                 cost_reduction = 0.35
 ---
 >                 cost_reduction = 0.25
-23249c22879
+23072c22837
 <                 bonus = 0.4
 ---
 >                 bonus = 0.5
-23266c22896
+23089c22854
 <         cost = 5
 ---
 >         cost = 10
-23291,23292c22921,22922
+23114,23115c22879,22880
 <                     cost_reduction = 0.35
 <                     uses = 3
 ---
 >                     cost_reduction = 0.25
 >                     uses = 2
-23402d23031
+23225d22989
 <             army_experience = 30
-23532c23161
+23355c23119
 <         cost = 5
 ---
 >         cost = 10
-23617c23246
+23440c23204
 <         cost = 5
 ---
 >         cost = 10
-23710c23339
+23533c23297
 <         cost = 5
 ---
 >         cost = 10
-23735c23364
+23558c23322
 <                     amount = 12
 ---
 >                     amount = 144
-23758c23387
+23581c23345
 <         cost = 5
 ---
 >         cost = 10
-23782c23411
+23605c23369
 <                     amount = 24
 ---
 >                     amount = 288
-23996c23625
+23819c23583
 <         cost = 5
 ---
 >         cost = 10
-24136c23765
+23959c23723
 <         cost = 5
 ---
 >         cost = 10
-24254c23883
+24077c23841
 <         cost = 5
 ---
 >         cost = 10
-24326c23955
+24149c23913
 <         relative_position_id = RAJ_local_recruitment_offices
 ---
 >         relative_position_id = RAJ_indianize_the_army
-24354c23983
+24177c23941
 <                 value = 0.2
 ---
 >                 value = 0.05 #IM REDUCING IT FROM 0.2 I KNOW 35 DAYS BUT GODDAMN I CANT JUST NUKE IT LIKE TOTALLY
-24370c23999
+24193c23957
 <         cost = 5
 ---
 >         cost = 10
-24420c24049
+24243c24007
 <         cost = 5
 ---
 >         cost = 10
-24427,24432c24056,24059
+24250,24255c24014,24017
 <             BRM = {
 <                 is_in_faction_with = ROOT
 <                 controls_state = 995
@@ -1600,78 +1425,78 @@
 >             controls_state = 995
 >             controls_state = 640
 >             controls_state = 998
-24475c24102
+24298c24060
 <         cost = 5
 ---
 >         cost = 10
-24500c24127
+24323c24085
 <                 value = -0.15
 ---
 >                 value = -0.1
-24612c24239
+24435c24197
 <         cost = 5
 ---
 >         cost = 10
-24657c24284
+24480c24242
 <         cost = 5
 ---
 >         cost = 10
-24678,24683d24304
+24501,24506d24262
 <             add_tech_bonus = {
 <                 name = RAJ_douglas_dakota
 <                 bonus = 1
 <                 uses = 1
 <                 category = transport_planes_cat # optional 
 <             }
-24745c24366
+24568c24324
 <                     bonus = 1
 ---
 >                     bonus = 0.5
-24751c24372
+24574c24330
 <                 air_experience = 60
 ---
 >                 air_experience = 25
-24772c24393
+24595c24351
 <         cost = 5
 ---
 >         cost = 10
-24999c24620
+24822c24578
 <         cost = 5
 ---
 >         cost = 10
-25023c24644
+24846c24602
 <                 value = 0.3
 ---
 >                 value = 0.07
-25037c24658
+24860c24616
 <         cost = 5
 ---
 >         cost = 10
-25074,25075c24695,24696
+24897,24898c24653,24654
 <                     cost_reduction = 0.75
 <                     uses = 1
 ---
 >                     cost_reduction = 0.25
 >                     uses = 2
-25153d24773
+24976d24731
 <             try_build_mil_in_core_otherwise_build_in_controlled_2_mil = yes
-25162c24782
+24985c24740
 <         prerequisite = { focus = RAJ_british_air_experts focus = RAJ_abolish_agrarian_society_criteria }
 ---
 >         prerequisite = { focus = RAJ_british_air_experts }
-25196c24816
+25019c24774
 <                     bonus = 3.0
 ---
 >                     bonus = 1.0
-25224c24844
+25047c24802
 <         cost = 5
 ---
 >         cost = 10
-25245c24865
+25068c24823
 <             air_experience = 100
 ---
 >             air_experience = 50
-25254,25292d24873
+25077,25115d24831
 <     focus = {
 <         id = RAJ_royal_indian_navy_dlc
 <         icon = GFX_goal_generic_navy_doctrines_tactics
@@ -1711,67 +1536,67 @@
 <             }
 <         }
 <     }
-25345c24926
+25168c24884
 <             navy_experience = 50
 ---
 >             navy_experience = 25
-25356c24937
+25179c24895
 <                 add_extra_state_shared_building_slots = 2
 ---
 >                 add_extra_state_shared_building_slots = 1
-25359c24940
+25182c24898
 <                     level = 2
 ---
 >                     level = 1
-25416c24997
+25239c24955
 <                 uses = 2
 ---
 >                 uses = 1
-25495c25076
+25318c25034
 <                 cost_reduction = 0.3
 ---
 >                 cost_reduction = 0.25
-25500c25081
+25323c25039
 <                 bonus = 0.3
 ---
 >                 bonus = 0.25
-25555c25136
+25378c25094
 <         cost = 5
 ---
 >         cost = 10
-25640c25221
+25463c25179
 <         cost = 5
 ---
 >         cost = 10
-25681c25262
+25504c25220
 <                 bonus = 1
 ---
 >                 bonus = 0.75
-25697c25278
+25520c25236
 <         cost = 5
 ---
 >         cost = 10
-25720c25301
+25543c25259
 <         cost = 5
 ---
 >         cost = 10
-25734c25315
+25557c25273
 <                 add_extra_state_shared_building_slots = 3
 ---
 >                 add_extra_state_shared_building_slots = 2
-25737c25318
+25560c25276
 <                     level = 3
 ---
 >                     level = 2
-25753c25334
+25576c25292
 <         cost = 5
 ---
 >         cost = 10
-25881c25462
+25704c25420
 <         cost = 5
 ---
 >         cost = 10
-26250a25832,25860
+26073a25790,25818
 >         }
 >     }
 > 

@@ -86,32 +86,26 @@
 > 
 1301d1260
 < 			
-1340,1344d1298
-< 			
-< 			modifier = {
-< 				factor = 0
-< 				date < 1938.1.1
-< 			}
-1400c1354
+1400c1359
 < 			position = {  x = -1 y = 2 }
 ---
 > 			position = {  x = 2 y = 2 }
-1435a1390,1393
+1435a1395,1398
 > 		path = {
 > 			leads_to_tech = improved_ship_hull_escort_carrier
 > 			research_cost_coeff = 1
 > 		}
-1436a1395
+1436a1400
 > 
-1452c1411
+1452c1416
 < 			position = {  x = -1 y = 8 }
 ---
 > 			position = {  x = 2 y = 8 }
-1519c1478
+1519c1483
 < 			position = {  x = -1 y = 14 }
 ---
 > 			position = {  x = 2 y = 14 }
-1533,1541d1491
+1533,1541d1496
 < 			modifier = {
 < 				factor = 1.5
 < 				date > 1939.1.1
@@ -121,11 +115,11 @@
 < 				factor = 1.5
 < 				date > 1940.1.1
 < 			}
-1575c1525
+1575c1530
 < 			position = {  x = -1 y = 20 }
 ---
 > 			position = {  x = 2 y = 20 }
-1598a1549,1677
+1598a1554,1682
 > ######### ESCORT CARRIERS #################
 > ###################################################################################
 > #     #  #######   #####   #     #
@@ -255,24 +249,24 @@
 > #		special_project_specialization = { specialization_naval }
 > #	}
 > 
-1637c1716
+1637c1721
 < 			position = {  x = -2 y = 2 }
 ---
 > 			position = {  x = 3 y = 2 }
-1651c1730,1731
+1651c1735,1736
 < 
 ---
 > 	
 > 		
-1698c1778
+1698c1783
 < 			position = {  x = -2 y = 8 }
 ---
 > 			position = {  x = 3 y = 8 }
-1747c1827
+1747c1832
 < 			position = {  x = -2 y = 14 }
 ---
 > 			position = {  x = 3 y = 14 }
-1760,1768d1839
+1760,1768d1844
 < 			modifier = {
 < 				factor = 1.5
 < 				date > 1939.1.1
@@ -282,61 +276,61 @@
 < 				factor = 1.5
 < 				date > 1940.1.1
 < 			}
-1783a1855
+1783a1860
 > 		
-1794c1866
+1794c1871
 < 			position = {  x = -2 y = 20 }
 ---
 > 			position = {  x = 3 y = 20 }
-1822a1895,1899
+1822a1900,1904
 > 
 > 		on_research_complete = {
 > 			custom_effect_tooltip = snorkel_advice_tt
 > 		}
 > 
-1827,1829c1904
+1827,1829c1909
 < 		on_research_complete = {
 < 			custom_effect_tooltip = snorkel_advice_tt
 < 		}
 ---
 > 
-1832c1907
+1832c1912
 < 		start_year = 1939
 ---
 > 		start_year = 1940
-1836c1911
+1836c1916
 < 			position = {  x = -1 y = 13 }
 ---
 > 			position = {  x = 4 y = 13 }
-1875a1951
+1875a1956
 > 
-1881c1957
+1881c1962
 < 		start_year = 1943
 ---
 > 		start_year = 1944
-1885c1961
+1885c1966
 < 			position = {  x = -1 y = 19 }
 ---
 > 			position = {  x = 4 y = 19 }
-1905a1982
+1905a1987
 > 
-2021c2098
+2021c2103
 < 		start_year = 1939
 ---
 > 		start_year = 1940
-2050c2127
+2050c2132
 < 		start_year = 1943
 ---
 > 		start_year = 1944
-2090c2167
+2090c2172
 < 			position = { x = 0 y = 17 }
 ---
 > 			position = { x = 3 y = 17 }
-2117c2194
+2117c2199
 < 		start_year = 1944
 ---
 > 		start_year = 1945
-2120c2197
+2120c2202
 < 			position = { x = 0 y = 23 }
 ---
 > 			position = { x = 3 y = 23 }

@@ -14,6 +14,10 @@
 > 			size = { width = 2568 height = 1317 }
 > 		    clipping = yes
 > 			margin = { top = 13 left = 10 bottom = 1 right = 3}
+1944c1946
+< 					position = { x = 30 y = 660 }
+---
+> 					position = { x = 30 y = 775 }
 1974c1976
 < 					width=1700 height=1300
 ---

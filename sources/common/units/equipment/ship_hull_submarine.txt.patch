@@ -2,140 +2,36 @@
 < 		surface_detection = 20
 ---
 > 		surface_detection = 10
-83c83
-< 		sub_visibility = 25
----
-> 		sub_visibility = 24
-87c87
-< 		naval_range = 2000
----
-> 		naval_range = 800
-89c89
-< 		max_strength = 10
----
-> 		max_strength = 7
-94,97c94,97
-< 		build_cost_ic = 320
+95c95
 < 		resources = {
-< 			#oil = 1
+---
+> 		resources={
+97c97
 < 			steel = 1
 ---
-> 		build_cost_ic = 520
-> 		resources={
-> 
 > 			steel = 12
-143c143
-< 		sub_visibility = 22
----
-> 		sub_visibility = 21
-147c147
-< 		naval_range = 2500
----
-> 		naval_range = 1200
-149c149
-< 		max_strength = 20
----
-> 		max_strength = 13
-153,156c153,156
-< 		build_cost_ic = 350
+154c154
 < 		resources = {
-< 			#oil = 1
+---
+> 		resources={
+156c156
 < 			steel = 2
 ---
-> 		build_cost_ic = 550
-> 		resources={
-> 
 > 			steel = 24
-194c194
-< 		sub_visibility = 20
----
-> 		sub_visibility = 18
-198c198
-< 		naval_range = 3000
----
-> 		naval_range = 1800
-200c200
-< 		max_strength = 30
----
-> 		max_strength = 17
-204,206c204,206
-< 		build_cost_ic = 420
+205,206c205,206
 < 		resources = {
 < 			steel = 2
 ---
-> 		build_cost_ic = 610
 > 		resources={
 > 			steel = 24
-247c247
-< 		naval_range = 3500
----
-> 		naval_range = 2400
-249c249
-< 		max_strength = 35
----
-> 		max_strength = 20
-253,256c253,256
-< 		build_cost_ic = 550
+254,256c254,256
 < 		resources = {
 < 			steel = 3
 < 			chromium = 1
 ---
-> 		build_cost_ic = 680
 > 		resources={
 > 			steel = 36
 > 			chromium = 12
-304c304
-< 		sub_visibility = 20
----
-> 		sub_visibility = 18
-310c310
-< 		max_strength = 30
----
-> 		max_strength = 20
-314,316c314,316
-< 		build_cost_ic = 490
-< 		resources = {
-< 			steel = 2
----
-> 		build_cost_ic = 600
-> 		resources={
-> 			steel = 24
-364c364
-< 		sub_visibility = 18
----
-> 		sub_visibility = 19
-368c368
-< 		naval_range = 6500
----
-> 		naval_range = 5500
-370c370
-< 		max_strength = 40
----
-> 		max_strength = 20
-374,376c374,376
-< 		build_cost_ic = 650
-< 		resources = {
-< 			steel = 3
----
-> 		build_cost_ic = 900
-> 		resources={
-> 			steel = 36
-407,409c407,409
-< 		build_cost_ic = 150
-< 		resources = {
-< 			steel = 1
----
-> 		build_cost_ic = 300
-> 		resources={
-> 			steel = 12
-467c467
-< 		sub_visibility = 16
----
-> 		sub_visibility = 12
-474c474
-< 		max_strength = 50
----
-> 		max_strength = 30
 479,481c479,481
 < 		resources = {
 < 			steel = 3
@@ -146,128 +42,101 @@
 > 			chromium = 24
 529,530c529,530
 < 		resources = {
-< 			steel = 3
+< 			steel = 4
 ---
 > 		resources={
-> 			steel = 36
-557c557
-< 		surface_detection = 30
----
-> 		surface_detection = 20
-560c560
-< 		sub_visibility = 30
----
-> 		sub_visibility = 24
-566c566
-< 		max_strength = 10
----
-> 		max_strength = 7
-571,574c571,574
-< 		build_cost_ic = 250
+> 			steel = 48
+572c572
 < 		resources = {
-< 			#oil = 1
+---
+> 		resources={
+574c574
 < 			steel = 1
 ---
-> 		build_cost_ic = 400
-> 		resources={
-> 
 > 			steel = 12
-603c603
-< 		surface_detection = 40
----
-> 		surface_detection = 30
 606c606
 < 		sub_visibility = 25
 ---
-> 		sub_visibility = 21
+> 		sub_visibility = 24
+610c610
+< 		naval_range = 2500
+---
+> 		naval_range = 1200
 612c612
 < 		max_strength = 20
 ---
-> 		max_strength = 10
-616,619c616,619
-< 		build_cost_ic = 250
+> 		max_strength = 13
+617c617
 < 		resources = {
-< 			#oil = 1
+---
+> 		resources={
+619c619
 < 			steel = 2
 ---
-> 		build_cost_ic = 400
-> 		resources={
-> 
 > 			steel = 24
-645c645
-< 		surface_detection = 50
+652c652
+< 		naval_range = 3000
 ---
-> 		surface_detection = 40
-648c648
-< 		sub_visibility = 15
----
-> 		sub_visibility = 18
+> 		naval_range = 1800
 654c654
 < 		max_strength = 30
 ---
-> 		max_strength = 14
-658,661c658,661
-< 		build_cost_ic = 350
+> 		max_strength = 17
+659c659
 < 		resources = {
-< 			#oil = 2
+---
+> 		resources={
+661c661
 < 			steel = 2
 ---
-> 		build_cost_ic = 500
-> 		resources={
-> 
 > 			steel = 24
-690c690
-< 		sub_visibility = 10
+694c694
+< 		naval_range = 3500
 ---
-> 		sub_visibility = 16
+> 		naval_range = 2400
 696c696
 < 		max_strength = 35
 ---
-> 		max_strength = 18
-701,704c701,703
+> 		max_strength = 20
+701c701
 < 		resources = {
-< 			#oil = 2
+---
+> 		resources={
+703,704c703,704
 < 			steel = 3
 < 			chromium = 1
 ---
-> 		resources={
-> 			steel = 34
-> 			chromium = 14
-784c783
-< 		surface_detection = 20
+> 			steel = 36
+> 			chromium = 12
+797c797
+< 		max_strength = 30
 ---
-> 		surface_detection = 30
-791c790
-< 		sub_visibility = 26
----
-> 		sub_visibility = 18
-801,803c800,802
+> 		max_strength = 20
+801,803c801,803
 < 		build_cost_ic = 490
 < 		resources = {
 < 			steel = 2
 ---
-> 		build_cost_ic = 570
+> 		build_cost_ic = 600
 > 		resources={
 > 			steel = 24
-882c881
-< 		surface_detection = 60
+892c892
+< 		naval_range = 6500
 ---
-> 		surface_detection = 30
-889c888
-< 		sub_visibility = 13
+> 		naval_range = 5500
+894c894
+< 		max_strength = 40
 ---
-> 		sub_visibility = 18
-899,900c898,899
+> 		max_strength = 20
+898,900c898,900
+< 		build_cost_ic = 650
 < 		resources = {
 < 			steel = 3
 ---
+> 		build_cost_ic = 900
 > 		resources={
 > 			steel = 36
-944c943
-< 		sub_visibility = 15
----
-> 		sub_visibility = 16
-955,957c954,956
+955,957c955,957
 < 		build_cost_ic = 150
 < 		resources = {
 < 			steel = 1
@@ -275,43 +144,31 @@
 > 		build_cost_ic = 300
 > 		resources={
 > 			steel = 12
-1039c1038
-< 		surface_detection = 55
+1052c1052
+< 		max_strength = 50
 ---
-> 		surface_detection = 60
-1056,1059c1055,1058
-< 		build_cost_ic = 1150
+> 		max_strength = 30
+1057,1059c1057,1059
 < 		resources = {
 < 			steel = 4
 < 			chromium = 2
 ---
-> 		build_cost_ic = 1300
 > 		resources={
 > 			steel = 48
 > 			chromium = 24
-1141c1140
-< 		surface_detection = 65
----
-> 		surface_detection = 60
-1148c1147
-< 		sub_visibility = 13
----
-> 		sub_visibility = 16
-1158,1161c1157,1160
-< 		build_cost_ic = 900
+1159,1161c1159,1161
 < 		resources = {
 < 			steel = 4
 < 			chromium = 2
 ---
-> 		build_cost_ic = 1050
 > 		resources={
 > 			steel = 48
 > 			chromium = 24
-1243c1242
+1243c1243
 < 		surface_detection = 60
 ---
-> 		surface_detection = 70
-1260,1263c1259,1262
+> 		surface_detection = 30
+1260,1263c1260,1263
 < 		build_cost_ic = 1450
 < 		resources = {
 < 			steel = 4
