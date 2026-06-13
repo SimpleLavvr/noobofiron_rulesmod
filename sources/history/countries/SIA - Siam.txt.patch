@@ -33,8 +33,7 @@
 > 	SIA_royal_opposition
 > 	SIA_factionalism_1
 > }
-263c295
-< }
-\ Pas de fin de ligne à la fin du fichier
+206c238
+< 		complete_national_focus =SIA_thai_rice_company									#35
 ---
-> }
+> 		complete_national_focus =SIA_NOI_thai_rice_company									#35

@@ -86,17 +86,17 @@
 < 				amount = 3
 ---
 > 				amount = 36
-11310c11310
+11307c11307
 < 						amount = 12
 ---
 > 						amount = 144
-13187d13186
+13184d13183
 < 		fixed_random_seed = no
-13205c13204
+13202c13201
 < 						80 = {
 ---
 > 						100 = {
-13214,13219d13212
+13211,13216d13209
 < 						}
 < 						20 = {
 < 							SOV_paranoia_very_high_increase_effect = yes

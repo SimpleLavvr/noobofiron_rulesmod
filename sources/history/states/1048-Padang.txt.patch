@@ -1,0 +1,8 @@
+5,7c5,7
+< 		rubber = 7
+< 		oil = 9
+< 		coal = 7
+---
+> 		rubber = 84
+> 		oil = 108
+> 		coal = 84

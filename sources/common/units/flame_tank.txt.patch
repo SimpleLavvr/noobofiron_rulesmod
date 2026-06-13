@@ -1,7 +1,7 @@
 39a40,41
 > 		transport = light_tank_flame_chassis
 > 
-46,48c48,50
+47,49c49,51
 < 		soft_attack = -0.5 #Was -0.75
 < 		breakthrough = -0.5 #Was -0.75
 < 		hard_attack = -0.75
@@ -9,13 +9,13 @@
 > 		soft_attack = -0.1 #Was -0.75
 > 		breakthrough = -0.1 #Was -0.75
 > 		hard_attack = -0.1
-50c52
+51c53
 < 		armor_value = -0.75
 ---
 > 		armor_value = -0.95
-55a58
+56a59
 > 
-132,134c135,139
+136,138c139,143
 < 		soft_attack = -0.45 #Was -0.7
 < 		breakthrough = -0.45 #Was -0.7
 < 		hard_attack = -0.7
@@ -25,13 +25,13 @@
 > 		soft_attack = -0.1 #Was -0.7
 > 		breakthrough = -0.1 #Was -0.7
 > 		hard_attack = -0.1
-136c141
+140c145
 < 		armor_value = -0.7
 ---
 > 		armor_value = -0.95
-141a147
+145a151
 > 
-219,220c225,228
+225,226c231,234
 < 		soft_attack = -0.4 #Was -0.625
 < 		hard_attack = -0.625
 ---
@@ -39,9 +39,9 @@
 > 
 > 		soft_attack = -0.1 #Was -0.625
 > 		hard_attack = -0.125
-222c230
+228c236
 < 		armor_value = -0.625
 ---
 > 		armor_value = -0.95
-227a236
+233a242
 > 

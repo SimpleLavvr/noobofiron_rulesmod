@@ -913,11 +913,11 @@
 < 	}
 < 
 < 	SpriteType = {
-51666a50871,50873
+51666a50871,51060
 > 	###########
 > 	### NOI ###
 > 	###########
-51667a50875,50921
+> 	
 > 	SpriteType = {
 > 		name = "GFX_noim_goal_porsche_shine"
 > 		texturefile = "gfx/interface/goals/noim_goal_porsche.dds"		
@@ -965,7 +965,7 @@
 > 			animationrotationoffset = { x = 0.0 y = 0.0 }
 > 			animationtexturescale = { x = 1.0 y = 1.0 } 
 > 		}
-51668a50923,51093
+> 
 > 		animation = {
 > 			animationmaskfile = "gfx/interface/goals/goal_generic_dangerous_deal.dds"		
 > 			animationtexturefile = "gfx/interface/goals/shine_overlay.dds" 	# <- the animated file
@@ -1104,7 +1104,7 @@
 > 		}
 > 		legacy_lazy_load = no
 > 	}
-> 	
+51667a51062,51077
 > 	SpriteType = {
 > 		name = "GFX_noim_goal_align_hungary_shine"
 > 		texturefile = "gfx/interface/goals/noim_goal_align_hungary.dds"		
@@ -1121,7 +1121,7 @@
 > 			animationrotationoffset = { x = 0.0 y = 0.0 }
 > 			animationtexturescale = { x = 1.0 y = 1.0 } 
 > 		}
-> 
+51668a51079,51093
 > 		animation = {
 > 			animationmaskfile = "gfx/interface/goals/goal_generic_dangerous_deal.dds"		
 > 			animationtexturefile = "gfx/interface/goals/shine_overlay.dds" 	# <- the animated file
@@ -1137,10 +1137,20 @@
 > 		legacy_lazy_load = no
 > 	}
 > 	
-91353,91387d90777
+91389a90815
+> 
+96145c95571
+< 		name = "GFX_focus_SIA_thai_rice_company_shine"
+---
+> 		name = "GFX_focus_SIA_NOI_thai_rice_company_shine"
+98375,98413d97800
+< 
 < 	###################
 < 	### PLACEHOLDER ###
 < 	###################
+< 
+< 
+< 
 < 
 < 
 < 	SpriteType = {
@@ -1173,5 +1183,3 @@
 < 		}
 < 		legacy_lazy_load = no
 < 	}
-91389a90780
-> 

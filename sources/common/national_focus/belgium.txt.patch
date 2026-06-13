@@ -1,4 +1,4 @@
-7035,7047c7035
+7065,7077c7065
 < 			division_template = {
 < 				name = "Division d'Infanterie"
 < 				is_locked = yes
@@ -14,11 +14,11 @@
 < 	
 ---
 > 
-7517c7505
+7547c7535
 < 					amount = 8
 ---
 > 					amount = 96
-7521c7509
+7551c7539
 < 					amount = 18
 ---
 > 					amount = 216

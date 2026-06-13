@@ -1,4 +1,4 @@
-4403,4439c4403
+4429,4465c4429
 < 	option = { #Pull forces out of China - low war support
 < 		name = panay_incident.2.a
 < 		custom_effect_tooltip = panay_incident.2.a.tt
@@ -38,7 +38,7 @@
 < 	}
 ---
 > 
-4449,4478c4413
+4475,4504c4439
 < 	option = { #War
 < 		name = panay_incident.2.c
 < 		custom_effect_tooltip = panay_incident.2.c.tt
@@ -71,7 +71,7 @@
 < 	}
 ---
 > 
-4496,4508d4430
+4522,4534d4456
 < 	option = { #We shall never bw down to the western Imperialists!
 < 		name = panay_incident.3.b
 < 		custom_effect_tooltip = panay_incident.3.b.tt
@@ -85,7 +85,7 @@
 < 		add_political_power = 100
 < 		hidden_effect = { USA = { country_event = { id = panay_incident.5 days = 2 } } } #Delay added here and in earlier event so rest of the world doesn't get Panay Incident one day and War the next, unless US is particularly gung-ho in response to initial event.
 < 	}
-4588c4510
+4614c4536
 < }
 \ Pas de fin de ligne à la fin du fichier
 ---

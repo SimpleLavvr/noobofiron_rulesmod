@@ -1,23 +1,25 @@
 86a87
 > 
-91c92,93
+93c94,95
 < 
 ---
 > #NOI
 > recruit_character = AST_john_doctrine
-361,366d362
+488,493d489
 < 		optional_assets = {
 < 			{
 < 				icon = "GFX_commonwealth_light_cruiser_hobart"
 < 				model = "commonwealth_gfx_light_cruiser_entity"
 < 			}
 < 		}
-386,404d381
+515,535d510
+< 	
 < 	create_equipment_variant = {
 < 		name = "Leander Class"
 < 		type = ship_hull_cruiser_2
 < 		name_group = AST_CL_HISTORICAL
 < 		parent_version = 0
+< 		design_team = mio:AST_cockatoo_docks_organization
 < 		modules = {
 < 			fixed_ship_battery_slot = ship_light_medium_battery_2
 < 			fixed_ship_anti_air_slot = ship_anti_air_2
@@ -32,19 +34,13 @@
 < 			rear_1_custom_slot = ship_light_medium_battery_2
 < 		}
 < 	}
-423,446d399
-< 		optional_assets = {
-< 			{
-< 				icon = "GFX_commonwealth_heavy_cruiser_australia"
-< 				model = "commonwealth_gfx_heavy_cruiser_entity"
-< 			}
-< 		}
-< 	}
+563,581d537
 < 	create_equipment_variant = {
 < 		name = "County Class"
 < 		type = ship_hull_cruiser_1
 < 		name_group = AST_CA_HISTORICAL
 < 		parent_version = 0
+< 		design_team = mio:AST_cockatoo_docks_organization
 < 		modules = {
 < 			fixed_ship_battery_slot = ship_medium_battery_2
 < 			fixed_ship_anti_air_slot = ship_anti_air_1
@@ -57,15 +53,11 @@
 < 			mid_2_custom_slot = ship_torpedo_1
 < 			rear_1_custom_slot = ship_medium_battery_2
 < 		}
-464,469d416
+< 	}
+599,604d554
+< 		}
 < 		optional_assets = {
 < 			{
 < 				icon = "GFX_commonwealth_destroyer_vampire"
 < 				model = "commonwealth_gfx_destroyer_1_entity"
 < 			}
-< 		}
-526c473
-< }
-\ Pas de fin de ligne à la fin du fichier
----
-> }

@@ -5,6 +5,6 @@
 < 		coal = 2 #initial distribution
 ---
 > 	resources={
-> 		steel = 620 # was: 35, then 15
+> 		steel = 120 # was: 35, then 15
 > 		oil = 36 #Should be located in the northern state after the split
 > 		coal = 24 #initial distribution

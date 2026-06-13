@@ -9,11 +9,11 @@
 168a174,175
 > 		transport = heavy_tank_aa_chassis
 > 
-227d233
+229d235
 < 
-236a243,244
+238a245,246
 > 		transport = super_heavy_tank_aa_chassis
 > 
-303a312,313
+305a314,315
 > 
 > 		transport = modern_tank_aa_chassis

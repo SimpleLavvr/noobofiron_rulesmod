@@ -6,7 +6,3 @@
 > 		oil = 12 # was: 2
 > 		tungsten = 36 #maganese
 > 		steel = 36 #Maganese
-32a33,35
-> 		}
->                 strategic_province_location = {
-> 			defensive_chokepoint = 1071

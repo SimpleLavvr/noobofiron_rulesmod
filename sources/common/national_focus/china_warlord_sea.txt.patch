@@ -1,33 +1,33 @@
-3020c3020
+3026c3026
 < 			    amount = 8
 ---
 > 			    amount = 96
-3083c3083
+3089c3089
 < 				    resources = { oil }
 ---
 > 				    resources={ oil }
-3089c3089
+3095c3095
 < 			    amount = 35
 ---
 > 			    amount = 420
-4258c4258
+4264c4264
 < 							resources = { oil }
 ---
 > 							resources={ oil }
-4365c4365
+4371c4371
 < 							resources = { oil }
 ---
 > 							resources={ oil }
-5736,5739d5735
+5742,5745d5741
 < 			hidden_effect = {
 < 				set_country_flag = KHM_established_the_kashgar_clique_flag
 < 			}
 < 
-8997c8993
+9003c8999
 < 						amount = 6
 ---
 > 						amount = 72
-9011c9007
+9017c9013
 < 						amount = 4
 ---
 > 						amount = 48

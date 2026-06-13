@@ -1,12 +1,12 @@
 8,12c8,12
 < 	resources = {
-< 		rubber = 342 # was: 848
-< 		steel = 10 # was: 32, then 20
-< 		tungsten = 160 # was: 308, then 189
-< 		aluminium = 10 # was: 25, then 15
+< 		rubber = 100 # was: 848
+< 		tungsten = 40 # was: 308, then 189
+< 		aluminium = 1
+< 		steel = 2
 ---
 > 	resources={
-> 		rubber = 4104 # was: 848
-> 		steel = 120 # was: 32, then 20
-> 		tungsten = 1920 # was: 308, then 189
-> 		aluminium = 120 # was: 25, then 15
+> 		rubber = 1200 # was: 848
+> 		tungsten = 480 # was: 308, then 189
+> 		aluminium = 12
+> 		steel = 24

@@ -6,7 +6,3 @@
 > 	resources={
 > 		tungsten = 840
 > 		coal = 48 #Kalewa mines near the Chindwin River
-14c14
-< 		owner = BRM
----
-> 		owner = RAJ

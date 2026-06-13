@@ -6,7 +6,3 @@
 > 	resources={
 > 		tungsten = 1104
 > 		oil = 672
-16c16
-< 		owner = BRM
----
-> 		owner = RAJ

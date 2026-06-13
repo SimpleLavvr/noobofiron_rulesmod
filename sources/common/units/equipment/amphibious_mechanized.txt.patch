@@ -1,4 +1,4 @@
-35,37c35,37
+42,44c42,44
 < 		resources = {
 < 			steel = 2
 < 			rubber = 1
@@ -6,7 +6,7 @@
 > 		resources={
 > 			steel = 24
 > 			rubber = 12
-73,75c73,75
+80,82c80,82
 < 		resources = {
 < 			steel = 3
 < 			rubber = 1

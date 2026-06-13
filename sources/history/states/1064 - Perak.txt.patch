@@ -1,0 +1,12 @@
+8,12c8,12
+< 	resources = {
+< 		tungsten = 60 
+< 		rubber = 115 
+< 		aluminium = 3
+< 		steel = 6
+---
+> 	resources={
+> 		tungsten = 720 
+> 		rubber = 1380 
+> 		aluminium = 36
+> 		steel = 72

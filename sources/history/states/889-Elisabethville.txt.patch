@@ -1,6 +1,8 @@
-8,9c8,9
+7,9c7,9
+< 	resources = {
 < 		tungsten = 2
 < 		coal = 4
 ---
+> 	resources={
 > 		tungsten = 24
 > 		coal = 48

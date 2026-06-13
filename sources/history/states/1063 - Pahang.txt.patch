@@ -1,0 +1,8 @@
+8,10c8,10
+< 	resources = {
+< 		tungsten = 30 
+< 		rubber = 85 
+---
+> 	resources={
+> 		tungsten = 360 
+> 		rubber = 1020 

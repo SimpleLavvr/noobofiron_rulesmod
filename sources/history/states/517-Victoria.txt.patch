@@ -1,6 +1,6 @@
 6,7c6,7
-< 		steel=8.000
-< 		chromium=4.000
+< 		steel = 6 #down from 8 in TAOG
+< 		chromium = 4
 ---
-> 		steel = 96.000
-> 		chromium = 48.000
+> 		steel = 72 #down from 8 in TAOG
+> 		chromium = 48

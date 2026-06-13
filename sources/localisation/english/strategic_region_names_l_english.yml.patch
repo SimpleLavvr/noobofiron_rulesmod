@@ -1,11 +1,11 @@
 126c126
-<  STRATEGICREGION_126:1 "Eastern Maghreb"
+<  STRATEGICREGION_126: "Eastern Maghreb"
 ---
->  STRATEGICREGION_126:1 "Algeria"
+>  STRATEGICREGION_126: "Algeria"
 128c128
-<  STRATEGICREGION_128:0 "Egypt"
+<  STRATEGICREGION_128: "Egypt"
 ---
->  STRATEGICREGION_128:0 "Lower Egypt"
+>  STRATEGICREGION_128: "Lower Egypt"
 299a300,305
 > 
 > #NOIM Regions

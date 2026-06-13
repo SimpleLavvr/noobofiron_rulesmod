@@ -1,14 +1,15 @@
 1372a1373
 > 
-1384a1386
-> 		custom_effect_tooltip = refusing_vichy_tt
-1400a1403
+1400a1402
 > 
-1412c1415
+1425c1427
 < 	
 ---
 > 
-1414a1418,1431
+1427a1430,1431
+> 
+> 
+1429a1434,1446
 > 		set_global_flag = vichy_refused_armistice
 > 
 >         country_event = {
@@ -22,4 +23,3 @@
 >                 days = 10
 >             }
 >         }
-> 

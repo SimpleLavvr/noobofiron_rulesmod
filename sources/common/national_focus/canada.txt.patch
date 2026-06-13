@@ -49,22 +49,21 @@
 > 
 2424a2435
 > 
-2430a2442,2443
-> 				category = cat_medium_armor
+2430a2442
 > 				category = cat_heavy_armor
-2811c2824
+2811c2823
 < 					amount = 20
 ---
 > 					amount = 240
-2817c2830
+2817c2829
 < 					amount = 8
 ---
 > 					amount = 96
-2823c2836
+2823c2835
 < 					amount = 8
 ---
 > 					amount = 96
-2860c2873
+2860c2872
 < 					amount = 36
 ---
 > 					amount = 432

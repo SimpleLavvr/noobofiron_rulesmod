@@ -1,0 +1,10 @@
+7,10c7,10
+< 	resources = {
+< 		rubber = 30 #was: 61 #26-02-03: was: 41
+< 		coal = 4
+< 		oil = 23 #was: 0 #26-02-03: was: 33
+---
+> 	resources={
+> 		rubber = 360 #was: 61 #26-02-03: was: 41
+> 		coal = 48
+> 		oil = 276 #was: 0 #26-02-03: was: 33

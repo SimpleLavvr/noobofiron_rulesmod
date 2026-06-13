@@ -1,0 +1,6 @@
+5,6c5,6
+< 	resources = {
+< 		coal = 2 #added in TAOG
+---
+> 	resources={
+> 		coal = 24 #added in TAOG

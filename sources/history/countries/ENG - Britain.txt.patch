@@ -2,28 +2,28 @@
 > 	marines = 1
 229d229
 < 		coastal_defense_ships = 1
-864,869d863
+871,876d870
 < 		optional_assets = {
 < 			{
 < 				icon = "GFX_commonwealth_heavy_cruiser_australia"
 < 				model = "commonwealth_gfx_heavy_cruiser_entity"
 < 			}
 < 		}
-1098,1103d1091
+1105,1110d1098
 < 		optional_assets = {
 < 			{
 < 				icon = "GFX_commonwealth_destroyer_vampire"
 < 				model = "commonwealth_gfx_destroyer_1_entity"
 < 			}
 < 		}
-1202,1207d1189
+1209,1214d1196
 < 		optional_assets = {
 < 			{
 < 				icon = "GFX_commonwealth_light_cruiser_hobart"
 < 				model = "commonwealth_gfx_light_cruiser_entity"
 < 			}
 < 		}
-1229,1245c1211,1228
+1236,1252c1218,1235
 < 		name = "Town Class"
 < 		type = ship_hull_cruiser_2
 < 		name_group = ENG_CL_HISTORICAL
@@ -60,16 +60,16 @@
 > 				mid_2_custom_slot = ship_secondaries_2
 > 				rear_1_custom_slot = ship_light_medium_battery_2
 > 			}
-1247d1229
+1254d1236
 < 	}
-1267,1272d1248
+1274,1279d1255
 < 		optional_assets = {
 < 			{
 < 				icon = "GFX_commonwealth_heavy_cruiser_australia"
 < 				model = "commonwealth_gfx_heavy_cruiser_entity"
 < 			}
 < 		}
-1376,1404d1351
+1383,1411d1358
 < 
 < 	# Monitors
 < 	create_equipment_variant = {
@@ -99,28 +99,28 @@
 < 		obsolete = yes
 < 	}
 < 
-1446,1451d1392
+1453,1458d1399
 < 		optional_assets = {
 < 			{
 < 				icon = "GFX_commonwealth_battleship_warspite"
 < 				model = "commonwealth_gfx_battleship_entity"
 < 			}
 < 		}
-1689,1694d1629
+1696,1701d1636
 < 			optional_assets = {
 < 				{
 < 					icon = "GFX_commonwealth_carrier_illustrious"
 < 					model = "commonwealth_gfx_carrier_entity"
 < 				}
 < 			}
-1715,1720d1649
+1722,1727d1656
 < 			optional_assets = {
 < 				{
 < 					icon = "GFX_commonwealth_light_cruiser_dido"
 < 					model = "commonwealth_gfx_light_cruiser_1_entity"
 < 				}
 < 			}
-1815,1842d1743
+1822,1849d1750
 < 		# Monitors
 < 		create_equipment_variant = {
 < 			name = "Erebus Class"
@@ -149,7 +149,7 @@
 < 			obsolete = yes
 < 		}
 < 
-1853,1858d1753
+1860,1865d1760
 < 			}
 < 			optional_assets = {
 < 				{

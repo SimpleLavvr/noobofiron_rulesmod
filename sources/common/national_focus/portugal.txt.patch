@@ -1,36 +1,36 @@
-379c379
+589c589
 < 					amount = 8
 ---
 > 					amount = 96
-431c431
+638c638
 < 					amount = 8
 ---
 > 					amount = 96
-436c436
+643c643
 < 					amount = 4
 ---
 > 					amount = 48
-468c468
+672c672
 < 					amount = 12
 ---
 > 					amount = 144
-511c511
+712c712
 < 					amount = 6
 ---
 > 					amount = 72
-524c524
+725c725
 < 					amount = 6
 ---
 > 					amount = 72
-3983c3983
+4184c4184
 < 				    amount = 50
 ---
 > 				    amount = 600
-6382c6382
+6589c6589
 < 				is_subject = no
 ---
 > 				is_puppet = no
-6390c6390
+6597c6597
 < 				is_subject = no
 ---
 > 				is_puppet = no

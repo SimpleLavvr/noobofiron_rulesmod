@@ -1,4 +1,4 @@
-276a277,297
+289a290,311
 > 	AST_john_doctrine={
 > 		name=AST_john_doctrine
 > 		portraits={
@@ -14,9 +14,10 @@
 > 			allowed = {
 > 				original_tag = AST
 > 			}
-> 			
+> 
 > 			traits = {
 > 				military_theorist
 > 			}
 > 		}
 > 	}
+> 

@@ -1,4 +1,4 @@
 6c6
-< 		rubber=30 # was: 52
+< 		rubber = 16 #was: 24
 ---
-> 		rubber = 360 # was: 52
+> 		rubber = 192 #was: 24

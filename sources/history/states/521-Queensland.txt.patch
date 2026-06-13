@@ -1,6 +1,6 @@
 5,6c5,6
-< 		tungsten=24.000
-< 		coal = 4 #initial distribution
+< 		tungsten = 2 #starting amount divided better in TAOG
+< 		coal = 5 #4 > 5
 ---
-> 		tungsten = 288.000
-> 		coal = 48 #initial distribution
+> 		tungsten = 24 #starting amount divided better in TAOG
+> 		coal = 60 #4 > 5

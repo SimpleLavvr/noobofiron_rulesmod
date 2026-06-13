@@ -2,13 +2,13 @@
 # Siam Events #
 ###############
 
-add_namespace = siam
+add_namespace = noim_siam
 
 # Fate of the Monarchy
 country_event = {
-	id = siam.1
-	title = siam.1.t
-	desc = siam.1.d
+	id = noim_siam.1
+	title = noim_siam.1.t
+	desc = noim_siam.1.d
 	picture = GFX_noim_report_siam_news_event_siam1
 
 	fire_only_once = yes
@@ -29,9 +29,9 @@ country_event = {
 
 # Cambodia and Laos
 country_event = {
-	id = siam.2
-	title = siam.2.t
-	desc = siam.2.d
+	id = noim_siam.2
+	title = noim_siam.2.t
+	desc = noim_siam.2.d
 	picture = GFX_report_event_generic_sign_treaty1
 
 	fire_only_once = yes
@@ -39,7 +39,7 @@ country_event = {
 	
 	# Return the Territories
 	option = {
-		name = siam.2.a
+		name = noim_siam.2.a
 		ai_chance = {
 			base = 10
 			# We like them!
@@ -57,7 +57,7 @@ country_event = {
 		}
 		FROM = {
 			country_event = {
-				id = siam.3
+				id = noim_siam.3
 				hours = 4 
 				random_hours = 12
 			}
@@ -65,7 +65,7 @@ country_event = {
 	}
 	# You're trying to kidnap what I've rightfully stolen!
 	option = {
-		name = siam.2.b
+		name = noim_siam.2.b
 		ai_chance = {
 			base = 10
 			modifier = {
@@ -82,7 +82,7 @@ country_event = {
 		}
 		FROM = {
 			country_event = {
-				id = siam.4
+				id = noim_siam.4
 				hours = 4 
 				random_hours = 12
 			}
@@ -93,16 +93,16 @@ country_event = {
 # We got Cambodia and Laos back!
 
 country_event = {
-	id = siam.3
-	title = siam.3.t
-	desc = siam.3.d
+	id = noim_siam.3
+	title = noim_siam.3.t
+	desc = noim_siam.3.d
 
 	fire_only_once = yes
 	is_triggered_only = yes
 
 	picture = GFX_report_event_generic_sign_treaty1
 	option = {
-		name = siam.3.a
+		name = noim_siam.3.a
 		ai_chance = {
 			base = 10
 		}
@@ -125,16 +125,16 @@ country_event = {
 # They Refuse
 
 country_event = {
-	id = siam.4
-	title = siam.4.t
-	desc = siam.4.d
+	id = noim_siam.4
+	title = noim_siam.4.t
+	desc = noim_siam.4.d
 
 	fire_only_once = yes
 	is_triggered_only = yes
 
 	picture = GFX_report_event_generic_sign_treaty1
 	option = {
-		name = siam.4.a
+		name = noim_siam.4.a
 		ai_chance = {
 			base = 10
 		}

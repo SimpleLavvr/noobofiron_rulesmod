@@ -1,4 +1,8 @@
-60c60
-< 				large=GFX_portrait_Plaek_Phibunsongkhram
+353c353
+< 					large=GFX_portrait_SIA_plaek_phibunsongkhram
 ---
-> 				large=GFX_Portrait_noim_Plaek_Phibunsongkhram
+> 					large=GFX_Portrait_noim_Plaek_Phibunsongkhram
+453c453
+< 					large=GFX_portrait_SIA_plaek_phibunsongkhram
+---
+> 					large=GFX_Portrait_noim_Plaek_Phibunsongkhram

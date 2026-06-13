@@ -7,37 +7,44 @@
 >         		    soft_attack = 0.05
 >         }
 > 
-421a429,431
+438a446,449
 > 		semi_motorized = {
 > 			soft_attack = 0.07
 > 		}
-1296a1307
 > 
-1501a1513
+1296a1308
 > 
-1510a1523,1526
-> 		semi_motorized = {
-> 			defense = 0.05
-> 			breakthrough = 0.05
-> 		}
-1540a1557
-> 
-1545a1563,1566
-> 				semi_motorized = {
-> 			defense = 0.05
-> 			breakthrough = 0.05
-> 		}
-1578d1598
-< 
-1648c1668,1671
+1491c1503,1506
 < 
 ---
 > 		semi_motorized = {
 > 			defense = 0.05
 > 			breakthrough = 0.05
 > 		}
-1785a1809,1812
+1501a1517
+> 
+1510a1527
+> 
+1536c1553,1556
+< 
+---
+> 		semi_motorized = {
 > 			defense = 0.05
 > 			breakthrough = 0.05
 > 		}
+1540a1561
+> 
+1545a1567
+> 
+1574d1595
+< 
+1671a1693,1696
 > 		semi_motorized = {
+> 			defense = 0.05
+> 			breakthrough = 0.05
+> 		}
+1783a1809,1812
+> 		semi_motorized = {
+> 			defense = 0.05
+> 			breakthrough = 0.05
+> 		}

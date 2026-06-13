@@ -1,6 +1,10 @@
-7,8c7,8
+7,10c7,10
 < 	resources = {
-< 		coal = 16 #initial distribution
+< 		coal = 12 #16 > 12
+< 		tungsten = 2 #starting amount divided better in TAOG
+< 		steel = 16 #added 16 steel in TAOG
 ---
 > 	resources={
-> 		coal = 192 #initial distribution
+> 		coal = 144 #16 > 12
+> 		tungsten = 24 #starting amount divided better in TAOG
+> 		steel = 192 #added 16 steel in TAOG

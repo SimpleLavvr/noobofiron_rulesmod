@@ -1,0 +1,10 @@
+9,12c9,12
+< 	resources = {
+< 		rubber = 40 
+< 		steel = 2
+< 		aluminium = 2
+---
+> 	resources={
+> 		rubber = 480 
+> 		steel = 24
+> 		aluminium = 24

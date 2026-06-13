@@ -1,0 +1,6 @@
+6,7c6,7
+< 	resources = {
+< 		tungsten = 14 #starting amount divided better in TAOG
+---
+> 	resources={
+> 		tungsten = 168 #starting amount divided better in TAOG

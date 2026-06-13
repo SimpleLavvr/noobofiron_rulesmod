@@ -94,3 +94,7 @@
 > 		texturefile = "gfx/interface/goals/noim_goal_sia_mountain.dds"			
 > 	}
 > 
+13538c13633
+< 		name = "GFX_focus_SIA_thai_rice_company"
+---
+> 		name = "GFX_focus_SIA_NOI_thai_rice_company"

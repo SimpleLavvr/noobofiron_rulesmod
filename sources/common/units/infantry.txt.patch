@@ -28,63 +28,67 @@
 > 
 226a231
 > 			
-230a236
+232a238
 > 			support_equipment = 20
 282a289
 > 
 288a296
+> 
+290a299
 > 			support_equipment = 15
-339a348,353
+339a349,354
 > 		urban = {
 > 			attack = 0.30
 > 			defence = 0.2
 > 			movement = 0.2
 > 		}
 > 
-347a362
+347d361
+< 
+349a364
 > 			support_equipment = 15
-350,351c365,366
+352,353c367,368
 < 			attack = 0.1
 < 			defence = 0.1
 ---
 > 			attack = 0.15
 > 			defence = 0.15
-355,356c370,371
+357,358c372,373
 < 			attack = 0.2
 < 			defence = 0.1
 ---
 > 			attack = 0.25
 > 			defence = 0.10
-404c419,420
+406c421,422
 < 			infantry_equipment = 130
 ---
 > 		    support_equipment = 20
 > 			infantry_equipment = 150
-443c459
+445c461
 < 		supply_consumption = 0.065
 ---
 > 		supply_consumption = 0.09
-449,450c465,467
+451,452c467,469
 < 			infantry_equipment = 100
 < 			motorized_equipment = 35
 ---
 > 			infantry_equipment = 125
 > 			motorized_equipment = 80
 > 
-520c537
+522c539
 < 		supply_consumption = 0.14
 ---
 > 		supply_consumption = 0.18
-533c550
+535c552
 < 			infantry_equipment = 100
 ---
 > 			infantry_equipment = 125
-706a724,727
+708a726,729
 > 		deep_desert = {
 > 			attack = 0.20
 > 			defence = 0.10
 > 		}
-740,742c761,763
+742,744c763,765
 < 		max_strength = 25
 < 		max_organisation = 50 #reg infantry 60
 < 		default_morale = 0.3
@@ -92,21 +96,21 @@
 > 		max_strength = 20
 > 		max_organisation = 30 #reg infantry 60
 > 		default_morale = 0.2
-746,747c767,768
+748,749c769,770
 < 		training_time = 80 #reg infantry 90
 < 		suppression = 1.5
 ---
 > 		training_time = 40 #reg infantry 90
 > 		suppression = 1
-750c771
+752c773
 < 		supply_consumption = 0.06
 ---
 > 		supply_consumption = 0.05
-753c774
+755c776
 < 			infantry_equipment = 100
 ---
 > 			infantry_equipment = 90
-756c777
+758c779
 < }
 \ Pas de fin de ligne à la fin du fichier
 ---

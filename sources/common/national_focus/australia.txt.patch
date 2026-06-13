@@ -878,7 +878,7 @@
 < 		cost = 10
 ---
 > 		cost = 5
-3594,3596c3993,3995
+3977,3979c4376,4378
 < 		x = -1
 < 		y = 4
 < 		relative_position_id = AST_support_the_policy_of_appeasement
@@ -886,7 +886,7 @@
 > 		x = 0
 > 		y = 2
 > 		relative_position_id = AST_adopt_westminster
-3631,3634c4030,4033
+4014,4017c4413,4416
 < 		prerequisite = { focus = AST_CSIR focus = AST_swpa_protector }
 < 		x = 1
 < 		y = 4
@@ -896,11 +896,11 @@
 > 		x = 0
 > 		y = 1
 > 		relative_position_id = AST_empire_air_training_scheme
-3636c4035
+4019c4418
 < 		cost = 10
 ---
 > 		cost = 5
-4002a4402,4410
+4385a4785,4793
 > 		cancel_if_invalid = yes
 > 		continue_if_invalid = no
 > 		available_if_capitulated = no
@@ -910,7 +910,7 @@
 > 				country_event = { id = tfv_australia.10 }
 > 			}
 > 		}
-4018,4026c4426,4430
+4401,4409c4809,4813
 < 		}
 < 
 < 		cancel_if_invalid = yes

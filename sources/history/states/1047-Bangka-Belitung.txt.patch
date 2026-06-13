@@ -1,0 +1,6 @@
+5,6c5,6
+< 		aluminium = 4
+< 		steel = 7
+---
+> 		aluminium = 48
+> 		steel = 84

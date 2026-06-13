@@ -1,17 +1,17 @@
-341c341
+321c321
 < 	mean_time_to_happen = { days = 20 }
 ---
 > 	mean_time_to_happen = { days = 1 }
-357c357,360
+337c337,340
 < 				white_peace = FIN
 ---
 > 				white_peace = {
 > 					tag = FIN 
 > 					message = FIN_agree_peace 
 > 				} 
-362d364
+350d352
 < 
-369a372,387
+364a367,383
 > 			#PETSAMO
 > 			if = {
 > 				limit = {
@@ -28,9 +28,10 @@
 > 			#	}
 > 			#	SOV = { remove_state_claim = 722 }
 > 			#}
-406d423
+> 
+391d409
 < 
-420a438,446
+406a425,434
 > 		# JA - MM: Brought back petsamo included in the deal since this was missing custom tooltip loc rework in the previous event. Will fix properly at a later date.
 > 		##PETSAMO
 > 		if = {
@@ -40,11 +41,12 @@
 > 			transfer_state = 722
 > 		}
 > 
-458c484
+> 
+437c465
 < 					not = { is_in_faction_with = SOV }
 ---
 > 					not = { is_in_faction_with = SOV}
-490,501d515
+469,480d496
 < 	#Take it all
 < 	option = {
 < 		name = finland.8.b
@@ -57,7 +59,7 @@
 < 		}
 < 		FIN = { country_event = { id = finland.9 } }
 < 	}
-534c548
+513c529
 < }
 \ Pas de fin de ligne à la fin du fichier
 ---

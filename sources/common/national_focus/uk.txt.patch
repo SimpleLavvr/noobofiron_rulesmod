@@ -1,24 +1,24 @@
-21c21
+22c22
 < 
 ---
 > 	continuous_focus_position = { x = 0	y = 1500 }
-268a269,271
+269a270,272
 > 		allow_branch = {
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
 > 		}
-330c333
+331c334
 < 		x = 2
 ---
 > 		x = 0
-387c390
+388c391
 < 		cost = 10
 ---
 > 		cost = 5
-861c864
+862c865
 < 		x = 5
 ---
 > 		x = 8
-873,897d875
+874,898d876
 < 
 < 	focus = {
 < 		id = ENG_special_air_service
@@ -44,7 +44,7 @@
 < 			show_ideas_tooltip = ENG_david_stirling
 < 		}
 < 	}
-899,924d876
+900,925d877
 < 	focus = {
 < 		id = ENG_parachute_regiments
 < 		prerequisite = { focus = ENG_special_air_service }
@@ -71,11 +71,11 @@
 < 			}
 < 		}
 < 	}
-1063c1015
+1064c1016
 < 		x = 1
 ---
 > 		x = 2
-1078,1109c1030
+1079,1110c1031
 < 	focus = {
 < 		id = UK_secret_focus
 < 		prerequisite = { focus = royal_ordinance_focus }
@@ -110,7 +110,7 @@
 < 	}
 ---
 > 	
-1114,1116c1035,1037
+1115,1117c1036,1038
 < 		icon = GFX_goal_generic_air_doctrine
 < 		x = -2
 < 		y = 2
@@ -118,24 +118,24 @@
 > 		icon = GFX_focus_generic_aircraft_production
 > 		x = -6
 > 		y = 1
-1322,1323c1243
+1323,1324c1244
 < 		prerequisite = { focus = air_rearmament_focus }
 < 		prerequisite = { focus = naval_rearmament_focus }
 ---
 > 		
-1327c1247,1249
+1328c1248,1250
 < 
 ---
 > 		prerequisite = { focus = aircraft_production_focus }
 > 		prerequisite = { focus = ENG_NOI_victory_at_all_cost focus = ENG_NOI_casualty_avoidance }
 > 		prerequisite = { focus = ENG_expand_the_repair_yards focus = ENG_anti_submarine_training_school }
-1331,1332c1253,1254
+1332,1333c1254,1255
 < 		x = 2
 < 		y = 1
 ---
 > 		x = 8
 > 		y = 4
-1345a1268,1343
+1346a1269,1344
 > 	focus = {
 > 		id = ENG_NOI_establish_the_commandos
 > 		prerequisite = { focus = ENG_chiefs_of_staff_committee }
@@ -212,7 +212,7 @@
 > 			}
 > 		}
 > 	}
-1512,1542c1510
+1513,1543c1511
 < 	focus = {
 < 		id = uk_jet_focus
 < 		prerequisite = { focus = aircraft_production_focus }
@@ -246,7 +246,7 @@
 < 
 ---
 > 	
-1546,1548c1514,1516
+1547,1549c1515,1517
 < 		icon = GFX_goal_generic_construct_naval_dockyard 
 < 		x = 2
 < 		y = 2
@@ -254,19 +254,19 @@
 > 		icon = GFX_focus_generic_refit_civilian_ships
 > 		x = 8
 > 		y = 1
-1646a1615,1617
+1647a1616,1618
 > 		allow_branch = {
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
 > 		}
-1680d1650
+1681d1651
 < 		prerequisite = { focus = uk_service_focus }
-1682,1683c1652,1653
+1683,1684c1653,1654
 < 		x = 3
 < 		y = 2
 ---
 > 		x = 0
 > 		y = 1
-1714,1716c1684,1686
+1715,1717c1685,1687
 < 		icon = GFX_focus_generic_destroyer
 < 		x = -1
 < 		y = 2
@@ -274,25 +274,25 @@
 > 		icon = GFX_focus_SWE_coastal_support
 > 		x = 3
 > 		y = 1
-1718c1688
+1719c1689
 < 		cost = 10
 ---
 > 		cost = 5
-1729c1699
+1730c1700
 < 				uses = 2
 ---
 > 				uses = 1
-1739,1740c1709,1710
+1740,1741c1710,1711
 < 		x = 0
 < 		y = 2
 ---
 > 		x = 2
 > 		y = 1
-1742c1712
+1743c1713
 < 		cost = 10
 ---
 > 		cost = 5
-1756,1758c1726,1728
+1757,1759c1727,1729
 < 				bonus = 1.0
 < 				ahead_reduction = 2
 < 				uses = 2
@@ -300,25 +300,25 @@
 > 				bonus = 0.75
 > 				ahead_reduction = 1.0
 > 				uses = 1
-1760c1730
+1761c1731
 < 			}	
 ---
 > 			}
-1768c1738
+1769c1739
 < 		x = -1
 ---
 > 		x = 0
-1784a1755
+1785a1756
 > 		prerequisite = { focus = ENG_NOI_advanced_torpedoes focus = ENG_a_s_warfare }
-1788c1759
+1789c1760
 < 		y = 2
 ---
 > 		y = 1
-1797c1768
+1798c1769
 < 		cost = 10
 ---
 > 		cost = 5
-1819,1821c1790,1792
+1820,1822c1791,1793
 < 		icon = GFX_goal_generic_navy_doctrines_tactics
 < 		x = 1
 < 		y = 2
@@ -326,19 +326,19 @@
 > 		icon = GFX_focus_eng_the_sun_never_sets
 > 		x = -2
 > 		y = 1
-1869c1840
+1870c1841
 < 		icon = GFX_goal_generic_navy_battleship
 ---
 > 		icon = GFX_focus_SWE_Vasa_II
-1893a1865,1867
+1894a1866,1868
 > 		allow_branch = {
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
 > 		}
-1927c1901
+1928c1902
 < 		cost = 10
 ---
 > 		cost = 5
-1974,2041c1948
+1975,2042c1949
 < 	focus = {
 < 		id = ENG_vanguard
 < 		prerequisite = { focus = uk_battleship_focus }
@@ -409,19 +409,19 @@
 < 	}
 ---
 > 	
-2087c1994
+2088c1995
 < 		x = 29
 ---
 > 		x = 41
-2141c2048
+2142c2049
 < 		x = -2
 ---
 > 		x = -6
-2160c2067
+2161c2068
 < 		cost = 10
 ---
 > 		cost = 5
-2173,2926c2080,2081
+2174,2927c2081,2082
 < 	focus = {
 < 		id = uk_mediterranean_focus 
 < 		prerequisite = { focus = uk_service_focus }
@@ -1179,13 +1179,13 @@
 ---
 > 	
 > ### DECOLONIZATION ###
-2958c2113
+2959c2114
 < 		x = 34
 ---
 > 		x = 48
-3590a2746
+3591a2747
 > 					NOT = { has_dlc = "Graveyard of Empires" }
-3593,3604c2749
+3594,3605c2750
 < 						NOT = {
 < 							has_autonomy_state = autonomy_dominion
 < 							has_autonomy_state = autonomy_satellite
@@ -1200,27 +1200,26 @@
 < 						}
 ---
 > 						NOT = { has_autonomy_state = autonomy_dominion }
-3606,3609d2750
+3607,3610d2751
 < 					set_autonomy = { target = RAJ autonomy_state = autonomy_dominion }
 < 				}
 < 				else = {
 < 					set_autonomy = { target = RAJ autonomy_state = autonomy_satellite }
-3610a2752
+3611a2753
 > 				set_autonomy = { target = RAJ autonomy_state = autonomy_dominion }
-5673c4815
+5787c4929
 < 		prerequisite = { focus = uk_service_focus }
 ---
 > 		prerequisite = { focus = uk_empire_focus }
-5675c4817
+5789c4931
 < 		x = -5
 ---
 > 		x = 2
-5677c4819
+5791c4933
 < 		relative_position_id = uk_service_focus
 ---
 > 		relative_position_id = uk_empire_focus
-5687,6454d4828
-< 	focus = {
+5802,6428d4943
 < 		id = uk_asia_focus 
 < 		prerequisite = { focus = uk_colonial_focus }
 < 		
@@ -1241,6 +1240,14 @@
 < 					}
 < 				}
 < 			}
+< 			1021 = {
+< 				CONTROLLER = {
+< 					OR = {
+< 						tag = ENG
+< 						is_subject_of = ENG
+< 					}
+< 				}
+< 			}
 < 		}
 < 
 < 		icon = GFX_goal_generic_construct_civilian
@@ -1254,7 +1261,7 @@
 < 		bypass = {
 < 			336 = {
 < 				free_building_slots = {
-< 					building = dockyard
+< 					building = arms_factory
 < 					size < 1
 < 					include_locked = yes
 < 				}				
@@ -1266,8 +1273,17 @@
 < 					include_locked = yes
 < 				}
 < 			}
+< 			1021 = {
+< 				free_building_slots = {
+< 					building = dockyard
+< 					size < 1
+< 					include_locked = yes
+< 				}
+< 			}
 < 		}
+< 
 < 		search_filters = {FOCUS_FILTER_INDUSTRY}
+< 
 < 		completion_reward = {
 < 			if = {
 < 				limit = {
@@ -1304,9 +1320,9 @@
 < 					} 
 < 					add_extra_state_shared_building_slots = 1
 < 					add_building_construction = {
-< 							type = dockyard
-< 							level = 1
-< 							instant_build = yes
+< 						type = arms_factory
+< 						level = 1
+< 						instant_build = yes
 < 					}
 < 				}
 < 			}
@@ -1328,13 +1344,39 @@
 < 					}
 < 					add_extra_state_shared_building_slots = 1
 < 					add_building_construction = {
-< 							type = industrial_complex
-< 							level = 1
-< 							instant_build = yes
+< 						type = industrial_complex
+< 						level = 1
+< 						instant_build = yes
 < 					}
 < 				}
 < 			}
+< 			1021 = {
+< 				if = {
+< 					limit = {
+< 						CONTROLLER = {
+< 							OR = {
+< 								tag = ENG
+< 								is_subject_of = ENG
+< 							}
+< 						}
+< 						OWNER = {
+< 							OR = {
+< 								tag = ENG
+< 								is_subject_of = ENG
+< 							}
+< 						}
+< 					}
+< 					add_extra_state_shared_building_slots = 1
+< 					add_building_construction = {
+< 						type = dockyard
+< 						level = 1
+< 						instant_build = yes
+< 					}
+< 				}
+< 			}
+< 			
 < 		}
+< 
 < 	}
 < 
 < 	focus = {
@@ -1490,6 +1532,7 @@
 < 			} 
 < 		}
 < 	}
+< 
 < 	focus = {
 < 		id = uk_sanction_japan_focus
 < 		available = {
@@ -1504,9 +1547,9 @@
 < 		prerequisite = { focus = uk_burma_focus }
 < 		icon = GFX_goal_generic_trade
 < 		x = 0
-< 		y = 2
+< 		y = 4
 < 		relative_position_id = uk_burma_focus
-< 		cost = 10
+< 		cost = 5
 < 		ai_will_do = {
 < 			factor = 1
 < 		}
@@ -1514,14 +1557,18 @@
 < 		available_if_capitulated = yes
 < 
 < 		completion_reward = {
+< 
 < 			JAP = {
 < 				add_opinion_modifier = { target = ENG modifier = embargo }
 < 				add_opinion_modifier = { target = ENG modifier = sanctions_relations } 
 < 			}
+< 
 < 		}
 < 	}
+< 
 < 	focus = {
 < 		id = ENG_war_with_japan
+< 
 < 		available = {
 < 			has_offensive_war = no
 < 			JAP = {
@@ -1529,21 +1576,28 @@
 < 			}	
 < 			has_government = democratic
 < 		}
+< 
 < 		bypass = {
 < 			has_war_with = JAP
 < 		}
+< 
 < 		will_lead_to_war_with = JAP
+< 
 < 		prerequisite = { focus = uk_sanction_japan_focus }
-< 		prerequisite = { focus = peninsular_focus }
-< 		prerequisite = { focus = hk_air_focus }
+< 		prerequisite = { focus = ENG_sarawakrangers_focus }
+< 		prerequisite = { focus = ENG_east_indies_fleet_focus }
+< 
 < 		icon = GFX_focus_attack_japan
 < 		x = 2
 < 		y = 1
 < 		relative_position_id = uk_sanction_japan_focus
-< 		cost = 10
+< 
+< 		cost = 5
+< 
 < 		ai_will_do = {
 < 			factor = 1
 < 		}	
+< 
 < 		completion_reward = {
 < 			create_wargoal = {
 < 				type = puppet_wargoal_focus
@@ -1551,20 +1605,29 @@
 < 				expire = 0
 < 			} 
 < 		}
+< 
 < 	}
 < 
 < 
 < 	focus = {
 < 		id = singapore_focus
 < 		prerequisite = { focus = uk_asia_focus }
-< 		icon = GFX_goal_generic_fortify_city
+< 		icon = GFX_focus_SWE_hedgehog_defense
 < 		x = 0
 < 		y = 1
 < 		relative_position_id = uk_asia_focus
 < 		cost = 10
 < 
 < 		available = {
-< 			336 = {
+< 			1021 = {
+< 				CONTROLLER = {
+< 					OR = {
+< 						tag = ENG
+< 						is_subject_of = ENG
+< 					}
+< 				}
+< 			}
+< 			1065 = {
 < 				CONTROLLER = {
 < 					OR = {
 < 						tag = ENG
@@ -1581,13 +1644,72 @@
 < 		available_if_capitulated = yes
 < 
 < 		completion_reward = { 
+< 
 < 			navy_experience = 25
-< 			336 = {
+< 
+< 			custom_effect_tooltip = generic_skip_one_line_tt
+< 
+< 			1065 = {
 < 				add_extra_state_shared_building_slots = 1
 < 
 < 				IF = {
 < 					limit = {
-< 						336 = {
+< 						1065 = {
+< 							free_building_slots = {
+< 								building = coastal_bunker
+< 								size > 2
+< 								province = 13408
+< 							}
+< 						}
+< 					}
+< 					add_building_construction = {
+< 						type = coastal_bunker
+< 						level = 3
+< 						province = 13408
+< 						instant_build = yes
+< 					}
+< 				}
+< 				IF = {
+< 					limit = {
+< 						1065 = {
+< 							free_building_slots = {
+< 								building = bunker
+< 								size > 2
+< 								province = 13408
+< 							}
+< 						}
+< 					}
+< 					add_building_construction = {
+< 						type = bunker
+< 						level = 3
+< 						province = 13408
+< 						instant_build = yes
+< 					}
+< 				}
+< 				
+< 				IF = {
+< 					limit = {
+< 						CONTROLLER = {
+< 							NOT = { tag = ENG }
+< 						}
+< 					}
+< 					CONTROLLER = {
+< 						add_autonomy_ratio = {
+< 							value = -0.01
+< 							localization = singapore_focus
+< 						}
+< 					}
+< 				}
+< 			}
+< 
+< 			custom_effect_tooltip = generic_skip_one_line_tt
+< 
+< 			1021 = {
+< 				add_extra_state_shared_building_slots = 2
+< 
+< 				IF = {
+< 					limit = {
+< 						1021 = {
 < 							free_building_slots = {
 < 								building = coastal_bunker
 < 								size > 2
@@ -1602,70 +1724,10 @@
 < 						instant_build = yes
 < 					}
 < 				}
-< 				
-< 				if = {
-< 					limit = {
-< 						CONTROLLER = {
-< 							NOT = { tag = ENG }
-< 						}
-< 					}
-< 					CONTROLLER = {
-< 						add_autonomy_ratio = {
-< 							value = -0.02
-< 							localization = singapore_focus
-< 						}
-< 					}
-< 				}
-< 			}
-< 		}
-< 	}
-< 	focus = {
-< 		id = sp_landward_forts_focus
-< 		prerequisite = { focus = singapore_focus }
-< 		icon = GFX_goal_generic_construct_military
-< 		x = 0
-< 		y = 1
-< 		relative_position_id = singapore_focus
-< 		cost = 10
-< 		ai_will_do = {
-< 			factor = 1
-< 		}	
-< 		available = {
-< 			336 = {
-< 				CONTROLLER = {
-< 					OR = {
-< 						tag = ENG
-< 						is_subject_of = ENG
-< 					}
-< 				}
-< 			}
-< 		}
-< 
-< 
-< 		available_if_capitulated = yes
-< 
-< 		bypass = {
-< 			336 = {
-< 				free_building_slots = {
-< 					building = anti_air_building
-< 					size < 2
-< 				}
-< 
-< 				free_building_slots = {
-< 					building = bunker
-< 					size < 4
-< 					province = 12299
-< 				}
-< 			}
-< 		}
-< 
-< 		completion_reward = {
-< 			336 = {
-< 				add_extra_state_shared_building_slots = 1
 < 
 < 				IF = {
 < 					limit = {
-< 						336 = {
+< 						1021 = {
 < 							free_building_slots = {
 < 								building = bunker
 < 								size > 3
@@ -1683,7 +1745,7 @@
 < 
 < 				IF = {
 < 					limit = {
-< 						336 = {
+< 						1021 = {
 < 							free_building_slots = {
 < 								building = anti_air_building
 < 								size > 1
@@ -1699,7 +1761,7 @@
 < 				}
 < 				
 < 				
-< 				if = {
+< 				IF = {
 < 					limit = {
 < 						CONTROLLER = {
 < 							NOT = { tag = ENG }
@@ -1707,21 +1769,92 @@
 < 					}
 < 					CONTROLLER = {
 < 						add_autonomy_ratio = {
-< 							value = -0.02
-< 							localization = sp_landward_forts_focus
+< 							value = -0.03
+< 							localization = singapore_focus
 < 						}
 < 					}
 < 				}
+< 
 < 			}
+< 
+< 			IF = {
+< 				limit = {
+< 					1060 = {
+< 						state_is_fully_controlled_by_ROOT_subject_or_faction_member = yes 
+< 					}
+< 				}
+< 
+< 				custom_effect_tooltip = generic_skip_one_line_tt
+< 
+< 				1060 = {
+< 					add_extra_state_shared_building_slots = 1
+< 
+< 					IF = {
+< 						limit = {
+< 							1060 = {
+< 								free_building_slots = {
+< 									building = bunker
+< 									size > 3
+< 									province = 13376
+< 								}
+< 							}
+< 						}
+< 						add_building_construction = {
+< 							type = bunker
+< 							level = 4
+< 							province = 13376
+< 							instant_build = yes
+< 						}
+< 					}
+< 
+< 					IF = {
+< 						limit = {
+< 							1060 = {
+< 								free_building_slots = {
+< 									building = anti_air_building
+< 									size > 0
+< 								}
+< 							}
+< 						}
+< 
+< 						add_building_construction = {
+< 							type = anti_air_building
+< 							level = 1
+< 							instant_build = yes
+< 						}
+< 					}
+< 					
+< 					
+< 					IF = {
+< 						limit = {
+< 							CONTROLLER = {
+< 								NOT = { tag = ENG }
+< 							}
+< 						}
+< 						CONTROLLER = {
+< 							add_autonomy_ratio = {
+< 								value = -0.02
+< 								localization = singapore_focus
+< 							}
+< 						}
+< 					}
+< 				}
+< 
+< 			}
+< 
 < 		}
+< 
 < 	}
+< 
+< 	focus = {
+6605,6762d5119
 < 	focus = {
 < 		id = peninsular_focus
-< 		prerequisite = { focus = sp_landward_forts_focus }
+< 		prerequisite = { focus = ENG_royal_malay_regiment_focus focus = ENG_territorial_army_of_malaysia_focus }
 < 		icon = GFX_goal_generic_construction2
-< 		x = 0
+< 		x = 1
 < 		y = 1
-< 		relative_position_id = sp_landward_forts_focus
+< 		relative_position_id = ENG_royal_malay_regiment_focus
 < 		cost = 10
 < 		ai_will_do = {
 < 			factor = 1
@@ -1735,36 +1868,43 @@
 < 					}
 < 				}
 < 			}
+< 			1062 = {
+< 				CONTROLLER = {
+< 					OR = {
+< 						tag = ENG
+< 						is_subject_of = ENG
+< 					}
+< 				}
+< 			}
+< 			1064 = {
+< 				CONTROLLER = {
+< 					OR = {
+< 						tag = ENG
+< 						is_subject_of = ENG
+< 					}
+< 				}
+< 			}
+< 			1061 = {
+< 				CONTROLLER = {
+< 					OR = {
+< 						tag = ENG
+< 						is_subject_of = ENG
+< 					}
+< 				}
+< 			}
 < 		}
 < 
 < 		available_if_capitulated = yes
 < 
 < 		completion_reward = {
+< 
 < 			336 = {
-< 				add_building_construction = {
-< 					type = bunker
-< 					level = 3
-< 					province = 7329
-< 					instant_build = yes
-< 				}
-< 				add_building_construction = {
-< 					type = bunker
-< 					level = 3
-< 					province = 4310
-< 					instant_build = yes
-< 				}
-< 				add_building_construction = {
-< 					type = bunker
-< 					level = 3
-< 					province = 7342
-< 					instant_build = yes
-< 				}
 < 				add_building_construction = {
 < 					type = air_base
 < 					level = 2
 < 					instant_build = yes
 < 				}
-< 				if = {
+< 				IF = {
 < 					limit = {
 < 						CONTROLLER = {
 < 							NOT = { tag = ENG }
@@ -1772,14 +1912,101 @@
 < 					}
 < 					CONTROLLER = {
 < 						add_autonomy_ratio = {
-< 							value = -0.02
+< 							value = -0.01
 < 							localization = peninsular_focus
 < 						}
 < 					}
 < 				}
 < 			}
+< 
+< 			custom_effect_tooltip = generic_skip_one_line_tt
+< 
+< 			1062 = {
+< 				add_building_construction = {
+< 					type = bunker
+< 					level = 3
+< 					province = 7329
+< 					instant_build = yes
+< 				}
+< 				IF = {
+< 					limit = {
+< 						CONTROLLER = {
+< 							NOT = { tag = ENG }
+< 						}
+< 					}
+< 					CONTROLLER = {
+< 						add_autonomy_ratio = {
+< 							value = -0.01
+< 							localization = peninsular_focus
+< 						}
+< 					}
+< 				}
+< 			}
+< 
+< 			custom_effect_tooltip = generic_skip_one_line_tt
+< 
+< 			1064 = {
+< 				add_building_construction = {
+< 					type = bunker
+< 					level = 3
+< 					province = 4310
+< 					instant_build = yes
+< 				}
+< 				IF = {
+< 					limit = {
+< 						CONTROLLER = {
+< 							NOT = { tag = ENG }
+< 						}
+< 					}
+< 					CONTROLLER = {
+< 						add_autonomy_ratio = {
+< 							value = -0.01
+< 							localization = peninsular_focus
+< 						}
+< 					}
+< 				}
+< 			}
+< 
+< 			custom_effect_tooltip = generic_skip_one_line_tt
+< 
+< 			1061 = {
+< 				add_building_construction = {
+< 					type = bunker
+< 					level = 3
+< 					province = 7342
+< 					instant_build = yes
+< 				}
+< 				add_building_construction = {
+< 					type = bunker
+< 					level = 3
+< 					province = 1291
+< 					instant_build = yes
+< 				}
+< 				add_building_construction = {
+< 					type = bunker
+< 					level = 3
+< 					province = 12144
+< 					instant_build = yes
+< 				}
+< 				IF = {
+< 					limit = {
+< 						CONTROLLER = {
+< 							NOT = { tag = ENG }
+< 						}
+< 					}
+< 					CONTROLLER = {
+< 						add_autonomy_ratio = {
+< 							value = -0.01
+< 							localization = peninsular_focus
+< 						}
+< 					}
+< 				}
+< 			}
+< 
 < 		}
+< 
 < 	}
+6951,7059d5307
 < 	focus = {
 < 		id = hongkong_focus
 < 		prerequisite = { focus = uk_asia_focus }
@@ -1805,9 +2032,13 @@
 < 		available_if_capitulated = yes
 < 
 < 		completion_reward = {
+< 
 < 			navy_experience = 25
+< 
+< 			custom_effect_tooltip = generic_skip_one_line_tt
+< 
 < 			326 = {
-< 				add_extra_state_shared_building_slots = 1
+< 				add_extra_state_shared_building_slots = 2
 < 
 < 				IF = {
 < 					limit = {
@@ -1826,52 +2057,6 @@
 < 						instant_build = yes
 < 					}
 < 				}
-< 				
-< 			}
-< 		}
-< 	}
-< 	focus = {
-< 		id = hk_landward_forts_focus
-< 		prerequisite = { focus = hongkong_focus }
-< 		icon = GFX_goal_generic_construct_military
-< 		x = 0
-< 		y = 1
-< 		relative_position_id = hongkong_focus
-< 		cost = 10
-< 		ai_will_do = {
-< 			factor = 1
-< 		}	
-< 		available = {
-< 			326 = {
-< 				CONTROLLER = {
-< 					OR = {
-< 						tag = ENG
-< 						is_subject_of = ENG
-< 					}
-< 				}
-< 			}
-< 		}
-< 
-< 		available_if_capitulated = yes
-< 
-< 		bypass = {
-< 			326 = { 
-< 				free_building_slots = {
-< 					building = anti_air_building
-< 					size < 2
-< 				}
-< 
-< 				free_building_slots = {
-< 					building = bunker
-< 					size < 4
-< 					province = 10062
-< 				}
-< 			}
-< 		}
-< 
-< 		completion_reward = { 
-< 			326 = {
-< 				add_extra_state_shared_building_slots = 1
 < 
 < 				IF = {
 < 					limit = {
@@ -1908,49 +2093,6 @@
 < 						instant_build = yes
 < 					}
 < 				}
-< 				
-< 				
-< 			}
-< 		}
-< 	}
-< 	focus = {
-< 		id = hk_air_focus
-< 		prerequisite = { focus = hk_landward_forts_focus }
-< 		icon = GFX_goal_generic_construct_civilian
-< 		x = 0
-< 		y = 1
-< 		relative_position_id = hk_landward_forts_focus
-< 		cost = 10
-< 		ai_will_do = {
-< 			factor = 1
-< 		}	
-< 		available = {
-< 			326 = {
-< 				CONTROLLER = {
-< 					OR = {
-< 						tag = ENG
-< 						is_subject_of = ENG
-< 					}
-< 				}
-< 			}
-< 		}
-< 
-< 		available_if_capitulated = yes
-< 
-< 		bypass = {
-< 			326 = { 
-< 				free_building_slots = {
-< 					building = anti_air_building
-< 					size < 2
-< 				} 
-< 				free_building_slots = {
-< 					building = air_base
-< 					size < 2
-< 				}
-< 			}
-< 		}
-< 		completion_reward = {
-< 			326 = {
 < 
 < 				IF = {
 < 					limit = {
@@ -1968,32 +2110,17 @@
 < 						instant_build = yes
 < 					}
 < 				}
-< 
-< 				IF = {
-< 					limit = {
-< 						326 = {
-< 							free_building_slots = {
-< 								building = air_base
-< 								size > 1
-< 							}
-< 						}
-< 					}
-< 
-< 					add_building_construction = {
-< 						type = air_base
-< 						level = 4
-< 						instant_build = yes
-< 					}
-< 				}
+< 				
 < 			}
+< 
 < 		}
+< 
 < 	}
-6456,6457d4829
-< 	focus = {
+7343,7392d5590
 < 		id = uk_china_focus 
-6459d4830
-< 		prerequisite = { focus = hk_air_focus  }
-6461,6468d4831
+< 
+< 		prerequisite = { focus = ENG_south_east_asia_air_command_focus  }
+< 
 < 		available = {
 < 			CHI = { exists = yes }
 < 			has_government = democratic
@@ -2002,14 +2129,14 @@
 < 		cancel = {
 < 			CHI = { exists = no }
 < 		}
-6470d4832
-< 		icon = GFX_focus_chi_cooperation_with_the_nationalists
-6472,6504d4833
-< 		x = 0
-< 		y = 1
-< 		relative_position_id = hk_air_focus
 < 
-< 		cost = 10
+< 		icon = GFX_focus_chi_cooperation_with_the_nationalists
+< 
+< 		x = 1
+< 		y = 1
+< 		relative_position_id = ENG_south_east_asia_air_command_focus
+< 
+< 		cost = 5
 < 
 < 		ai_will_do = {
 < 			factor = 1
@@ -2038,11 +2165,13 @@
 < 			}
 < 		}
 < 	}
-6609c4938
+< 	
+< 	focus = {
+7495c5693
 < 		x = 4
 ---
 > 		x = 0
-6612c4941,4948
+7498c5696,5703
 < 
 ---
 > 		
@@ -2053,93 +2182,94 @@
 > 				has_completed_focus = uk_empire_focus
 > 			}
 > 		}
-6715c5051
+7601c5806
 < 		x = -1
 ---
 > 		x = 2
-6767c5103
+7653c5858
 < 		x = -3
 ---
 > 		x = 4
-6904c5240
+7790c5995
 < 		icon = GFX_goal_generic_improve_relations
 ---
 > 		icon = GFX_focus_RAJ_all_india_forward_bloc
-6978c5314
+7864c6069
 < 		x = 1
 ---
 > 		x = 0
-7298c5634
+8184c6389
 < 		x = 0
 ---
 > 		x = -1
-7457c5793
+8343c6548
 < 		x = 2
 ---
 > 		x = 1
-8369d6704
+9255d7459
 < 		mutually_exclusive = { focus = ENG_a_change_in_course }
-8370a6706
+9256a7461
 > 		mutually_exclusive = { focus = ENG_a_change_in_course }
-8740d7075
+9626d7830
 < 				NOT = {	has_character = ENG_winston_churchill } #MM: GoE content if he is transferred to India via event chain triggered by focus RAJ_the_jewel_becomes_the_crown
-9370c7705
+10256c8460
 < 		icon = GFX_goal_generic_occupy_states_ongoing_war
 ---
 > 		icon = GFX_focus_generic_attack_iraq
-9397c7732
+10283c8487
 < 		icon = GFX_goal_generic_forceful_treaty
 ---
 > 		icon = GFX_focus_generic_attack_iran
-9700c8035
+10586c8790
 < 		icon = GFX_goal_generic_position_armies
 ---
 > 		icon = GFX_SOV_control_scandinavia_ccp_2d_sov_compatibility
-9955c8290
+10841c9045
 < 		icon = GFX_goal_generic_position_armies
 ---
 > 		icon = GFX_focus_generic_influence_benelux
-10061c8396,8398
+10947c9151,9153
 < 
 ---
 > 		allow_branch = {
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
 > 		}
-10316c8653,8655
+11202c9408,9410
 < 
 ---
 > 		allow_branch = {
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
 > 		}
-10617c8956,8958
+11503c9711,9713
 < 
 ---
 > 		allow_branch = {
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
 > 		}
-11246c9587,9588
+12132c10342,10343
 < 				if = {
 ---
 > 			}
 > 			if = {
-11251d9592
+12137d10347
 < 					
-11258,11259d9598
+12144,12145d10353
 < 		}
 < 
-11945c10284,10286
+12831c11039,11041
 < 
 ---
 > 		allow_branch = {
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
 > 		}
-13209,13211c11550
+14103,14105c12313
 < 		available = {
 < 
 < 		}
 ---
 > 		available = { }
-13223a11563,14341
+14116a12325,15102
+> 		}
 > 	}
 > 	
 > ###################################
@@ -4917,5 +5047,3 @@
 > 				idea = ENG_NOI_concessions_to_trade_unions_i
 > 				days = 180
 > 			}
-> 		}
-> 	}

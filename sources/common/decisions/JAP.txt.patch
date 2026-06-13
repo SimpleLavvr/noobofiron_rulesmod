@@ -14,9 +14,9 @@
 > 			}
 1067d1062
 < 			set_country_flag = JAP_offered_china_white_peace_flag
-2192d2186
+2196d2190
 < 
-2194,2204c2188
+2198,2208c2192
 < 			is_subject = no 
 < 			OR = {
 < 				is_faction_leader = yes
@@ -30,7 +30,7 @@
 < 			}
 ---
 > 			
-3543,3550c3527
+3547,3554c3531
 < 			
 < 			hidden_trigger = {
 < 				OR = {
@@ -41,83 +41,83 @@
 < 				
 ---
 > 			has_border_war_with = SOV # Japan shouldn't lose war support if they actually use the window of opportunity
-4441c4418
+4445c4422
 < prospect_for_resources = {
 ---
 > prospect_for_resources={
-4455c4432
+4459c4436
 < 				state = 655
 ---
 > 				state = 7860
-4502c4479
+4506c4483
 < 					amount = 12
 ---
 > 					amount = 144
-4562c4539
+4566c4543
 < 					amount = 26
 ---
 > 					amount = 312
-4622c4599
+4626c4603
 < 					amount = 20
 ---
 > 					amount = 240
-4693c4670
+4697c4674
 < 					amount = 12
 ---
 > 					amount = 144
-4751c4728
+4755c4732
 < 					amount = 8
 ---
 > 					amount = 96
-4809c4786
+4813c4790
 < 					amount = 6
 ---
 > 					amount = 72
-4867c4844
+4871c4848
 < 					amount = 4
 ---
 > 					amount = 48
-4925c4902
+4929c4906
 < 	#				amount = 6
 ---
 > 	#				amount = 72
-4983c4960
+4987c4964
 < 					amount = 12
 ---
 > 					amount = 144
-5041c5018
+5045c5022
 < 					amount = 26
 ---
 > 					amount = 312
-5099c5076
+5103c5080
 < 					amount = 16
 ---
 > 					amount = 192
-5157c5134
+5161c5138
 < 					amount = 14
 ---
 > 					amount = 168
-5215c5192
+5219c5196
 < 					amount = 12
 ---
 > 					amount = 144
-5288c5265
+5292c5269
 < 					amount = 12
 ---
 > 					amount = 144
-5348c5325
+5352c5329
 < 					amount = 8
 ---
 > 					amount = 96
-5402c5379
+5406c5383
 < 					amount = 12
 ---
 > 					amount = 144
-5456c5433
+5460c5437
 < 					amount = 12
 ---
 > 					amount = 144
-10484,10486c10461,10463
+10488,10490c10465,10467
 < 			
 < 			FROM = {
 < 				effect_tooltip = {
@@ -125,17 +125,17 @@
 > 
 > 			effect_tooltip = {
 > 				FROM = {
-10493c10470
+10497c10474
 < 				random_core_state = {
 ---
 > 				random_state = {
-10495a10473
+10499a10477
 > 						is_core_of = FROM
-10498c10476
+10502c10480
 < 							size > 1
 ---
 > 							size > 2
-10500,10508d10477
+10504,10512d10481
 < 						}
 < 					}
 < 					set_state_flag = JAP_state_development_target
@@ -145,7 +145,7 @@
 < 							type = industrial_complex
 < 							level = 2
 < 							instant_build = yes
-10510,10519d10478
+10514,10523d10482
 < 						IF = {
 < 							limit = {
 < 								infrastructure < 5
@@ -156,7 +156,7 @@
 < 								instant_build = yes
 < 							}	
 < 						}
-10521c10480,10486
+10525c10484,10490
 < 				}
 ---
 > 					add_extra_state_shared_building_slots = 2
@@ -166,5 +166,5 @@
 > 						instant_build = yes
 > 					}	
 > 				}		 
-10523d10487
+10527d10491
 < 			

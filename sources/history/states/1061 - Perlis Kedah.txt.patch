@@ -1,0 +1,6 @@
+8,9c8,9
+< 	resources = {
+< 		rubber = 25
+---
+> 	resources={
+> 		rubber = 300

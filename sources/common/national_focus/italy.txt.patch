@@ -14,23 +14,23 @@
 < 						amount = 12
 ---
 > 						amount = 144
-11429c11429
+11428c11428
 < 			    	amount = 8
 ---
 > 			    	amount = 96
-11496c11496
+11495c11495
 < 				    amount = 16
 ---
 > 				    amount = 192
-12475c12475
+12474c12474
 < 						amount = 8
 ---
 > 						amount = 96
-12503c12503
+12502c12502
 < 						amount = 2
 ---
 > 						amount = 24
-15203c15203
+15202c15202
 < 					amount = 2
 ---
 > 					amount = 24

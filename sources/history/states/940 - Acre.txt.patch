@@ -1,4 +1,6 @@
-10c10
+9,10c9,10
+< 	resources = {
 < 		rubber = 4 
 ---
-> 		rubber = 48
+> 	resources={
+> 		rubber = 48 

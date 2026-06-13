@@ -6,7 +6,3 @@
 > 	resources={
 > 		chromium = 384 # was: 88, then 52
 > 		coal = 180 # initial distribution
-23c23
-< 			industrial_complex = 1
----
-> 			industrial_complex = 3

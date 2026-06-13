@@ -1,0 +1,8 @@
+9,11c9,11
+< 		rubber=40 # was: 70
+< 		tungsten = 6
+< 		chromium = 10
+---
+> 		rubber = 480 # was: 70
+> 		tungsten = 72
+> 		chromium = 120

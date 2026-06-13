@@ -1,12 +1,12 @@
 3c3
-<  GATHERING_STORM_NAME:0 "Gathering Storm"
+<  GATHERING_STORM_NAME: "Gathering Storm"
 ---
->  GATHERING_STORM_NAME:0 "The clown car assembles"
+>  GATHERING_STORM_NAME: "The clown car assembles"
 5c5
-<  HITTING_FAN_NAME:0 "The Hitting of the Fan"
+<  HITTING_FAN_NAME: "The Hitting of the Fan"
 ---
->  HITTING_FAN_NAME:0 "Shit hits the Fan"
-23c23
-<  BLITZKRIEG_NAME:0 "Blitzkrieg"
+>  HITTING_FAN_NAME: "Shit hits the Fan"
+24c24
+<  BLITZKRIEG_NAME: "Blitzkrieg"
 ---
->  BLITZKRIEG_NAME:0 "Honk honk"
+>  BLITZKRIEG_NAME: "Honk honk"

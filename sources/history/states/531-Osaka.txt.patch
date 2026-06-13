@@ -4,7 +4,3 @@
 ---
 > 	resources={
 > 		aluminium = 36 # was: 6
-19c19
-< 			industrial_complex = 4
----
-> 			industrial_complex = 2

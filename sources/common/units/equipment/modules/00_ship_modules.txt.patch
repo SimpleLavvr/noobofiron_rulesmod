@@ -73,85 +73,85 @@
 < #Armour
 < #
 < #Generally comparable to the fluff descriptions, but make sure the ship can reach desired IRL speed in combination with engine and other modules
-2067c1993
+2080c2006
 < 		build_cost_resources = {
 ---
 > 		build_cost_resources={
-2088c2014
+2101c2027
 < 		build_cost_resources = {
 ---
 > 		build_cost_resources={
-2093c2019
+2106c2032
 < 		dismantle_cost_resources = {
 ---
 > 		dismantle_cost_resources={
-2100c2026
+2113c2039
 < 			convert_cost_resources = {
 ---
 > 			convert_cost_resources={
-2170c2096
+2183c2109
 < 		build_cost_resources = {
 ---
 > 		build_cost_resources={
-2193c2119
+2206c2132
 < 		build_cost_resources = {
 ---
 > 		build_cost_resources={
-2485,2486c2411,2412
+2502,2503c2428,2429
 < 		build_cost_resources = {
 < 			rubber = 2
 ---
 > 		build_cost_resources={
 > 			rubber = 24
-2835,2836c2761,2762
+2853,2854c2779,2780
 < 		build_cost_resources = {
 < 			steel = 1
 ---
 > 		build_cost_resources={
 > 			steel = 12
-2880,2881c2806,2807
+2898,2899c2824,2825
 < 		build_cost_resources = {
 < 			steel = 1
 ---
 > 		build_cost_resources={
 > 			steel = 12
-2904,2905c2830,2831
+2922,2923c2848,2849
 < 		build_cost_resources = {
 < 			steel = 1
 ---
 > 		build_cost_resources={
 > 			steel = 12
-2927,2928c2853,2854
+2945,2946c2871,2872
 < 		build_cost_resources = {
 < 			steel = 1
 ---
 > 		build_cost_resources={
 > 			steel = 12
-2953,2954c2879,2880
+2971,2972c2897,2898
 < 		build_cost_resources = {
 < 			steel = 1
 ---
 > 		build_cost_resources={
 > 			steel = 12
-2979,2980c2905,2906
+2997,2998c2923,2924
 < 		build_cost_resources = {
 < 			steel = 2
 ---
 > 		build_cost_resources={
 > 			steel = 24
-3044,3045c2970,2971
+3062,3063c2988,2989
 < 		build_cost_resources = {
 < 			steel = 1
 ---
 > 		build_cost_resources={
 > 			steel = 12
-3064,3065c2990,2991
+3082,3083c3008,3009
 < 		build_cost_resources = {
 < 			steel = 1
 ---
 > 		build_cost_resources={
 > 			steel = 12
-3157c3083,3098
+3175c3101,3116
 < 	}		
 ---
 > 	}
@@ -170,6 +170,6 @@
 > 			convert_cost_ic = 25
 > 		}
 > 	}
-3158a3100,3101
+3176a3118,3119
 > 	
 > 

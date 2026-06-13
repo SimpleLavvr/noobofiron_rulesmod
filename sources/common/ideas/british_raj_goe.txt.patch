@@ -10,55 +10,55 @@
 < 				autonomy_gain = 0.1
 ---
 > 				autonomy_gain = 0.2
-1122c1122
+1158c1158
 < 				production_speed_buildings_factor = 0.2
 ---
 > 				production_speed_buildings_factor = 0.15
-1144a1145
+1180a1181
 > 		
-1158c1159
+1194c1195
 < 				special_forces_cap = 0.04
 ---
 > 				special_forces_cap = 0.05
-1323,1324c1324,1325
+1359,1360c1360,1361
 < 				air_detection = 0.1
 < 				static_anti_air_hit_chance_factor = 0.2 
 ---
 > 				air_detection = 0.05
 > 				static_anti_air_hit_chance_factor = 0.1
-1326c1327
+1362c1363
 < 				dig_in_speed_factor = 0.18
 ---
 > 				dig_in_speed_factor = 0.1
-1346,1347c1347,1348
+1382,1383c1383,1384
 < 				army_defence_factor = 0.06
 < 				experience_gain_army_factor = 0.15
 ---
 > 				army_defence_factor = 0.05
 > 				experience_gain_army_factor = 0.05
-1620c1621
+1656c1657
 < 				research_speed_factor = 0.12
 ---
 > 				research_speed_factor = 0.08
-1623,1624c1624,1625
+1659,1660c1660,1661
 < 				local_resources_factor = 0.15	
 < 				experience_gain_army = 0.1	
 ---
 > 				local_resources_factor = 0.1
 > 				experience_gain_army = 0.05
-2651a2653
+2687a2689
 > 				training_time_army_factor = 0.15
-2653a2656
+2689a2692
 > 
-2667a2671
+2703a2707
 > 				training_time_army_factor = 0.15
-2668a2673
+2704a2709
 > 
-2682c2687
+2718c2723
 < 				command_power_gain = 0.15
 ---
 > 				command_power_gain = 0.1
-2831,2833c2836,2838
+2867,2869c2872,2874
 < 				trade_opinion_factor = -0.15
 < 				consumer_goods_factor = -0.15
 < 				economy_cost_factor = -0.2
@@ -66,29 +66,29 @@
 > 				trade_opinion_factor = -0.1
 > 				consumer_goods_factor = -0.1
 > 				economy_cost_factor = -0.15
-2854c2859
+2890c2895
 < 				production_factory_max_efficiency_factor = 0.1
 ---
 > 				production_factory_max_efficiency_factor = 0.05
-2876,2877c2881,2882
+2912,2913c2917,2918
 < 				industrial_capacity_factory = 0.1
 < 				production_speed_buildings_factor = 0.1
 ---
 > 				industrial_capacity_factory = 0.05
 > 				production_speed_buildings_factor = 0.05
-2918,2919c2923,2924
+2954,2955c2959,2960
 < 				production_speed_rail_way_factor = 0.15
 < 				production_speed_supply_node_factor = 0.15
 ---
 > 				production_speed_rail_way_factor = 0.1
 > 				production_speed_supply_node_factor = 0.05
-3064,3065c3069,3070
+3100,3101c3105,3106
 < 				modifier_army_sub_unit_marine_max_org_factor = 0.15
 < 				industrial_capacity_dockyard = 0.2
 ---
 > 				modifier_army_sub_unit_marine_max_org_factor = 0.1
 > 				industrial_capacity_dockyard = 0.1
-3511c3516
+3546c3551
 < }
 \ Pas de fin de ligne à la fin du fichier
 ---

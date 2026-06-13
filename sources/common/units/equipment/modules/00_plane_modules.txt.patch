@@ -194,133 +194,133 @@
 < 				naval_strike_attack = 12
 ---
 > 				naval_strike_attack = 10
-1538c1493
+1541c1496
 < 				naval_strike_attack = 25
 ---
 > 				naval_strike_attack = 30
-1596c1551
+1599c1554
 < 				naval_strike_attack = 9
 ---
 > 				naval_strike_attack = 11
-1601c1556
+1604c1559
 < 				naval_strike_targetting = 3
 ---
 > 				naval_strike_targetting = 4
-1609c1564
+1612c1567
 < 				air_bombing = 15
 ---
 > 				air_bombing = 20
-1638c1593
+1641c1596
 < 				air_bombing = 14
 ---
 > 				air_bombing = 20
-1675c1630
+1678c1633
 < 				air_bombing = 16
 ---
 > 				air_bombing = 24
-1747,1748c1702,1703
+1750,1751c1705,1706
 < 		build_cost_resources = {
 < 			rubber = 1
 ---
 > 		build_cost_resources={
 > 			rubber = 12
-1760c1715
+1763c1718
 < 			air_defence = -6
 ---
 > 			air_defence = -8
-1764c1719
+1767c1722
 < 			build_cost_ic = -0.075
 ---
 > 			build_cost_ic = -0.15
-1766,1767c1721,1722
+1769,1770c1724,1725
 < 		build_cost_resources = {
 < 			aluminium = -2
 ---
 > 		build_cost_resources={
 > 			aluminium = -20
-1770,1771c1725,1726
+1773,1774c1728,1729
 < 		dismantle_cost_resources = {
 < 			aluminium = 2
 ---
 > 		dismantle_cost_resources={
 > 			aluminium = 24
-1892,1893c1847,1848
+1895,1896c1850,1851
 < 		build_cost_resources = {
 < 			rubber = 2
 ---
 > 		build_cost_resources={
 > 			rubber = 24
-1905c1860
+1908c1863
 < 			air_defence = -8
 ---
 > 			air_defence = -10
-1910c1865
+1913c1868
 < 			build_cost_ic = -0.075
 ---
 > 			build_cost_ic = -0.15
-1912,1913c1867,1868
+1915,1916c1870,1871
 < 		build_cost_resources = {
 < 			aluminium = -2
 ---
 > 		build_cost_resources={
 > 			aluminium = -20
-1917,1918c1872,1873
+1920,1921c1875,1876
 < 		dismantle_cost_resources = {
 < 			aluminium = 2
 ---
 > 		dismantle_cost_resources={
 > 			aluminium = 24
-2009,2010c1964,1965
+2012,2013c1967,1968
 < 		build_cost_resources = {
 < 			rubber = 2
 ---
 > 		build_cost_resources={
 > 			rubber = 24
-2029,2030c1984,1985
+2032,2033c1987,1988
 < 		build_cost_resources = {
 < 			aluminium = -3
 ---
 > 		build_cost_resources={
 > 			aluminium = -30
-2033,2034c1988,1989
+2036,2037c1991,1992
 < 		dismantle_cost_resources = {
 < 			aluminium = 3
 ---
 > 		dismantle_cost_resources={
 > 			aluminium = 36
-2072c2027
+2075c2030
 < 			air_bombing = 4
 ---
 > 			air_bombing = 6
-2087c2042
+2090c2045
 < 			air_bombing = 6
 ---
 > 			air_bombing = 10
-2101c2056
+2104c2059
 < 			air_bombing = 4
 ---
 > 			air_bombing = 8
-2117c2072
+2120c2075
 < 			air_bombing = 6
 ---
 > 			air_bombing = 12
-2173c2128
+2176c2131
 < 				air_bombing = 6
 ---
 > 				air_bombing = 10
-2176c2131
+2179c2134
 < 				sub_detection = 10
 ---
 > 				sub_detection = 15
-2194a2150
+2197a2153
 > 				air_superiority
-2197c2153
+2200c2156
 < 				night_penalty = -0.2
 ---
 > 				night_penalty = -0.4
-2216a2173
+2219a2176
 > 				air_superiority
-2219c2176
+2222c2179
 < 				night_penalty = -0.4
 ---
 > 				night_penalty = -0.6

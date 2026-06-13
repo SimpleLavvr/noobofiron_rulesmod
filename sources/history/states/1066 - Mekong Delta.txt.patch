@@ -1,0 +1,6 @@
+4,5c4,5
+< 	resources = {
+< 		rubber = 33 # was: 94.000
+---
+> 	resources={
+> 		rubber = 396 # was: 94.000

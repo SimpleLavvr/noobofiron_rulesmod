@@ -1,8 +1,8 @@
-67c67
+68c68
 < 		x = 14
 ---
 > 		x = 6
-158,171c158
+159,172c159
 < 		allow_branch = {
 < 			has_dlc = "Man the Guns"
 < 			if = {
@@ -19,71 +19,71 @@
 < 		}
 ---
 > 		
-202a190
+203a191
 > 	
-206c194
+207c195
 < 		x = -6
 ---
 > 		x = 0
-232a221
+233a222
 > 			add_stability = -0.05
-260a250
+261a251
 > 		add_stability = -0.05
-340a331,334
+341a332,335
 > 		
 > 		allow_branch = {
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
 > 		}
-379c373,374
+380c374,375
 < 		prerequisite = { focus = USA_liberty_for_the_philippines }
 ---
 > 		prerequisite = { focus = USA_democratic_socialism }
 > 		prerequisite = { focus = USA_full_desegregation }
-388c383
+389c384
 < 
 ---
 > 			has_government = communism
-458a454,457
+459a455,458
 > 		allow_branch = {
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
 > 		}
 > 
-801a801,804
+802a802,805
 > 		
 > 				allow_branch = {
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
 > 		}
-1514c1517
+1515c1518
 < 			
 ---
 >         has_war_with = JAP
-1515a1519
+1516a1520
 > 
-1533a1538
+1534a1539
 > 			remove_ideas = USA_NOI_rubber_industry_rivality
-2107c2112
+2108c2113
 < 			democratic > 0.95
 ---
 > 			democratic > 0.80
-2346c2351
+2347c2352
 < 			democratic > 0.95
 ---
 > 			democratic > 0.80
-2472c2477
+2473c2478
 < 			democratic > 0.95
 ---
 > 			democratic > 0.80
-2524c2529
+2525c2530
 < 			democratic > 0.95
 ---
 > 			democratic > 0.80
-2947c2952
+2948c2953
 < 		x = 18
 ---
 > 		x = 10
-3124a3130
+3125a3131
 > 		add_stability = 0.10
-3251,3262c3257
+3252,3263c3258
 < 			has_dlc = "Man the Guns"
 < 			if = {
 < 				limit = {
@@ -98,15 +98,15 @@
 < 			}
 ---
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
-4681c4676
+4694c4689
 < 		x = 42
 ---
 > 		x = 20
-4691c4686
+4704c4699
 < 			x = -17
 ---
 > 			x = -2
-6645,6663d6639
+6658,6676d6652
 < 
 < 			create_equipment_variant = {
 < 				name = "Essex Class"				
@@ -126,9 +126,9 @@
 < 			}
 < 
 < 
-6755a6732
+6768a6745
 > 			
-6786,6811d6762
+6799,6824d6775
 < 
 < 			custom_effect_tooltip = generic_skip_one_line_tt
 < 
@@ -155,7 +155,7 @@
 < 					name_group = USA_CVL_HISTORICAL
 < 				}
 < 			}
-6897c6848
+6910c6861
 < 		cost = 5
 ---
 > 		cost = 10

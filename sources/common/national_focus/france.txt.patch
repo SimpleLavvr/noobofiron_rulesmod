@@ -1,20 +1,20 @@
-1829c1829
+1828c1828
 < 
 ---
 > 		
 1870a1871
 > 
-1905a1907
+1904a1906
 > 				
-1994a1997,1999
+1993a1996,1998
 > 		allow_branch = {
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
 > 		}
-3594c3599
+3599c3604
 < 		
 ---
 > 
-3617a3623,3645
+3622a3628,3650
 > 		# ahist=ON: No-DLC national_bloc path — move review_foreign_policy with the shifted national_bloc tree (+7)
 > 		offset = {
 > 			x = 7
@@ -38,11 +38,11 @@
 > 			}
 > 		}
 > 
-4840c4868
+4850c4878
 < 		
 ---
 > 
-4864a4893,4904
+4874a4903,4914
 > 		# ahist=ON: No-DLC national_bloc path — push whole subtree right past naval tree (42-9+28=61)
 > 		offset = {
 > 			x = 28
@@ -55,11 +55,11 @@
 > 			}
 > 		}
 > 
-5240c5280
+5250c5290
 < 		
 ---
 > 
-5266,5278c5306,5314
+5276,5288c5316,5324
 < 		allow_branch = {
 < 			has_dlc = "La Resistance"
 < 			if = {
@@ -83,12 +83,12 @@
 > 				has_dlc = "La Resistance"
 > 				has_game_rule = { rule = obsolete_focus_branches_visibility option = HIDE }
 > 				has_completed_focus = FRA_the_council_of_rambouillet
-5281a5318,5321
+5291a5328,5331
 > 		allow_branch = {
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
 > 		}
 > 
-5342,5353c5382
+5352,5363c5392
 < 			has_dlc = "La Resistance"
 < 			if = {
 < 				limit = {
@@ -103,7 +103,7 @@
 < 			}
 ---
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
-6384,6390c6413,6414
+6394,6400c6423,6424
 < 			OR = {
 < 				BEL = {
 < 					is_subject_of = ROOT
@@ -114,7 +114,7 @@
 ---
 > 			BEL = {
 > 				is_subject_of = ROOT
-6396,6420c6420,6427
+6406,6430c6430,6437
 < 			all_state = {
 < 				OR = {
 < 					state = 295
@@ -149,111 +149,111 @@
 > 			890 = { CONTROLLER = { OR = { tag = BEL is_subject_of = BEL } } }
 > 			888 = { CONTROLLER = { OR = { tag = BEL is_subject_of = BEL } } }
 > 			889 = { CONTROLLER = { OR = { tag = BEL is_subject_of = BEL } } }
-6431,6434c6438
+6441,6444c6448
 < 							AND = {
 < 								original_tag = BEL 
 < 								is_subject_of = ROOT
 < 							}
 ---
 > 							tag = BEL 
-6436,6439d6439
+6446,6449d6449
 < 							AND = {
 < 								original_tag = COG 
 < 								is_subject_of = ROOT
 < 							}
-6448,6451c6448
+6458,6461c6458
 < 							AND = {
 < 								original_tag = BEL 
 < 								is_subject_of = ROOT
 < 							}
 ---
 > 							tag = BEL 
-6453,6456d6449
+6463,6466d6459
 < 							AND = {
 < 								original_tag = COG 
 < 								is_subject_of = ROOT
 < 							}
-6458c6451
+6468c6461
 < 					}  
 ---
 > 					} 
-6465,6468c6458
+6475,6478c6468
 < 							AND = {
 < 								original_tag = BEL 
 < 								is_subject_of = ROOT
 < 							}
 ---
 > 							tag = BEL 
-6470,6473d6459
+6480,6483d6469
 < 							AND = {
 < 								original_tag = COG 
 < 								is_subject_of = ROOT
 < 							}
-6482,6485c6468
+6492,6495c6478
 < 							AND = {
 < 								original_tag = BEL 
 < 								is_subject_of = ROOT
 < 							}
 ---
 > 							tag = BEL 
-6487,6490d6469
+6497,6500d6479
 < 							AND = {
 < 								original_tag = COG 
 < 								is_subject_of = ROOT
 < 							}
-6499,6502c6478
+6509,6512c6488
 < 							AND = {
 < 								original_tag = BEL 
 < 								is_subject_of = ROOT
 < 							}
 ---
 > 							tag = BEL 
-6504,6507d6479
+6514,6517d6489
 < 							AND = {
 < 								original_tag = COG 
 < 								is_subject_of = ROOT
 < 							}
-6516,6519c6488
+6526,6529c6498
 < 							AND = {
 < 								original_tag = BEL 
 < 								is_subject_of = ROOT
 < 							}
 ---
 > 							tag = BEL 
-6521,6524d6489
+6531,6534d6499
 < 							AND = {
 < 								original_tag = COG 
 < 								is_subject_of = ROOT
 < 							}
-6533,6536c6498
+6543,6546c6508
 < 							AND = {
 < 								original_tag = BEL 
 < 								is_subject_of = ROOT
 < 							}
 ---
 > 							tag = BEL 
-6538,6541d6499
+6548,6551d6509
 < 							AND = {
 < 								original_tag = COG 
 < 								is_subject_of = ROOT
 < 							}
-6550,6553c6508
+6560,6563c6518
 < 							AND = {
 < 								original_tag = BEL 
 < 								is_subject_of = ROOT
 < 							}
 ---
 > 							tag = BEL 
-6555,6558d6509
+6565,6568d6519
 < 							AND = {
 < 								original_tag = COG 
 < 								is_subject_of = ROOT
 < 							}
-6560c6511
+6570c6521
 < 					}  
 ---
 > 					} 
-6873,6881c6824,6831
+6883,6891c6834,6841
 < 		available_if_capitulated = yes
 < 		allow_branch = {
 < 			NOT = { has_dlc = "La Resistance" }
@@ -272,7 +272,7 @@
 > 				has_game_rule = {
 > 					rule = noi_allow_ahistorical
 > 					option = noi_rule_ahistorical_allowed
-6883,6884c6833,6842
+6893,6894c6843,6852
 < 				NOT = {
 < 					has_completed_focus = FRA_form_the_popular_front
 ---
@@ -286,14 +286,14 @@
 > 				has_game_rule = {
 > 					rule = noi_allow_ahistorical
 > 					option = noi_rule_ahistorical_allowed
-6885a6844,6849
+6895a6854,6859
 > 				has_dlc = "La Resistance"
 > 				has_game_rule = {
 > 					rule = obsolete_focus_branches_visibility
 > 					option = HIDE
 > 				}
 > 				has_completed_focus = FRA_revive_the_national_bloc
-6887c6851,6873
+6897c6861,6883
 < 		} 
 ---
 > 		}
@@ -319,11 +319,11 @@
 > 		allow_branch = {
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
 > 		}
-7315c7301
+7325c7311
 < 		
 ---
 > 
-7328a7315,7326
+7338a7325,7336
 > 		# ahist=ON: La Resistance council path — adjust council position relative to shifted leagues (+13)
 > 		offset = {
 > 			x = 13
@@ -336,7 +336,7 @@
 > 			}
 > 		}
 > 
-7332,7343c7330
+7342,7353c7340
 < 			has_dlc = "La Resistance"
 < 			if = {
 < 				limit = {
@@ -351,7 +351,7 @@
 < 			}
 ---
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
-8707a8695,8755
+8717a8705,8765
 > 			}
 > 		}
 > 
