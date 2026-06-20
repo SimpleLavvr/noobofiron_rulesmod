@@ -28,3 +28,9 @@
 ---
 > 	color = rgb { 41 135 62 }
 > 	color_ui = rgb { 41 135 62 }
+1856,1857c1856,1857
+< 	color = rgb { 244 25 2 } 
+< 	color_ui = rgb { 244 25 2 }
+---
+> 	color = rgb { 90 80 180 } 
+> 	color_ui = rgb { 90 80 180 }

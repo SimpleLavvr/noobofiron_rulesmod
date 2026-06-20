@@ -5,14 +5,14 @@
 ---
 > #NOI
 > recruit_character = AST_john_doctrine
-488,493d489
+490,495d491
 < 		optional_assets = {
 < 			{
 < 				icon = "GFX_commonwealth_light_cruiser_hobart"
 < 				model = "commonwealth_gfx_light_cruiser_entity"
 < 			}
 < 		}
-515,535d510
+517,537d512
 < 	
 < 	create_equipment_variant = {
 < 		name = "Leander Class"
@@ -34,7 +34,7 @@
 < 			rear_1_custom_slot = ship_light_medium_battery_2
 < 		}
 < 	}
-563,581d537
+565,583d539
 < 	create_equipment_variant = {
 < 		name = "County Class"
 < 		type = ship_hull_cruiser_1
@@ -54,7 +54,7 @@
 < 			rear_1_custom_slot = ship_medium_battery_2
 < 		}
 < 	}
-599,604d554
+601,606d556
 < 		}
 < 		optional_assets = {
 < 			{

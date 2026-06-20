@@ -196,10 +196,20 @@
 < 	HOURS_REQ_REJOIN_BORDER_WAR_FOR_INJURED_UNITS = -1, -- minimum hours required for units to rejoin border wars, values below zero will make units never return
 ---
 > 	HOURS_REQ_REJOIN_BORDER_WAR_FOR_INJURED_UNITS = 336, -- minimum hours required for units to rejoin border wars
+1214c1214
+< 	UNIT_LEADER_MODIFIER_COOLDOWN_ON_WITHDRAW = 3,		-- base time in days for withdrawing a deployed unit leader. Instantaneous if 0. Scaled by HQ template manpower.
+---
+> 	UNIT_LEADER_MODIFIER_COOLDOWN_ON_WITHDRAW = 10,		-- base time in days for withdrawing a deployed unit leader. Instantaneous if 0. Scaled by HQ template manpower.
 1240c1240
 < 	ARMY_FUEL_COST_MULT = 0.5,						-- fuel cost multiplier for all army related stuff
 ---
 > 	ARMY_FUEL_COST_MULT = 0.70,						-- fuel cost multiplier for all army related stuff
+1272,1273c1272,1273
+< 	PLANNING_CAP_COMMS_SCALING = { 1.0, 0.95, 0.9, 0.85, 0.8 },		-- Value at index J is the scaling applied to planning cap when HQ is J provinces behind the frontline
+< 	PLANNING_CAP_NO_HQ_SCALING = 0.8,								-- Scaling applied to planning cap when there's no HQ (no leader or leader not deployed or not the same root order)
+---
+> 	PLANNING_CAP_COMMS_SCALING = { 1.0, 0.9, 0.8, 0.7, 0.6 },		-- Value at index J is the scaling applied to planning cap when HQ is J provinces behind the frontline
+> 	PLANNING_CAP_NO_HQ_SCALING = 0.2,								-- Scaling applied to planning cap when there's no HQ (no leader or leader not deployed or not the same root order)
 1295c1295
 < 	AIR_WING_MAX_STATS_ATTACK = 100,					-- Max stats
 ---
