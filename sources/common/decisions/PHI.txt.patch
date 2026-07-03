@@ -18,19 +18,19 @@
 < 					amount = 8
 ---
 > 					amount = 96
-2249c2249
+2251c2251
 < 				amount = 4
 ---
 > 				amount = 48
-2254c2254
+2256c2256
 < 				amount = 4
 ---
 > 				amount = 48
-2291c2291
+2293c2293
 < 				amount = 2
 ---
 > 				amount = 24
-2296c2296
+2298c2298
 < 				amount = 2
 ---
 > 				amount = 24

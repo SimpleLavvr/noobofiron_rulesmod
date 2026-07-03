@@ -1,4 +1,36 @@
+1115c1115
+< 					amount = 3
+---
+> 					amount = 36
+1121c1121
+< 					amount = 3
+---
+> 					amount = 36
+1127c1127
+< 					amount = 3
+---
+> 					amount = 36
+1539c1539
+< 					amount = 8
+---
+> 					amount = 96
+1613c1613
+< 					amount = 6
+---
+> 					amount = 72
 1652c1652
 < 					amount = 10
 ---
 > 					amount = 120
+1658c1658
+< 					amount = 4
+---
+> 					amount = 48
+1736c1736
+< 					amount = 8
+---
+> 					amount = 96
+1740c1740
+< 					amount = 4
+---
+> 					amount = 48

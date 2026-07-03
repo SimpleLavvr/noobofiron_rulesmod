@@ -533,15 +533,15 @@
 < 		prerequisite = { focus = JAP_sea_purge_the_kodoha_faction focus = JAP_revere_the_emperor_destroy_the_traitors }
 ---
 > 		prerequisite = { focus = JAP_NOI_late_war focus = JAP_NOI_early_war }
-13423c13371
+13424c13372
 < 					amount = 12
 ---
 > 					amount = 144
-13496c13444
+13497c13445
 < 					amount = 6
 ---
 > 					amount = 72
-14613,14615c14561,14563
+14617,14619c14565,14567
 < 		x = -28
 < 		y = 1
 < 		relative_position_id = JAP_sea_purge_the_kodoha_faction
@@ -549,23 +549,23 @@
 > 		x = 26
 > 		y = 2
 > 		relative_position_id = JAP_the_imperial_defense_plan
-14618c14566
+14622c14570
 < 			x = -34
 ---
 > 			x = -2
-14631c14579
+14635c14583
 < 		prerequisite = { focus = JAP_sea_purge_the_kodoha_faction focus = JAP_revere_the_emperor_destroy_the_traitors }
 ---
 > 		prerequisite = { focus = JAP_NOI_late_war focus = JAP_NOI_early_war }
-15864c15812
+15868c15816
 < 					amount = 8
 ---
 > 					amount = 96
-16501c16449
+16505c16453
 < 			x = -5
 ---
 > 			x = -4
-16509,16511c16457,16486
+16513,16515c16461,16490
 < 					OR = {
 < 						has_completed_focus = JAP_a_red_sun_rises_for_a_new_era
 < 						has_completed_focus = JAP_organize_a_general_election
@@ -600,10 +600,10 @@
 > 					has_game_rule = {
 > 						rule = obsolete_focus_branches_visibility
 > 						option = HIDE
-16512a16488,16489
+16516a16492,16493
 > 					has_completed_focus = JAP_revere_the_emperor_destroy_the_traitors
 > 					has_dlc = "No Compromise, No Surrender"
-16586,16599c16563
+16590,16603c16567
 < 			has_dlc = "No Compromise, No Surrender"
 < 			IF = {
 < 				limit = {
@@ -620,7 +620,7 @@
 < 			}
 ---
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
-16645,16658c16609
+16649,16662c16613
 < 			has_dlc = "No Compromise, No Surrender"
 < 			IF = {
 < 				limit = {
@@ -637,12 +637,12 @@
 < 			}
 ---
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
-17372a17324,17327
+17376a17328,17331
 > 		allow_branch = {
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
 > 		}
 > 
-17484,17497c17439
+17488,17501c17443
 < 			has_dlc = "No Compromise, No Surrender"
 < 			IF = {
 < 				limit = {
@@ -659,47 +659,47 @@
 < 			}
 ---
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
-17501c17443
+17505c17447
 < 			x = 9
 ---
 > 			x = 2
-21210c21152
+21214c21156
 < 					amount = 12
 ---
 > 					amount = 144
-21283c21225
+21287c21229
 < 					amount = 6
 ---
 > 					amount = 72
-21342c21284
+21346c21288
 < 					amount = 8
 ---
 > 					amount = 96
-21359c21301
+21363c21305
 < 					amount = 8
 ---
 > 					amount = 96
-21365c21307
-< 					amount = 12
----
-> 					amount = 144
 21369c21311
-< 					amount = 8
----
-> 					amount = 96
-21375c21317
-< 					amount = 8
----
-> 					amount = 96
-21381c21323
 < 					amount = 12
 ---
 > 					amount = 144
-21387c21329
+21373c21315
+< 					amount = 8
+---
+> 					amount = 96
+21379c21321
+< 					amount = 8
+---
+> 					amount = 96
+21385c21327
+< 					amount = 12
+---
+> 					amount = 144
+21391c21333
 < 					amount = 10
 ---
 > 					amount = 120
-22118,22131c22060
+22122,22135c22064
 < 			has_dlc = "No Compromise, No Surrender"
 < 			IF = {
 < 				limit = {
@@ -716,25 +716,25 @@
 < 			}
 ---
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
-22135c22064
+22139c22068
 < 			x = -9
 ---
 > 			x = -2
-22149c22078
+22153c22082
 < 		prerequisite = { focus = JAP_revoke_the_peace_preservation_law } 
 ---
 > 		prerequisite = { focus = JAP_revoke_the_peace_preservation_law }
-24743c24672
+24747c24676
 < 					amount = 25
 ---
 > 					amount = 300
-25103c25032
+25107c25036
 < 			x = -62
 ---
 > 			x = -4
-25111a25041
+25115a25045
 > 					has_dlc = "No Compromise, No Surrender"
-25117c25047,25064
+25121c25051,25068
 < 			x = -42
 ---
 > 			x = -72
@@ -755,67 +755,67 @@
 > 
 > 		offset = {
 > 			x = -4
-25131c25078
+25135c25082
 < 			x = -50
 ---
 > 			x = -4
-25145c25092
+25149c25096
 < 			x = -55
 ---
 > 			x = -4
-25159c25106
+25163c25110
 < 			x = -53
 ---
 > 			x = -4
-25173c25120
+25177c25124
 < 			x = -4
 ---
 > 			x = -1
-25187c25134
+25191c25138
 < 			x = -4
 ---
 > 			x = -1
-26620c26567
+26624c26571
 < 				amount > 199
 ---
 > 				amount > 1999
-26628c26575
+26632c26579
 < 				amount > 199 
 ---
 > 				amount > 1999 
-26636c26583
+26640c26587
 < 				amount > 249
 ---
 > 				amount > 2499
-26644c26591
+26648c26595
 < 				amount > 199
 ---
 > 				amount > 1999
-26652c26599
+26656c26603
 < 				amount > 149 
 ---
 > 				amount > 1499 
-26660c26607
+26664c26611
 < 				amount > 299
 ---
 > 				amount > 2999
-26668c26615
+26672c26619
 < 				amount > 199
 ---
 > 				amount > 1999
-27173c27120
+27177c27124
 < 					amount = 4
 ---
 > 					amount = 48
-27177c27124
-< 					amount = 6
----
-> 					amount = 72
 27181c27128
 < 					amount = 6
 ---
 > 					amount = 72
-28267a28215,28305
+27185c27132
+< 					amount = 6
+---
+> 					amount = 72
+28271a28219,28309
 > 
 > 		focus = {
 > 		id = JAP_NOI_early_war
@@ -907,35 +907,35 @@
 > 
 > 	}
 > 
-28276c28314
-< 		prerequisite = { focus = JAP_the_imperial_defense_plan }
----
-> 		prerequisite = { focus = JAP_NOI_late_war focus = JAP_NOI_early_war }
 28280c28318
-< 		y = 1
----
-> 		y = 2
-29930c29968
 < 		prerequisite = { focus = JAP_the_imperial_defense_plan }
 ---
 > 		prerequisite = { focus = JAP_NOI_late_war focus = JAP_NOI_early_war }
-29934c29972
+28284c28322
 < 		y = 1
 ---
 > 		y = 2
-30181c30219
+29934c29972
+< 		prerequisite = { focus = JAP_the_imperial_defense_plan }
+---
+> 		prerequisite = { focus = JAP_NOI_late_war focus = JAP_NOI_early_war }
+29938c29976
+< 		y = 1
+---
+> 		y = 2
+30185c30223
 < 				    amount = 5
 ---
 > 				    amount = 60
-31113c31151
+31117c31155
 < 		prerequisite = { focus = JAP_the_imperial_defense_plan }
 ---
 > 		prerequisite = { focus = JAP_NOI_late_war focus = JAP_NOI_early_war }
-31117c31155
+31121c31159
 < 		y = 1
 ---
 > 		y = 2
-32258c32296
+32262c32300
 < 					name = "Zuikaku"
 ---
 > 					name = "Zaikaku"

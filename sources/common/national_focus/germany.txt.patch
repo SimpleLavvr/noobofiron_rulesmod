@@ -248,11 +248,11 @@
 < 		prerequisite = { focus = GER_reassert_eastern_claims }
 ---
 > 		prerequisite = { focus = GER_reassert_eastern_claims focus = GER_molotov_ribbentrop_pact}
-14395c14417
+14427c14449
 < 		x = 20
 ---
 > 		x = 10
-14401a14424,14435
+14433a14456,14467
 > 		# Compensate for GER_heed_von_neuraths_concerns +4 shift — keep this focus in its historical position
 > 		offset = {
 > 			x = -4
@@ -265,19 +265,19 @@
 > 			}
 > 		}
 > 
-14496c14530
+14528c14562
 < 		x = 2
 ---
 > 		x = 15
-14570a14605,14607
+14602a14637,14639
 > 		allow_branch = {
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
 > 		}
-14800c14837
+14832c14869
 < 		x = -1
 ---
 > 		x = 11
-17574c17611,17624
+17606c17643,17656
 < 
 ---
 > 		offset = {
@@ -294,55 +294,55 @@
 > 				}
 > 			}
 > 		}
-17576a17627
+17608a17659
 > 		# Shift left in ahist=ON when kaiserreich branch visible to avoid (102,5) vs (103,5) collision with focus_on_the_true_enemy
-17578d17628
+17610d17660
 < 			has_government = fascism
-19282c19332
+19314c19364
 < 						amount = 6
 ---
 > 						amount = 72
-19303c19353
+19335c19385
 < 								amount > 19
 ---
 > 								amount > 190
-19308c19358
+19340c19390
 < 								amount > 19
 ---
 > 								amount > 190
-19313c19363
+19345c19395
 < 								amount > 19
 ---
 > 								amount > 190
-19318c19368
+19350c19400
 < 								amount > 19
 ---
 > 								amount > 190
-19323c19373
+19355c19405
 < 								amount > 19
 ---
 > 								amount > 190
-19346c19396
+19378c19428
 < 								amount > 19
 ---
 > 								amount > 190
-19351c19401
+19383c19433
 < 								amount > 19
 ---
 > 								amount > 190
-19356c19406
+19388c19438
 < 								amount > 19
 ---
 > 								amount > 190
-19361c19411
+19393c19443
 < 								amount > 19
 ---
 > 								amount > 190
-19366c19416
+19398c19448
 < 								amount > 19
 ---
 > 								amount > 190
-21510,21521c21560
+21542,21553c21592
 < 			has_dlc = "Gotterdammerung" 
 < 			if = {
 < 				limit = {
@@ -357,19 +357,19 @@
 < 			}
 ---
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
-21525c21564
+21557c21596
 < 			x = -43
 ---
 > 			x = 24
-21536c21575
+21568c21607
 < 			x = -5
 ---
 > 			x = 24
-21547c21586
+21579c21618
 < 			x = -10
 ---
 > 			x = 13
-21842,21848c21881,21904
+21874,21880c21913,21936
 < 			has_dlc = "Gotterdammerung"
 < 			if = {
 < 				limit = {
@@ -402,15 +402,15 @@
 > 				has_game_rule = {
 > 					rule = noi_allow_ahistorical
 > 					option = noi_rule_ahistorical_allowed
-21852d21907
+21884d21939
 < 					has_completed_focus = GER_remilitarize_the_rhineland
-21856a21912
+21888a21944
 > 		# Large shift in initial/remilitarize state (no ahistorical path chosen) to avoid inter-branch collisions
-21858c21914
+21890c21946
 < 			x = 11
 ---
 > 			x = 53
-21862,21863c21918,21926
+21894,21895c21950,21958
 < 					rule = obsolete_focus_branches_visibility
 < 					option = HIDE
 ---
@@ -423,38 +423,38 @@
 > 					has_completed_focus = GER_revive_the_kaiserreich
 > 					has_completed_focus = GER_reestablish_free_elections
 > 					has_completed_focus = GER_oppose_hitler_ww
-21865d21927
+21897d21959
 < 				has_completed_focus = GER_start_the_proletarian_revolution
-22226a22289,22292
+22258a22321,22324
 > 		allow_branch = {
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
 > 		}
 > 
-24208c24274
+24240c24306
 < 						amount = 6
 ---
 > 						amount = 72
-24212c24278
+24244c24310
 < 						amount = 3
 ---
 > 						amount = 36
-24216c24282
+24248c24314
 < 						amount = 3
 ---
 > 						amount = 36
-24233c24299
+24265c24331
 < 						amount = 6
 ---
 > 						amount = 72
-24237c24303
+24269c24335
 < 						amount = 3
 ---
 > 						amount = 36
-24241c24307
+24273c24339
 < 						amount = 3
 ---
 > 						amount = 36
-25632,25644c25698
+25664,25676c25730
 < 			has_dlc = "Gotterdammerung"
 < 			if = {
 < 				limit = {
@@ -470,11 +470,11 @@
 < 			}
 ---
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
-25648c25702
+25680c25734
 < 			x = -11
 ---
 > 			x = -1
-25658a25713,25731
+25690a25745,25763
 > 		# Shift monarchist branch right in ahist=ON initial state to avoid overlapping non-WW and communist branches
 > 		# Only fires when no ahistorical path has been chosen yet (initial / remilitarize state)
 > 		offset = {
@@ -494,7 +494,7 @@
 > 			}
 > 		}
 > 
-25770,25785c25843
+25802,25817c25875
 < 			has_dlc = "Gotterdammerung"
 < 			if = {
 < 				limit = {
@@ -513,11 +513,11 @@
 < 			}
 ---
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
-25789c25847
+25821c25879
 < 			x = 12
 ---
 > 			x = 0
-29554,29572c29612
+29586,29604c29644
 < 			has_dlc = "Gotterdammerung"
 < 			if = {
 < 				limit = {
@@ -539,7 +539,7 @@
 < 			}
 ---
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
-35520,35532c35560
+35555,35567c35595
 < 			NOT = { has_dlc = "Gotterdammerung" } 
 < 
 < 			if = {
@@ -555,15 +555,15 @@
 < 			}
 ---
 > 			always = no
-35558c35586
+35593c35621
 < 			x = -8
 ---
 > 			x = 50
-35570c35598
+35605c35633
 < 			x = -1
 ---
 > 			x = 49
-35683,35697c35711
+35718,35732c35746
 < 			NOT = { has_dlc = "Gotterdammerung" } 
 < 			if = {
 < 				limit = {
@@ -581,11 +581,11 @@
 < 			}
 ---
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
-35701c35715
+35736c35750
 < 			x = 1
 ---
 > 			x = 22
-35750,35761c35764
+35785,35796c35799
 < 			NOT = { has_dlc = "Gotterdammerung" }
 < 			if = {
 < 				limit = {
@@ -600,7 +600,7 @@
 < 			}
 ---
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
-37437,37451c37440
+37473,37487c37476
 < 			NOT = { has_dlc = "Gotterdammerung" } 
 < 			if = {
 < 				limit = {
@@ -618,15 +618,15 @@
 < 			}
 ---
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
-37455c37444
+37491c37480
 < 			x = -1
 ---
 > 			x = 0
-37465c37454
+37501c37490
 < 	
 ---
 > 
-38836c38825
+38872c38861
 < }
 \ Pas de fin de ligne à la fin du fichier
 ---

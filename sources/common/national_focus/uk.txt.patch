@@ -2212,63 +2212,46 @@
 > 		mutually_exclusive = { focus = ENG_a_change_in_course }
 9626d7830
 < 				NOT = {	has_character = ENG_winston_churchill } #MM: GoE content if he is transferred to India via event chain triggered by focus RAJ_the_jewel_becomes_the_crown
-10256c8460
+9770c7974
 < 		icon = GFX_goal_generic_occupy_states_ongoing_war
 ---
 > 		icon = GFX_focus_generic_attack_iraq
-10283c8487
+11385c9589
 < 		icon = GFX_goal_generic_forceful_treaty
 ---
 > 		icon = GFX_focus_generic_attack_iran
-10586c8790
+11504a9709,9710
+> 					has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
+> 
+12128a10335
+> 							}
+12133c10340
+< 			}
+---
+> 
+12158c10365
 < 		icon = GFX_goal_generic_position_armies
 ---
 > 		icon = GFX_SOV_control_scandinavia_ccp_2d_sov_compatibility
-10841c9045
+12851a11059
+> 					has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
+13996c12204
 < 		icon = GFX_goal_generic_position_armies
 ---
 > 		icon = GFX_focus_generic_influence_benelux
-10947c9151,9153
+14111c12319,12321
 < 
 ---
 > 		allow_branch = {
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
 > 		}
-11202c9408,9410
+14131c12341,12343
 < 
 ---
 > 		allow_branch = {
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
 > 		}
-11503c9711,9713
-< 
----
-> 		allow_branch = {
-> 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
-> 		}
-12132c10342,10343
-< 				if = {
----
-> 			}
-> 			if = {
-12137d10347
-< 					
-12144,12145d10353
-< 		}
-< 
-12831c11039,11041
-< 
----
-> 		allow_branch = {
-> 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
-> 		}
-14103,14105c12313
-< 		available = {
-< 
-< 		}
----
-> 		available = { }
-14116a12325,15102
+14132a12345,15122
 > 		}
 > 	}
 > 	
