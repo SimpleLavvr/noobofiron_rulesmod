@@ -1,0 +1,103 @@
+10201,10247d10200
+< 
+< 	immediate = {
+< 		hidden_effect = {
+< 			random_other_country = {
+< 				limit = {
+< 					ROOT = {
+< 						has_volunteers_amount_from = {
+< 						    tag = PREV
+< 						    count > 0
+< 						}
+< 					}
+< 					NOT = { tag = SOV }
+< 				}
+< 				set_country_flag = SPR_relocated_gold_reserves_selection_flag1
+< 				save_event_target_as = SPR_relocated_gold_reserves_selection_1
+< 			}
+< 			random_other_country = {
+< 				limit = {
+< 					ROOT = {
+< 						has_volunteers_amount_from = {
+< 						    tag = PREV
+< 						    count > 0
+< 						}
+< 					}
+< 					NOT = { tag = SOV }
+< 					NOT = { has_country_flag = SPR_relocated_gold_reserves_selection_flag1 }
+< 				}
+< 				set_country_flag = SPR_relocated_gold_reserves_selection_flag2
+< 				save_event_target_as = SPR_relocated_gold_reserves_selection_2
+< 			}
+< 			random_other_country = {
+< 				limit = {
+< 					ROOT = {
+< 						has_volunteers_amount_from = {
+< 						    tag = PREV
+< 						    count > 0
+< 						}
+< 					}
+< 					NOT = { tag = SOV }
+< 					NOT = { has_country_flag = SPR_relocated_gold_reserves_selection_flag1 }
+< 					NOT = { has_country_flag = SPR_relocated_gold_reserves_selection_flag2 }
+< 				}
+< 				set_country_flag = SPR_relocated_gold_reserves_selection_flag3
+< 				save_event_target_as = SPR_relocated_gold_reserves_selection_3
+< 			}
+< 		}
+< 	}
+10269,10322d10221
+< 	}
+< 	option = { # Send to #1
+< 		name = lar_spain.51.b
+< 		ai_chance = {
+< 			base = 25
+< 			modifier = {
+< 				factor = 0
+< 				is_historical_focus_on = yes
+< 			}
+< 		}
+< 		trigger = {
+< 			any_other_country = {
+< 				has_country_flag = SPR_relocated_gold_reserves_selection_flag1
+< 			}
+< 		}
+< 		event_target:SPR_relocated_gold_reserves_selection_1 = {
+< 			country_event = { id = lar_spain.52 hours = 6 random_hours = 6 }
+< 		}
+< 	}
+< 	option = { # Send to #2
+< 		name = lar_spain.51.c
+< 		ai_chance = {
+< 			base = 25
+< 			modifier = {
+< 				factor = 0
+< 				is_historical_focus_on = yes
+< 			}
+< 		}
+< 		trigger = {
+< 			any_other_country = {
+< 				has_country_flag = SPR_relocated_gold_reserves_selection_flag2
+< 			}
+< 		}
+< 		event_target:SPR_relocated_gold_reserves_selection_2 = {
+< 			country_event = { id = lar_spain.52 hours = 6 random_hours = 6 }
+< 		}
+< 	}
+< 	option = { # Send to #3
+< 		name = lar_spain.51.d
+< 		ai_chance = {
+< 			base = 25
+< 			modifier = {
+< 				factor = 0
+< 				is_historical_focus_on = yes
+< 			}
+< 		}
+< 		trigger = {
+< 			any_other_country = {
+< 				has_country_flag = SPR_relocated_gold_reserves_selection_flag3
+< 			}
+< 		}
+< 		event_target:SPR_relocated_gold_reserves_selection_3 = {
+< 			country_event = { id = lar_spain.52 hours = 6 random_hours = 6 }
+< 		}

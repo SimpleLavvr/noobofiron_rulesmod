@@ -1,3 +1,7 @@
+42c42
+< 		fuel_consumption_factor = -0.05
+---
+> 		fuel_consumption_factor = -0.10
 52,53c52,53
 < 			support_equipment = 20
 < 			motorized_equipment = 10

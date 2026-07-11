@@ -9,6 +9,10 @@
 < 				factor = 1.5
 < 				date > 1940.1.1
 < 			}
+188c178
+< 		start_year = 1943
+---
+> 		start_year = 1941
 242,251d231
 < 			
 < 			modifier = {
@@ -44,6 +48,10 @@
 < 				factor = 1.5
 < 				date > 1940.1.1
 < 			}
+862c824
+< 		start_year = 1943
+---
+> 		start_year = 1941
 956a919,923
 > 
 > 		path = {
@@ -82,6 +90,10 @@
 < 		research_cost = 1.5
 ---
 > 		research_cost = 1
+1230c1189
+< 		start_year = 1943
+---
+> 		start_year = 1941
 1245a1205
 > 
 1301d1260
@@ -115,6 +127,10 @@
 < 				factor = 1.5
 < 				date > 1940.1.1
 < 			}
+1571c1526
+< 		start_year = 1943
+---
+> 		start_year = 1941
 1575c1530
 < 			position = {  x = -1 y = 20 }
 ---
@@ -281,7 +297,7 @@
 1794c1871
 < 			position = {  x = -2 y = 20 }
 ---
-> 			position = {  x = 3 y = 20 }
+> 			position = {  x = 3 y = 25 }
 1822a1900,1904
 > 
 > 		on_research_complete = {

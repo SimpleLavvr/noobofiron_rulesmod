@@ -16,6 +16,10 @@
 ---
 > 		resources={
 > 			steel = 36
+297c297
+< 		year = 1944
+---
+> 		year = 1941
 366,368c366,368
 < 		resources = {
 < 			steel = 3
@@ -48,6 +52,10 @@
 > 		resources={
 > 
 > 			steel = 36
+524c524
+< 		year = 1944
+---
+> 		year = 1941
 568,571c568,571
 < 		resources = {
 < 			#oil = 2

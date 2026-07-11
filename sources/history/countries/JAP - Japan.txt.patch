@@ -17,14 +17,15 @@
 < 			model = "JAP_battleship_3_entity"
 < 		}
 < 	}
-1558,1563d1549
+1558,1590d1549
 < 	optional_assets = {
 < 		{
 < 			icon = "GFX_JAP_battleship_kongo"
 < 			model = "JAP_battleship_0_entity"
 < 		}
 < 	}
-1566,1593c1552
+< }
+< create_equipment_variant = {
 < 	name = "Fuso Class"
 < 	type = ship_hull_heavy_1
 < 	design_team = mio:JAP_sasebo_naval_arsenal_organization
@@ -50,40 +51,42 @@
 < 		}
 < 	}
 < 	obsolete = yes
-< }
-< create_equipment_variant = {
+1593,1594c1552,1553
 < 	name = "Ise Class"
+< 	type = ship_hull_heavy_1
 ---
 > 	name = "Fuso/Ise Class"
-1612,1617d1570
+> 	type = ship_hull_heavy_2
+1611,1617d1569
+< 	obsolete = yes
 < 	optional_assets = {
 < 		{
 < 			icon = "GFX_JAP_battleship_ise"
 < 			model = "JAP_battleship_2_entity"
 < 		}
 < 	}
-1744,1749d1696
+1744,1749d1695
 < 	optional_assets = {
 < 		{
 < 			icon = "GFX_JAP_heavy_cruiser_tone"
 < 			model = "JAP_heavy_cruiser_1_entity"
 < 		}
 < 	}
-1831,1836d1777
+1831,1836d1776
 < 	optional_assets = {
 < 		{
 < 			icon = "GFX_JAP_light_cruiser_sendai"
 < 			model = "JAP_light_cruiser_entity"
 < 		}
 < 	}
-2278,2283d2218
+2278,2283d2217
 < 			optional_assets = {
 < 				{
 < 					icon = "GFX_JAP_carrier_shokaku"
 < 					model = "JAP_carrier_0_entity"
 < 				}
 < 			}
-2355,2360d2289
+2355,2360d2288
 < 			}
 < 			optional_assets = {
 < 				{

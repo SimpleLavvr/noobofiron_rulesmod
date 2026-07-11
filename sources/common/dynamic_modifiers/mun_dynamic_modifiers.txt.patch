@@ -1,0 +1,4 @@
+99c99
+< 	air_untrained_pilots_penalty_factor = CZE_ceskoslovenske_letectvo_air_untrained_pilots_penalty_factor #-0.25
+---
+> 	air_untrained_pilots_penalty_factor = CZE_ceskoslovenske_letectvo_air_untrained_pilots_penalty_factor #-0.02

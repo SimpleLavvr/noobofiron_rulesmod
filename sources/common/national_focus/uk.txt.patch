@@ -2006,6 +2006,10 @@
 < 		}
 < 
 < 	}
+6772c5129
+< 		y = 1
+---
+> 		y = 2
 6951,7059d5307
 < 	focus = {
 < 		id = hongkong_focus
@@ -2116,6 +2120,16 @@
 < 		}
 < 
 < 	}
+7068,7069c5316,5317
+< 		x = 0
+< 		y = 2
+---
+> 		x = -1
+> 		y = 1
+7196c5444
+< 		y = 1
+---
+> 		y = 2
 7343,7392d5590
 < 		id = uk_china_focus 
 < 
@@ -2212,46 +2226,75 @@
 > 		mutually_exclusive = { focus = ENG_a_change_in_course }
 9626d7830
 < 				NOT = {	has_character = ENG_winston_churchill } #MM: GoE content if he is transferred to India via event chain triggered by focus RAJ_the_jewel_becomes_the_crown
-9770c7974
-< 		icon = GFX_goal_generic_occupy_states_ongoing_war
----
-> 		icon = GFX_focus_generic_attack_iraq
-11385c9589
-< 		icon = GFX_goal_generic_forceful_treaty
----
-> 		icon = GFX_focus_generic_attack_iran
-11504a9709,9710
-> 					has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
-> 
-12128a10335
-> 							}
-12133c10340
+10251,10257c8455
+< 			IRQ = { 
+< 				OR = {
+< 					exists = no 
+< 					has_war_with = ROOT
+< 					is_subject_of = ROOT 
+< 				}
 < 			}
 ---
-> 
-12158c10365
-< 		icon = GFX_goal_generic_position_armies
+> 			IRQ = { exists = no }
+10317,10323c8515
+< 			PER = { 
+< 				OR = {
+< 					exists = no 
+< 					has_war_with = ROOT
+< 					is_subject_of = ROOT 
+< 				}
+< 			}
+---
+> 			PER = { exists = no }
+10598c8790
+< 		icon = GFX_focus_generic_attack_nordic_territory
 ---
 > 		icon = GFX_SOV_control_scandinavia_ccp_2d_sov_compatibility
-12851a11059
-> 					has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
-13996c12204
+10853c9045
 < 		icon = GFX_goal_generic_position_armies
 ---
 > 		icon = GFX_focus_generic_influence_benelux
-14111c12319,12321
+10959c9151,9153
 < 
 ---
 > 		allow_branch = {
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
 > 		}
-14131c12341,12343
+11214c9408,9410
 < 
 ---
 > 		allow_branch = {
 > 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
 > 		}
-14132a12345,15122
+11515c9711,9713
+< 
+---
+> 		allow_branch = {
+> 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
+> 		}
+12144c10342,10343
+< 				if = {
+---
+> 			}
+> 			if = {
+12149d10347
+< 					
+12156,12157d10353
+< 		}
+< 
+12843c11039,11041
+< 
+---
+> 		allow_branch = {
+> 			has_game_rule = { rule = noi_allow_ahistorical option = noi_rule_ahistorical_allowed}
+> 		}
+14115,14117c12313
+< 		available = {
+< 
+< 		}
+---
+> 		available = { }
+14128a12325,15070
 > 		}
 > 	}
 > 	
@@ -2398,7 +2441,7 @@
 > 		prerequisite = { focus = uk_asia_focus }
 > 		icon = GFX_goal_generic_fortify_city
 > 		x = 2
-> 		y = 1
+> 		y = 3
 > 		relative_position_id = uk_asia_focus
 > 		cost = 5
 > 		ai_will_do = {
@@ -2552,9 +2595,9 @@
 > 		id = hk_air_focus
 > 		prerequisite = { focus = hongkong_focus }
 > 		icon = GFX_focus_generic_air_defense
-> 		x = 0
+> 		x = 1
 > 		y = 1
-> 		relative_position_id = hk_landward_forts_focus
+> 		relative_position_id = hongkong_focus
 > 		cost = 5
 > 		ai_will_do = {
 > 			factor = 1
@@ -2680,7 +2723,7 @@
 > 		prerequisite = { focus = uk_asia_focus }
 > 		icon = GFX_goal_generic_fortify_city
 > 		x = 0
-> 		y = 1
+> 		y = 1.5
 > 		relative_position_id = uk_asia_focus
 > 		cost = 5
 > 
@@ -2778,7 +2821,7 @@
 > 		prerequisite = { focus = singapore_focus }
 > 		icon = GFX_goal_generic_construct_military
 > 		x = 0
-> 		y = 1
+> 		y = 2
 > 		relative_position_id = singapore_focus
 > 		cost = 5
 > 		ai_will_do = {
@@ -2889,7 +2932,7 @@
 > 		prerequisite = { focus = sp_landward_forts_focus }
 > 		icon = GFX_goal_generic_construction2
 > 		x = 0
-> 		y = 1
+> 		y = 2
 > 		relative_position_id = sp_landward_forts_focus
 > 		cost = 5
 > 		ai_will_do = {
@@ -3136,38 +3179,6 @@
 > 				add_opinion_modifier = { target = ENG modifier = embargo }
 > 				add_opinion_modifier = { target = ENG modifier = sanctions_relations } 
 > 			}
-> 		}
-> 	}
-> 	focus = {
-> 		id = ENG_war_with_japan
-> 		available = {
-> 			has_offensive_war = no
-> 			JAP = {
-> 				ENG_focus_available_war = yes
-> 			}	
-> 			has_government = democratic
-> 		}
-> 		bypass = {
-> 			has_war_with = JAP
-> 		}
-> 		will_lead_to_war_with = JAP
-> 		prerequisite = { focus = ENG_NOI_dutch_fort }
-> 		prerequisite = { focus = peninsular_focus }
-> 		prerequisite = { focus = hk_air_focus }
-> 		icon = GFX_focus_attack_japan
-> 		x = 2
-> 		y = 1
-> 		relative_position_id = uk_sanction_japan_focus
-> 		cost = 10
-> 		ai_will_do = {
-> 			factor = 1
-> 		}	
-> 		completion_reward = {
-> 			create_wargoal = {
-> 				type = puppet_wargoal_focus
-> 				target = JAP
-> 				expire = 0
-> 			} 
 > 		}
 > 	}
 > 
@@ -3868,7 +3879,7 @@
 > 		}
 > 		icon = GFX_focus_generic_coastal_fort
 > 		x = -2
-> 		y = 1
+> 		y = 3
 > 		relative_position_id = uk_asia_focus
 > 		cost = 5
 > 		ai_will_do = {
@@ -3929,7 +3940,7 @@
 > 		}
 > 		icon = GFX_focus_hol_oranje_boven
 > 		x = -2
-> 		y = 3
+> 		y = 4
 > 		relative_position_id = uk_asia_focus
 > 		cost = 10
 > 		ai_will_do = {

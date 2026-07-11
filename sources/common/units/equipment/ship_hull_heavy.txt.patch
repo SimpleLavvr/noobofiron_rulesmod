@@ -30,6 +30,10 @@
 ---
 > 			steel = 48
 > 			chromium = 12
+439c439
+< 		year = 1944
+---
+> 		year = 1941
 495c495
 < 		resources = {
 ---
@@ -88,6 +92,10 @@
 > 
 > 			steel = 48
 > 			chromium = 24
+892c892
+< 		year = 1944
+---
+> 		year = 1941
 937,940c937,940
 < 		resources = {
 < 			#oil = 2
@@ -108,6 +116,10 @@
 > 
 > 			steel = 48
 > 			chromium = 12
+1069c1069
+< 		year = 1944
+---
+> 		year = 1941
 1183,1186c1183,1186
 < 		resources = {
 < 			#oil = 2
