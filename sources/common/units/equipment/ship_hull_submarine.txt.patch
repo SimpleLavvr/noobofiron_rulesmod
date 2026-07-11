@@ -2,21 +2,21 @@
 < 		surface_detection = 20
 ---
 > 		surface_detection = 10
-95c95
+95,97c95,97
 < 		resources = {
----
-> 		resources={
-97c97
+< 			#oil = 1
 < 			steel = 1
 ---
-> 			steel = 12
-154c154
-< 		resources = {
----
 > 		resources={
-156c156
+> 			#oil = 12
+> 			steel = 12
+154,156c154,156
+< 		resources = {
+< 			#oil = 1
 < 			steel = 2
 ---
+> 		resources={
+> 			#oil = 12
 > 			steel = 24
 205,206c205,206
 < 		resources = {
@@ -32,6 +32,24 @@
 > 		resources={
 > 			steel = 36
 > 			chromium = 12
+315,316c315,316
+< 		resources = {
+< 			steel = 2
+---
+> 		resources={
+> 			steel = 24
+375,376c375,376
+< 		resources = {
+< 			steel = 3
+---
+> 		resources={
+> 			steel = 36
+408,409c408,409
+< 		resources = {
+< 			steel = 1
+---
+> 		resources={
+> 			steel = 12
 479,481c479,481
 < 		resources = {
 < 			steel = 3
@@ -46,13 +64,13 @@
 ---
 > 		resources={
 > 			steel = 48
-572c572
+572,574c572,574
 < 		resources = {
----
-> 		resources={
-574c574
+< 			#oil = 1
 < 			steel = 1
 ---
+> 		resources={
+> 			#oil = 12
 > 			steel = 12
 606c606
 < 		sub_visibility = 25
@@ -66,13 +84,13 @@
 < 		max_strength = 20
 ---
 > 		max_strength = 13
-617c617
+617,619c617,619
 < 		resources = {
----
-> 		resources={
-619c619
+< 			#oil = 1
 < 			steel = 2
 ---
+> 		resources={
+> 			#oil = 12
 > 			steel = 24
 652c652
 < 		naval_range = 3000
@@ -82,13 +100,13 @@
 < 		max_strength = 30
 ---
 > 		max_strength = 17
-659c659
+659,661c659,661
 < 		resources = {
----
-> 		resources={
-661c661
+< 			#oil = 2
 < 			steel = 2
 ---
+> 		resources={
+> 			#oil = 24
 > 			steel = 24
 694c694
 < 		naval_range = 3500
@@ -98,14 +116,14 @@
 < 		max_strength = 35
 ---
 > 		max_strength = 20
-701c701
+701,704c701,704
 < 		resources = {
----
-> 		resources={
-703,704c703,704
+< 			#oil = 2
 < 			steel = 3
 < 			chromium = 1
 ---
+> 		resources={
+> 			#oil = 24
 > 			steel = 36
 > 			chromium = 12
 797c797

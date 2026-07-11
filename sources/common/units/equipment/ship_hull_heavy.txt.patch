@@ -10,38 +10,44 @@
 ---
 > 		resources={
 > 			steel = 24
-362c362
+299,300c299,300
 < 		resources = {
+< 			chromium = 1
 ---
 > 		resources={
-364,365c364,365
+> 			chromium = 12
+362,365c362,365
+< 		resources = {
+< 			#oil = 1
 < 			steel = 3
 < 			chromium = 1
 ---
+> 		resources={
+> 			#oil = 12
 > 			steel = 36
 > 			chromium = 12
-428c428
+428,431c428,431
 < 		resources = {
----
-> 		resources={
-430,431c430,431
+< 			#oil = 1
 < 			steel = 4
 < 			chromium = 1
 ---
+> 		resources={
+> 			#oil = 12
 > 			steel = 48
 > 			chromium = 12
 439c439
 < 		year = 1944
 ---
 > 		year = 1941
-495c495
+495,498c495,498
 < 		resources = {
----
-> 		resources={
-497,498c497,498
+< 			#oil = 1
 < 			steel = 4
 < 			chromium = 1
 ---
+> 		resources={
+> 			#oil = 12
 > 			steel = 48
 > 			chromium = 12
 567,570c567,570

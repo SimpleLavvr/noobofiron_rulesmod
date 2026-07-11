@@ -28,97 +28,97 @@
 > 		resources={
 > 			steel = 36
 > 			chromium = 12
-442c442
+442,444c442,444
 < 		resources = {
----
-> 		resources={
-444c444
+< 			#oil = 1
 < 			steel = 2
 ---
+> 		resources={
+> 			#oil = 12
 > 			steel = 24
-491c491
+491,493c491,493
 < 		resources = {
----
-> 		resources={
-493c493
+< 			#oil = 1
 < 			steel = 3
 ---
+> 		resources={
+> 			#oil = 12
 > 			steel = 36
-542c542
+542,544c542,544
 < 		resources = {
----
-> 		resources={
-544c544
+< 			#oil = 2
 < 			steel = 3
 ---
+> 		resources={
+> 			#oil = 24
 > 			steel = 36
 550c550
 < 		year = 1944
 ---
 > 		year = 1941
-594c594
+594,597c594,597
 < 		resources = {
----
-> 		resources={
-596,597c596,597
+< 			#oil = 2
 < 			steel = 4
 < 			chromium = 1
 ---
+> 		resources={
+> 			#oil = 24
 > 			steel = 48
 > 			chromium = 12
-711c711
+711,713c711,713
 < 		resources = {
----
-> 		resources={
-713c713
+< 			#oil = 1
 < 			steel = 3
 ---
+> 		resources={
+> 			#oil = 12
 > 			steel = 36
-761c761
+761,763c761,763
 < 		resources = {
----
-> 		resources={
-763c763
+< 			#oil = 1
 < 			steel = 4
 ---
+> 		resources={
+> 			#oil = 12
 > 			steel = 48
-811c811
+811,813c811,813
 < 		resources = {
----
-> 		resources={
-813c813
+< 			#oil = 2
 < 			steel = 4
 ---
+> 		resources={
+> 			#oil = 24
 > 			steel = 48
 819c819
 < 		year = 1944
 ---
 > 		year = 1941
-862c862
+862,865c862,865
 < 		resources = {
----
-> 		resources={
-864,865c864,865
+< 			#oil = 2
 < 			steel = 5
 < 			chromium = 1
 ---
+> 		resources={
+> 			#oil = 24
 > 			steel = 60
 > 			chromium = 12
-982c982
+982,984c982,984
 < 		resources = {
----
-> 		resources={
-984c984
+< 			#oil = 2
 < 			steel = 2
 ---
-> 			steel = 24
-1075c1075
-< 		resources = {
----
 > 		resources={
-1077c1077
+> 			#oil = 24
+> 			steel = 24
+1075,1077c1075,1077
+< 		resources = {
+< 			#oil = 2
 < 			steel = 3
 ---
+> 		resources={
+> 			#oil = 24
 > 			steel = 36
 1095,1097c1095,1097
 < 		resources = {

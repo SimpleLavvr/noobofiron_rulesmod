@@ -73,6 +73,144 @@
 < #Armour
 < #
 < #Generally comparable to the fluff descriptions, but make sure the ship can reach desired IRL speed in combination with engine and other modules
+180,181c106,107
+< 		#build_cost_resources = {
+< 			#steel = 1
+---
+> 		#build_cost_resources={
+> 			#steel = 12
+216,217c142,143
+< 		#build_cost_resources = {
+< 			#steel = 1
+---
+> 		#build_cost_resources={
+> 			#steel = 12
+244,245c170,171
+< 		#build_cost_resources = {
+< 			#steel = 1
+---
+> 		#build_cost_resources={
+> 			#steel = 12
+277,278c203,204
+< 		#build_cost_resources = {
+< 			#steel = 1
+---
+> 		#build_cost_resources={
+> 			#steel = 12
+310,311c236,237
+< 		#build_cost_resources = {
+< 			#steel = 1
+---
+> 		#build_cost_resources={
+> 			#steel = 12
+356,357c282,283
+< 		#build_cost_resources = {
+< 			#steel = 1
+---
+> 		#build_cost_resources={
+> 			#steel = 12
+383,384c309,310
+< 		#build_cost_resources = {
+< 			#steel = 1
+---
+> 		#build_cost_resources={
+> 			#steel = 12
+415,416c341,342
+< 		#build_cost_resources = {
+< 			#steel = 1
+---
+> 		#build_cost_resources={
+> 			#steel = 12
+449,450c375,376
+< 		#build_cost_resources = {
+< 			#steel = 1
+---
+> 		#build_cost_resources={
+> 			#steel = 12
+476,477c402,403
+< 		#build_cost_resources = {
+< 			#steel = 1
+---
+> 		#build_cost_resources={
+> 			#steel = 12
+513,514c439,440
+< 		#build_cost_resources = {
+< 			#steel = 1
+---
+> 		#build_cost_resources={
+> 			#steel = 12
+551,552c477,478
+< 		#build_cost_resources = {
+< 			#steel = 1
+---
+> 		#build_cost_resources={
+> 			#steel = 12
+589,590c515,516
+< 		#build_cost_resources = {
+< 			#steel = 2
+---
+> 		#build_cost_resources={
+> 			#steel = 24
+602,603c528,529
+< 			#convert_cost_resources = {
+< 			#	steel = 2
+---
+> 			#convert_cost_resources={
+> 			#	steel = 24
+609,610c535,536
+< 			#convert_cost_resources = {
+< 			#	steel = 1
+---
+> 			#convert_cost_resources={
+> 			#	steel = 12
+633,634c559,560
+< 		#build_cost_resources = {
+< 			#steel = 2
+---
+> 		#build_cost_resources={
+> 			#steel = 24
+646,647c572,573
+< 			#convert_cost_resources = {
+< 			#	steel = 2
+---
+> 			#convert_cost_resources={
+> 			#	steel = 24
+711,712c637,638
+< 			#convert_cost_resources = {
+< 			#	steel = 1
+---
+> 			#convert_cost_resources={
+> 			#	steel = 12
+740,741c666,667
+< 		#build_cost_resources = {
+< 			#steel = 1
+---
+> 		#build_cost_resources={
+> 			#steel = 12
+751,752c677,678
+< 			#convert_cost_resources = {
+< 			#	steel = 1
+---
+> 			#convert_cost_resources={
+> 			#	steel = 12
+780,781c706,707
+< 		#build_cost_resources = {
+< 		#	steel = 1
+---
+> 		#build_cost_resources={
+> 		#	steel = 12
+791,792c717,718
+< 			#convert_cost_resources = {
+< 			#	steel = 1
+---
+> 			#convert_cost_resources={
+> 			#	steel = 12
+830,831c756,757
+< 			#convert_cost_resources = {
+< 			#	steel = 1
+---
+> 			#convert_cost_resources={
+> 			#	steel = 12
 2080c2006
 < 		build_cost_resources = {
 ---
@@ -103,6 +241,30 @@
 ---
 > 		build_cost_resources={
 > 			rubber = 24
+2638,2639c2564,2565
+< 		#build_cost_resources = {
+< 		#	steel = 1
+---
+> 		#build_cost_resources={
+> 		#	steel = 12
+2663,2664c2589,2590
+< 		#build_cost_resources = {
+< 		#	steel = 2
+---
+> 		#build_cost_resources={
+> 		#	steel = 24
+2687,2688c2613,2614
+< 		#build_cost_resources = {
+< 		#	steel = 1
+---
+> 		#build_cost_resources={
+> 		#	steel = 12
+2710,2711c2636,2637
+< 		#build_cost_resources = {
+< 		#	steel = 1
+---
+> 		#build_cost_resources={
+> 		#	steel = 12
 2853,2854c2779,2780
 < 		build_cost_resources = {
 < 			steel = 1
@@ -121,36 +283,74 @@
 ---
 > 		build_cost_resources={
 > 			steel = 12
-2945,2946c2871,2872
+2945,2947c2871,2873
 < 		build_cost_resources = {
 < 			steel = 1
+< 			chromium = 1
 ---
 > 		build_cost_resources={
 > 			steel = 12
-2971,2972c2897,2898
+> 			chromium = 12
+2971,2973c2897,2899
 < 		build_cost_resources = {
 < 			steel = 1
+< 			chromium = 1
 ---
 > 		build_cost_resources={
 > 			steel = 12
-2997,2998c2923,2924
+> 			chromium = 12
+2997,2999c2923,2925
 < 		build_cost_resources = {
 < 			steel = 2
+< 			chromium = 1
 ---
 > 		build_cost_resources={
 > 			steel = 24
+> 			chromium = 12
+3043,3044c2969,2970
+< 		#build_cost_resources = {
+< 		#	steel = 1
+---
+> 		#build_cost_resources={
+> 		#	steel = 12
 3062,3063c2988,2989
 < 		build_cost_resources = {
 < 			steel = 1
 ---
 > 		build_cost_resources={
 > 			steel = 12
-3082,3083c3008,3009
+3082,3084c3008,3010
 < 		build_cost_resources = {
 < 			steel = 1
+< 			chromium = 1
 ---
 > 		build_cost_resources={
 > 			steel = 12
+> 			chromium = 12
+3095,3096c3021,3022
+< 		#build_cost_resources = {
+< 		#	steel = 1
+---
+> 		#build_cost_resources={
+> 		#	steel = 12
+3118,3119c3044,3045
+< 		#build_cost_resources = {
+< 		#	steel = 2
+---
+> 		#build_cost_resources={
+> 		#	steel = 24
+3141,3142c3067,3068
+< 		#build_cost_resources = {
+< 		#	steel = 2
+---
+> 		#build_cost_resources={
+> 		#	steel = 24
+3164,3165c3090,3091
+< 		#build_cost_resources = {
+< 		#	steel = 3
+---
+> 		#build_cost_resources={
+> 		#	steel = 36
 3175c3101,3116
 < 	}		
 ---
