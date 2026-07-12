@@ -3,15 +3,15 @@
 < 			steel = 4
 ---
 > 		resources={
-> 			steel = 540
-> 			chromium = 180
+> 			steel = 45
+> 			chromium = 15
 161,162c162,164
 < 		resources = {
 < 			chromium = 1
 ---
 > 		resources={
-> 			steel = 600
-> 			chromium = 240
+> 			steel = 50
+> 			chromium = 20
 226,228c228,230
 < 		resources = {
 < 			steel = 5
